@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+
+<head>
+	<% include ../../partials/common-head %>
+</head>
+
+<body>
+
+	<!--Panel Izquierdo -->
+	<% include ../../partials/sidebar %>
+	<!-- /Panel izquierdo-->
+
+	<!-- Panel Derecho -->
+	<div id="right-panel" class="right-panel">
+
+		<!-- Cabecera-->
+		<% include ../../partials/cabecera %>
+		<!-- /Cabecera -->
+
+		<!-- Tabla del CRUD-->
+		<div class="content mt-3">
+
+			<!-- Mensaje -->
+			<% include ../../partials/mensaje %>
+			<!-- /Mensaje -->
+
+			<div class="col-sm-12">
+				<div class="animated fadeIn">
+					<div class="row">
+						<div class="col-md-12">
+							<!-- Cuerpo -->
+							<div class="card">
+								<div class="card-header">
+									<div class="d-flex justify-content-between">
+										<div class="d-flex justify-content-start">
+											<strong class="card-title align-middle">Mejoras - Infraestructura</strong>
+											<div id="titulo" data-value="Tabla de Mejoras - Infraestructura"></div>
+										</div>
+										<div id="tableButtons" class="d-none d-md-block">
+											<a id="agregar" href="#agregarModal" class="btn btn-primary"
+												data-toggle="modal">
+												<i class="fa fa-plus-circle"></i> Agregar
+											</a>
+										</div>
+										<div id="tableButtons" class="d-md-none">
+											<a id="agregar" href="#agregarModal" class="text-white" data-toggle="modal">
+												<i class="fa fa-plus-circle"></i>
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="card-body">
+									<div class="table-responsive">
+										<table id="tabla" class="table table-striped table-bordered">
+											<thead>
+												<tr>
+													<th>Concepto</th>
+													<th>Cantidad</th>
+													<th>Unidades</th>
+													<th>Valor Unitario ($)</th>
+													<th class="d-none">Fecha Compra</th>
+													<th class="d-none">Fecha Cierre</th>
+													<th>Valor de Mercado ($)</th>
+													<th class="d-none">Vida Útil</th>
+													<th class="d-none">Antigüedad</th>
+													<th class="d-none">Amortización ($)</th>
+													<th class="d-none">Amortización Acumulada ($)</th>
+													<th class="d-none">Valor Residual ($)</th>
+													<th class="d-none">Valor a Nuevo ($)</th>
+													<th>Estado</th>
+													<th class="not-export-col">Acciones</th>
+												</tr>
+											</thead>
+											<tbody>
+												<% infraestructuras.forEach(infraestructura => { %>
+												<tr data="<%= JSON.stringify(infraestructura) %>">
+													<td>
+														<%= infraestructura.concepto %>
+													</td>
+													<td>
+														<%= infraestructura.cantidad %>
+													</td>
+													<td>
+														<%= infraestructura.unidad %>
+													</td>
+													<td>
+														<%= infraestructura.valorUnitario %>
+													</td>
+													<td class="d-none">
+														<%= infraestructura.fechaCompra %>
+													</td>
+													<td class="d-none">
+														30-06-18
+														<!-- Fecha Cierre Ejercicio -->
+													</td>
+													<td>
+														<%= infraestructura.cantidad * infraestructura.valorUnitario %>
+													</td>
+													<td class="d-none">
+														<%= infraestructura.vidaUtil %>
+													</td>
+													<td class="d-none">
+														11
+														<!-- Antigûedad -->
+													</td>
+													<td class="d-none">
+														$4500
+														<!-- Amortizaciòn -->
+													</td>
+													<td class="d-none">
+														$45000
+														<!-- Amortizaciòn Acumulada -->
+													</td>
+													<td class="d-none">
+														<%= infraestructura.cantidad * infraestructura.valorUnitario * infraestructura.valorResidual / 100 %>
+													</td>
+													<td class="d-none">
+														$45000
+														<!-- Valor a Nuevo -->
+													</td>
+													<td>
+														<%= infraestructura.estado %>
+													</td>
+													<td>
+														<a id="ver" href="#verModal" class="view mr-2" title="Ver"
+															data-toggle="modal">
+															<i class="fa fa-search fa-lg"></i>
+														</a>
+														<a id="editar" href="#editarModal" class="edit mr-2"
+															data-toggle="modal">
+															<i class="fa fa-edit fa-lg" title="Editar"></i>
+														</a>
+														<a id="eliminar" href="#eliminarModal" class="delete mr-2"
+															data-toggle="modal">
+															<i class="fa fa-trash fa-lg" title="Eliminar"></i>
+														</a>
+													</td>
+												</tr>
+												<% }) %>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<!-- /Cuerpo -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Tabla del CRUD-->
+	</div>
+	<!-- /Panel Derecho -->
+
+	<!-- Formulario de los Popups  -->
+	<% include Infraestructura-add %>
+	<% include Infraestructura-view %>
+	<% include Infraestructura-edit %>
+	<% include Infraestructura-delete %>
+	<!-- /Formulario de los Popups  -->
+
+	<!-- Scripts -->
+	<% include ../../partials/common-scripts %>
+	<script type="text/javascript">
+		InitDataTable("#tabla");
+	</script>
+</body>
+
+</html>

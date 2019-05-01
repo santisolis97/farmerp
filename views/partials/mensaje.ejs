@@ -1,0 +1,56 @@
+<div class="col-md-12">
+  <!-- No mostrar durante las pruebas -->
+  <% if (process.env.NODE_ENV != 'test') { %>
+    <!-- Mensaje de Exito -->
+    <% if (success_msg.length > 0){ %>
+      <div id="success_msg" class="mensaje_alerta alert  alert-success alert-dismissible fade show" role="alert">
+        <span class="badge badge-pill badge-success">Exito</span>
+        <%= success_msg %>
+        <button type="button" class="close" onclick="RemoveAlert(this)" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="progress" style="height: 5px;">
+          <div class="progress-bar mensaje_timer" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </div>
+    <% } %>
+    <!-- Mensaje de Alerta -->
+    <% if (warning_msg.length > 0){ %>
+      <div id="warning_msg" class="mensaje_alerta alert  alert-warning alert-dismissible fade show" role="alert">
+        <span class="badge badge-pill badge-warning">Aviso</span>
+        <%= warning_msg %>
+        <button type="button" class="close" onclick="RemoveAlert(this)" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="progress" style="height: 5px;">
+          <div class="progress-bar mensaje_timer" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </div>
+    <% } %>
+    <!-- Mensaje de Error -->
+    <% if (error_msg.length > 0){ %>
+      <div id="error_msg" class="mensaje_alerta alert  alert-danger alert-dismissible fade show" role="alert">
+        <span class="badge badge-pill badge-danger">Error</span>
+        <%= error_msg %>
+        <button type="button" class="close" onclick="RemoveAlert(this)" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="progress" style="height: 5px;">
+          <div class="progress-bar mensaje_timer" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </div>
+    <% } %>
+    <!-- Mensaje de Información -->
+    <% if (info_msg.length > 0){ %>
+        <div id="info_msg" class="info alert alert-primary fade show d-none d-md-block" role="alert" style="position: fixed; top:15px; right: 20px;">
+          <span class="badge badge-pill badge-primary">Info</span>
+          <%= info_msg %>
+          <button type="button" class="close" onclick="RemoveAlert(this)" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <script>window.setTimeout(() => RemoveAlert('info_msg'),4e3);</script>
+    <% } %>
+    <script src="/scripts/mensaje-timer.js"></script>
+  <% } %>
+</div>

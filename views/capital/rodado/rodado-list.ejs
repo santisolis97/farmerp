@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+
+<head>
+	<% include ../../partials/common-head %>
+</head>
+
+<body>
+
+	<!--Panel Izquierdo -->
+	<% include ../../partials/sidebar %>
+	<!-- /Panel izquierdo-->
+
+	<!-- Panel Derecho -->
+	<div id="right-panel" class="right-panel">
+
+		<!-- Cabecera-->
+		<% include ../../partials/cabecera %>
+		<!-- /Cabecera -->
+
+		<!-- Tabla del CRUD-->
+		<div class="content mt-3">
+
+			<!-- Mensaje -->
+			<!-- /Mensaje -->
+
+			<div class="col-sm-12">
+				<div class="animated fadeIn">
+					<div class="row">
+						<div class="col-md-12">
+							<!-- Cuerpo -->
+							<div class="card">
+								<div class="card-header">
+									<div class="d-flex justify-content-between">
+										<div class="d-flex justify-content-start">
+											<strong class="card-title align-middle">Rodados</strong>
+											<div id="titulo" data-value="Tabla de Lotes"></div>
+										</div>
+										<div id="tableButtons" class="d-none d-md-block">
+											<a id="agregar" href="#agregarModal" class="btn btn-primary"
+												data-toggle="modal">
+												<i class="fa fa-plus-circle"></i> Agregar
+											</a>
+										</div>
+										<div id="tableButtons" class="d-md-none">
+											<a id="agregar" href="#agregarModal" class="text-white" data-toggle="modal">
+												<i class="fa fa-plus-circle"></i>
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="card-body">
+									<div class="table-responsive">
+										<table id="tabla" class="table table-striped table-bordered">
+											<thead>
+												<tr>
+													<th>Concepto</th>
+													<th>Fecha Compra</th>
+													<th class="d-none">Fecha Cierre</th>
+													<th>Valor de Mercado</th>
+													<th class="d-none">Vida Útil</th>
+													<th class="d-none">Antigüedad</th>
+													<th class="d-none">Amortización</th>
+													<th class="d-none">Amortización Acumulada</th>
+													<th class="d-none">Valor Residual</th>
+													<th class="d-none">Valor a Nuevo</th>
+													<th>Estado</th>
+													<th class="not-export-col">Acciones</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr data="">
+													<td>
+														Camioneta VW Amarok
+													</td>
+													<td>
+														01-07-07
+													</td>
+													<td class="d-none">
+														30-06-18
+													</td>
+													<td>
+														$45000
+													</td>
+													<td class="d-none">
+														10
+													</td>
+													<td class="d-none">
+														11
+													</td>
+													<td class="d-none">
+														$4500
+													</td>
+													<td class="d-none">
+														$45000
+													</td>
+													<td class="d-none">
+														$0
+													</td>
+													<td class="d-none">
+														$45000
+													</td>
+													<td>
+														Bueno
+													</td>
+													<td>
+														<a id="ver" href="#verModal" class="view mr-2" title="Ver"
+															data-toggle="modal">
+															<i class="fa fa-search fa-lg"></i>
+														</a>
+														<a id="editar" href="#editarModal" class="edit mr-2"
+															data-toggle="modal">
+															<i class="fa fa-edit fa-lg" title="Editar"></i>
+														</a>
+														<a id="eliminar" href="#eliminarModal" class="delete mr-2"
+															data-toggle="modal">
+															<i class="fa fa-trash fa-lg" title="Eliminar"></i>
+														</a>
+													</td>
+												</tr>
+
+
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<!-- /Cuerpo -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Tabla del CRUD-->
+	</div>
+	<!-- /Panel Derecho -->
+
+	<!-- Formulario de los Popups  -->
+	<% include rodado-add %>
+	<% include rodado-view %>
+	<% include rodado-edit %>
+	<% include rodado-delete %>
+	<!-- /Formulario de los Popups  -->
+
+	<!-- Scripts -->
+	<% include ../../partials/common-scripts %>
+	<script type="text/javascript">
+		InitDataTable("#tabla");
+	</script>
+</body>
+
+</html>

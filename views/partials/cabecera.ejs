@@ -1,0 +1,73 @@
+<!-- Cabecera-->
+<header id="header" class="header">
+	<div class="header-menu">
+		
+		<!-- Notificacion-->
+		<div class="col-sm-7">
+			<!--<a id="menuToggle" class="menutoggle pull-left">
+				<i class="fa fa fa-tasks"></i>
+			</a>
+			 <div class="header-left">
+				<div class="dropdown for-notification">
+					<button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true"
+					 aria-expanded="false">
+						<i class="fa fa-bell"></i>
+						<span class="count bg-danger">5</span>
+					</button>
+					<div class="dropdown-menu" aria-labelledby="notification">
+						<p class="red">Tiene 3 Notificaciones</p>
+						<a class="dropdown-item media bg-flat-color-1" href="#">
+							<i class="fa fa-check"></i>
+							<p>Se agrego 1 alumno.</p>
+						</a>
+						<a class="dropdown-item media bg-flat-color-4" href="#">
+							<i class="fa fa-info"></i>
+							<p>Se agrego 1 elemento.</p>
+						</a>
+						<a class="dropdown-item media bg-flat-color-5" href="#">
+							<i class="fa fa-warning"></i>
+							<p>Una maquina necesita mantenimiento.</p>
+						</a>
+					</div>
+				</div>
+			</div> -->
+		</div>
+		<!-- /Notificacion-->
+    	<!-- Perfil-->
+		<div class="col-sm-5">	
+			<div class="user-area dropdown float-right" style="line-height: 2.5;">
+				<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<strong id="nombreUsuario" class="mr-2">usuario@mail.com</strong>
+					<img class="user-avatar rounded-circle" src="/src/perfil.jpg" alt="User Avatar">
+				</a>
+				<div class="user-menu dropdown-menu">
+					<a class="nav-link" href="/perfil">
+						<i class="fa fa-user"></i> Mi Perfil
+					</a>
+					<!--<a class="nav-link" href="#">
+						<i class="fa fa-bell"></i> Notificaciones
+						<span class="count">5</span>
+					</a>
+					<a class="nav-link" href="#">
+						<i class="fa fa-cog"></i> Configuración
+					</a> -->
+					<a id="botonLogout" class="nav-link" href="/auth/logout">	
+						<i  class="fa fa-power-off"></i> Cerrar la sesión
+					</a>
+				</div>
+			</div>
+		</div>
+		<!-- /Perfil-->
+	</div>
+	<script>
+		// disable browser console during tests
+		if("<%= process.env.NODE_ENV %>" ==  "test"){
+			if(!window.console) window.console = {};
+			var methods = ["log", "debug", "warn", "info"];
+			for(var i=0;i<methods.length;i++){
+				console[methods[i]] = function(){};
+			}
+		}
+	</script>
+</header>
+<!-- /Cabecera -->

@@ -1,0 +1,163 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    max-width: 100%;
+    min-width: 100%;
+    width: 100%;
+}
+
+#background-gym {
+    background-image: url(../src/background.jpg);
+    height: 100%;
+    background-size: cover;
+}
+
+#content {
+    margin-top: 5%;
+}
+
+h1 {
+    color: white;
+    text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.8), 0px 0px 13px rgba(0, 0, 0, 0.4), 0px 0px 23px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .navbar-nav li.sub-item {
+    padding-left: 20px;
+}
+
+.navbar .navbar-nav li.sub-item>a {
+    font-size: 13px;
+}
+
+.fz-75 {
+    font-size: 75%;
+}
+
+.open .navbar .navbar-nav li.sub-item {
+    padding-left: 0px;
+}
+
+/* Sidebar background color */
+
+aside.left-panel,
+.navbar,
+.navbar .navbar-nav li.menu-item-has-children .sub-menu {
+    background: #212529;
+}
+
+/* Add to modal-dialog to center  */
+
+.modal-center {
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+}
+
+#right-panel {
+    /* height: 650px; */
+    max-width: 100%;
+}
+
+.modal-xl {
+    width: 85vw !important;
+    max-width: 85vw !important;
+}
+
+.navbar .navbar-nav li.active a,
+.navbar .navbar-nav li ul li.active a {
+    color: #ffffff !important;
+}
+
+.navbar .navbar-nav li>a {
+    font-size: 14px;
+    line-height: 30px;
+    padding: 10px 0;
+    width: 100%;
+    align-items: center;
+    vertical-align: baseline;
+}
+
+.navbar .navbar-nav li>a .menu-icon {
+    margin-top: 8px;
+    width: 25px;
+}
+
+aside.left-panel {
+    padding: 0 25px;
+    width: 275px;
+}
+
+@media (max-width: 767.98px) {
+    aside.left-panel {
+        padding: 0 25px;
+        width: 100%;
+    }
+}
+
+.mensaje_alerta {
+    padding-bottom: 28px;
+}
+
+.progress {
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    bottom: 12px;
+}
+
+.progress-bar {
+    -webkit-transition: none !important;
+    transition: none !important;
+}
+
+.right-panel header.header {
+    display: block;
+    height: 84px;
+    /* box-shadow: 0 0 white; */
+}
+
+#right-panel>div>div.col-sm-12>div>div>div {
+    padding: 0;
+}
+
+#right-panel>div>div.col-sm-12>div>div>div>div {
+    margin: 0;
+}
+
+#right-panel>div {
+    padding: 1rem 1rem 0 1rem;
+    margin: 0 !important;
+
+}
+
+#home-logo {
+    animation: DISCORD-LOOP 5s infinite;
+}
+
+.fill {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+#home-vignette {
+    background: radial-gradient(circle, transparent 40%, black);
+}
+
+#home-overlay {
+    z-index: 2000;
+}
+
+@keyframes DISCORD-LOOP {
+    0% {
+        transform: scale(.95);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(.95);
+    }
+}

@@ -1,0 +1,72 @@
+<div id="editarModal" class="modal fade">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <form class="container" id="form-validation" novalidate method="POST" action="">
+                <div class="modal-header">
+                    <h4 class="modal-title">Editar Lote</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="nombreLote" class='control-label'>Nombre</label>
+                            <input name="lote[nombre]" type="text" class="form-control" id="nombreLote"
+                                placeholder="Nombre" required>
+                            <div class="invalid-feedback">
+                                Este campo es requerido.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="superficieLote" class='control-label'>Superficie</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">ha</span>
+                                </div>
+                                <input name="lote[superficie]" type="number" min="0" step="1" class="form-control"
+                                    id="superficieLote" placeholder="Superficie" required>
+                                <div class="invalid-feedback">
+                                    Este campo es requerido y solo admite valores enteros.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="fechaCompraLote" class='control-label'>Fecha de Compra</label>
+                            <input name="lote[fechaCompra]" type="date" class="form-control" id="fechaCompraLote"
+                                placeholder="" required>
+                            <div class="invalid-feedback">
+                                Este campo es requerido.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="valorHectareaLote" class='control-label'>Valor por Hectarea</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input name="lote[valorHectarea]" type="number" min="0" step="0.01" class="form-control"
+                                    id="valorHectareaLote" placeholder="Valor Hectarea" required>
+                                <div class="invalid-feedback">
+                                    Este campo es requerido.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                    <input id="botonGuardar" type="submit" class="btn btn-info" value="Guardar">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
