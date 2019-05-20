@@ -1,19 +1,20 @@
 var express = require('express');
 var router = express.Router();
+const Logged = require('./../utils/logged');
 
 var lote = require('./../controllers/loteController');
 
 /* List */
-router.get('/', lote.list);
+router.get('/', Logged.isLogged, lote.list);
 
 /* Add */
-router.post('/add', lote.add)
+router.post('/add', Logged.isLogged, lote.add)
 
 /* Edit */
-router.post('/edit/:id', lote.saveEdit)
+router.post('/edit/:id', Logged.isLogged, lote.saveEdit)
 
 /* Delete */
-router.post('/delete/:id', lote.delete)
+router.post('/delete/:id', Logged.isLogged, lote.delete)
 
 
 module.exports = router;

@@ -37,7 +37,12 @@ module.exports = (sequelize, DataTypes) => {
     }, );
 
     Infraestructura.associate = function (models) {
-
+        models.Infraestructura.belongsTo(models.Empresa, {
+            foreignKey: 'empresaId',
+        });
+        models.Empresa.hasMany(models.Infraestructura, {
+            foreignKey: 'empresaId',
+        });
     };
 
     return Infraestructura;

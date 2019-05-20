@@ -1,19 +1,29 @@
+const Totales = require("./../utils/totales")
 const models = require("./../models");
 const Lote = models.Lote;
 
 var loteController = {};
 
 loteController.list = function (req, res) {
-  Lote.findAll().then(lotes => {
+  Lote.findAll({
+    where: {
+      empresaId: res.locals.empresa.empresaId
+    }
+  }).then(lotes => {
+    lotes.map(lote => {
+      lote.dataValues.valorLote = lote.superficie * lote.valorHectarea
+    })
     res.render("capital/lote/lote-list", {
-      lotes: lotes
+      lotes: lotes,
+      supTotal: Totales.superficieLotes(lotes),
+      valorTotal: Totales.valorLotes(lotes)
     });
   });
 };
 
 loteController.add = function (req, res) {
   var newLote = Lote.build(req.body.lote);
-
+  
   newLote
     .save()
     .then(lote => {

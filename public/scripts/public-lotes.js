@@ -17,7 +17,7 @@ lotes.forEach(function (rowLote) {
         vista.querySelector("#superficieLote").value = lote.superficie;
         vista.querySelector("#fechaCompraLote").value = lote.fechaCompra;
         vista.querySelector("#valorHectareaLote").value = lote.valorHectarea;
-        vista.querySelector("#valorTotalLote").value = lote.valorHectarea * lote.superficie;
+        vista.querySelector("#valorTotalLote").value = lote.valorLote;
     });
 
     var editar = rowLote.querySelector("#editar");

@@ -34,7 +34,7 @@
 								<div class="card-header">
 									<div class="d-flex justify-content-between">
 										<div class="d-flex justify-content-start">
-											<strong class="card-title align-middle">Mejoras - Infraestructura</strong>
+											<strong class="card-title align-middle">Mejoras - Infraestructura. Valor Total al Cierre $<%= valorTotal %></strong>
 											<div id="titulo" data-value="Tabla de Mejoras - Infraestructura"></div>
 										</div>
 										<div id="tableButtons" class="d-none d-md-block">
@@ -61,13 +61,13 @@
 													<th>Valor Unitario ($)</th>
 													<th class="d-none">Fecha Compra</th>
 													<th class="d-none">Fecha Cierre</th>
-													<th>Valor de Mercado ($)</th>
+													<th class="d-none">Valor de Mercado ($)</th>
 													<th class="d-none">Vida Útil</th>
 													<th class="d-none">Antigüedad</th>
 													<th class="d-none">Amortización ($)</th>
 													<th class="d-none">Amortización Acumulada ($)</th>
 													<th class="d-none">Valor Residual ($)</th>
-													<th class="d-none">Valor a Nuevo ($)</th>
+													<th class="">Valor a Nuevo ($)</th>
 													<th>Estado</th>
 													<th class="not-export-col">Acciones</th>
 												</tr>
@@ -91,33 +91,28 @@
 														<%= infraestructura.fechaCompra %>
 													</td>
 													<td class="d-none">
-														30-06-18
-														<!-- Fecha Cierre Ejercicio -->
+														<%= empresa.finEjercicio %>
 													</td>
-													<td>
-														<%= infraestructura.cantidad * infraestructura.valorUnitario %>
+													<td class="d-none">
+														<%= infraestructura.dataValues.valorMercado %>
 													</td>
 													<td class="d-none">
 														<%= infraestructura.vidaUtil %>
 													</td>
 													<td class="d-none">
-														11
-														<!-- Antigûedad -->
+														<%= infraestructura.dataValues.antiguedad %>
 													</td>
 													<td class="d-none">
-														$4500
-														<!-- Amortizaciòn -->
+														<%= infraestructura.dataValues.amortizacion %>
 													</td>
 													<td class="d-none">
-														$45000
-														<!-- Amortizaciòn Acumulada -->
+														<%= infraestructura.dataValues.amortizacionAcumulada %>
 													</td>
 													<td class="d-none">
-														<%= infraestructura.cantidad * infraestructura.valorUnitario * infraestructura.valorResidual / 100 %>
+														<%= infraestructura.dataValues.valorResidualMonto %>
 													</td>
-													<td class="d-none">
-														$45000
-														<!-- Valor a Nuevo -->
+													<td class="">
+														<%= infraestructura.dataValues.valorANuevo %>
 													</td>
 													<td>
 														<%= infraestructura.estado %>
@@ -165,6 +160,7 @@
 	<script type="text/javascript">
 		InitDataTable("#tabla");
 	</script>
+	<script src="/scripts/public-infraestructuras.js"></script>
 </body>
 
 </html>

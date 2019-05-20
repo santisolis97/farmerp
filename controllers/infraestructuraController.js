@@ -1,12 +1,47 @@
+const Totales = require("./../utils/totales")
 const models = require("../models");
 const Infraestructura = models.Infraestructura;
 
 var infraestructuraController = {};
 
 infraestructuraController.list = function (req, res) {
-  Infraestructura.findAll().then(infraestructuras => {
+  var valorTotal = 0
+  Infraestructura.findAll({
+    where: {
+      empresaId: res.locals.empresa.empresaId
+    }
+  }).then(infraestructuras => {
+    infraestructuras.map(infraestructura => {
+      var antiguedad = new Date(res.locals.empresa.finEjercicio) - new Date(infraestructura.fechaCompra);
+      antiguedad = Math.trunc(antiguedad / (1000*60*60*24*365))
+      var valorMercado =  infraestructura.cantidad * infraestructura.valorUnitario;
+      var valorResidualMonto = infraestructura.cantidad * infraestructura.valorUnitario * infraestructura.valorResidual / 100;
+      var amortizacion = (valorMercado - valorResidualMonto)/infraestructura.vidaUtil
+      var amortizacionAcumulada;
+      var valorANuevo;
+      
+      if (amortizacion * antiguedad >= valorMercado){
+        amortizacionAcumulada = valorMercado
+      } else {
+        amortizacionAcumulada = amortizacion * antiguedad
+      }
+      
+      if (valorMercado - amortizacionAcumulada <= 0){
+        valorANuevo = valorMercado
+      } else {
+        valorANuevo = valorMercado - amortizacionAcumulada
+      }
+
+      infraestructura.dataValues.valorMercado = valorMercado;
+      infraestructura.dataValues.antiguedad = antiguedad;
+      infraestructura.dataValues.amortizacion = amortizacion;
+      infraestructura.dataValues.amortizacionAcumulada = amortizacionAcumulada;
+      infraestructura.dataValues.valorResidualMonto = valorResidualMonto;
+      infraestructura.dataValues.valorANuevo = valorANuevo;
+    });
     res.render("capital/infraestructura/infraestructura-list", {
-      infraestructuras: infraestructuras
+      infraestructuras: infraestructuras,
+      valorTotal: Totales.valorInfraestructuras(infraestructuras)
     });
   });
 };

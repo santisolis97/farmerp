@@ -34,7 +34,7 @@
 								<div class="card-header">
 									<div class="d-flex justify-content-between">
 										<div class="d-flex justify-content-start">
-											<strong class="card-title align-middle">Lotes</strong>
+											<strong class="card-title align-middle">Lotes. Cantidad de Hectareas <%= supTotal %>. Valor Total al Cierre $<%= valorTotal %></strong>
 											<div id="titulo" data-value="Tabla de Lotes"></div>
 										</div>
 										<div id="tableButtons" class="d-none d-md-block">
@@ -79,7 +79,7 @@
 														<%= lote.valorHectarea %>
 													</td>
 													<td>
-														<%= lote.valorHectarea * lote.superficie %>
+														<%= lote.dataValues.valorLote %>
 													</td>
 													<td>
 														<a id="ver" href="#verModal" class="view mr-2" title="Ver"

@@ -11,7 +11,7 @@
                         <div class="form-group col-md-12">
                             <label for="nombreLote" class='control-label'>Nombre</label>
                             <input name="lote[nombre]" type="text" class="form-control" id="nombreLote"
-                                placeholder="Nombre" required>
+                                placeholder="Nombre" value="<%= lotes.length + 1 %>" required>
                             <div class="invalid-feedback">
                                 Este campo es requerido.
                             </div>
@@ -38,7 +38,7 @@
                         <div class="form-group col-md-12">
                             <label for="fechaCompraLote" class='control-label'>Fecha de Compra</label>
                             <input name="lote[fechaCompra]" type="date" class="form-control" id="fechaCompraLote"
-                                placeholder="" required>
+                                placeholder="" value="<%= empresa.inicioEjercicio %>" max="<%= empresa.finEjercicio %>" required>
                             <div class="invalid-feedback">
                                 Este campo es requerido.
                             </div>
@@ -61,6 +61,7 @@
                         </div>
                     </div>
 
+                    <input type="hidden" name="lote[empresaId]" value="<%= empresa.empresaId %>">
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">

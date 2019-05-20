@@ -9,20 +9,19 @@
                 <div class="modal-body">
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="nombreInf" class='control-label'>Nombre</label>
-                            <input name="infraestructura[nombre]" type="text" class="form-control" id="nombreInf"
-                                placeholder="Nombre" readonly>
-                            <div class="invalid-feedback">
-                                Este campo es requerido.
-                            </div>
+                            <label for="conceptoInf" class='control-label'>Concepto</label>
+                            <input name="infraestructura[concepto]" type="text" class="form-control" id="conceptoInf"
+                                placeholder="Concepto" readonly>
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-3">
                             <label for="fechaCompraInf" class='control-label'>Fecha de Compra</label>
-                            <input name="infraestructura[fechaDeCompra]" type="date" class="form-control"
+                            <input name="infraestructura[fechaCompra]" type="date" class="form-control"
                                 id="fechaCompraInf" placeholder="Fecha" readonly>
-                            <div class="invalid-feedback">
-                                Este campo es requerido.
-                            </div>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="fechaCierreEjerc" class='control-label'>Fecha de Cierre</label>
+                            <input name="" type="date" class="form-control"
+                                id="" value="<%= empresa.finEjercicio %>" readonly>
                         </div>
                     </div>
 
@@ -31,70 +30,95 @@
                             <label for="cantidadInf" class='control-label'>Cantidad</label>
                             <input name="infraestructura[cantidad]" type="number" min="0" class="form-control"
                                 id="cantidadInf" placeholder="Cantidad" readonly>
-                            <div class="invalid-feedback">
-                                Este campo es requerido.
-                            </div>
                         </div>
                         <div class="form-group col-md-3">
                             <label for="unidadInf" class='control-label'>Unidad</label>
-                            <select name="infraestructura[unidad]" type="text" class="form-control input-small"
+                            <input name="infraestructura[unidad]" type="text" class="form-control input-small"
                                 id="unidadInf" placeholder="" readonly>
-                                <option selected>Unidades</option>
-                                <option>Metros</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Este campo es requerido.
-                            </div>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="valorInf" class='control-label'>Valor Unitario</label>
+                            <label for="valorInf" class='control-label'>Valor de Mercado</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">$</span>
                                 </div>
-                                <input name="infraestructura[valorUnitario]" type="number" min="0" step="0.01"
-                                    class="form-control" id="valorInf" placeholder="$/Unidad" readonly>
-                                <div class="invalid-feedback">
-                                    Este campo es requerido.
-                                </div>
+                                <input name="" type="number" min="0" step="0.01"
+                                    class="form-control" id="valorMercadoInf" placeholder="$/Unidad" readonly>
                             </div>
                         </div>
                     </div>
 
                     <div class="form-row">
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-3">
                             <label for="vidaUtilInf" class='control-label'>Vida Útil</label>
                             <input name="infraestructura[vidaUtil]" type="number" min="0" step="1" class="form-control"
                                 id="vidaUtilInf" placeholder="Años" readonly>
-                            <div class="invalid-feedback">
-                                Este campo es requerido.
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="antiguedadInf" class='control-label'>Antigüedad</label>
+                            <input name="" type="number" min="0" step="1" class="form-control"
+                                id="antiguedadInf" placeholder="Años" readonly>
+                        </div>
+                        
+                        <div class="form-group col-md-6">
+                            <label for="estadoInf" class='control-label'>Estado</label>
+                            <input name="infraestructura[estado]" type="text" class="form-control input-small"
+                                id="estadoInf" placeholder="" readonly>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="amortizacionInf" class='control-label'>Amortización</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input name="" type="number" min="0" max="100" step="0.01"
+                                    class="form-control" id="amortizacionInf" value="0" readonly>
                             </div>
                         </div>
-                        <div class="form-group col-md-4">
-                            <label for="valorResidualInf" class='control-label'>Valor Residual</label>
+                        <div class="form-group col-md-6">
+                            <label for="amortizacionAcumuladaInf" class='control-label'>Amortización Acumulada</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input name="" type="number" min="0" max="100" step="0.01"
+                                    class="form-control" id="amortizacionAcumuladaInf" value="0" readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label for="valorResidualInf" class='control-label'>Porc. Valor Residual</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">%</span>
                                 </div>
-                                <input name="infraestructura[valorResidual]" type="number" min="0" max="100" step="0.01"
+                                <input name="" type="number" min="0" max="100" step="0.01"
                                     class="form-control" id="valorResidualInf" value="0" readonly>
-                                <div class="invalid-feedback">
-                                    Este campo es requerido.
-                                </div>
                             </div>
                         </div>
-                        <div class="form-group col-md-4">
-                            <label for="estadoInf" class='control-label'>Estado</label>
-                            <select name="infraestructura[estado]" type="text" class="form-control input-small"
-                                id="estadoInf" placeholder="" readonly>
-                                <option selected>Bueno</option>
-                                <option>Regular</option>
-                                <option>Malo</option>
-                                <option>Alta/Compra</option>
-                                <option>Baja/Venta</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Este campo es requerido.
+                        <div class="form-group col-md-3">
+                            <label for="valorResidualMontoInf" class='control-label'>Monto Valor Residual</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input name="" type="number" min="0" max="100" step="0.01"
+                                    class="form-control" id="valorResidualMontoInf" value="0" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="valorANuevoInf" class='control-label'>Valor A Nuevo</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input name="" type="number" min="0" max="100" step="0.01"
+                                    class="form-control" id="valorANuevoInf" value="0" readonly>
                             </div>
                         </div>
                     </div>

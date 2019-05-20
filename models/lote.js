@@ -25,7 +25,12 @@ module.exports = (sequelize, DataTypes) => {
     }, );
 
     Lote.associate = function (models) {
-
+        models.Lote.belongsTo(models.Empresa, {
+            foreignKey: 'empresaId',
+        });
+        models.Empresa.hasMany(models.Lote, {
+            foreignKey: 'empresaId',
+        });
     };
 
     return Lote;
