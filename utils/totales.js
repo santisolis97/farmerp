@@ -1,7 +1,9 @@
 function superficieLotes(lotes) {
     var supTotal = 0
     lotes.forEach(lote => {
-        supTotal += lote.superficie
+        if (!lote.fechaVenta) {
+            supTotal += lote.superficie
+        }
     });
     return supTotal
 }
@@ -10,7 +12,9 @@ function superficieLotes(lotes) {
 function valorLotes(lotes) {
     var valorTotal = 0
     lotes.forEach(lote => {
-        valorTotal += lote.superficie * lote.valorHectarea
+        if (!lote.fechaVenta) {
+            valorTotal += lote.superficie * lote.valorHectarea
+        }
     });
     return valorTotal
 }

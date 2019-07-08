@@ -1,0 +1,180 @@
+<!doctype html>
+<html>
+
+<head>
+    <% include ../partials/common-head %>
+</head>
+
+<body>
+
+    <!--Panel Izquierdo -->
+    <% include ../partials/sidebar %>
+    <!-- /Panel izquierdo-->
+
+    <!-- Panel Derecho -->
+    <div id="right-panel" class="right-panel">
+
+        <!-- Cabecera-->
+        <% include ../partials/cabecera %>
+        <!-- /Cabecera -->
+
+        <!-- Tabla del CRUD-->
+        <div class="content mt-3">
+
+            <!-- Mensaje -->
+            <% include ../partials/mensaje %>
+            <!-- /Mensaje -->
+
+            <div class="col-sm-12">
+                <div class="animated fadeIn">
+                    <div class="row">
+                        <!-- Caja -->
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex justify-content-start">
+                                            <strong class="card-title align-middle">Caja</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-row">
+                                        <div class="col-md-12">
+                                            <label for="montoInicialCaja" class='control-label'>Saldo al Inicio del
+                                                Ejercicio <a id="editarCaja" href="#editarCajaModal" class="edit mr-2"
+                                                    data-toggle="modal">
+                                                    <i class="fa fa-edit fa-lg" title="Editar"></i>
+                                                </a>
+                                            </label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">$</span>
+                                                </div>
+                                                <input name="" type="number" min="0" step="0.01" class="form-control"
+                                                    id="montoInicialCaja" placeholder="0" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row mt-2">
+                                        <div class="col-md-12">
+                                            <label for="montoFinalCaja" class='control-label'>Saldo al Cierre del
+                                                Ejercicio</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">$</span>
+                                                </div>
+                                                <input name="" type="number" min="0" step="0.01" class="form-control"
+                                                    id="montoFinalCaja" placeholder="0" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /Caja -->
+
+                        <!-- Banco -->
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex justify-content-start">
+                                            <strong class="card-title align-middle">Banco</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-row">
+                                        <div class="col-md-12">
+                                            <label for="montoInicialBanco" class='control-label'>Saldo al Inicio del
+                                                Ejercicio <a id="editarBanco" href="#editarBancoModal" class="edit mr-2"
+                                                    data-toggle="modal">
+                                                    <i class="fa fa-edit fa-lg" title="Editar"></i>
+                                                </a>
+                                            </label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">$</span>
+                                                </div>
+                                                <input name="" type="number" min="0" step="0.01" class="form-control"
+                                                    id="montoInicialBanco" placeholder="0" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row mt-2">
+                                        <div class="col-md-12">
+                                            <label for="montoFinalBanco" class='control-label'>Saldo al Cierre del
+                                                Ejercicio</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">$</span>
+                                                </div>
+                                                <input name="" type="number" min="0" step="0.01" class="form-control"
+                                                    id="montoFinalBanco" placeholder="0" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /Banco -->
+
+                        <!-- Inversiones Transitorias -->
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex justify-content-start">
+                                            <strong class="card-title align-middle">Inversiones Transitorias</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-row">
+                                        <div class="col-md-12">
+                                            <label for="montoInicialInversiones" class='control-label'>Saldo al Inicio
+                                                del Ejercicio <a id="editarInversiones" href="#editarInversionesModal"
+                                                    class="edit mr-2" data-toggle="modal">
+                                                    <i class="fa fa-edit fa-lg" title="Editar"></i>
+                                                </a>
+                                            </label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">$</span>
+                                                </div>
+                                                <input name="" type="number" min="0" step="0.01" class="form-control"
+                                                    id="montoInicialInversiones" placeholder="0" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row mt-2">
+                                        <div class="col-md-12">
+                                            <label for="montoFinalInversiones" class='control-label'>Saldo al Cierre del
+                                                Ejercicio</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">$</span>
+                                                </div>
+                                                <input name="" type="number" min="0" step="0.01" class="form-control"
+                                                    id="montoFinalInversiones" placeholder="0" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /IntersionesTransitorias -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Tabla del CRUD-->
+    </div>
+    <!-- /Panel Derecho -->
+
+    <!-- Scripts -->
+    <% include ../partials/common-scripts %>
+</body>
+
+</html>

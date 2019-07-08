@@ -7,7 +7,8 @@
                 <i class="fa fa-bars"></i>
             </button>
             <a class="navbar-brand mt-2" href="/">
-                <h2><img src="/src/logo.jpg" class="rounded-circle border border-dark mr-2 mb-2" height="40px">FarmERP</h2>
+                <h2><img src="/src/logo.jpg" class="rounded-circle border border-dark mr-2 mb-2" height="40px">FarmERP
+                </h2>
             </a>
             <a class="navbar-brand hidden" href="/">
                 <img src="/src/logo.jpg" class="rounded-circle border border-dark" height="30px">
@@ -26,16 +27,33 @@
             <ul class="nav navbar-nav mt-4">
                 <!-- Menú -->
                 <!-- <li><a href="#"><i class="menu-icon fa fa-book"></i>Inicio</a></li> -->
+
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
                         <i class="menu-icon fa fa-book"></i>Contable</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-check"></i><a href="#">Plan de Cuentas</a></li>
-                        <li><i class="fa fa-check"></i><a href="#">Situación Patrimonial</a></li>
+                        <li><i class="fa fa-check"></i><a href="/contable/situacionPatrimonial">Situación
+                                Patrimonial</a></li>
                         <li><i class="fa fa-check"></i><a href="#">Estado de Resultados</a></li>
                         <li><i class="fa fa-check"></i><a href="#">Índices Económicos</a></li>
                         <li><i class="fa fa-check"></i><a href="#">Índices Financieros</a></li>
+                    </ul>
+                </li>
+
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <i class="menu-icon fa fa-cash-register"></i>Recursos</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="fa fa-check"></i><a href="/disponibilidades">Disponibilidades</a></li>
+                        <li><i class="fa fa-check"></i><a href="#">Créditos</a></li>
+                        <li><i class="fa fa-check"></i><a href="#">Retiro de Socios</a></li>
+                        <li><i class="fa fa-check"></i><a href="#">Deudas Comerciales</a></li>
+                        <li><i class="fa fa-check"></i><a href="#">Deudas Financieras</a></li>
+                        <li><i class="fa fa-check"></i><a href="#">Deudas Fiscales</a></li>
+                        <li><i class="fa fa-check"></i><a href="#">Deudas Sociales</a></li>
+                        <li><i class="fa fa-check"></i><a href="#">Otras Dedudas</a></li>
                     </ul>
                 </li>
 
@@ -56,7 +74,6 @@
                         <li><i class="fa fa-check"></i><a href="#">Hacienda Porcina</a></li>
                         <li><i class="fa fa-check"></i><a href="#">Hacienda Caprina</a></li>
                         <li><i class="fa fa-check"></i><a href="#">Administración</a></li>
-                        <li><i class="fa fa-check"></i><a href="#">Capital de Trabajo</a></li>
                     </ul>
                 </li>
 

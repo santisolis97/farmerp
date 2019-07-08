@@ -43,6 +43,26 @@ lotes.forEach(function (rowLote) {
             vista.querySelector("form").setAttribute("action", "/lotes/delete/" + lote.loteId);
         });
     }
+
+    var liquidar = rowLote.querySelector("#liquidar");
+    if (liquidar) {
+        liquidar.addEventListener("click", function () {
+            var lote = getLote(rowLote);
+            vista = document.querySelector("#liquidarModal");
+            vista.querySelector("form").setAttribute("action", "/lotes/liquidar/" + lote.loteId);
+
+            vista.querySelector("#valorVenta").value = lote.valorLote
+        });
+    }
+
+    var deshacerLiquidar = rowLote.querySelector("#deshacerLiquidar");
+    if (deshacerLiquidar) {
+        deshacerLiquidar.addEventListener("click", function () {
+            var lote = getLote(rowLote);
+            vista = document.querySelector("#deshacerLiquidarModal");
+            vista.querySelector("form").setAttribute("action", "/lotes/deshacerLiquidar/" + lote.loteId);
+        });
+    }
 });
 
 function getLote(rowLote) {

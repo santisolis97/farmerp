@@ -1,0 +1,192 @@
+<!doctype html>
+<html>
+
+<head>
+    <% include ../partials/common-head %>
+</head>
+
+<body>
+
+    <!--Panel Izquierdo -->
+    <% include ../partials/sidebar %>
+    <!-- /Panel izquierdo-->
+
+    <!-- Panel Derecho -->
+    <div id="right-panel" class="right-panel">
+
+        <!-- Cabecera-->
+        <% include ../partials/cabecera %>
+        <!-- /Cabecera -->
+
+        <!-- Tabla del CRUD-->
+        <div class="content mt-3">
+
+            <!-- Mensaje -->
+            <% include ../partials/mensaje %>
+            <!-- /Mensaje -->
+
+            <div class="col-sm-12">
+                <div class="animated fadeIn">
+                    <div class="card">
+                        <div class="card-body m-3">
+                            <div class="d-flex justify-content-between">
+                                <div class="d-flex justify-content-start">
+                                    <select class="form-control">
+                                        <option value="" selected>Situación Inicial</option>
+                                        <option value="">Julio/2019</option>
+                                        <option value="">Agosto/2019</option>
+                                        <option value="">Septiembre/2019</option>
+                                        <option value="">Octubre/2019</option>
+                                        <option value="">Noviembre/2019</option>
+                                        <option value="">Diciembre/2019</option>
+                                        <option value="">Enero/2020</option>
+                                        <option value="">Febrero/2020</option>
+                                        <option value="">Marzo/2020</option>
+                                        <option value="">Abril/2020</option>
+                                        <option value="">Mayo/2020</option>
+                                        <option value="">Junio/2020</option>
+                                    </select>
+                                </div>
+                                <div id="tableButtons" class="d-none d-md-block">
+                                    <input type="button" class="btn btn-secondary"
+                                        value="Imprimir Estado de Situación Patrimonial">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- Activos -->
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="d-flex justify-content-center">
+                                        <strong class="card-title align-middle">ACTIVO</strong>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-row">
+                                        <h4 class="col-md-12"><b>Activos Corrientes</b></h4>
+                                    </div>
+                                    <div class="form-row">
+                                        <p class="col-md-10 mt-1"><b>Disponibilidades</b></p>
+                                        <p class="col-md-2 mt-1"><b>$ 500000</b></p>
+                                    </div>
+                                    <div class="form-row">
+                                        <p class="col-md-7" style="margin-top: -15px">Caja</p>
+                                        <p class="col-md-5" style="margin-top: -15px">$ 50000</p>
+                                    </div>
+                                    <div class="form-row">
+                                        <p class="col-md-7" style="margin-top: -15px">Banco</p>
+                                        <p class="col-md-5" style="margin-top: -15px">$ 300000</p>
+                                    </div>
+                                    <div class="form-row">
+                                        <p class="col-md-7" style="margin-top: -15px">Inversiones Transitorias</p>
+                                        <p class="col-md-5" style="margin-top: -15px">$ 150000</p>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <p class="col-md-10"><b>Créditos</b></p>
+                                        <p class="col-md-2"><b>$ 100000</b></p>
+                                    </div>
+                                    <div class="form-row">
+                                        <p class="col-md-7" style="margin-top: -15px">Cliente 1</p>
+                                        <p class="col-md-5" style="margin-top: -15px">$ 25000</p>
+                                    </div>
+                                    <div class="form-row">
+                                        <p class="col-md-7" style="margin-top: -15px">Cliente 2</p>
+                                        <p class="col-md-5" style="margin-top: -15px">$ 25000</p>
+                                    </div>
+                                    <div class="form-row">
+                                        <p class="col-md-7" style="margin-top: -15px">Cliente 3</p>
+                                        <p class="col-md-5" style="margin-top: -15px">$ 50000</p>
+                                    </div>
+
+                                    <div class="form-row"></div>
+                                    <div class="form-row"></div>
+
+
+                                    <p class="col-md-12"><b>Retiro Socios</b></p>
+                                    <p class="col-md-12" style="margin-top: -15px">Socio 1</p>
+                                    <p class="col-md-12" style="margin-top: -15px">Socio 2</p>
+                                    <p class="col-md-12" style="margin-top: -15px">Socio 3</p>
+
+                                    <p class="col-md-12"><b>Insumos Agricolas-Ganaderos</b></p>
+                                    <p class="col-md-12"><b>Praderas</b></p>
+                                    <p class="col-md-12"><b>Stoc-Productos</b></p>
+                                    <p class="col-md-12"><b>Hacienda - Bienes de Cambios</b></p>
+
+                                    <h4 class="col-md-12"><b>Total Activos Corrientes</b></h4>
+
+                                    <h4 class="col-md-12 mt-2"><b>Activos No Corrientes</b></h4>
+                                    <h4 class="col-md-12"><b>Total Activos No Corrientes</b></h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /Activos -->
+
+                        <div class="col-md-6">
+                            <!-- Pasivos -->
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="d-flex justify-content-center">
+                                        <strong class="card-title align-middle">PASIVO</strong>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-row">
+                                        <h4 class="col-md-12"><b>Pasivos Corrientes</b></h4>
+                                    </div>
+                                    <div class="form-row">
+                                        <p class="col-md-10 mt-1"><b>Deudas Comerciales</b></p>
+                                        <p class="col-md-2 mt-1"><b>$ 50000</b></p>
+                                    </div>
+                                    <div class="form-row">
+                                        <p class="col-md-7" style="margin-top: -15px">Proveedor 1</p>
+                                        <p class="col-md-5" style="margin-top: -15px">$ 30000</p>
+                                    </div>
+                                    <div class="form-row">
+                                        <p class="col-md-7" style="margin-top: -15px">Proveedor 2</p>
+                                        <p class="col-md-5" style="margin-top: -15px">$ 20000</p>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <h4 class="col-md-10"><b>Total Pasivos Corrientes</b></h4>
+                                        <h4 class="col-md-2"><b>$ 50000</b></h4>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <!-- /Pasivos -->
+                            <!-- Pasivos -->
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="d-flex justify-content-center">
+                                        <strong class="card-title align-middle">PATRIMONIO NETO</strong>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-row">
+                                        <div class="col-md-10"><b>Total Patrimonio Neto</b></div>
+                                        <div class="col-md-2"><b>$ 5000</b></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Pasivos -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Tabla del CRUD-->
+    </div>
+    <!-- /Panel Derecho -->
+
+
+    <!-- Scripts -->
+    <% include ../partials/common-scripts %>
+
+</body>
+
+</html>

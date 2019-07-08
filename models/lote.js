@@ -19,6 +19,15 @@ module.exports = (sequelize, DataTypes) => {
         fechaCompra: {
             type: DataTypes.DATEONLY
         },
+        fechaVenta: {
+            type: DataTypes.DATEONLY
+        },
+        valorVenta: {
+            type: DataTypes.FLOAT(15, 2)
+        },
+        cuentaVenta: {
+            type: DataTypes.STRING,
+        },
 
     }, {
         timestamps: false,

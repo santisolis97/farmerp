@@ -6,8 +6,16 @@ table.table td a.edit {
     color: #FFC107;
 }
 
+a.edit {
+    color: #FFC107;
+}
+
 table.table td a.alta {
-    color: rgba(3, 255, 7, 0.918);
+    color: rgba(3, 90, 5);
+}
+
+table.table td a.liquidar {
+    color: rgba(3, 90, 5);
 }
 
 table.table td a.delete {

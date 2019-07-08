@@ -7,6 +7,7 @@ var models = require("./models");
 var bodyParser = require("body-parser");
 var flash = require("express-flash");
 var session = require("express-session");
+var env = require("dotenv").load;
 
 var app = express();
 
@@ -41,8 +42,31 @@ models.sequelize.sync({
         finEjercicio: '2020-06-30',
         userId: 1
       }
+
+      var caja = {
+        montoInicial: 0.0,
+        montoMovimientos: 0.0,
+        empresaId: 1
+      }
+
+      var banco = {
+        montoInicial: 0.0,
+        montoMovimientos: 0.0,
+        empresaId: 1
+      }
+
+      var inversion = {
+        montoInicial: 0.0,
+        montoMovimientos: 0.0,
+        empresaId: 1
+      }
+
       models.User.create(user).then(() => {
-        models.Empresa.create(empresa)
+        models.Empresa.create(empresa).then(empresa => {
+          models.Caja.create(caja)
+          models.Banco.create(banco)
+          models.Inversion.create(inversion)
+        })
       })
     }
   })

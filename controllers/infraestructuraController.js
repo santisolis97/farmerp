@@ -47,11 +47,7 @@ infraestructuraController.list = function (req, res) {
 };
 
 infraestructuraController.add = function (req, res) {
-  var newInfraestructura = Infraestructura.build(req.body.infraestructura);
-
-  newInfraestructura
-    .save()
-    .then(infraestructura => {
+  Infraestructura.create(req.body.infraestructura).then(infraestructura => {
       req.flash("success_msg", "Se dio de alta una infraestructura correctamente");
       res.redirect("/infraestructuras");
     })
