@@ -1,9 +1,9 @@
 <div id="verModal" class="modal fade">
-    <div class="modal-dialog modal-md">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <form class="container" id="form-validation" novalidate method="POST" action="">
                 <div class="modal-header">
-                    <h4 class="modal-title">Ver Lote</h4>
+                    <h4 class="modal-title">Ver Rodado</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <div class="modal-body">
@@ -11,18 +11,17 @@
                         <div class="form-group col-md-6">
                             <label for="conceptoRodado" class='control-label'>Concepto</label>
                             <input name="rodado[concepto]" type="text" class="form-control" id="conceptoRodado"
-                                placeholder="Nombre" required>
-                            <div class="invalid-feedback">
-                                Este campo es requerido.
-                            </div>
+                                placeholder="Concepto" readonly>
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-3">
                             <label for="fechaCompraRodado" class='control-label'>Fecha de Compra</label>
-                            <input name="rodado[fechaDeCompra]" type="date" class="form-control" id="fechaCompraRodado"
-                                placeholder="Fecha" required>
-                            <div class="invalid-feedback">
-                                Este campo es requerido.
-                            </div>
+                            <input name="rodado[fechaCompra]" type="date" class="form-control"
+                                id="fechaCompraRodado" placeholder="Fecha" readonly>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="fechaCierreEjerc" class='control-label'>Fecha de Cierre</label>
+                            <input name="" type="date" class="form-control"
+                                id="" value="<%= empresa.finEjercicio %>" readonly>
                         </div>
                     </div>
 
@@ -30,10 +29,7 @@
                         <div class="form-group col-md-6">
                             <label for="cantidadRodado" class='control-label'>Cantidad</label>
                             <input name="rodado[cantidad]" type="number" min="0" class="form-control"
-                                id="cantidadRodado" placeholder="Cantidad" required>
-                            <div class="invalid-feedback">
-                                Este campo es requerido.
-                            </div>
+                                id="cantidadRodado" placeholder="Cantidad" readonly>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="valorRodado" class='control-label'>Valor de Mercado</label>
@@ -41,57 +37,90 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">$</span>
                                 </div>
-                                <input name="rodado[valorMercado]" type="number" min="0" step="0.01"
-                                    class="form-control" id="valorRodado" placeholder="Valor de Mercado" required>
-                                <div class="invalid-feedback">
-                                    Este campo es requerido.
-                                </div>
+                                <input name="" type="number" min="0" step="0.01"
+                                    class="form-control" id="valorMercadoRodado" placeholder="$/Unidad" readonly>
                             </div>
                         </div>
                     </div>
 
                     <div class="form-row">
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-3">
                             <label for="vidaUtilRodado" class='control-label'>Vida Útil</label>
                             <input name="rodado[vidaUtil]" type="number" min="0" step="1" class="form-control"
-                                id="vidaUtilRodado" placeholder="Años" required>
-                            <div class="invalid-feedback">
-                                Este campo es requerido.
+                                id="vidaUtilRodado" placeholder="Años" readonly>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="antiguedadRodado" class='control-label'>Antigüedad</label>
+                            <input name="" type="number" min="0" step="1" class="form-control"
+                                id="antiguedadRodado" placeholder="Años" readonly>
+                        </div>
+                        
+                        <div class="form-group col-md-6">
+                            <label for="estadoRodado" class='control-label'>Estado</label>
+                            <input name="rodado[estado]" type="text" class="form-control input-small"
+                                id="estadoRodado" placeholder="" readonly>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="amortizacionRodado" class='control-label'>Amortización</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input name="" type="number" min="0" max="100" step="0.01"
+                                    class="form-control" id="amortizacionRodado" value="0" readonly>
                             </div>
                         </div>
-                        <div class="form-group col-md-4">
-                            <label for="valorResidualRodado" class='control-label'>Valor Residual</label>
+                        <div class="form-group col-md-6">
+                            <label for="amortizacionAcumuladaRodado" class='control-label'>Amortización Acumulada</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input name="" type="number" min="0" max="100" step="0.01"
+                                    class="form-control" id="amortizacionAcumuladaRodado" value="0" readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label for="valorResidualRodado" class='control-label'>Porc. Valor Residual</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">%</span>
                                 </div>
-                                <input name="rodado[valorResidual]" type="number" min="0" max="100" step="0.01"
-                                    class="form-control" id="valorResidualRodado" value="0" required>
-                                <div class="invalid-feedback">
-                                    Este campo es requerido.
-                                </div>
+                                <input name="" type="number" min="0" max="100" step="0.01"
+                                    class="form-control" id="valorResidualRodado" value="0" readonly>
                             </div>
                         </div>
-                        <div class="form-group col-md-4">
-                            <label for="estadoRodado" class='control-label'>Estado</label>
-                            <select name="rodado[estado]" type="text" class="form-control input-small" id="estadoRodado"
-                                placeholder="" required>
-                                <option selected>Bueno</option>
-                                <option>Regular</option>
-                                <option>Malo</option>
-                                <option>Alta/Compra</option>
-                                <option>Baja/Venta</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Este campo es requerido.
+                        <div class="form-group col-md-3">
+                            <label for="valorResidualMontoRodado" class='control-label'>Monto Valor Residual</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input name="" type="number" min="0" max="100" step="0.01"
+                                    class="form-control" id="valorResidualMontoRodado" value="0" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="valorANuevoRodado" class='control-label'>Valor A Nuevo</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input name="" type="number" min="0" max="100" step="0.01"
+                                    class="form-control" id="valorANuevoRodado" value="0" readonly>
                             </div>
                         </div>
                     </div>
 
                 </div>
                 <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-                    <input id="botonGuardar" type="submit" class="btn btn-info" value="Guardar">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cerrar">
                 </div>
             </form>
         </div>

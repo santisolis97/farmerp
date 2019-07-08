@@ -22,8 +22,20 @@ function valorLotes(lotes) {
 function valorInfraestructuras(infraestructuras) {
     var valorTotal = 0
     infraestructuras.forEach(infraestructura => {
-        //valorTotal += infraestructura.cantidad * infraestructura.valorUnitario
-        valorTotal += infraestructura.dataValues.valorANuevo
+        if (!infraestructura.fechaVenta) {
+            //valorTotal += infraestructura.cantidad * infraestructura.valorUnitario
+            valorTotal += infraestructura.dataValues.valorANuevo
+        }
+    });
+    return valorTotal
+}
+
+function valorRodados(rodados) {
+    var valorTotal = 0
+    rodados.forEach(rodado => {
+        if (!rodado.fechaVenta) {
+            valorTotal += rodado.dataValues.valorANuevo
+        }
     });
     return valorTotal
 }
@@ -31,5 +43,6 @@ function valorInfraestructuras(infraestructuras) {
 module.exports = {
     valorLotes,
     superficieLotes,
-    valorInfraestructuras
+    valorInfraestructuras,
+    valorRodados,
 }

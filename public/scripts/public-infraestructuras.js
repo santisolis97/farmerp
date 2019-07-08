@@ -55,6 +55,26 @@ infraestructuras.forEach(function (row) {
             vista.querySelector("form").setAttribute("action", "/infraestructuras/delete/" + infraestructura.infraestructuraId);
         });
     }
+
+    var liquidar = row.querySelector("#liquidar");
+    if (liquidar) {
+        liquidar.addEventListener("click", function () {
+            var infraestructura = getElement(row);
+            vista = document.querySelector("#liquidarModal");
+            vista.querySelector("form").setAttribute("action", "/infraestructuras/liquidar/" + infraestructura.infraestructuraId);
+
+            vista.querySelector("#valorVenta").value = infraestructura.valorANuevo
+        });
+    }
+
+    var deshacerLiquidar = row.querySelector("#deshacerLiquidar");
+    if (deshacerLiquidar) {
+        deshacerLiquidar.addEventListener("click", function () {
+            var infraestructura = getElement(row);
+            vista = document.querySelector("#deshacerLiquidarModal");
+            vista.querySelector("form").setAttribute("action", "/infraestructuras/deshacerLiquidar/" + infraestructura.infraestructuraId);
+        });
+    }
 });
 
 function getElement(row) {

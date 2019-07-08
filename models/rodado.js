@@ -1,8 +1,8 @@
 'use strict';
 
 module.exports = (sequelize, DataTypes) => {
-    var Infraestructura = sequelize.define('Infraestructura', {
-        infraestructuraId: {
+    var Rodado = sequelize.define('Rodado', {
+        rodadoId: {
             autoIncrement: true,
             primaryKey: true,
             type: DataTypes.INTEGER
@@ -15,9 +15,6 @@ module.exports = (sequelize, DataTypes) => {
         },
         cantidad: {
             type: DataTypes.INTEGER(10)
-        },
-        unidad: {
-            type: DataTypes.STRING,
         },
         valorUnitario: {
             type: DataTypes.FLOAT(10, 2)
@@ -45,14 +42,14 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: false,
     }, );
 
-    Infraestructura.associate = function (models) {
-        models.Infraestructura.belongsTo(models.Empresa, {
+    Rodado.associate = function (models) {
+        models.Rodado.belongsTo(models.Empresa, {
             foreignKey: 'empresaId',
         });
-        models.Empresa.hasMany(models.Infraestructura, {
+        models.Empresa.hasMany(models.Rodado, {
             foreignKey: 'empresaId',
         });
     };
 
-    return Infraestructura;
+    return Rodado;
 };

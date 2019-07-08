@@ -22,6 +22,7 @@
 		<div class="content mt-3">
 
 			<!-- Mensaje -->
+			<% include ../../partials/mensaje %>
 			<!-- /Mensaje -->
 
 			<div class="col-sm-12">
@@ -33,8 +34,9 @@
 								<div class="card-header">
 									<div class="d-flex justify-content-between">
 										<div class="d-flex justify-content-start">
-											<strong class="card-title align-middle">Rodados</strong>
-											<div id="titulo" data-value="Tabla de Lotes"></div>
+											<strong class="card-title align-middle">Rodados. Valor
+												Total al Cierre $<%= valorTotal %></strong>
+											<div id="titulo" data-value="Tabla de Rodados"></div>
 										</div>
 										<div id="tableButtons" class="d-none d-md-block">
 											<a id="agregar" href="#agregarModal" class="btn btn-primary"
@@ -55,71 +57,91 @@
 											<thead>
 												<tr>
 													<th>Concepto</th>
-													<th>Fecha Compra</th>
+													<th>Cantidad</th>
+													<th>Valor Unitario ($)</th>
+													<th class="d-none">Fecha Compra</th>
 													<th class="d-none">Fecha Cierre</th>
-													<th>Valor de Mercado</th>
+													<th class="d-none">Valor de Mercado ($)</th>
 													<th class="d-none">Vida Útil</th>
 													<th class="d-none">Antigüedad</th>
-													<th class="d-none">Amortización</th>
-													<th class="d-none">Amortización Acumulada</th>
-													<th class="d-none">Valor Residual</th>
-													<th class="d-none">Valor a Nuevo</th>
+													<th class="d-none">Amortización ($)</th>
+													<th class="d-none">Amortización Acumulada ($)</th>
+													<th class="d-none">Valor Residual ($)</th>
+													<th class="">Valor a Nuevo ($)</th>
 													<th>Estado</th>
 													<th class="not-export-col">Acciones</th>
 												</tr>
 											</thead>
 											<tbody>
-												<tr data="">
+												<% rodados.forEach(rodado => { %>
+												<tr data="<%= JSON.stringify(rodado) %>">
 													<td>
-														Camioneta VW Amarok
-													</td>
-													<td>
-														01-07-07
-													</td>
-													<td class="d-none">
-														30-06-18
+														<%= rodado.concepto %>
 													</td>
 													<td>
-														$45000
-													</td>
-													<td class="d-none">
-														10
-													</td>
-													<td class="d-none">
-														11
-													</td>
-													<td class="d-none">
-														$4500
-													</td>
-													<td class="d-none">
-														$45000
-													</td>
-													<td class="d-none">
-														$0
-													</td>
-													<td class="d-none">
-														$45000
+														<%= rodado.cantidad %>
 													</td>
 													<td>
-														Bueno
+														<%= rodado.valorUnitario %>
+													</td>
+													<td class="d-none">
+														<%= rodado.fechaCompra %>
+													</td>
+													<td class="d-none">
+														<%= empresa.finEjercicio %>
+													</td>
+													<td class="d-none">
+														<%= rodado.dataValues.valorMercado %>
+													</td>
+													<td class="d-none">
+														<%= rodado.vidaUtil %>
+													</td>
+													<td class="d-none">
+														<%= rodado.dataValues.antiguedad %>
+													</td>
+													<td class="d-none">
+														<%= rodado.dataValues.amortizacion %>
+													</td>
+													<td class="d-none">
+														<%= rodado.dataValues.amortizacionAcumulada %>
+													</td>
+													<td class="d-none">
+														<%= rodado.dataValues.valorResidualMonto %>
+													</td>
+													<td class="">
+														<%= rodado.dataValues.valorANuevo %>
+													</td>
+													<td>
+														<%= rodado.estado %>
 													</td>
 													<td>
 														<a id="ver" href="#verModal" class="view mr-2" title="Ver"
 															data-toggle="modal">
 															<i class="fa fa-eye fa-lg"></i>
 														</a>
+														<% if(!rodado.dataValues.fechaVenta){ %>
 														<a id="editar" href="#editarModal" class="edit mr-2"
 															data-toggle="modal">
 															<i class="fa fa-edit fa-lg" title="Editar"></i>
+														</a>
+														<a id="liquidar" href="#liquidarModal" class="liquidar mr-2"
+															data-toggle="modal">
+															<i class="fa fa-donate fa-lg" title="Liquidar"></i>
 														</a>
 														<a id="eliminar" href="#eliminarModal" class="delete mr-2"
 															data-toggle="modal">
 															<i class="fa fa-trash fa-lg" title="Eliminar"></i>
 														</a>
+														<% } else { %>
+														<a id="deshacerLiquidar" href="#deshacerLiquidarModal"
+															class="liquidar mr-2" data-toggle="modal">
+															<i class="fa fa-undo fa-lg"
+																title="Deshacer Liquidación"></i>
+														</a>
+														<% } %>
 													</td>
 												</tr>
-
-
+												<% }) %>
 											</tbody>
 										</table>
 									</div>
@@ -136,10 +158,12 @@
 	<!-- /Panel Derecho -->
 
 	<!-- Formulario de los Popups  -->
-	<% include rodado-add %>
-	<% include rodado-view %>
-	<% include rodado-edit %>
-	<% include rodado-delete %>
+	<% include Rodado-add %>
+	<% include Rodado-view %>
+	<% include Rodado-edit %>
+	<% include Rodado-liquidar %>
+	<% include Rodado-deshacerLiquidar %>
+	<% include Rodado-delete %>
 	<!-- /Formulario de los Popups  -->
 
 	<!-- Scripts -->
@@ -147,6 +171,7 @@
 	<script type="text/javascript">
 		InitDataTable("#tabla");
 	</script>
+	<script src="/scripts/public-rodados.js"></script>
 </body>
 
 </html>

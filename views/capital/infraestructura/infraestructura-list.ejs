@@ -34,7 +34,8 @@
 								<div class="card-header">
 									<div class="d-flex justify-content-between">
 										<div class="d-flex justify-content-start">
-											<strong class="card-title align-middle">Mejoras - Infraestructura. Valor Total al Cierre $<%= valorTotal %></strong>
+											<strong class="card-title align-middle">Mejoras - Infraestructura. Valor
+												Total al Cierre $<%= valorTotal %></strong>
 											<div id="titulo" data-value="Tabla de Mejoras - Infraestructura"></div>
 										</div>
 										<div id="tableButtons" class="d-none d-md-block">
@@ -122,6 +123,7 @@
 															data-toggle="modal">
 															<i class="fa fa-eye fa-lg"></i>
 														</a>
+														<% if(!infraestructura.dataValues.fechaVenta){ %>
 														<a id="editar" href="#editarModal" class="edit mr-2"
 															data-toggle="modal">
 															<i class="fa fa-edit fa-lg" title="Editar"></i>
@@ -134,6 +136,13 @@
 															data-toggle="modal">
 															<i class="fa fa-trash fa-lg" title="Eliminar"></i>
 														</a>
+														<% } else { %>
+														<a id="deshacerLiquidar" href="#deshacerLiquidarModal"
+															class="liquidar mr-2" data-toggle="modal">
+															<i class="fa fa-undo fa-lg"
+																title="Deshacer Liquidación"></i>
+														</a>
+														<% } %>
 													</td>
 												</tr>
 												<% }) %>
@@ -156,6 +165,8 @@
 	<% include Infraestructura-add %>
 	<% include Infraestructura-view %>
 	<% include Infraestructura-edit %>
+	<% include Infraestructura-liquidar %>
+	<% include Infraestructura-deshacerLiquidar %>
 	<% include Infraestructura-delete %>
 	<!-- /Formulario de los Popups  -->
 

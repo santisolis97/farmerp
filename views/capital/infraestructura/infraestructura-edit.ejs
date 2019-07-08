@@ -19,7 +19,7 @@
                         <div class="form-group col-md-6">
                             <label for="fechaCompraInf" class='control-label'>Fecha de Compra</label>
                             <input name="infraestructura[fechaCompra]" type="date" class="form-control"
-                                id="fechaCompraInf" placeholder="Fecha" required>
+                                id="fechaCompraInf" max="<%= empresa.finEjercicio %>" placeholder="Fecha" required>
                             <div class="invalid-feedback">
                                 Este campo es requerido.
                             </div>
@@ -90,8 +90,6 @@
                                 <option selected>Bueno</option>
                                 <option>Regular</option>
                                 <option>Malo</option>
-                                <option>Alta/Compra</option>
-                                <option>Baja/Venta</option>
                             </select>
                             <div class="invalid-feedback">
                                 Este campo es requerido.
