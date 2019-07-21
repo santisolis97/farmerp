@@ -1,0 +1,147 @@
+<div id="editarModal" class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form class="container" id="form-validation" novalidate onsubmit="return validateForm()" method="POST"
+                action="">
+                <div class="modal-header">
+                    <h4 class="modal-title">Editar Autopropulsado</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                        onclick="closeModal()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label class="radio-inline mr-3">
+                                <input type="radio" name="tipoAlta" value="capital" id="radioCapital"
+                                    onclick="MostrarCapital()" checked>
+                                <label for="radioCapital">Capital Inicial</label>
+                            </label>
+                            <label class="radio-inline mr-3">
+                                <input type="radio" name="tipoAlta" value="compra" id="radioCompra"
+                                    onclick="MostrarCompra()">
+                                <label for="radioCompra">Compra durante el ejercicio</label>
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="conceptoAutopropulsado" class='control-label'>Concepto</label>
+                            <input name="autopropulsado[concepto]" type="text" class="form-control"
+                                id="conceptoAutopropulsado" placeholder="Concepto" required>
+                            <div class="invalid-feedback">
+                                Este campo es requerido.
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="utaAutopropulsado" class='control-label'>UTA</label>
+                            <input name="autopropulsado[uta]" type="number" min="0" step="0.01" class="form-control"
+                                id="utaAutopropulsado" placeholder="UTA" required>
+                            <div class="invalid-feedback">
+                                Este campo es requerido.
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="fechaCompraAutopropulsado" class='control-label'>Fecha de Compra</label>
+                            <input name="autopropulsado[fechaCompra]" type="date" class="form-control"
+                                id="fechaCompraAutopropulsado" value="<%= empresa.inicioEjercicio %>"
+                                max="<%= empresa.inicioEjercicio %>" placeholder="Fecha" required
+                                onchange="MC_updateFechaDeCompra(this.value)">
+                            <div class="invalid-feedback">
+                                Este campo es requerido.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label for="potenciaAutopropulsado" class='control-label'>Potencia</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">HP</span>
+                                </div>
+                                <input name="autopropulsado[potencia]" type="number" min="0" step="0.01"
+                                    class="form-control" id="potenciaAutopropulsado" placeholder="Potencia" required>
+                                <div class="invalid-feedback">
+                                    Este campo es requerido.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="anchoTrabajoAutopropulsado" class='control-label'>Ancho de Trabajo</label>
+                            <input name="autopropulsado[anchoTrabajo]" type="number" min="0" step="0.01"
+                                class="form-control" id="anchoTrabajoAutopropulsado" placeholder="Ancho de Trabajo"
+                                required>
+                            <div class="invalid-feedback">
+                                Este campo es requerido.
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="valorAutopropulsado" class='control-label'>Valor Unitario</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input name="autopropulsado[valorUnitario]" type="number" min="0" step="0.01"
+                                    class="form-control" id="valorAutopropulsado" placeholder="$/Unidad" required
+                                    onkeyup="actualizarValorTotal()">
+                                <div class="invalid-feedback">
+                                    Este campo es requerido.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="vidaUtilAutopropulsado" class='control-label'>Vida Útil</label>
+                            <input name="autopropulsado[vidaUtil]" type="number" min="0" step="1" class="form-control"
+                                id="vidaUtilAutopropulsado" placeholder="Años" required>
+                            <div class="invalid-feedback">
+                                Este campo es requerido.
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="valorResidualAutopropulsado" class='control-label'>Valor Residual</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">%</span>
+                                </div>
+                                <input name="autopropulsado[valorResidual]" type="number" min="0" max="100" step="0.01"
+                                    class="form-control" id="valorResidualAutopropulsado" value="0" required>
+                                <div class="invalid-feedback">
+                                    Este campo es requerido.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="estadoAutopropulsado" class='control-label'>Estado</label>
+                            <select name="autopropulsado[estado]" type="text" class="form-control input-small"
+                                id="estadoAutopropulsado" placeholder="" required>
+                                <option selected>Bueno</option>
+                                <option>Regular</option>
+                                <option>Malo</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Este campo es requerido.
+                            </div>
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="autopropulsado[empresaId]" value="<%= empresa.empresaId %>">
+
+                    <!-- COMPRA -->
+                    <% include ../../partials/movimientosCompra %>
+                    <!-- ./COMPRA -->
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar"
+                        onclick="closeModal()">
+                    <input id="botonGuardar" type="submit" class="btn btn-info" value="Guardar">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

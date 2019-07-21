@@ -50,10 +50,21 @@ function valorTractores(tractores) {
     return valorTotal
 }
 
+function valorAutopropulsados(autopropulsados) {
+    var valorTotal = 0
+    autopropulsados.forEach(autopropulsado => {
+        if (!autopropulsado.fechaVenta) {
+            valorTotal += parseFloat(autopropulsado.dataValues.valorANuevo)
+        }
+    });
+    return valorTotal
+}
+
 module.exports = {
     valorLotes,
     superficieLotes,
     valorInfraestructuras,
     valorRodados,
     valorTractores,
+    valorAutopropulsados,
 }
