@@ -36,7 +36,7 @@
 										<div class="d-flex justify-content-start">
 											<strong class="card-title align-middle">Rodados. Valor
 												Total al Cierre $<%= valorTotal %></strong>
-											<div id="titulo" data-value="Tabla de Rodados"></div>
+											<div id="titulo" data-value="Rodados"></div>
 										</div>
 										<div id="tableButtons" class="d-none d-md-block">
 											<a id="agregar" href="#agregarModal" class="btn btn-primary"
@@ -59,7 +59,7 @@
 													<th>Concepto</th>
 													<th>Cantidad</th>
 													<th>Valor Unitario ($)</th>
-													<th class="d-none">Fecha Compra</th>
+													<th>Fecha Compra</th>
 													<th class="d-none">Fecha Cierre</th>
 													<th class="d-none">Valor de Mercado ($)</th>
 													<th class="d-none">Vida Útil</th>
@@ -69,6 +69,7 @@
 													<th class="d-none">Valor Residual ($)</th>
 													<th class="">Valor a Nuevo ($)</th>
 													<th>Estado</th>
+													<th class="d-none">Fecha Venta</th>
 													<th class="not-export-col">Acciones</th>
 												</tr>
 											</thead>
@@ -84,7 +85,7 @@
 													<td>
 														<%= rodado.valorUnitario %>
 													</td>
-													<td class="d-none">
+													<td>
 														<%= rodado.fechaCompra %>
 													</td>
 													<td class="d-none">
@@ -113,6 +114,9 @@
 													</td>
 													<td>
 														<%= rodado.estado %>
+													</td>
+													<td class="d-none">
+														<%= rodado.fechaVenta %>
 													</td>
 													<td>
 														<a id="ver" href="#verModal" class="view mr-2" title="Ver"
@@ -158,12 +162,12 @@
 	<!-- /Panel Derecho -->
 
 	<!-- Formulario de los Popups  -->
-	<% include Rodado-add %>
-	<% include Rodado-view %>
-	<% include Rodado-edit %>
-	<% include Rodado-liquidar %>
-	<% include Rodado-deshacerLiquidar %>
-	<% include Rodado-delete %>
+	<% include rodado-add %>
+	<% include rodado-view %>
+	<% include rodado-edit %>
+	<% include rodado-liquidar %>
+	<% include rodado-deshacerLiquidar %>
+	<% include rodado-delete %>
 	<!-- /Formulario de los Popups  -->
 
 	<!-- Scripts -->
