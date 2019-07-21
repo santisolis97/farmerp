@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
         },
         superficie: {
-            type: DataTypes.INTEGER(10)
+            type: DataTypes.FLOAT(10,2)
         },
         valorHectarea: {
             type: DataTypes.FLOAT(10, 2)
@@ -21,14 +21,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         fechaVenta: {
             type: DataTypes.DATEONLY
-        },
-        valorVenta: {
-            type: DataTypes.FLOAT(15, 2)
-        },
-        cuentaVenta: {
-            type: DataTypes.STRING,
-        },
-
+        }
     }, {
         timestamps: false,
     }, );

@@ -2,34 +2,34 @@
 <html>
 
 <head>
-    <% include ../partials/common-head %>
+    <% include ../../partials/common-head %>
 </head>
 
 <body>
 
     <!--Panel Izquierdo -->
-    <% include ../partials/sidebar %>
+    <% include ../../partials/sidebar %>
     <!-- /Panel izquierdo-->
 
     <!-- Panel Derecho -->
     <div id="right-panel" class="right-panel">
 
         <!-- Cabecera-->
-        <% include ../partials/cabecera %>
+        <% include ../../partials/cabecera %>
         <!-- /Cabecera -->
 
         <!-- Tabla del CRUD-->
         <div class="content mt-3">
 
             <!-- Mensaje -->
-            <% include ../partials/mensaje %>
+            <% include ../../partials/mensaje %>
             <!-- /Mensaje -->
 
             <div class="col-sm-12">
                 <div class="animated fadeIn">
                     <div class="row">
                         <!-- Caja -->
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="card">
                                 <div class="card-header">
                                     <div class="d-flex justify-content-between">
@@ -52,7 +52,7 @@
                                                     <span class="input-group-text">$</span>
                                                 </div>
                                                 <input name="" type="number" min="0" step="0.01" class="form-control"
-                                                    id="montoInicialCaja" placeholder="0" readonly>
+                                                    id="montoInicialCaja" value="<%= caja.montoInicial %>" placeholder="0" readonly>
                                             </div>
                                         </div>
                                     </div>
@@ -65,7 +65,7 @@
                                                     <span class="input-group-text">$</span>
                                                 </div>
                                                 <input name="" type="number" min="0" step="0.01" class="form-control"
-                                                    id="montoFinalCaja" placeholder="0" readonly>
+                                                    id="montoFinalCaja" value="<%= caja.montoFinal %>" placeholder="0" readonly>
                                             </div>
                                         </div>
                                     </div>
@@ -75,7 +75,7 @@
                         <!-- /Caja -->
 
                         <!-- Banco -->
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="card">
                                 <div class="card-header">
                                     <div class="d-flex justify-content-between">
@@ -98,7 +98,7 @@
                                                     <span class="input-group-text">$</span>
                                                 </div>
                                                 <input name="" type="number" min="0" step="0.01" class="form-control"
-                                                    id="montoInicialBanco" placeholder="0" readonly>
+                                                    id="montoInicialBanco"  value="<%= banco.montoInicial %>" placeholder="0" readonly>
                                             </div>
                                         </div>
                                     </div>
@@ -111,7 +111,7 @@
                                                     <span class="input-group-text">$</span>
                                                 </div>
                                                 <input name="" type="number" min="0" step="0.01" class="form-control"
-                                                    id="montoFinalBanco" placeholder="0" readonly>
+                                                    id="montoFinalBanco"  value="<%= banco.montoFinal %>" placeholder="0" readonly>
                                             </div>
                                         </div>
                                     </div>
@@ -121,7 +121,7 @@
                         <!-- /Banco -->
 
                         <!-- Inversiones Transitorias -->
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="card">
                                 <div class="card-header">
                                     <div class="d-flex justify-content-between">
@@ -144,7 +144,7 @@
                                                     <span class="input-group-text">$</span>
                                                 </div>
                                                 <input name="" type="number" min="0" step="0.01" class="form-control"
-                                                    id="montoInicialInversiones" placeholder="0" readonly>
+                                                    id="montoInicialInversiones" value="<%= inversion.montoInicial %>" placeholder="0" readonly>
                                             </div>
                                         </div>
                                     </div>
@@ -157,7 +157,7 @@
                                                     <span class="input-group-text">$</span>
                                                 </div>
                                                 <input name="" type="number" min="0" step="0.01" class="form-control"
-                                                    id="montoFinalInversiones" placeholder="0" readonly>
+                                                    id="montoFinalInversiones" value="<%= inversion.montoInicial %>" placeholder="0" readonly>
                                             </div>
                                         </div>
                                     </div>
@@ -173,8 +173,15 @@
     </div>
     <!-- /Panel Derecho -->
 
+
+    <!-- PopUps -->
+    <% include disponibilidades-editarCajaModal %>
+    <% include disponibilidades-editarBancoModal %>
+    <% include disponibilidades-editarInversionesModal %>
+
+
     <!-- Scripts -->
-    <% include ../partials/common-scripts %>
+    <% include ../../partials/common-scripts %>
 </body>
 
 </html>

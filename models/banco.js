@@ -9,10 +9,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         montoInicial: {
             type: DataTypes.FLOAT(15, 2)
-        },
-        montoMovimientos: {
-            type: DataTypes.FLOAT(15, 2)
-        },
+        }
     }, {
         timestamps: false,
     }, );

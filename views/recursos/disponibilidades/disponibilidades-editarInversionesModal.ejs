@@ -1,0 +1,33 @@
+<div id="editarInversionesModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="POST" action="/disponibilidades/updateInversiones/<%= inversion.inversionId %>">
+                <div class="modal-header">
+                    <h4 class="modal-title">Editar Saldo Inicial de Inversiones Transitorias</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="montoInicialInversiones" class='control-label'>Saldo Inicial</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input name="inversion[montoInicial]" type="number" min="0" step="0.01" class="form-control"
+                                    id="montoInicialInversiones" placeholder="Saldo Inicial" value="<%= inversion.montoInicial %>" required>
+                                <div class="invalid-feedback">
+                                    Este campo es requerido.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                    <input id="botonGuardar" type="submit" class="btn btn-info" value="Aceptar">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -34,7 +34,8 @@
 								<div class="card-header">
 									<div class="d-flex justify-content-between">
 										<div class="d-flex justify-content-start">
-											<strong class="card-title align-middle">Lotes. Cantidad de Hectareas
+											<strong class="card-title align-middle">Lotes. Cantidad de Hectareas al
+												Cierre
 												<%= supTotal %>. Valor Total al Cierre $<%= valorTotal %></strong>
 											<div id="titulo" data-value="Tabla de Lotes"></div>
 										</div>
@@ -58,9 +59,10 @@
 												<tr>
 													<th>Nombre</th>
 													<th>Superficie (ha)</th>
-													<th class="d-none">Fecha de Compra</th>
 													<th>Valor ($/ha)</th>
 													<th>Valor Total ($)</th>
+													<th class="d-none">Fecha de Compra</th>
+													<th class="d-none">Fecha de Venta</th>
 													<th class="not-export-col">Acciones</th>
 												</tr>
 											</thead>
@@ -73,14 +75,17 @@
 													<td>
 														<%= lote.superficie %>
 													</td>
-													<td class="d-none">
-														<%= lote.fechaCompra %>
-													</td>
 													<td>
 														<%= lote.valorHectarea %>
 													</td>
 													<td>
 														<%= lote.dataValues.valorLote %>
+													</td>
+													<td class="d-none">
+														<%= lote.fechaCompra %>
+													</td>
+													<td class="d-none">
+														<%= lote.fechaVenta %>
 													</td>
 													<td>
 														<a id="ver" href="#verModal" class="view mr-2" title="Ver"
@@ -101,9 +106,10 @@
 															<i class="fa fa-trash fa-lg" title="Eliminar"></i>
 														</a>
 														<% } else { %>
-															<a id="deshacerLiquidar" href="#deshacerLiquidarModal" class="liquidar mr-2"
-															data-toggle="modal">
-															<i class="fa fa-undo fa-lg" title="Deshacer Liquidación"></i>
+														<a id="deshacerLiquidar" href="#deshacerLiquidarModal"
+															class="liquidar mr-2" data-toggle="modal">
+															<i class="fa fa-undo fa-lg"
+																title="Deshacer Liquidación"></i>
 														</a>
 														<% } %>
 													</td>

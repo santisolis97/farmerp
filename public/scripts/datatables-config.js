@@ -38,7 +38,7 @@ function InitDataTable(tableId) {
                     },
                     buttons: [{
                             extend: 'excel',
-                            text: '<i class="fa fa-table"></i> Exportar Lista',
+                            text: '<i class="fa fa-table"></i> Exportar a Excel',
                             className: 'btn btn-primary',
                             titleAttr: 'Exportar a Excel',
                             title: 'FarmERP - ' + document.getElementById("titulo").getAttribute("data-value"),
@@ -66,8 +66,6 @@ function InitDataTable(tableId) {
                                 }
                             }
                         }
-
-
                     ]
 
                 });

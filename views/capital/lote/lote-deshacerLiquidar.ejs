@@ -4,13 +4,13 @@
             <form method="POST" action="">
                 <div class="modal-header">
                     <h4 class="modal-title">Deshacer Liquidación de Lote</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="closeModal()">&times;</button>
                 </div>
                 <div class="modal-body">
                     <p>Esta seguro que desea deshacer la liquidación?</p>
                 </div>
                 <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar" onclick="closeModal()">
                     <input id="botonGuardar" type="submit" class="btn btn-info" value="Aceptar">
                 </div>
             </form>

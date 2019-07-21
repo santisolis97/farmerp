@@ -31,6 +31,9 @@ models.sequelize.sync({
   /* Borrar cuando se tenga el login y toda la gilada */
   models.User.findByPk(1).then(user => {
     if (!user) {
+      var inicioEjercicio = new Date(2019,6, 1)
+      var finEjercicio = new Date(2020,5,30)
+
       var user = {
         nombre: 'Usuario',
         apellido: 'De Prueba',
@@ -38,26 +41,23 @@ models.sequelize.sync({
       }
       var empresa = {
         nombre: 'Mi Empre S.A.',
-        inicioEjercicio: '2019-07-01', 
-        finEjercicio: '2020-06-30',
+        inicioEjercicio, 
+        finEjercicio,
         userId: 1
       }
 
       var caja = {
         montoInicial: 0.0,
-        montoMovimientos: 0.0,
         empresaId: 1
       }
 
       var banco = {
         montoInicial: 0.0,
-        montoMovimientos: 0.0,
         empresaId: 1
       }
 
       var inversion = {
         montoInicial: 0.0,
-        montoMovimientos: 0.0,
         empresaId: 1
       }
 

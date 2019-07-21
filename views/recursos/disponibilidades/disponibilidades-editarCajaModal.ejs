@@ -1,0 +1,33 @@
+<div id="editarCajaModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="POST" action="/disponibilidades/updateCaja/<%= caja.cajaId %>">
+                <div class="modal-header">
+                    <h4 class="modal-title">Editar Saldo Inicial de Caja</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="montoInicialCaja" class='control-label'>Saldo Inicial</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input name="caja[montoInicial]" type="number" min="0" step="0.01" class="form-control"
+                                    id="montoInicialCaja" placeholder="Saldo Inicial" value="<%= caja.montoInicial %>" required>
+                                <div class="invalid-feedback">
+                                    Este campo es requerido.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                    <input id="botonGuardar" type="submit" class="btn btn-info" value="Aceptar">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

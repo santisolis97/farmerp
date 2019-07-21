@@ -1,0 +1,62 @@
+<div id="divCompra" class="d-none">
+    <div id="divMovimientos">
+        <div id="lineaCompra-0" class="form-row MC_lineaCompra">
+            <input type="hidden" name="movimientoCompra[0][cuentaId]" class="MC_cuentaId" id="MC_CuentaId-0">
+
+            <div class="form-group col-md-2">
+                <label for="MC_MedioDePago-0">Medio de Pago</label>
+                <select name="movimientoCompra[0][cuenta]" class="form-control MC_cuenta" id="MC_MedioDePago-0"
+                    onchange="MC_updateCuentas()">
+                    <option value="Banco" selected>Banco</option>
+                    <option value="Caja">Caja</option>
+                    <option value="DeudaComercial">Crédito</option>
+                </select>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="MC_proveedores-0" class="text-white">.</label>
+                <select class="form-control d-none MC_proveedor" id="MC_proveedores-0"
+                    onchange="MC_updateSaldoProveedor(0)">
+                    <option value="null" disabled selected>No se encontraron proveedores</option>
+                </select>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="MC_Saldo-0">Saldo</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">$</span>
+                    </div>
+                    <input type="number" class="form-control MC_saldo" id="MC_Saldo-0" value="0" readonly>
+                </div>
+            </div>
+
+
+            <div class="form-group ml-2 col-md-3">
+                <label for="MC_Monto-0" class='control-label'>Monto a Pagar</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">$</span>
+                    </div>
+                    <input name="movimientoCompra[0][monto]" type="number" min="0" step="0.01"
+                        class="form-control MC_monto" id="MC_Monto-0" placeholder="Monto" value="0"
+                        onkeyup="MC_updateSumaPagos()">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <a class="text-success" onclick="MC_addLineaCompra()"><i class="fa fa-plus-square mr-1"></i>Agregar
+                Medio</a>
+        </div>
+        <div class="form-group col-md-4">
+            <p id="MC_TotalAPagar"><b>Total a Pagar:</b>$ 0</p>
+        </div>
+        <div class="form-group col-md-4">
+            <p id="MC_SumaPagos"><b>Suma de los Pagos:</b> $ 0</p>
+        </div>
+    </div>
+</div>
