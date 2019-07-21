@@ -14,10 +14,11 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": "123456",
-    "database": "farmerp-prod",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "username": "follsiyxkldkfm",
+    "password": "45a21295321b318111407c14b949a12e72f3bfdc4f162d3be8f8b87effbf0911",
+    "database": "dc37g2km4a5hqf",
+    "host": "ec2-174-129-41-127.compute-1.amazonaws.com",
+    "port": 5432,
+    "dialect": "postgres"
   }
 }
