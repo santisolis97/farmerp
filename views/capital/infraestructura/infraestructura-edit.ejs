@@ -1,105 +1,127 @@
 <div id="editarModal" class="modal fade">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form class="container" id="form-validation" novalidate method="POST" action="">
+            <form class="container" id="form-validation" novalidate onsubmit="return validateForm()" method="POST" action="">
                 <div class="modal-header">
                     <h4 class="modal-title">Editar Infraestructura - Mejora</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"onclick="closeModal()">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="conceptoInf" class='control-label'>Concepto</label>
-                            <input name="infraestructura[concepto]" type="text" class="form-control" id="conceptoInf"
-                                placeholder="Concepto" required>
-                            <div class="invalid-feedback">
-                                Este campo es requerido.
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label class="radio-inline mr-3">
+                                    <input type="radio" name="tipoAlta" value="capital" id="radioCapital"
+                                        onclick="MostrarCapital()" checked>
+                                    <label for="radioCapital">Capital Inicial</label>
+                                </label>
+                                <label class="radio-inline mr-3">
+                                    <input type="radio" name="tipoAlta" value="compra" id="radioCompra"
+                                        onclick="MostrarCompra()">
+                                    <label for="radioCompra">Compra durante el ejercicio</label>
+                                </label>
                             </div>
                         </div>
-                        <div class="form-group col-md-6">
-                            <label for="fechaCompraInf" class='control-label'>Fecha de Compra</label>
-                            <input name="infraestructura[fechaCompra]" type="date" class="form-control"
-                                id="fechaCompraInf" max="<%= empresa.finEjercicio %>" placeholder="Fecha" required>
-                            <div class="invalid-feedback">
-                                Este campo es requerido.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group col-md-3">
-                            <label for="cantidadInf" class='control-label'>Cantidad</label>
-                            <input name="infraestructura[cantidad]" type="number" min="0" class="form-control"
-                                id="cantidadInf" placeholder="Cantidad" required>
-                            <div class="invalid-feedback">
-                                Este campo es requerido.
-                            </div>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label for="unidadInf" class='control-label'>Unidad</label>
-                            <select name="infraestructura[unidad]" type="text" class="form-control input-small"
-                                id="unidadInf" placeholder="" required>
-                                <option selected>Unidades</option>
-                                <option>Metros</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Este campo es requerido.
-                            </div>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="valorMercadoInf" class='control-label'>Valor de Mercado</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">$</span>
+    
+    
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="conceptoInf" class='control-label'>Concepto</label>
+                                <input name="infraestructura[concepto]" type="text" class="form-control" id="conceptoInf"
+                                    placeholder="Concepto" required>
+                                <div class="invalid-feedback">
+                                    Este campo es requerido.
                                 </div>
-                                <input name="infraestructura[valorUnitario]" type="number" min="0" step="0.01"
-                                    class="form-control" id="valorMercadoInf" placeholder="$/Unidad" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="fechaCompraInf" class='control-label'>Fecha de Compra</label>
+                                <input name="infraestructura[fechaCompra]" type="date" class="form-control"
+                                    id="fechaCompraInf" value="<%= empresa.inicioEjercicio %>"
+                                    max="<%= empresa.inicioEjercicio %>" placeholder="Fecha" required onchange="MC_updateFechaDeCompra(this.value)">
                                 <div class="invalid-feedback">
                                     Este campo es requerido.
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group col-md-4">
-                            <label for="vidaUtilInf" class='control-label'>Vida Útil</label>
-                            <input name="infraestructura[vidaUtil]" type="number" min="0" step="1" class="form-control"
-                                id="vidaUtilInf" placeholder="Años" required>
-                            <div class="invalid-feedback">
-                                Este campo es requerido.
+    
+                        <div class="form-row">
+                            <div class="form-group col-md-3">
+                                <label for="cantidadInf" class='control-label'>Cantidad</label>
+                                <input name="infraestructura[cantidad]" type="number" min="0" class="form-control"
+                                    id="cantidadInf" placeholder="Cantidad" required onkeyup="actualizarValorTotal()">
+                                <div class="invalid-feedback">
+                                    Este campo es requerido.
+                                </div>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="unidadInf" class='control-label'>Unidad</label>
+                                <select name="infraestructura[unidad]" type="text" class="form-control input-small"
+                                    id="unidadInf" placeholder="" required>
+                                    <option selected>Unidades</option>
+                                    <option>Metros</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Este campo es requerido.
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="valorInf" class='control-label'>Valor Unitario</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">$</span>
+                                    </div>
+                                    <input name="infraestructura[valorUnitario]" type="number" min="0" step="0.01"
+                                        class="form-control" id="valorInf" placeholder="$/Unidad" required onkeyup="actualizarValorTotal()">
+                                    <div class="invalid-feedback">
+                                        Este campo es requerido.
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="form-group col-md-4">
-                            <label for="valorResidualInf" class='control-label'>Valor Residual</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">%</span>
+    
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="vidaUtilInf" class='control-label'>Vida Útil</label>
+                                <input name="infraestructura[vidaUtil]" type="number" min="0" step="1" class="form-control"
+                                    id="vidaUtilInf" placeholder="Años" required>
+                                <div class="invalid-feedback">
+                                    Este campo es requerido.
                                 </div>
-                                <input name="infraestructura[valorResidual]" type="number" min="0" max="100" step="0.01"
-                                    class="form-control" id="valorResidualInf" value="0" required>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="valorResidualInf" class='control-label'>Valor Residual</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">%</span>
+                                    </div>
+                                    <input name="infraestructura[valorResidual]" type="number" min="0" max="100" step="0.01"
+                                        class="form-control" id="valorResidualInf" value="0" required>
+                                    <div class="invalid-feedback">
+                                        Este campo es requerido.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="estadoInf" class='control-label'>Estado</label>
+                                <select name="infraestructura[estado]" type="text" class="form-control input-small"
+                                    id="estadoInf" placeholder="" required>
+                                    <option selected>Bueno</option>
+                                    <option>Regular</option>
+                                    <option>Malo</option>
+                                </select>
                                 <div class="invalid-feedback">
                                     Este campo es requerido.
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group col-md-4">
-                            <label for="estadoInf" class='control-label'>Estado</label>
-                            <select name="infraestructura[estado]" type="text" class="form-control input-small"
-                                id="estadoInf" placeholder="" required>
-                                <option selected>Bueno</option>
-                                <option>Regular</option>
-                                <option>Malo</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Este campo es requerido.
-                            </div>
-                        </div>
+    
+                        <input type="hidden" name="infraestructura[empresaId]" value="<%= empresa.empresaId %>">
+    
+                         <!-- COMPRA -->
+                         <% include ../../partials/movimientosCompra %>
+                         <!-- ./COMPRA -->
                     </div>
-
-                </div>
                 <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar" onclick="closeModal()">
                     <input id="botonGuardar" type="submit" class="btn btn-info" value="Guardar">
                 </div>
             </form>

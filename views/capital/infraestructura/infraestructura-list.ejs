@@ -70,6 +70,7 @@
 													<th class="d-none">Valor Residual ($)</th>
 													<th class="">Valor a Nuevo ($)</th>
 													<th>Estado</th>
+													<th class="d-none">Fecha Venta</th>
 													<th class="not-export-col">Acciones</th>
 												</tr>
 											</thead>
@@ -117,6 +118,9 @@
 													</td>
 													<td>
 														<%= infraestructura.estado %>
+													</td>
+													<td class="d-none">
+														<%= infraestructura.fechaVenta %>
 													</td>
 													<td>
 														<a id="ver" href="#verModal" class="view mr-2" title="Ver"

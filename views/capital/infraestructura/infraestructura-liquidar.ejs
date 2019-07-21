@@ -1,60 +1,62 @@
 <div id="liquidarModal" class="modal fade">
-        <div class="modal-dialog modal-md">
-            <div class="modal-content">
-                <form class="container" id="form-validation" novalidate method="POST" action="/infraestructura/liquidar">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Liquidar Infraestructura</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <form class="container" id="form-validation" novalidate method="POST" action="/infraestructura/liquidar">
+                <div class="modal-header">
+                    <h4 class="modal-title">Liquidar Infraestructura</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                        onclick="closeModal()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="cuentaVenta" class='control-label'>Liquidar a Cuenta</label>
+                            <select class="form-control" name="movimiento[cuenta]" id="cuentaVenta" required>
+                                <option value="Banco" selected>Banco</option>
+                                <option value="Caja">Caja</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Este campo es requerido.
+                            </div>
+                        </div>
                     </div>
-                    <div class="modal-body">
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="cuentaVenta" class='control-label'>Liquidar a Cuenta</label>
-                                <select class="form-control" name="infraestructura[cuentaVenta]" id="cuentaVenta" required>
-                                    <option value="Banco" selected>Banco</option>
-                                    <option value="Caja">Caja</option>
-                                    <option value="Inversion">Inversiones Transitorias</option>
-                                </select>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="fechaVenta" class='control-label'>Fecha de Venta</label>
+                            <input name="infraestructura[fechaVenta]" type="date" class="form-control" id="fechaVenta"
+                                placeholder="" value="<%= empresa.finEjercicio %>" min="<%= empresa.inicioEjercicio %>"
+                                max="<%= empresa.finEjercicio %>" required>
+                            <div class="invalid-feedback">
+                                Este campo es requerido.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="valorVenta" class='control-label'>Valor de Venta</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input name="movimiento[monto]" type="number" min="0" step="0.01" class="form-control"
+                                    id="valorVenta" placeholder="Valor Venta" required>
                                 <div class="invalid-feedback">
                                     Este campo es requerido.
                                 </div>
                             </div>
                         </div>
-    
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="fechaVenta" class='control-label'>Fecha de Venta</label>
-                                <input name="infraestructura[fechaVenta]" type="date" class="form-control" id="fechaVenta"
-                                    placeholder="" value="<%= empresa.finEjercicio %>" min="<%= empresa.inicioEjercicio %>"  max="<%= empresa.finEjercicio %>" required>
-                                <div class="invalid-feedback">
-                                    Este campo es requerido.
-                                </div>
-                            </div>
-                        </div>
-    
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="valorVenta" class='control-label'>Valor de Venta</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">$</span>
-                                    </div>
-                                    <input name="infraestructura[valorVenta]" type="number" min="0" step="0.01" class="form-control"
-                                        id="valorVenta" placeholder="Valor Venta" required>
-                                    <div class="invalid-feedback">
-                                        Este campo es requerido.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-    
-                        <input type="hidden" name="infraestructura[empresaId]" value="<%= empresa.empresaId %>">
                     </div>
-                    <div class="modal-footer">
-                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-                        <input id="botonGuardar" type="submit" class="btn btn-info" value="Guardar">
-                    </div>
-                </form>
-            </div>
+
+                    <input type="hidden" name="infraestructura[empresaId]" value="<%= empresa.empresaId %>">
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar"
+                        onclick="closeModal()">
+                    <input id="botonGuardar" type="submit" class="btn btn-info" value="Guardar">
+                </div>
+            </form>
         </div>
     </div>
+</div>

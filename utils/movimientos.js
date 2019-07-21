@@ -3,37 +3,41 @@ const MovimientoCompra = models.MovimientoCompra;
 const MovimientoVenta = models.MovimientoVenta;
 
 function compra(fecha, monto, concepto, conceptoId, cuenta, cuentaId, empresaId) {
-    MovimientoCompra.create({
-            fecha,
-            monto,
-            concepto,
-            conceptoId,
-            cuenta,
-            cuentaId,
-            empresaId
-        }).then(movimiento => {
-            return movimiento
-        })
-        .catch(error => {
-            console.log(error)
-        });
+    if (monto > 0) {
+        MovimientoCompra.create({
+                fecha,
+                monto,
+                concepto,
+                conceptoId,
+                cuenta,
+                cuentaId,
+                empresaId
+            }).then(movimiento => {
+                return movimiento
+            })
+            .catch(error => {
+                console.log(error)
+            });
+    }
 }
 
 function venta(fecha, monto, concepto, conceptoId, cuenta, cuentaId, empresaId) {
-    MovimientoVenta.create({
-            fecha,
-            monto,
-            concepto,
-            conceptoId,
-            cuenta,
-            cuentaId,
-            empresaId
-        }).then(movimiento => {
-            return movimiento
-        })
-        .catch(error => {
-            console.log(error)
-        });
+    if (monto > 0) {
+        MovimientoVenta.create({
+                fecha,
+                monto,
+                concepto,
+                conceptoId,
+                cuenta,
+                cuentaId,
+                empresaId
+            }).then(movimiento => {
+                return movimiento
+            })
+            .catch(error => {
+                console.log(error)
+            });
+    }
 }
 
 

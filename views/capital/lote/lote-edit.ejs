@@ -1,7 +1,7 @@
 <div id="editarModal" class="modal fade">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form class="container" id="form-validation" novalidate method="POST" action="">
+            <form class="container" id="form-validation" novalidate onsubmit="return validateForm()" method="POST" action="">
                 <div class="modal-header">
                     <h4 class="modal-title">Editar Lote</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="closeModal()">&times;</button>

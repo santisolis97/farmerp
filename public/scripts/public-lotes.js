@@ -44,8 +44,7 @@ lotes.forEach(function (rowLote) {
                 actualizarValorLote()
 
                 axios.get('/apiMovimientos/getCompras/' + lote.empresaId + '/Lote/' + lote.loteId).then(res => {
-                    movimientos = res.data.movimientos
-                    console.log(movimientos)
+                    var movimientos = res.data.movimientos
                     if (i < movimientos.length) {
                     }
                     for (let i = 1; i < movimientos.length; i++) {
