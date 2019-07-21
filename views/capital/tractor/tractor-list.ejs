@@ -34,9 +34,9 @@
 								<div class="card-header">
 									<div class="d-flex justify-content-between">
 										<div class="d-flex justify-content-start">
-											<strong class="card-title align-middle">Rodados. Valor
+											<strong class="card-title align-middle">Tractores. Valor
 												Total al Cierre $<%= valorTotal %></strong>
-											<div id="titulo" data-value="Rodados"></div>
+											<div id="titulo" data-value="Tractores"></div>
 										</div>
 										<div id="tableButtons" class="d-none d-md-block">
 											<a id="agregar" href="#agregarModal" class="btn btn-primary"
@@ -57,11 +57,10 @@
 											<thead>
 												<tr>
 													<th>Concepto</th>
-													<th>Cantidad</th>
+													<th>Potencia (HP)</th>
 													<th>Valor Unitario ($)</th>
 													<th class="d-none">Fecha Compra</th>
 													<th class="d-none">Fecha Cierre</th>
-													<th class="d-none">Valor de Mercado ($)</th>
 													<th class="d-none">Vida Útil</th>
 													<th class="d-none">Antigüedad</th>
 													<th class="d-none">Amortización ($)</th>
@@ -74,56 +73,53 @@
 												</tr>
 											</thead>
 											<tbody>
-												<% rodados.forEach(rodado => { %>
-												<tr data="<%= JSON.stringify(rodado) %>">
+												<% tractores.forEach(tractor => { %>
+												<tr data="<%= JSON.stringify(tractor) %>">
 													<td>
-														<%= rodado.concepto %>
+														<%= tractor.concepto %>
 													</td>
 													<td>
-														<%= rodado.cantidad %>
+														<%= tractor.potencia %>
 													</td>
 													<td>
-														<%= rodado.valorUnitario %>
+														<%= tractor.valorUnitario %>
 													</td>
 													<td class="d-none">
-														<%= rodado.fechaCompra %>
+														<%= tractor.fechaCompra %>
 													</td>
 													<td class="d-none">
 														<%= empresa.finEjercicio %>
 													</td>
 													<td class="d-none">
-														<%= rodado.dataValues.valorMercado %>
+														<%= tractor.vidaUtil %>
 													</td>
 													<td class="d-none">
-														<%= rodado.vidaUtil %>
+														<%= tractor.dataValues.antiguedad %>
 													</td>
 													<td class="d-none">
-														<%= rodado.dataValues.antiguedad %>
+														<%= tractor.dataValues.amortizacion %>
 													</td>
 													<td class="d-none">
-														<%= rodado.dataValues.amortizacion %>
+														<%= tractor.dataValues.amortizacionAcumulada %>
 													</td>
 													<td class="d-none">
-														<%= rodado.dataValues.amortizacionAcumulada %>
-													</td>
-													<td class="d-none">
-														<%= rodado.dataValues.valorResidualMonto %>
+														<%= tractor.dataValues.valorResidualMonto %>
 													</td>
 													<td class="">
-														<%= rodado.dataValues.valorANuevo %>
+														<%= tractor.dataValues.valorANuevo %>
 													</td>
 													<td>
-														<%= rodado.estado %>
+														<%= tractor.estado %>
 													</td>
 													<td class="d-none">
-														<%= rodado.fechaVenta %>
+														<%= tractor.fechaVenta %>
 													</td>
 													<td>
 														<a id="ver" href="#verModal" class="view mr-2" title="Ver"
 															data-toggle="modal">
 															<i class="fa fa-eye fa-lg"></i>
 														</a>
-														<% if(!rodado.dataValues.fechaVenta){ %>
+														<% if(!tractor.dataValues.fechaVenta){ %>
 														<a id="editar" href="#editarModal" class="edit mr-2"
 															data-toggle="modal">
 															<i class="fa fa-edit fa-lg" title="Editar"></i>
@@ -162,12 +158,12 @@
 	<!-- /Panel Derecho -->
 
 	<!-- Formulario de los Popups  -->
-	<% include rodado-add %>
-	<% include rodado-view %>
-	<% include rodado-edit %>
-	<% include rodado-liquidar %>
-	<% include rodado-deshacerLiquidar %>
-	<% include rodado-delete %>
+	<% include tractor-add %>
+	<% include tractor-view %>
+	<% include tractor-edit %>
+	<% include tractor-liquidar %>
+	<% include tractor-deshacerLiquidar %>
+	<% include tractor-delete %>
 	<!-- /Formulario de los Popups  -->
 
 	<!-- Scripts -->
@@ -175,7 +171,7 @@
 	<script type="text/javascript">
 		InitDataTable("#tabla");
 	</script>
-	<script src="/scripts/public-rodados.js"></script>
+	<script src="/scripts/public-tractores.js"></script>
 </body>
 
 </html>

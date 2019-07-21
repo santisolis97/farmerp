@@ -34,12 +34,12 @@ infraestructuraController.list = function (req, res) {
         valorANuevo = valorMercado - amortizacionAcumulada
       }
 
-      infraestructura.dataValues.valorMercado = valorMercado;
+      infraestructura.dataValues.valorMercado = valorMercado.toFixed(2);
       infraestructura.dataValues.antiguedad = antiguedad;
-      infraestructura.dataValues.amortizacion = amortizacion;
-      infraestructura.dataValues.amortizacionAcumulada = amortizacionAcumulada;
-      infraestructura.dataValues.valorResidualMonto = valorResidualMonto;
-      infraestructura.dataValues.valorANuevo = valorANuevo;
+      infraestructura.dataValues.amortizacion = amortizacion.toFixed(2);
+      infraestructura.dataValues.amortizacionAcumulada = amortizacionAcumulada.toFixed(2);
+      infraestructura.dataValues.valorResidualMonto = valorResidualMonto.toFixed(2);
+      infraestructura.dataValues.valorANuevo = valorANuevo.toFixed(2);
     });
     res.render("capital/infraestructura/infraestructura-list", {
       infraestructuras: infraestructuras,

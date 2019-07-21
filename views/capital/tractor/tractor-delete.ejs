@@ -1,0 +1,22 @@
+<div id="eliminarModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form method="POST" action="">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Eliminar Tractor</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="closeModal()">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Esta seguro de que quiere eliminar este registro?</p>
+                        <p class="text-warning">
+                            <small>Esta accion no se puede modificar</small>
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar" onclick="closeModal()">
+                        <input id="botonBorrar" type="submit" class="btn btn-danger" value="Eliminar">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>

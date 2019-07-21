@@ -34,12 +34,12 @@ rodadoController.list = function (req, res) {
         valorANuevo = valorMercado - amortizacionAcumulada
       }
 
-      rodado.dataValues.valorMercado = valorMercado;
+      rodado.dataValues.valorMercado = valorMercado.toFixed(2);
       rodado.dataValues.antiguedad = antiguedad;
-      rodado.dataValues.amortizacion = amortizacion;
-      rodado.dataValues.amortizacionAcumulada = amortizacionAcumulada;
-      rodado.dataValues.valorResidualMonto = valorResidualMonto;
-      rodado.dataValues.valorANuevo = valorANuevo;
+      rodado.dataValues.amortizacion = amortizacion.toFixed(2);
+      rodado.dataValues.amortizacionAcumulada = amortizacionAcumulada.toFixed(2);
+      rodado.dataValues.valorResidualMonto = valorResidualMonto.toFixed(2);
+      rodado.dataValues.valorANuevo = valorANuevo.toFixed(2);
     });
     res.render("capital/rodado/rodado-list", {
       rodados: rodados,

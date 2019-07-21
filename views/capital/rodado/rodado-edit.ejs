@@ -26,7 +26,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="conceptoRodado" class='control-label'>Concepto</label>
-                                <input name="infraestructura[concepto]" type="text" class="form-control" id="conceptoRodado"
+                                <input name="rodado[concepto]" type="text" class="form-control" id="conceptoRodado"
                                     placeholder="Concepto" required>
                                 <div class="invalid-feedback">
                                     Este campo es requerido.
@@ -34,7 +34,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="fechaCompraRodado" class='control-label'>Fecha de Compra</label>
-                                <input name="infraestructura[fechaCompra]" type="date" class="form-control"
+                                <input name="rodado[fechaCompra]" type="date" class="form-control"
                                     id="fechaCompraRodado" value="<%= empresa.inicioEjercicio %>"
                                     max="<%= empresa.inicioEjercicio %>" placeholder="Fecha" required onchange="MC_updateFechaDeCompra(this.value)">
                                 <div class="invalid-feedback">
@@ -46,7 +46,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="cantidadRodado" class='control-label'>Cantidad</label>
-                                <input name="infraestructura[cantidad]" type="number" min="0" class="form-control"
+                                <input name="rodado[cantidad]" type="number" min="0" class="form-control"
                                     id="cantidadRodado" placeholder="Cantidad" required onkeyup="actualizarValorTotal()">
                                 <div class="invalid-feedback">
                                     Este campo es requerido.
@@ -58,7 +58,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">$</span>
                                     </div>
-                                    <input name="infraestructura[valorUnitario]" type="number" min="0" step="0.01"
+                                    <input name="rodado[valorUnitario]" type="number" min="0" step="0.01"
                                         class="form-control" id="valorRodado" placeholder="$/Unidad" required onkeyup="actualizarValorTotal()">
                                     <div class="invalid-feedback">
                                         Este campo es requerido.
@@ -70,7 +70,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="vidaUtilRodado" class='control-label'>Vida Útil</label>
-                                <input name="infraestructura[vidaUtil]" type="number" min="0" step="1" class="form-control"
+                                <input name="rodado[vidaUtil]" type="number" min="0" step="1" class="form-control"
                                     id="vidaUtilRodado" placeholder="Años" required>
                                 <div class="invalid-feedback">
                                     Este campo es requerido.
@@ -82,7 +82,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">%</span>
                                     </div>
-                                    <input name="infraestructura[valorResidual]" type="number" min="0" max="100" step="0.01"
+                                    <input name="rodado[valorResidual]" type="number" min="0" max="100" step="0.01"
                                         class="form-control" id="valorResidualRodado" value="0" required>
                                     <div class="invalid-feedback">
                                         Este campo es requerido.
@@ -91,7 +91,7 @@
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="estadoRodado" class='control-label'>Estado</label>
-                                <select name="infraestructura[estado]" type="text" class="form-control input-small"
+                                <select name="rodado[estado]" type="text" class="form-control input-small"
                                     id="estadoRodado" placeholder="" required>
                                     <option selected>Bueno</option>
                                     <option>Regular</option>
@@ -103,7 +103,7 @@
                             </div>
                         </div>
     
-                        <input type="hidden" name="infraestructura[empresaId]" value="<%= empresa.empresaId %>">
+                        <input type="hidden" name="rodado[empresaId]" value="<%= empresa.empresaId %>">
     
                          <!-- COMPRA -->
                          <% include ../../partials/movimientosCompra %>
