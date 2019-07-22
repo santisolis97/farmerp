@@ -60,6 +60,16 @@ function valorAutopropulsados(autopropulsados) {
     return valorTotal
 }
 
+function valorImplementos(implementos) {
+    var valorTotal = 0
+    implementos.forEach(implemento => {
+        if (!implemento.fechaVenta) {
+            valorTotal += parseFloat(implemento.dataValues.valorANuevo)
+        }
+    });
+    return valorTotal
+}
+
 module.exports = {
     valorLotes,
     superficieLotes,
@@ -67,4 +77,5 @@ module.exports = {
     valorRodados,
     valorTractores,
     valorAutopropulsados,
+    valorImplementos,
 }
