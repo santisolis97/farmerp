@@ -70,6 +70,16 @@ function valorImplementos(implementos) {
     return valorTotal
 }
 
+function valorEquipos(equipos) {
+    var valorTotal = 0
+    equipos.forEach(equipo => {
+        if (!equipo.fechaVenta) {
+            valorTotal += parseFloat(equipo.dataValues.valorANuevo)
+        }
+    });
+    return valorTotal
+}
+
 module.exports = {
     valorLotes,
     superficieLotes,
@@ -78,4 +88,5 @@ module.exports = {
     valorTractores,
     valorAutopropulsados,
     valorImplementos,
+    valorEquipos,
 }
