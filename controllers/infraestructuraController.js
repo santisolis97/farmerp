@@ -175,7 +175,7 @@ infraestructuraController.deshacerLiquidar = function (req, res) {
   })
   .catch(err => {
     console.log(err)
-    req.flash("error_msg", "Error al deshacer liquidación de infraestructra");
+    req.flash("error_msg", "Error al deshacer liquidación de infraestructura");
     res.redirect("/infraestructuras");
   });
 };
