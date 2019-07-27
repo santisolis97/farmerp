@@ -1,0 +1,191 @@
+<!doctype html>
+<html>
+
+<head>
+    <% include ../../partials/common-head %>
+</head>
+
+<body>
+
+    <!--Panel Izquierdo -->
+    <% include ../../partials/sidebar %>
+    <!-- /Panel izquierdo-->
+
+    <!-- Panel Derecho -->
+    <div id="right-panel" class="right-panel">
+
+        <!-- Cabecera-->
+        <% include ../../partials/cabecera %>
+        <!-- /Cabecera -->
+
+        <!-- Tabla del CRUD-->
+        <div class="content mt-3">
+
+            <!-- Mensaje -->
+            <% include ../../partials/mensaje %>
+            <!-- /Mensaje -->
+
+            <div class="col-sm-12">
+                <div class="animated fadeIn">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- Cuerpo -->
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex justify-content-start">
+                                            <strong class="card-title align-middle">Créditos</strong>
+                                            <div id="titulo" data-value="Créditos"></div>
+                                        </div>
+                                        <div id="tableButtons" class="d-none d-md-block">
+                                            <a id="agregar" href="#agregarModal" class="btn btn-primary"
+                                                data-toggle="modal">
+                                                <i class="fa fa-plus-circle"></i> Agregar
+                                            </a>
+                                        </div>
+                                        <div id="tableButtons" class="d-md-none">
+                                            <a id="agregar" href="#agregarModal" class="text-white" data-toggle="modal">
+                                                <i class="fa fa-plus-circle"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table id="tabla" class="table table-striped table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Cliente</th>
+                                                    <th>Monto ($)</th>
+                                                    <th>Plazo</th>
+                                                    <th>Ejercicio (%)</th>
+                                                    <th>Cant. Cuotas</th>
+                                                    <th class="not-export-col">Imp. Cuota ($)</th>
+                                                    <th class="d-none"><%= empresa.meses[0] %></th>
+                                                    <th class="d-none"><%= empresa.meses[1] %></th>
+                                                    <th class="d-none"><%= empresa.meses[2] %></th>
+
+                                                    <th class="d-none"><%= empresa.meses[3] %></th>
+                                                    <th class="d-none"><%= empresa.meses[4] %></th>
+                                                    <th class="d-none"><%= empresa.meses[5] %></th>
+                                                    <th class="d-none"><%= empresa.meses[6] %></th>
+                                                    <th class="d-none"><%= empresa.meses[7] %></th>
+                                                    <th class="d-none"><%= empresa.meses[8] %></th>
+                                                    <th class="d-none"><%= empresa.meses[9] %></th>
+                                                    <th class="d-none"><%= empresa.meses[10] %></th>
+                                                    <th class="d-none"><%= empresa.meses[11] %></th>
+
+                                                    <th class="not-export-col">Acciones</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <% creditos.forEach(credito => { %>
+                                                <tr data="<%= JSON.stringify(credito) %>">
+                                                    <td>
+                                                        <%= credito.nombre %>
+                                                    </td>
+                                                    <td>
+                                                        <%= credito.monto %>
+                                                    </td>
+                                                    <td>
+                                                        <%= credito.plazo %>
+                                                    </td>
+                                                    <td>
+                                                        <%= credito.porcEjercicio %>
+                                                    </td>
+                                                    <td>
+                                                        <%= credito.cantCuotas %>
+                                                    </td>
+                                                    <td>
+                                                        <%= credito.dataValues.importeCuota %>
+                                                    </td>
+                                                    <td class="d-none">
+                                                        <%= credito.mes1 ? credito.dataValues.importeCuota : 0.00 %>
+                                                    </td>
+                                                    <td class="d-none">
+                                                        <%= credito.mes2 ? credito.dataValues.importeCuota : 0.00 %>
+                                                    </td>
+                                                    <td class="d-none">
+                                                        <%= credito.mes3 ? credito.dataValues.importeCuota : 0.00 %>
+                                                    </td>
+
+                                                    <td class="d-none">
+                                                        <%= credito.mes4 ? credito.dataValues.importeCuota : 0.00 %>
+                                                    </td>
+                                                    <td class="d-none">
+                                                        <%= credito.mes5 ? credito.dataValues.importeCuota : 0.00 %>
+                                                    </td>
+                                                    <td class="d-none">
+                                                        <%= credito.mes6 ? credito.dataValues.importeCuota : 0.00 %>
+                                                    </td>
+
+                                                    <td class="d-none">
+                                                        <%= credito.mes7 ? credito.dataValues.importeCuota : 0.00 %>
+                                                    </td>
+                                                    <td class="d-none">
+                                                        <%= credito.mes8 ? credito.dataValues.importeCuota : 0.00 %>
+                                                    </td>
+                                                    <td class="d-none">
+                                                        <%= credito.mes9 ? credito.dataValues.importeCuota : 0.00 %>
+                                                    </td>
+
+                                                    <td class="d-none">
+                                                        <%= credito.mes10 ? credito.dataValues.importeCuota : 0.00 %>
+                                                    </td>
+                                                    <td class="d-none">
+                                                        <%= credito.mes11 ? credito.dataValues.importeCuota : 0.00 %>
+                                                    </td>
+                                                    <td class="d-none">
+                                                        <%= credito.mes12 ? credito.dataValues.importeCuota : 0.00 %>
+                                                    </td>
+
+                                                    <td>
+                                                        <a id="ver" href="#verModal" class="view mr-2" title="Ver"
+                                                            data-toggle="modal">
+                                                            <i class="fa fa-eye fa-lg"></i>
+                                                        </a>
+
+                                                        <a id="editar" href="#editarModal" class="edit mr-2"
+                                                            data-toggle="modal">
+                                                            <i class="fa fa-edit fa-lg" title="Editar"></i>
+                                                        </a>
+
+                                                        <a id="eliminar" href="#eliminarModal" class="delete mr-2"
+                                                            data-toggle="modal">
+                                                            <i class="fa fa-trash fa-lg" title="Eliminar"></i>
+                                                        </a>
+
+                                                    </td>
+                                                </tr>
+                                                <% }) %>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Cuerpo -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Tabla del CRUD-->
+    </div>
+    <!-- /Panel Derecho -->
+
+    <!-- Formulario de los Popups  -->
+    <% include credito-add %>
+    <% include credito-edit %>
+    <% include credito-view %>
+    <% include credito-delete %>
+    <!-- /Formulario de los Popups  -->
+
+    <!-- Scripts -->
+    <% include ../../partials/common-scripts %>
+    <script type="text/javascript">
+        InitDataTable("#tabla");
+    </script>
+    <script src="/scripts/public-creditos.js"></script>
+</body>
+
+</html>

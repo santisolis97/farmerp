@@ -1,0 +1,126 @@
+<div id="agregarModal" class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form class="container" id="form-validation" novalidate onsubmit="return validateForm()" method="POST"
+                action="/haciendaBovinas/add">
+                <div class="modal-header">
+                    <h4 class="modal-title">Agregar Hacienda Bovina</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                        onclick="closeModal()">&times;</button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label class="radio-inline mr-3">
+                                <input type="radio" name="tipoAlta" value="capital" id="radioCapital"
+                                    onclick="MostrarCapital()" checked>
+                                <label for="radioCapital">Capital Inicial</label>
+                            </label>
+                            <label class="radio-inline mr-3">
+                                <input type="radio" name="tipoAlta" value="compra" id="radioCompra"
+                                    onclick="MostrarCompra()">
+                                <label for="radioCompra">Compra durante el ejercicio</label>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="categoriaHaciendaBovina" class='control-label'>Categoría</label>
+                            <select name="haciendnaBovina[categoria]" type="text" class="form-control"
+                                id="categoriaHaciendaBovina">
+                                <option value="Vacas" selected>Vacas</option>
+                                <option value="Vaquillas 1-2">Vaquillas 1-2</option>
+                                <option value="Vaquillas 2-3">Vaquillas 2-3</option>
+                                <option value="Vaquillas 1° Servicio">Vaquillas 1° Servicio</option>
+                                <option value="Toros">Toros</option>
+                                <option value="Toritos 1-2">Toritos 1-2</option>
+                                <option value="Toritos 2-3">Toritos 2-3</option>
+                                <option value="Toritos 1° Servicio">Toritos 1° Servicio</option>
+                                <option value="Vacas CUT">Vacas CUT</option>
+                                <option value="Novillos 1-2">Novillos 1-2</option>
+                                <option value="Novillos 2-3">Novillos 2-3</option>
+                                <option value="Novillos +3">Novillos +3</option>
+                                <option value="Vacas Refugo">Vacas Refugo</option>
+                                <option value="Vacas Refugo">Toros Refugo</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label for="superficieLote" class='control-label'>Kg/Cabeza</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Kg</span>
+                                </div>
+                                <input name="lote[superficie]" type="number" min="0" step="0.01" class="form-control"
+                                    id="superficieLote" placeholder="Superficie" required
+                                    onkeyup="actualizarValorLote()">
+                                <div class="invalid-feedback">
+                                    Este campo es requerido.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label for="valorHectareaLote" class='control-label'>Valor Kilogramo</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input name="lote[valorHectarea]" type="number" min="0" step="0.01" class="form-control"
+                                    id="valorHectareaLote" placeholder="Valor Hectarea" required
+                                    onkeyup="actualizarValorLote()">
+                                <div class="invalid-feedback">
+                                    Este campo es requerido.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="categoriaHaciendaBovina" class='control-label'>Tipo de Bien</label>
+                            <select name="haciendnaBovina[categoria]" type="text" class="form-control"
+                                id="categoriaHaciendaBovina">
+                                <option value="Bien de Cambio" selected>Bien de Cambio</option>
+                                <option value="Bien de Uso">Bien de Uso</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label for="vidaUtilImplemento" class='control-label'>Vida Útil</label>
+                            <input name="implemento[vidaUtil]" type="number" min="0" step="1" class="form-control"
+                                id="vidaUtilImplemento" placeholder="Años" required>
+                            <div class="invalid-feedback">
+                                Este campo es requerido.
+                            </div>
+                        </div>
+
+                        <div id="fechaCompra" class="form-group col-md-4 d-none">
+                            <label for="fechaCompraLote" class='control-label'>Fecha de Compra</label>
+                            <input name="lote[fechaCompra]" type="date" class="form-control" id="fechaCompraLote"
+                                placeholder="" min="<%= empresa.inicioEjercicio %>" max="<%= empresa.finEjercicio %>"
+                                onchange="MC_updateFechaDeCompra(this.value)">
+                            <div class="invalid-feedback">
+                                Este campo es requerido.
+                            </div>
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="lote[empresaId]" value="<%= empresa.empresaId %>">
+
+                    <!-- COMPRA -->
+                    <% include ../../partials/movimientosCompra %>
+                    <!-- ./COMPRA -->
+
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar"
+                        onclick="closeModal()">
+                    <input id="botonGuardar" type="submit" class="btn btn-info" value="Guardar">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

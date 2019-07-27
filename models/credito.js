@@ -1,13 +1,13 @@
 'use strict';
 
 module.exports = (sequelize, DataTypes) => {
-    var DeudaComercial = sequelize.define('DeudaComercial', {
-        deudaComercialId: {
+    var Credito = sequelize.define('Credito', {
+        creditoId: {
             autoIncrement: true,
             primaryKey: true,
             type: DataTypes.INTEGER
         },
-        proveedor: {
+        nombre: {
             type: DataTypes.STRING,
         },
         monto: {
@@ -66,14 +66,14 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: false,
     }, );
 
-    DeudaComercial.associate = function (models) {
-        models.DeudaComercial.belongsTo(models.Empresa, {
+    Credito.associate = function (models) {
+        models.Credito.belongsTo(models.Empresa, {
             foreignKey: 'empresaId',
         });
-        models.Empresa.hasMany(models.DeudaComercial, {
+        models.Empresa.hasMany(models.Credito, {
             foreignKey: 'empresaId',
         });
     };
 
-    return DeudaComercial;
+    return Credito;
 };

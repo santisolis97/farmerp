@@ -5,7 +5,7 @@ const Logged = require('./../utils/logged');
 
 /* Situación Patrimonial */
 router.get('/situacionPatrimonial', Logged.isLogged, function(req,res){
-    res.render('./../views/contable/situacionPatrimonial')
+    res.render('./../views/contable/situacionPatrimonial/situacionPatrimonial')
 });
 
 

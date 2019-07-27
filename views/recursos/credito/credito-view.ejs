@@ -1,0 +1,102 @@
+<div id="verModal" class="modal fade">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <form class="container" id="form-validation" novalidate method="POST" action="/creditos/add">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Ver Cliente</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                            onclick="closeModal()">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="nombreCredito" class='control-label'>Nombre</label>
+                                <input name="credito[nombre]" type="text" class="form-control" id="nombreCredito"
+                                    placeholder="Nombre" value="" readonly>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="montoCredito" class='control-label'>Monto</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">$</span>
+                                    </div>
+                                    <input name="credito[monto]" type="number" min="0" step="0.01" class="form-control"
+                                        id="montoCredito" placeholder="Monto" readonly>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="form-row">
+                            <div class="form-group col-md-3">
+                                <label for="plazoCredito" class='control-label'>Plazo</label>
+                                <input class="form-control" name="credito[plazo]" id="plazoCredito" readonly>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="ejercicioCredito" class='control-label'>Ejercicio</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">%</span>
+                                    </div>
+                                    <input name="credito[porcEjercicio]" type="number" min="0" step="0.01" max="100"
+                                        class="form-control" id="ejercicioCredito" placeholder="Ejercicio" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="cuotasCredito" class='control-label'>Cant. Coutas</label>
+    
+                                <input name="credito[cantCuotas]" type="number" min="1" step="1" max="12" class="form-control"
+                                    id="cuotasCredito" placeholder="Cuotas" readonly>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="cuentaCredito" class='control-label'>Acreditar a Cuenta</label>
+                                <input class="form-control" name="credito[cuenta]" id="cuentaCredito" readonly>
+                            </div>
+                        </div>
+    
+                        <div class="form-row">
+                            <label class="col-md-12">Distribución de Pagos</label>
+                            <div class="form-group col-md-3">
+                                <label id="mes1Label" for="mes1Credito" class="checkbox"><input name="credito[mes1]"
+                                        id="mes1Credito" value="true" type="checkbox" class="mr-1" disabled></label>
+                                <label id="mes2Label" for="mes2Credito" class="checkbox"><input name="credito[mes2]"
+                                        id="mes2Credito" value="true" type="checkbox" class="mr-1" disabled></label>
+                                <label id="mes3Label" for="mes3Credito" class="checkbox"><input name="credito[mes3]"
+                                        id="mes3Credito" value="true" type="checkbox" class="mr-1" disabled></label>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label id="mes4Label" for="mes4Credito" class="checkbox"><input name="credito[mes4]"
+                                        id="mes4Credito" value="true" type="checkbox" class="mr-1" disabled></label>
+                                <label id="mes5Label" for="mes5Credito" class="checkbox"><input name="credito[mes5]"
+                                        id="mes5Credito" value="true" type="checkbox" class="mr-1" disabled></label>
+                                <label id="mes6Label" for="mes6Credito" class="checkbox"><input name="credito[mes6]"
+                                        id="mes6Credito" value="true" type="checkbox" class="mr-1" disabled></label>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label id="mes7Label" for="mes7Credito" class="checkbox"><input name="credito[mes7]"
+                                        id="mes7Credito" value="true" type="checkbox" class="mr-1" disabled></label>
+                                <label id="mes8Label" for="mes8Credito" class="checkbox"><input name="credito[mes8]"
+                                        id="mes8Credito" value="true" type="checkbox" class="mr-1" disabled></label>
+                                <label id="mes9Label" for="mes9Credito" class="checkbox"><input name="credito[mes9]"
+                                        id="mes9Credito" value="true" type="checkbox" class="mr-1" disabled></label>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label id="mes10Label" for="mes10Credito" class="checkbox"><input name="credito[mes10]"
+                                        id="mes10Credito" value="true" type="checkbox" class="mr-1" disabled></label>
+                                <label id="mes11Label" for="mes11Credito" class="checkbox"><input name="credito[mes11]"
+                                        id="mes11Credito" value="true" type="checkbox" class="mr-1" disabled></label>
+                                <label id="mes12Label" for="mes12Credito" class="checkbox"><input name="credito[mes12]"
+                                        id="mes12Credito" value="true" type="checkbox" class="mr-1" disabled></label>
+                            </div>
+                        </div>
+    
+    
+                        <input type="hidden" name="credito[empresaId]" value="<%= empresa.empresaId %>">
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cerrar"
+                            onclick="closeModal()">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
