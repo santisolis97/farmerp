@@ -1,0 +1,102 @@
+<div id="verModal" class="modal fade">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <form class="container" id="form-validation" novalidate method="POST" action="/deudasSociales/add">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Ver Deuda Social</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                            onclick="closeModal()">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="nombreDeuda" class='control-label'>Concepto</label>
+                                <input name="deudaSocial[nombre]" type="text" class="form-control" id="nombreDeudaSocial"
+                                    placeholder="Concepto" value="" readonly>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="montoDeudaSocial" class='control-label'>Monto</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">$</span>
+                                    </div>
+                                    <input name="deudaSocial[monto]" type="number" min="0" step="0.01" class="form-control"
+                                        id="montoDeudaSocial" placeholder="Monto" readonly>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="form-row">
+                            <div class="form-group col-md-3">
+                                <label for="plazoDeudaSocial" class='control-label'>Plazo</label>
+                                <input class="form-control" name="deudaSocial[plazo]" id="plazoDeudaSocial" readonly>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="ejercicioDeudaSocial" class='control-label'>Ejercicio</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">%</span>
+                                    </div>
+                                    <input name="deudaSocial[porcEjercicio]" type="number" min="0" step="0.01" max="100"
+                                        class="form-control" id="ejercicioDeudaSocial" placeholder="Ejercicio" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="cuotasDeudaSocial" class='control-label'>Cant. Coutas</label>
+    
+                                <input name="deudaSocial[cantCuotas]" type="number" min="1" step="1" max="12" class="form-control"
+                                    id="cuotasDeudaSocial" placeholder="Cuotas" readonly>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="cuentaDeudaSocial" class='control-label'>Debitar de Cuenta</label>
+                                <input class="form-control" name="deudaSocial[cuenta]" id="cuentaDeudaSocial" readonly>
+                            </div>
+                        </div>
+    
+                        <div class="form-row">
+                            <label class="col-md-12">Distribución de Pagos</label>
+                            <div class="form-group col-md-3">
+                                <label id="mes1Label" for="mes1DeudaSocial" class="checkbox"><input name="deudaSocial[mes1]"
+                                        id="mes1DeudaSocial" value="true" type="checkbox" class="mr-1" disabled></label>
+                                <label id="mes2Label" for="mes2DeudaSocial" class="checkbox"><input name="deudaSocial[mes2]"
+                                        id="mes2DeudaSocial" value="true" type="checkbox" class="mr-1" disabled></label>
+                                <label id="mes3Label" for="mes3DeudaSocial" class="checkbox"><input name="deudaSocial[mes3]"
+                                        id="mes3DeudaSocial" value="true" type="checkbox" class="mr-1" disabled></label>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label id="mes4Label" for="mes4DeudaSocial" class="checkbox"><input name="deudaSocial[mes4]"
+                                        id="mes4DeudaSocial" value="true" type="checkbox" class="mr-1" disabled></label>
+                                <label id="mes5Label" for="mes5DeudaSocial" class="checkbox"><input name="deudaSocial[mes5]"
+                                        id="mes5DeudaSocial" value="true" type="checkbox" class="mr-1" disabled></label>
+                                <label id="mes6Label" for="mes6DeudaSocial" class="checkbox"><input name="deudaSocial[mes6]"
+                                        id="mes6DeudaSocial" value="true" type="checkbox" class="mr-1" disabled></label>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label id="mes7Label" for="mes7DeudaSocial" class="checkbox"><input name="deudaSocial[mes7]"
+                                        id="mes7DeudaSocial" value="true" type="checkbox" class="mr-1" disabled></label>
+                                <label id="mes8Label" for="mes8DeudaSocial" class="checkbox"><input name="deudaSocial[mes8]"
+                                        id="mes8DeudaSocial" value="true" type="checkbox" class="mr-1" disabled></label>
+                                <label id="mes9Label" for="mes9DeudaSocial" class="checkbox"><input name="deudaSocial[mes9]"
+                                        id="mes9DeudaSocial" value="true" type="checkbox" class="mr-1" disabled></label>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label id="mes10Label" for="mes10DeudaSocial" class="checkbox"><input name="deudaSocial[mes10]"
+                                        id="mes10DeudaSocial" value="true" type="checkbox" class="mr-1" disabled></label>
+                                <label id="mes11Label" for="mes11DeudaSocial" class="checkbox"><input name="deudaSocial[mes11]"
+                                        id="mes11DeudaSocial" value="true" type="checkbox" class="mr-1" disabled></label>
+                                <label id="mes12Label" for="mes12DeudaSocial" class="checkbox"><input name="deudaSocial[mes12]"
+                                        id="mes12DeudaSocial" value="true" type="checkbox" class="mr-1" disabled></label>
+                            </div>
+                        </div>
+    
+    
+                        <input type="hidden" name="deudaSocial[empresaId]" value="<%= empresa.empresaId %>">
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cerrar"
+                            onclick="closeModal()">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
