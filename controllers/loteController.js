@@ -55,9 +55,9 @@ loteController.add = function (req, res) {
     Lote.findByPk(req.params.id).then(lote => {
       lote
       .update(reqLote)
-      .then(() => {
+      .then(async () => {
         if (req.body.tipoAlta == 'compra') {
-          Movimientos.deshacerCompra('Lote', req.params.id)
+          await Movimientos.deshacerCompra('Lote', req.params.id)
           reqMC.forEach(mc => {
             Movimientos.compra(lote.fechaCompra, mc.monto,'Lote', lote.loteId, mc.cuenta , mc.cuentaId, lote.empresaId) 
           });

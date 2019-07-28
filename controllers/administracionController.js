@@ -70,9 +70,9 @@ administracionController.saveEdit = function (req, res) {
   Administracion.findByPk(req.params.id).then(administracion => {
     administracion
       .update(req.body.administracion)
-      .then(() => {
+      .then(async () => {
         if (req.body.tipoAlta == 'compra') {
-          Movimientos.deshacerCompra('Administracion', req.params.id)
+          await Movimientos.deshacerCompra('Administracion', req.params.id)
           reqMC.forEach(mc => {
             Movimientos.compra(administracion.fechaCompra, mc.monto,'Administracion', administracion.administracionId, mc.cuenta , mc.cuentaId, administracion.empresaId) 
           });

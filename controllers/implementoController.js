@@ -69,9 +69,9 @@ implementoController.saveEdit = function (req, res) {
   Implemento.findByPk(req.params.id).then(implemento => {
     implemento
       .update(req.body.implemento)
-      .then(() => {
+      .then(async () => {
         if (req.body.tipoAlta == 'compra') {
-          Movimientos.deshacerCompra('Implemento', req.params.id)
+          await Movimientos.deshacerCompra('Implemento', req.params.id)
           reqMC.forEach(mc => {
             Movimientos.compra(implemento.fechaCompra, mc.monto,'Implemento', implemento.implementoId, mc.cuenta , mc.cuentaId, implemento.empresaId) 
           });

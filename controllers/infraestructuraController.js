@@ -70,9 +70,9 @@ infraestructuraController.saveEdit = function (req, res) {
   Infraestructura.findByPk(req.params.id).then(infraestructura => {
     infraestructura
       .update(req.body.infraestructura)
-      .then(() => {
+      .then(async () => {
         if (req.body.tipoAlta == 'compra') {
-          Movimientos.deshacerCompra('Infraestructura', req.params.id)
+          await Movimientos.deshacerCompra('Infraestructura', req.params.id)
           reqMC.forEach(mc => {
             Movimientos.compra(infraestructura.fechaCompra, mc.monto,'Infraestructura', infraestructura.infraestructuraId, mc.cuenta , mc.cuentaId, infraestructura.empresaId) 
           });

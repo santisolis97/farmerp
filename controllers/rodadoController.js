@@ -71,9 +71,9 @@ rodadoController.saveEdit = function (req, res) {
   Rodado.findByPk(req.params.id).then(rodado => {
     rodado
       .update(req.body.rodado)
-      .then(() => {
+      .then(async () => {
         if (req.body.tipoAlta == 'compra') {
-          Movimientos.deshacerCompra('Rodado', req.params.id)
+          await Movimientos.deshacerCompra('Rodado', req.params.id)
           reqMC.forEach(mc => {
             Movimientos.compra(rodado.fechaCompra, mc.monto,'Rodado', rodado.rodadoId, mc.cuenta , mc.cuentaId, rodado.empresaId) 
           });

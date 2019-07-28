@@ -69,9 +69,9 @@ autopropulsadoController.saveEdit = function (req, res) {
     Autopropulsado.findByPk(req.params.id).then(autopropulsado => {
         autopropulsado
             .update(req.body.autopropulsado)
-            .then(() => {
+            .then(async () => {
                 if (req.body.tipoAlta == 'compra') {
-                    Movimientos.deshacerCompra('Autopropulsado', req.params.id)
+                    await Movimientos.deshacerCompra('Autopropulsado', req.params.id)
                     reqMC.forEach(mc => {
                         Movimientos.compra(autopropulsado.fechaCompra, mc.monto, 'Autopropulsado', autopropulsado.autopropulsadoId, mc.cuenta, mc.cuentaId, autopropulsado.empresaId)
                     });

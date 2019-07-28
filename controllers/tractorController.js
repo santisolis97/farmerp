@@ -69,9 +69,9 @@ tractorController.saveEdit = function (req, res) {
   Tractor.findByPk(req.params.id).then(tractor => {
     tractor
       .update(req.body.tractor)
-      .then(() => {
+      .then(async () => {
         if (req.body.tipoAlta == 'compra') {
-          Movimientos.deshacerCompra('Tractor', req.params.id)
+          await Movimientos.deshacerCompra('Tractor', req.params.id)
           reqMC.forEach(mc => {
             Movimientos.compra(tractor.fechaCompra, mc.monto,'Tractor', tractor.tractorId, mc.cuenta , mc.cuentaId, tractor.empresaId) 
           });

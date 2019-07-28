@@ -70,8 +70,8 @@ creditoController.saveEdit = function (req, res) {
     Credito.findByPk(req.params.id).then(credito => {
         credito
             .update(reqCredito)
-            .then(() => {
-                Movimientos.deshacerVenta('Credito', req.params.id)
+            .then(async () => {
+                await Movimientos.deshacerVenta('Credito', req.params.id)
 
                 if (credito.cuenta == 'Caja') {
                     Caja.findOne({

@@ -2,9 +2,9 @@ const models = require("./../models");
 const MovimientoCompra = models.MovimientoCompra;
 const MovimientoVenta = models.MovimientoVenta;
 
-function compra(fecha, monto, concepto, conceptoId, cuenta, cuentaId, empresaId) {
+async function compra(fecha, monto, concepto, conceptoId, cuenta, cuentaId, empresaId) {
     if (monto > 0) {
-        MovimientoCompra.create({
+        await MovimientoCompra.create({
                 fecha,
                 monto,
                 concepto,
@@ -12,8 +12,8 @@ function compra(fecha, monto, concepto, conceptoId, cuenta, cuentaId, empresaId)
                 cuenta,
                 cuentaId,
                 empresaId
-            }).then(movimiento => {
-                return movimiento
+            }).then(async movimiento => {
+                return await movimiento
             })
             .catch(error => {
                 console.log(error)
@@ -21,9 +21,9 @@ function compra(fecha, monto, concepto, conceptoId, cuenta, cuentaId, empresaId)
     }
 }
 
-function venta(fecha, monto, concepto, conceptoId, cuenta, cuentaId, empresaId) {
+async function venta(fecha, monto, concepto, conceptoId, cuenta, cuentaId, empresaId) {
     if (monto > 0) {
-        MovimientoVenta.create({
+        await MovimientoVenta.create({
                 fecha,
                 monto,
                 concepto,
@@ -31,8 +31,8 @@ function venta(fecha, monto, concepto, conceptoId, cuenta, cuentaId, empresaId) 
                 cuenta,
                 cuentaId,
                 empresaId
-            }).then(movimiento => {
-                return movimiento
+            }).then(async movimiento => {
+                return await movimiento
             })
             .catch(error => {
                 console.log(error)
@@ -41,28 +41,28 @@ function venta(fecha, monto, concepto, conceptoId, cuenta, cuentaId, empresaId) 
 }
 
 
-function deshacerCompra(concepto, conceptoId) {
-    MovimientoCompra.destroy({
+async function deshacerCompra(concepto, conceptoId) {
+    await MovimientoCompra.destroy({
             where: {
                 concepto,
                 conceptoId
             }
-        }).then(movimiento => {
-            return movimiento
+        }).then(async movimiento => {
+            return await movimiento
         })
         .catch(error => {
             console.log(error)
         });
 }
 
-function deshacerVenta(concepto, conceptoId) {
-    MovimientoVenta.destroy({
+async function deshacerVenta(concepto, conceptoId) {
+    await MovimientoVenta.destroy({
             where: {
                 concepto,
                 conceptoId
             }
-        }).then(movimiento => {
-            return movimiento
+        }).then(async movimiento => {
+            return await movimiento
         })
         .catch(error => {
             console.log(error)
