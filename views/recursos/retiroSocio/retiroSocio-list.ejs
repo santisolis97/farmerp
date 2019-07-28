@@ -1,0 +1,191 @@
+<!doctype html>
+<html>
+
+<head>
+    <% include ../../partials/common-head %>
+</head>
+
+<body>
+
+    <!--Panel Izquierdo -->
+    <% include ../../partials/sidebar %>
+    <!-- /Panel izquierdo-->
+
+    <!-- Panel Derecho -->
+    <div id="right-panel" class="right-panel">
+
+        <!-- Cabecera-->
+        <% include ../../partials/cabecera %>
+        <!-- /Cabecera -->
+
+        <!-- Tabla del CRUD-->
+        <div class="content mt-3">
+
+            <!-- Mensaje -->
+            <% include ../../partials/mensaje %>
+            <!-- /Mensaje -->
+
+            <div class="col-sm-12">
+                <div class="animated fadeIn">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- Cuerpo -->
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex justify-content-start">
+                                            <strong class="card-title align-middle">Retiro de Socios</strong>
+                                            <div id="titulo" data-value="Retiro de Socios"></div>
+                                        </div>
+                                        <div id="tableButtons" class="d-none d-md-block">
+                                            <a id="agregar" href="#agregarModal" class="btn btn-primary"
+                                                data-toggle="modal">
+                                                <i class="fa fa-plus-circle"></i> Agregar
+                                            </a>
+                                        </div>
+                                        <div id="tableButtons" class="d-md-none">
+                                            <a id="agregar" href="#agregarModal" class="text-white" data-toggle="modal">
+                                                <i class="fa fa-plus-circle"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table id="tabla" class="table table-striped table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Concepto</th>
+                                                    <th>Monto ($)</th>
+                                                    <th>Plazo</th>
+                                                    <th>Ejercicio (%)</th>
+                                                    <th>Cant. Cuotas</th>
+                                                    <th class="not-export-col">Imp. Cuota ($)</th>
+                                                    <th class="d-none"><%= empresa.meses[0] %></th>
+                                                    <th class="d-none"><%= empresa.meses[1] %></th>
+                                                    <th class="d-none"><%= empresa.meses[2] %></th>
+
+                                                    <th class="d-none"><%= empresa.meses[3] %></th>
+                                                    <th class="d-none"><%= empresa.meses[4] %></th>
+                                                    <th class="d-none"><%= empresa.meses[5] %></th>
+                                                    <th class="d-none"><%= empresa.meses[6] %></th>
+                                                    <th class="d-none"><%= empresa.meses[7] %></th>
+                                                    <th class="d-none"><%= empresa.meses[8] %></th>
+                                                    <th class="d-none"><%= empresa.meses[9] %></th>
+                                                    <th class="d-none"><%= empresa.meses[10] %></th>
+                                                    <th class="d-none"><%= empresa.meses[11] %></th>
+
+                                                    <th class="not-export-col">Acciones</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <% retiroSocios.forEach(retiroSocio => { %>
+                                                <tr data="<%= JSON.stringify(retiroSocio) %>">
+                                                    <td>
+                                                        <%= retiroSocio.nombre %>
+                                                    </td>
+                                                    <td>
+                                                        <%= retiroSocio.monto %>
+                                                    </td>
+                                                    <td>
+                                                        <%= retiroSocio.plazo %>
+                                                    </td>
+                                                    <td>
+                                                        <%= retiroSocio.porcEjercicio %>
+                                                    </td>
+                                                    <td>
+                                                        <%= retiroSocio.cantCuotas %>
+                                                    </td>
+                                                    <td>
+                                                        <%= retiroSocio.dataValues.importeCuota %>
+                                                    </td>
+                                                    <td class="d-none">
+                                                        <%= retiroSocio.mes1 ? retiroSocio.dataValues.importeCuota : 0.00 %>
+                                                    </td>
+                                                    <td class="d-none">
+                                                        <%= retiroSocio.mes2 ? retiroSocio.dataValues.importeCuota : 0.00 %>
+                                                    </td>
+                                                    <td class="d-none">
+                                                        <%= retiroSocio.mes3 ? retiroSocio.dataValues.importeCuota : 0.00 %>
+                                                    </td>
+
+                                                    <td class="d-none">
+                                                        <%= retiroSocio.mes4 ? retiroSocio.dataValues.importeCuota : 0.00 %>
+                                                    </td>
+                                                    <td class="d-none">
+                                                        <%= retiroSocio.mes5 ? retiroSocio.dataValues.importeCuota : 0.00 %>
+                                                    </td>
+                                                    <td class="d-none">
+                                                        <%= retiroSocio.mes6 ? retiroSocio.dataValues.importeCuota : 0.00 %>
+                                                    </td>
+
+                                                    <td class="d-none">
+                                                        <%= retiroSocio.mes7 ? retiroSocio.dataValues.importeCuota : 0.00 %>
+                                                    </td>
+                                                    <td class="d-none">
+                                                        <%= retiroSocio.mes8 ? retiroSocio.dataValues.importeCuota : 0.00 %>
+                                                    </td>
+                                                    <td class="d-none">
+                                                        <%= retiroSocio.mes9 ? retiroSocio.dataValues.importeCuota : 0.00 %>
+                                                    </td>
+
+                                                    <td class="d-none">
+                                                        <%= retiroSocio.mes10 ? retiroSocio.dataValues.importeCuota : 0.00 %>
+                                                    </td>
+                                                    <td class="d-none">
+                                                        <%= retiroSocio.mes11 ? retiroSocio.dataValues.importeCuota : 0.00 %>
+                                                    </td>
+                                                    <td class="d-none">
+                                                        <%= retiroSocio.mes12 ? retiroSocio.dataValues.importeCuota : 0.00 %>
+                                                    </td>
+
+                                                    <td>
+                                                        <a id="ver" href="#verModal" class="view mr-2" title="Ver"
+                                                            data-toggle="modal">
+                                                            <i class="fa fa-eye fa-lg"></i>
+                                                        </a>
+
+                                                        <a id="editar" href="#editarModal" class="edit mr-2"
+                                                            data-toggle="modal">
+                                                            <i class="fa fa-edit fa-lg" title="Editar"></i>
+                                                        </a>
+
+                                                        <a id="eliminar" href="#eliminarModal" class="delete mr-2"
+                                                            data-toggle="modal">
+                                                            <i class="fa fa-trash fa-lg" title="Eliminar"></i>
+                                                        </a>
+
+                                                    </td>
+                                                </tr>
+                                                <% }) %>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Cuerpo -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Tabla del CRUD-->
+    </div>
+    <!-- /Panel Derecho -->
+
+    <!-- Formulario de los Popups  -->
+    <% include retiroSocio-add %>
+    <% include retiroSocio-edit %>
+    <% include retiroSocio-view %>
+    <% include retiroSocio-delete %>
+    <!-- /Formulario de los Popups  -->
+
+    <!-- Scripts -->
+    <% include ../../partials/common-scripts %>
+    <script type="text/javascript">
+        InitDataTable("#tabla");
+    </script>
+    <script src="/scripts/public-retiroSocios.js"></script>
+</body>
+
+</html>

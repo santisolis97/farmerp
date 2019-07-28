@@ -1,0 +1,122 @@
+<div id="editarModal" class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form class="container" id="form-validation" novalidate method="POST" onsubmit="return validateForm()" action="/retiroSocios/edit">
+                <div class="modal-header">
+                    <h4 class="modal-title">Editar Deuda Fiscal</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                        onclick="closeModal()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="nombreRetiroSocio" class='control-label'>Nombre</label>
+                            <input name="retiroSocio[nombre]" type="text" class="form-control" id="nombreRetiroSocio"
+                                placeholder="Nombre" value="" required>
+                            <div class="invalid-feedback">
+                                Este campo es requerido.
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="montoRetiroSocio" class='control-label'>Monto</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input name="retiroSocio[monto]" type="number" min="0" step="0.01" class="form-control"
+                                    id="montoRetiroSocio" placeholder="Monto" required>
+                                <div class="invalid-feedback">
+                                    Este campo es requerido y solo admite valores enteros.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label for="plazoRetiroSocio" class='control-label'>Plazo</label>
+                            <select class="form-control" name="retiroSocio[plazo]" id="plazoRetiroSocio" required>
+                                <option value="Corto" selected>Corto</option>
+                                <option value="Mediano">Mediano</option>
+                                <option value="Largo">Largo</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="ejercicioRetiroSocio" class='control-label'>Ejercicio</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">%</span>
+                                </div>
+                                <input name="retiroSocio[porcEjercicio]" type="number" min="0" step="0.01" max="100"
+                                    class="form-control" id="ejercicioRetiroSocio" placeholder="Ejercicio" required>
+                                <div class="invalid-feedback">
+                                    Este campo es requerido.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="cuotasRetiroSocio" class='control-label'>Cant. Coutas</label>
+
+                            <input name="retiroSocio[cantCuotas]" type="number" min="1" step="1" max="12"
+                                class="form-control" id="cuotasRetiroSocio" placeholder="Cuotas" required>
+                            <div class="invalid-feedback">
+                                Este campo es requerido.
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="cuentaRetiroSocio" class='control-label'>Debitar de Cuenta</label>
+                            <select class="form-control" name="retiroSocio[cuenta]" id="cuentaRetiroSocio" required>
+                                <option value="Banco" selected>Banco</option>
+                                <option value="Caja">Caja</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <label class="col-md-12">Distribución de Pagos</label>
+                        <div class="form-group col-md-3">
+                            <label id="mes1Label" for="mes1RetiroSocio-edit" class="checkbox"><input name="retiroSocio[mes1]"
+                                    id="mes1RetiroSocio-edit" value="true" type="checkbox" class="mr-1"></label>
+                            <label id="mes2Label" for="mes2RetiroSocio-edit" class="checkbox"><input name="retiroSocio[mes2]"
+                                    id="mes2RetiroSocio-edit" value="true" type="checkbox" class="mr-1"></label>
+                            <label id="mes3Label" for="mes3RetiroSocio-edit" class="checkbox"><input name="retiroSocio[mes3]"
+                                    id="mes3RetiroSocio-edit" value="true" type="checkbox" class="mr-1"></label>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label id="mes4Label" for="mes4RetiroSocio-edit" class="checkbox"><input name="retiroSocio[mes4]"
+                                    id="mes4RetiroSocio-edit" value="true" type="checkbox" class="mr-1"></label>
+                            <label id="mes5Label" for="mes5RetiroSocio-edit" class="checkbox"><input name="retiroSocio[mes5]"
+                                    id="mes5RetiroSocio-edit" value="true" type="checkbox" class="mr-1"></label>
+                            <label id="mes6Label" for="mes6RetiroSocio-edit" class="checkbox"><input name="retiroSocio[mes6]"
+                                    id="mes6RetiroSocio-edit" value="true" type="checkbox" class="mr-1"></label>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label id="mes7Label" for="mes7RetiroSocio-edit" class="checkbox"><input name="retiroSocio[mes7]"
+                                    id="mes7RetiroSocio-edit" value="true" type="checkbox" class="mr-1"></label>
+                            <label id="mes8Label" for="mes8RetiroSocio-edit" class="checkbox"><input name="retiroSocio[mes8]"
+                                    id="mes8RetiroSocio-edit" value="true" type="checkbox" class="mr-1"></label>
+                            <label id="mes9Label" for="mes9RetiroSocio-edit" class="checkbox"><input name="retiroSocio[mes9]"
+                                    id="mes9RetiroSocio-edit" value="true" type="checkbox" class="mr-1"></label>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label id="mes10Label" for="mes10RetiroSocio-edit" class="checkbox"><input name="retiroSocio[mes10]"
+                                    id="mes10RetiroSocio-edit" value="true" type="checkbox" class="mr-1"></label>
+                            <label id="mes11Label" for="mes11RetiroSocio-edit" class="checkbox"><input name="retiroSocio[mes11]"
+                                    id="mes11RetiroSocio-edit" value="true" type="checkbox" class="mr-1"></label>
+                            <label id="mes12Label" for="mes12RetiroSocio-edit" class="checkbox"><input name="retiroSocio[mes12]"
+                                    id="mes12RetiroSocio-edit" value="true" type="checkbox" class="mr-1"></label>
+                        </div>
+                    </div>
+
+
+                    <input type="hidden" name="retiroSocio[empresaId]" value="<%= empresa.empresaId %>">
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar"
+                        onclick="closeModal()">
+                    <input id="botonGuardar" type="submit" class="btn btn-info" value="Guardar">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
