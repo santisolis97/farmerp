@@ -1,0 +1,102 @@
+<div id="verModal" class="modal fade">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <form class="container" id="form-validation" novalidate method="POST" action="">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Ver Deuda</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                            onclick="closeModal()">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="nombreDeudaOtra" class='control-label'>Concepto</label>
+                                <input name="deudaOtra[nombre]" type="text" class="form-control" id="nombreDeudaOtra"
+                                    placeholder="Concepto" value="" readonly>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="montoDeudaOtra" class='control-label'>Monto</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">$</span>
+                                    </div>
+                                    <input name="deudaOtra[monto]" type="number" min="0" step="0.01" class="form-control"
+                                        id="montoDeudaOtra" placeholder="Monto" readonly>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="form-row">
+                            <div class="form-group col-md-3">
+                                <label for="plazoDeudaOtra" class='control-label'>Plazo</label>
+                                <input class="form-control" name="deudaOtra[plazo]" id="plazoDeudaOtra" readonly>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="ejercicioDeudaOtra" class='control-label'>Ejercicio</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">%</span>
+                                    </div>
+                                    <input name="deudaOtra[porcEjercicio]" type="number" min="0" step="0.01" max="100"
+                                        class="form-control" id="ejercicioDeudaOtra" placeholder="Ejercicio" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="cuotasDeudaOtra" class='control-label'>Cant. Coutas</label>
+    
+                                <input name="deudaOtra[cantCuotas]" type="number" min="1" step="1" max="12" class="form-control"
+                                    id="cuotasDeudaOtra" placeholder="Cuotas" readonly>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="cuentaDeudaOtra" class='control-label'>Debitar de Cuenta</label>
+                                <input class="form-control" name="deudaOtra[cuenta]" id="cuentaDeudaOtra" readonly>
+                            </div>
+                        </div>
+    
+                        <div class="form-row">
+                            <label class="col-md-12">Distribución de Pagos</label>
+                            <div class="form-group col-md-3">
+                                <label id="mes1Label" for="mes1DeudaOtra" class="checkbox"><input name="deudaOtra[mes1]"
+                                        id="mes1DeudaOtra" value="true" type="checkbox" class="mr-1" disabled></label>
+                                <label id="mes2Label" for="mes2DeudaOtra" class="checkbox"><input name="deudaOtra[mes2]"
+                                        id="mes2DeudaOtra" value="true" type="checkbox" class="mr-1" disabled></label>
+                                <label id="mes3Label" for="mes3DeudaOtra" class="checkbox"><input name="deudaOtra[mes3]"
+                                        id="mes3DeudaOtra" value="true" type="checkbox" class="mr-1" disabled></label>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label id="mes4Label" for="mes4DeudaOtra" class="checkbox"><input name="deudaOtra[mes4]"
+                                        id="mes4DeudaOtra" value="true" type="checkbox" class="mr-1" disabled></label>
+                                <label id="mes5Label" for="mes5DeudaOtra" class="checkbox"><input name="deudaOtra[mes5]"
+                                        id="mes5DeudaOtra" value="true" type="checkbox" class="mr-1" disabled></label>
+                                <label id="mes6Label" for="mes6DeudaOtra" class="checkbox"><input name="deudaOtra[mes6]"
+                                        id="mes6DeudaOtra" value="true" type="checkbox" class="mr-1" disabled></label>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label id="mes7Label" for="mes7DeudaOtra" class="checkbox"><input name="deudaOtra[mes7]"
+                                        id="mes7DeudaOtra" value="true" type="checkbox" class="mr-1" disabled></label>
+                                <label id="mes8Label" for="mes8DeudaOtra" class="checkbox"><input name="deudaOtra[mes8]"
+                                        id="mes8DeudaOtra" value="true" type="checkbox" class="mr-1" disabled></label>
+                                <label id="mes9Label" for="mes9DeudaOtra" class="checkbox"><input name="deudaOtra[mes9]"
+                                        id="mes9DeudaOtra" value="true" type="checkbox" class="mr-1" disabled></label>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label id="mes10Label" for="mes10DeudaOtra" class="checkbox"><input name="deudaOtra[mes10]"
+                                        id="mes10DeudaOtra" value="true" type="checkbox" class="mr-1" disabled></label>
+                                <label id="mes11Label" for="mes11DeudaOtra" class="checkbox"><input name="deudaOtra[mes11]"
+                                        id="mes11DeudaOtra" value="true" type="checkbox" class="mr-1" disabled></label>
+                                <label id="mes12Label" for="mes12DeudaOtra" class="checkbox"><input name="deudaOtra[mes12]"
+                                        id="mes12DeudaOtra" value="true" type="checkbox" class="mr-1" disabled></label>
+                            </div>
+                        </div>
+    
+    
+                        <input type="hidden" name="deudaOtra[empresaId]" value="<%= empresa.empresaId %>">
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cerrar"
+                            onclick="closeModal()">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
