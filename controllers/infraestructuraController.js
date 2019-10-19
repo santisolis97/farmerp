@@ -166,7 +166,7 @@ infraestructuraController.deshacerLiquidar = function (req, res) {
     fechaVenta: null
   }, {
     where: {
-      InfraestructuraId: req.params.id
+      infraestructuraId: req.params.id
     }
   }).then(async () => {
     await Movimientos.deshacerVenta('Infraestructura', req.params.id)
