@@ -148,7 +148,7 @@ function MC_updateSumaPagos() {
             total += parseFloat(monto.value)
         }
     })
-    MC_SumaPagos.innerHTML = '<b>Suma de los Pagos:</b> $ ' + total
+    MC_SumaPagos.innerHTML = '<b>Total a Pagar:</b> $ ' + total
     MC_TotalAbonado = total
 }
 

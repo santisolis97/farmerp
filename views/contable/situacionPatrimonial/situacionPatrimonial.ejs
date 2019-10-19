@@ -31,21 +31,7 @@
                         <div class="card-body m-3">
                             <div class="d-flex justify-content-between">
                                 <div class="d-flex justify-content-start">
-                                    <select class="form-control">
-                                        <option value="" selected>Situación Final</option>
-                                        <option value="">1/Junio/2020</option>
-                                        <option value="">1/Mayo/2020</option>
-                                        <option value="">1/Abril/2020</option>
-                                        <option value="">1/Marzo/2020</option>
-                                        <option value="">1/Febrero/2020</option>
-                                        <option value="">1/Enero/2020</option>
-                                        <option value="">1/Diciembre/2019</option>
-                                        <option value="">1/Noviembre/2019</option>
-                                        <option value="">1/Octubre/2019</option>
-                                        <option value="">1/Septiembre/2019</option>
-                                        <option value="">1/Agosto/2019</option>
-                                        <option value="">1/Julio/2019</option>
-                                    </select>
+                                    <input type="date" id="situacionPatrimonialFecha" class="form-control" min="<%= empresa.inicioEjercicio %>" max="<%= empresa.finEjercicio %>" onchange="updateESP(this.value)">
                                 </div>
                                 <div id="tableButtons" class="d-none d-md-block">
                                     <input type="button" class="btn btn-secondary"
@@ -70,19 +56,19 @@
                                     </div>
                                     <div class="form-row">
                                         <p class="col-md-10 mt-1"><b>Disponibilidades</b></p>
-                                        <p class="col-md-2 mt-1 text-right"><b>$ 500000</b></p>
+                                        <p class="col-md-2 mt-1 text-right"><b>$ <%= caja.saldo + banco.saldo + inversion.saldo %></b></p>
                                     </div>
                                     <div class="form-row">
                                         <p class="col-md-7" style="margin-top: -15px">Caja</p>
-                                        <p class="col-md-5 text-right" style="margin-top: -15px">$ 50000</p>
+                                        <p class="col-md-5 text-right" style="margin-top: -15px">$ <%= caja.saldo %></p>
                                     </div>
                                     <div class="form-row">
                                         <p class="col-md-7" style="margin-top: -15px">Banco</p>
-                                        <p class="col-md-5 text-right" style="margin-top: -15px">$ 300000</p>
+                                        <p class="col-md-5 text-right" style="margin-top: -15px">$ <%= banco.saldo %></p>
                                     </div>
                                     <div class="form-row">
                                         <p class="col-md-7" style="margin-top: -15px">Inversiones Transitorias</p>
-                                        <p class="col-md-5 text-right" style="margin-top: -15px">$ 150000</p>
+                                        <p class="col-md-5 text-right" style="margin-top: -15px">$ <%= inversion.saldo %></p>
                                     </div>
 
                                     <div class="form-row">
@@ -188,5 +174,16 @@
     <% include ../../partials/common-scripts %>
 
 </body>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+    let url = document.URL.split('/')
+    document.querySelector("#situacionPatrimonialFecha").value = url[url.length -1]
+})  
+
+function updateESP(fecha){
+    window.location.replace('/contable/situacionPatrimonial/'+fecha)
+}
+</script>
 
 </html>

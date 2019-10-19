@@ -10,6 +10,9 @@ module.exports = (sequelize, DataTypes) => {
         categoria: {
             type: DataTypes.STRING,
         },
+        cantidad: {
+            type: DataTypes.INTEGER
+        },
         kilogramoCabeza: {
             type: DataTypes.FLOAT(10, 2)
         },
