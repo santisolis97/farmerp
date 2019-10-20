@@ -9,18 +9,32 @@ module.exports = (sequelize, DataTypes) => {
         },
         nombre: {
             type: DataTypes.STRING,
+        },
+        tipoHaciendaId: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        empresaId: {
+            type: DataTypes.INTEGER,
+            allowNull: false
         }
-
     }, {
         timestamps: false,
     }, );
 
     CategoriaHacienda.associate = function (models) {
+        models.CategoriaHacienda.belongsTo(models.Empresa, {
+            foreignKey: 'empresaId', 
+        });
+        models.Empresa.hasMany(models.CategoriaHacienda, {
+            foreignKey: 'empresaId',
+        });
+
         models.CategoriaHacienda.belongsTo(models.TipoHacienda, {
             foreignKey: 'tipoHaciendaId',
         });
         models.TipoHacienda.hasMany(models.CategoriaHacienda, {
-            foreignKey: 'empresaId',
+            foreignKey: 'tipoHaciendaId',
         });
     };
 

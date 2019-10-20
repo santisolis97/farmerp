@@ -57,7 +57,11 @@ tipoHaciendaController.delete = function (req, res) {
         })
         .catch(err => {
             console.log(err)
-            req.flash("error_msg", "Error al dar de baja un Tipo de Hacienda");
+            if(err.parent.errno == 1451){
+                req.flash("error_msg", "Error al dar de baja un Tipo de Hacienda, el registro se encuentra referenciado");
+            } else {
+                req.flash("error_msg", "Error al dar de baja un Tipo de Hacienda");
+            }
             res.redirect("/tiposHacienda");
         });
 };

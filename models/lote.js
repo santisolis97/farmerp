@@ -21,7 +21,12 @@ module.exports = (sequelize, DataTypes) => {
         },
         fechaVenta: {
             type: DataTypes.DATEONLY
+        },
+        empresaId: {
+            type: DataTypes.INTEGER,
+            allowNull: false
         }
+        
     }, {
         timestamps: false,
     }, );

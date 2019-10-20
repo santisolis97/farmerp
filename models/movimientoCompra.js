@@ -25,6 +25,11 @@ module.exports = (sequelize, DataTypes) => {
         cuentaId: {
             type: DataTypes.INTEGER,
         },
+        empresaId: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        }
+        
     }, {
         timestamps: false,
     }, );

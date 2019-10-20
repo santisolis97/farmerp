@@ -14,6 +14,10 @@ module.exports = (sequelize, DataTypes) => {
         finEjercicio: {
             type: DataTypes.DATEONLY,
         },
+        userId: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        }
 
     }, {
         timestamps: false,

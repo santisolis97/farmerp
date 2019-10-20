@@ -9,7 +9,12 @@ module.exports = (sequelize, DataTypes) => {
         },
         montoInicial: {
             type: DataTypes.FLOAT(15, 2)
+        },
+        empresaId: {
+            type: DataTypes.INTEGER,
+            allowNull: false
         }
+        
     }, {
         timestamps: false,
     }, );

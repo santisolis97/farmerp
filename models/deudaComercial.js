@@ -61,6 +61,10 @@ module.exports = (sequelize, DataTypes) => {
         mes12: {
             type: DataTypes.BOOLEAN
         },
+        empresaId: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        }
 
     }, {
         timestamps: false,
