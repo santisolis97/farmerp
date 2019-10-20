@@ -112,6 +112,8 @@ function MostrarCompra() {
     var fechaCompraLote = vista.querySelector("#fechaCompraLote")
     fechaCompra.classList.remove('d-none')
     fechaCompraLote.required = true
+    fechaCompraLote.valueAsDate = empresaInicioEjercicio
+    MC_updateFechaDeCompra(empresaInicioEjercicio)
     mostrarMediosPago()
 }
 

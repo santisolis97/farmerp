@@ -63,8 +63,8 @@ disponibilidadController.show = function (req, res) {
                             }
                         });
 
-                        caja.montoFinal = cajaMontoFinal
-                        banco.montoFinal = bancoMontoFinal
+                        caja.montoFinal = cajaMontoFinal.toFixed(2)
+                        banco.montoFinal = bancoMontoFinal.toFixed(2)
                         res.render("recursos/disponibilidades/disponibilidades", {
                             caja,
                             banco,
