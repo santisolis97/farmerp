@@ -1,14 +1,19 @@
 'use strict';
 
 module.exports = (sequelize, DataTypes) => {
-    var HaciendaBovina = sequelize.define('HaciendaBovina', {
+    var Hacienda = sequelize.define('Hacienda', {
         haciendaId: {
             autoIncrement: true,
             primaryKey: true,
             type: DataTypes.INTEGER
         },
-        categoria: {
-            type: DataTypes.STRING,
+        tipoHaciendaId: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        categoriaHaciendaId: {
+            type: DataTypes.INTEGER,
+            allowNull: false
         },
         cantidad: {
             type: DataTypes.INTEGER
@@ -40,14 +45,28 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: false,
     }, );
 
-    HaciendaBovina.associate = function (models) {
-        models.HaciendaBovina.belongsTo(models.Empresa, {
+    Hacienda.associate = function (models) {
+        models.Hacienda.belongsTo(models.Empresa, {
             foreignKey: 'empresaId',
         });
-        models.Empresa.hasMany(models.HaciendaBovina, {
+        models.Empresa.hasMany(models.Hacienda, {
             foreignKey: 'empresaId',
+        });
+
+        models.Hacienda.belongsTo(models.CategoriaHacienda, {
+            foreignKey: 'categoriaHaciendaId',
+        });
+        models.CategoriaHacienda.hasMany(models.Hacienda, {
+            foreignKey: 'categoriaHaciendaId',
+        });
+
+        models.Hacienda.belongsTo(models.TipoHacienda, {
+            foreignKey: 'tipoHaciendaId',
+        });
+        models.TipoHacienda.hasMany(models.Hacienda, {
+            foreignKey: 'tipoHaciendaId',
         });
     };
 
-    return HaciendaBovina;
+    return Hacienda;
 };

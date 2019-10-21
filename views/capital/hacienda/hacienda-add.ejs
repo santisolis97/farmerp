@@ -2,9 +2,9 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <form class="container" id="form-validation" novalidate onsubmit="return validateForm()" method="POST"
-                action="/haciendaBovinas/add">
+                action="/haciendas/add">
                 <div class="modal-header">
-                    <h4 class="modal-title">Agregar Hacienda Bovina</h4>
+                    <h4 class="modal-title">Agregar Lote de Hacienda</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                         onclick="closeModal()">&times;</button>
                 </div>
@@ -26,32 +26,27 @@
                     </div>
 
                     <div class="form-row">
-                        <div class="form-group col-md-3">
-                            <label for="categoriaHaciendaBovina" class='control-label'>Categoría</label>
-                            <select name="haciendaBovina[categoria]" type="text" class="form-control"
-                                id="categoriaHaciendaBovina">
-                                <option value="Vacas" selected>Vacas</option>
-                                <option value="Vaquillas 1-2">Vaquillas 1-2</option>
-                                <option value="Vaquillas 2-3">Vaquillas 2-3</option>
-                                <option value="Vaquillas 1° Servicio">Vaquillas 1° Servicio</option>
-                                <option value="Toros">Toros</option>
-                                <option value="Toritos 1-2">Toritos 1-2</option>
-                                <option value="Toritos 2-3">Toritos 2-3</option>
-                                <option value="Toritos 1° Servicio">Toritos 1° Servicio</option>
-                                <option value="Vacas CUT">Vacas CUT</option>
-                                <option value="Novillos 1-2">Novillos 1-2</option>
-                                <option value="Novillos 2-3">Novillos 2-3</option>
-                                <option value="Novillos +3">Novillos +3</option>
-                                <option value="Vacas Refugo">Vacas Refugo</option>
-                                <option value="Vacas Refugo">Toros Refugo</option>
+                        <div class="form-group col-md-6">
+                            <label for="tipoHacienda" class='control-label'>Tipo de Hacienda</label>
+                            <select name="hacienda[tipoHaciendaId]" type="text" class="form-control" id="tipoHacienda" onchange="updateCategoriasList(this.value)" required>
+                                <% tiposHacienda.forEach(tipo => { %>
+                                <option value="<%= tipo.tipoHaciendaId %>"><%= tipo.nombre %></option>
+                                <% }) %>
                             </select>
                         </div>
+                        <div class="form-group col-md-6">
+                            <label for="categoriaHacienda" class='control-label'>Categoría</label>
+                            <select name="hacienda[categoriaHaciendaId]" type="text" class="form-control" id="categoriaHacienda" required>
+                            </select>
+                        </div>
+                    </div>
 
-                        <div class="form-group col-md-3">
-                            <label for="cantidadHaciedaBovina" class='control-label'>Cant. Cabezas</label>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="cantidadHacienda" class='control-label'>Cant. Cabezas</label>
                             <div class="input-group">
-                                <input name="haciendaBovina[cantidad]" type="number" min="0" step="1" class="form-control"
-                                    id="cantidadHaciedaBovina" placeholder="Cant. Cabezas" required
+                                <input name="hacienda[cantidad]" type="number" min="0" step="1" class="form-control"
+                                    id="cantidadHacienda" placeholder="Cant. Cabezas" required
                                     onkeyup="actualizarValorTotal()">
                                 <div class="invalid-feedback">
                                     Este campo es requerido.
@@ -59,14 +54,14 @@
                             </div>
                         </div>
 
-                        <div class="form-group col-md-3">
-                            <label for="kilogramoCabezaHaciedaBovina" class='control-label'>Kg/Cabeza</label>
+                        <div class="form-group col-md-4">
+                            <label for="kilogramoCabezaHacienda" class='control-label'>Kg/Cabeza</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Kg</span>
                                 </div>
-                                <input name="haciendaBovina[kilogramoCabeza]" type="number" min="0" step="0.01" class="form-control"
-                                    id="kilogramoCabezaHaciedaBovina" placeholder="Kg/Cabeza" required
+                                <input name="hacienda[kilogramoCabeza]" type="number" min="0" step="0.01"
+                                    class="form-control" id="kilogramoCabezaHacienda" placeholder="Kg/Cabeza" required
                                     onkeyup="actualizarValorTotal()">
                                 <div class="invalid-feedback">
                                     Este campo es requerido.
@@ -74,14 +69,14 @@
                             </div>
                         </div>
 
-                        <div class="form-group col-md-3">
-                            <label for="valorKilogramoHaciendaBovina" class='control-label'>Valor Kilogramo</label>
+                        <div class="form-group col-md-4">
+                            <label for="valorKilogramoHacienda" class='control-label'>Valor Kilogramo</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">$</span>
                                 </div>
-                                <input name="haciendaBovina[valorKilogramo]" type="number" min="0" step="0.01" class="form-control"
-                                    id="valorKilogramoHaciendaBovina" placeholder="$/Kilogramo" required
+                                <input name="hacienda[valorKilogramo]" type="number" min="0" step="0.01"
+                                    class="form-control" id="valorKilogramoHacienda" placeholder="$/Kilogramo" required
                                     onkeyup="actualizarValorTotal()">
                                 <div class="invalid-feedback">
                                     Este campo es requerido.
@@ -92,35 +87,35 @@
 
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                            <label for="tipoBienHaciendaBovina" class='control-label'>Tipo de Bien</label>
-                            <select name="haciendaBovina[tipoBien]" type="text" class="form-control"
-                                id="tipoBienHaciendaBovina" onchange="actualizarTipoBien(this.value)">
+                            <label for="tipoBienHacienda" class='control-label'>Tipo de Bien</label>
+                            <select name="hacienda[tipoBien]" type="text" class="form-control" id="tipoBienHacienda"
+                                onchange="actualizarTipoBien(this.value)">
                                 <option value="Bien de Uso" selected>Bien de Uso</option>
                                 <option value="Bien de Cambio">Bien de Cambio</option>
                             </select>
                         </div>
 
                         <div id="vidaUtil" class="form-group col-md-4">
-                            <label for="vidaUtilHaciendaBovina" class='control-label'>Vida Útil</label>
-                            <input name="haciendaBovina[vidaUtil]" type="number" min="0" step="1" class="form-control"
-                                id="vidaUtilHaciendaBovina" placeholder="Años">
+                            <label for="vidaUtilHacienda" class='control-label'>Vida Útil</label>
+                            <input name="hacienda[vidaUtil]" type="number" min="0" step="1" class="form-control"
+                                id="vidaUtilHacienda" placeholder="Años">
                             <div class="invalid-feedback">
                                 Este campo es requerido.
                             </div>
                         </div>
 
                         <div id="fechaCompra" class="form-group col-md-4">
-                            <label for="fechaCompraHaciendaBovina" class='control-label'>Fecha de Alta</label>
-                            <input name="haciendaBovina[fechaCompra]" type="date" class="form-control" id="fechaCompraHaciendaBovina"
-                                placeholder="" max="<%= empresa.inicioEjercicio %>"
-                                onchange="MC_updateFechaDeCompra(this.value)">
+                            <label for="fechaCompraHacienda" class='control-label'>Fecha de Alta</label>
+                            <input name="hacienda[fechaCompra]" type="date" class="form-control"
+                                id="fechaCompraHacienda" placeholder="" max="<%= empresa.inicioEjercicio %>"
+                                onchange="MC_updateFechaDeCompra(this.value)" required>
                             <div class="invalid-feedback">
                                 Este campo es requerido.
                             </div>
                         </div>
                     </div>
 
-                    <input type="hidden" name="haciendaBovina[empresaId]" value="<%= empresa.empresaId %>">
+                    <input type="hidden" name="hacienda[empresaId]" value="<%= empresa.empresaId %>">
 
                     <!-- COMPRA -->
                     <% include ../../partials/movimientosCompra %>

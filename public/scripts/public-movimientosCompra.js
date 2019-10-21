@@ -148,13 +148,13 @@ function MC_updateSumaPagos() {
             total += parseFloat(monto.value)
         }
     })
-    MC_SumaPagos.innerHTML = '<b>Total a Pagar:</b> $ ' + total
+    MC_SumaPagos.innerHTML = '<b>Suma de los Pagos:</b> $ ' + total
     MC_TotalAbonado = total
 }
 
 function updateTotalAPagar(importe) {
     var MC_TotalAPagar = vista.querySelector("#MC_TotalAPagar")
-    MC_TotalAPagar.innerHTML = '<b>Suma de los Pagos:</b> $ ' + importe
+    MC_TotalAPagar.innerHTML = '<b>Total a Pagar:</b> $ ' + importe
     MC_TotalCompra = importe
 }
 

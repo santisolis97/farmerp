@@ -34,8 +34,8 @@
 								<div class="card-header">
 									<div class="d-flex justify-content-between">
 										<div class="d-flex justify-content-start">
-											<strong class="card-title align-middle">Hacienda Bovina</strong>
-											<div id="titulo" data-value="Tabla de Hacienda Bovina"></div>
+											<strong class="card-title align-middle">Hacienda</strong>
+											<div id="titulo" data-value="Tabla de Hacienda"></div>
 										</div>
 										<div id="tableButtons" class="d-none d-md-block">
 											<a id="agregar" href="#agregarModal" class="btn btn-primary"
@@ -55,7 +55,8 @@
 										<table id="tabla" class="table table-striped table-bordered">
 											<thead>
 												<tr>
-													<th>Concepto</th>
+													<th>Tipo</th>
+													<th>Categoría</th>
 													<th>Cant. Cab.</th>
 													<th class="d-none">Kg/Cabeza</th>
 													<th class="d-none">$/Kg</th>
@@ -74,10 +75,13 @@
 												</tr>
 											</thead>
 											<tbody>
-												<% haciendaBovinas.forEach(hacienda => { %>
+												<% haciendas.forEach(hacienda => { %>
 												<tr data="<%= JSON.stringify(hacienda) %>">
 													<td>
-														<%= hacienda.categoria %>
+														<%= hacienda.TipoHacienda.nombre %>
+													</td>
+													<td>
+														<%= hacienda.CategoriaHacienda.nombre %>
 													</td>
 													<td>
 														<%= hacienda.cantidad %>
@@ -165,11 +169,12 @@
 	<!-- /Panel Derecho -->
 
 	<!-- Formulario de los Popups  -->
-	<% include haciendaBovina-add %>
-	<% include haciendaBovina-delete %>
-	<% include haciendaBovina-liquidar %>
-	<% include haciendaBovina-deshacerLiquidar %>
-	<% include haciendaBovina-view %>
+	<% include hacienda-add %>
+	<% include hacienda-delete %>
+	<% include hacienda-liquidar %>
+	<% include hacienda-deshacerLiquidar %>
+	<% include hacienda-view %>
+	<% include hacienda-edit %>
 	<!-- /Formulario de los Popups  -->
 
 	<!-- Scripts -->
@@ -177,7 +182,7 @@
 	<script type="text/javascript">
 		InitDataTable("#tabla");
 	</script>
-	<script src="/scripts/public-haciendaBovinas.js"></script>
+	<script src="/scripts/public-haciendas.js"></script>
 </body>
 
 </html>

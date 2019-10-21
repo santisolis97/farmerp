@@ -1,9 +1,9 @@
 <div id="liquidarModal" class="modal fade">
         <div class="modal-dialog modal-md">
             <div class="modal-content">
-                <form class="container" id="form-validation" novalidate method="POST" action="/haciendaBovinas/liquidar">
+                <form class="container" id="form-validation" novalidate method="POST" action="/haciendas/liquidar">
                     <div class="modal-header">
-                        <h4 class="modal-title">Liquidar Lote de Hacienda Bovina</h4>
+                        <h4 class="modal-title">Liquidar Lote de Hacienda</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="closeModal()">&times;</button>
                     </div>
                     <div class="modal-body">
@@ -22,8 +22,8 @@
     
                         <div class="form-row">
                             <div class="form-group col-md-12">
-                                <label for="fechaVentaHaciedaBovina" class='control-label'>Fecha de Venta</label>
-                                <input name="haciendaBovina[fechaVenta]" type="date" class="form-control" id="fechaVentaHaciedaBovina"
+                                <label for="fechaVentaHacieda" class='control-label'>Fecha de Venta</label>
+                                <input name="hacienda[fechaVenta]" type="date" class="form-control" id="fechaVentaHacieda"
                                     placeholder="" value="<%= empresa.finEjercicio %>" min="<%= empresa.inicioEjercicio %>"  max="<%= empresa.finEjercicio %>" required>
                                 <div class="invalid-feedback">
                                     Este campo es requerido.
@@ -47,7 +47,7 @@
                             </div>
                         </div>
     
-                        <input type="hidden" name="haciendaBovina[empresaId]" value="<%= empresa.empresaId %>">
+                        <input type="hidden" name="hacienda[empresaId]" value="<%= empresa.empresaId %>">
                     </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar" onclick="closeModal()">

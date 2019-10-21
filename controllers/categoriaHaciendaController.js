@@ -74,4 +74,16 @@ categoriaHaciendaController.delete = function (req, res) {
         });
 };
 
+categoriaHaciendaController.getByTipo = function (req, res) {
+    CategoriaHacienda.findAll({
+        where: {
+            tipoHaciendaId: req.params.tipoHaciendaId
+        }
+    }).then(categorias => {
+        res.send({
+            categorias
+        })
+    })
+};
+
 module.exports = categoriaHaciendaController;

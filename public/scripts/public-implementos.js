@@ -47,6 +47,9 @@ implementos.forEach(function (row) {
             axios.get('/apiMovimientos/getCompras/' + implemento.empresaId + '/Implemento/' + implemento.implementoId).then(res => {
                 var movimientos = res.data.movimientos
                 if (movimientos.length > 0) {
+                    var radioCompra = vista.querySelector("#radioCompra");
+                    var radioCapital = vista.querySelector("#radioCapital");
+                    
                     radioCapital.checked = false
                     radioCompra.checked = true
 

@@ -3,139 +3,147 @@
         <div class="modal-content">
             <form class="container" id="form-validation" novalidate method="POST" action="">
                 <div class="modal-header">
-                    <h4 class="modal-title">Ver Lote de Hacienda Bovina</h4>
+                    <h4 class="modal-title">Ver Lote de Hacienda</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="closeModal()">&times;</button>
                 </div>
                 <div class="modal-body">
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="categoriaHaciendaBovina" class='control-label'>Categoría</label>
-                            <input name="haciendaBovina[categoria]" type="text" class="form-control" id="categoriaHaciendaBovina"
+                            <label for="tipoHacienda" class='control-label'>Tipo de Hacienda</label>
+                            <input name="hacienda[tipoHaciendaId]" type="text" class="form-control" id="tipoHacienda"
                                 placeholder="Categoría" readonly>
                         </div>
-                        <div class="form-group col-md-3">
-                            <label for="fechaCompraHaciendaBovina" class='control-label'>Fecha de Compra</label>
-                            <input name="haciendaBovina[fechaCompra]" type="date" class="form-control"
-                                id="fechaCompraHaciendaBovina" placeholder="Fecha" readonly>
+                        <div class="form-group col-md-6">
+                            <label for="categoriaHacienda" class='control-label'>Categoría</label>
+                            <input name="hacienda[categoriaHaciendaId]" type="text" class="form-control" id="categoriaHacienda"
+                                placeholder="Categoría" readonly>
                         </div>
-                        <div class="form-group col-md-3">
-                            <label for="fechaVentaHaciendaBovina" class='control-label'>Fecha de Venta</label>
+
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="fechaCompraHacienda" class='control-label'>Fecha de Compra</label>
+                            <input name="hacienda[fechaCompra]" type="date" class="form-control"
+                                id="fechaCompraHacienda" placeholder="Fecha" readonly>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="fechaVentaHacienda" class='control-label'>Fecha de Venta</label>
                             <input name="" type="date" class="form-control"
-                                id="fechaVentaHaciendaBovina" value="" readonly>
+                                id="fechaVentaHacienda" value="" readonly>
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-3">
-                            <label for="cantidadHaciendaBovina" class='control-label'>Cantidad</label>
-                            <input name="haciendaBovina[cantidad]" type="number" min="0" class="form-control"
-                                id="cantidadHaciendaBovina" placeholder="Cantidad" readonly>
+                            <label for="cantidadHacienda" class='control-label'>Cantidad</label>
+                            <input name="hacienda[cantidad]" type="number" min="0" class="form-control"
+                                id="cantidadHacienda" placeholder="Cantidad" readonly>
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="kilogramoCabezaHaciendaBovina" class='control-label'>Kg/Cabeza</label>
+                            <label for="kilogramoCabezaHacienda" class='control-label'>Kg/Cabeza</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Kg</span>
                                 </div>
                                 <input name="" type="number" min="0" step="0.01"
-                                    class="form-control" id="kilogramoCabezaHaciendaBovina" placeholder="Kg/Cab." readonly>
+                                    class="form-control" id="kilogramoCabezaHacienda" placeholder="Kg/Cab." readonly>
                             </div>
                         </div>
                         
                         <div class="form-group col-md-3">
-                            <label for="valorKilogramoHaciendaBovina" class='control-label'>Valor Kilogramo</label>
+                            <label for="valorKilogramoHacienda" class='control-label'>Valor Kilogramo</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">$</span>
                                 </div>
                                 <input name="" type="number" min="0" step="0.01"
-                                    class="form-control" id="valorKilogramoHaciendaBovina" placeholder="$/Kg" readonly>
+                                    class="form-control" id="valorKilogramoHacienda" placeholder="$/Kg" readonly>
                             </div>
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="valorMercadoHaciendaBovina" class='control-label'>Valor de Mercado</label>
+                            <label for="valorMercadoHacienda" class='control-label'>Valor de Mercado</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">$</span>
                                 </div>
                                 <input name="" type="number" min="0" step="0.01"
-                                    class="form-control" id="valorMercadoHaciendaBovina" placeholder="$/Unidad" readonly>
+                                    class="form-control" id="valorMercadoHacienda" placeholder="$/Unidad" readonly>
                             </div>
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="tipoBienHaciendaBovina" class='control-label'>Tipo de Bien</label>
-                            <input name="haciendaBovina[tipoBien]" type="text" class="form-control input-small"
-                                id="tipoBienHaciendaBovina" placeholder="" readonly>
+                            <label for="tipoBienHacienda" class='control-label'>Tipo de Bien</label>
+                            <input name="hacienda[tipoBien]" type="text" class="form-control input-small"
+                                id="tipoBienHacienda" placeholder="" readonly>
                         </div>
 
                         <div class="form-group col-md-3">
-                            <label for="vidaUtilHaciendaBovina" class='control-label'>Vida Útil</label>
-                            <input name="haciendaBovina[vidaUtil]" type="number" min="0" step="1" class="form-control"
-                                id="vidaUtilHaciendaBovina" placeholder="Años" readonly>
+                            <label for="vidaUtilHacienda" class='control-label'>Vida Útil</label>
+                            <input name="hacienda[vidaUtil]" type="number" min="0" step="1" class="form-control"
+                                id="vidaUtilHacienda" placeholder="Años" readonly>
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="antiguedadHaciendaBovina" class='control-label'>Antigüedad</label>
+                            <label for="antiguedadHacienda" class='control-label'>Antigüedad</label>
                             <input name="" type="number" min="0" step="1" class="form-control"
-                                id="antiguedadHaciendaBovina" placeholder="Años" readonly>
+                                id="antiguedadHacienda" placeholder="Años" readonly>
                         </div>
                         
                     </div>
                     
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="amortizacionHaciendaBovina" class='control-label'>Amortización</label>
+                            <label for="amortizacionHacienda" class='control-label'>Amortización</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">$</span>
                                 </div>
                                 <input name="" type="number" min="0" max="100" step="0.01"
-                                    class="form-control" id="amortizacionHaciendaBovina" value="0" readonly>
+                                    class="form-control" id="amortizacionHacienda" value="0" readonly>
                             </div>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="amortizacionAcumuladaHaciendaBovina" class='control-label'>Amortización Acumulada</label>
+                            <label for="amortizacionAcumuladaHacienda" class='control-label'>Amortización Acumulada</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">$</span>
                                 </div>
                                 <input name="" type="number" min="0" max="100" step="0.01"
-                                    class="form-control" id="amortizacionAcumuladaHaciendaBovina" value="0" readonly>
+                                    class="form-control" id="amortizacionAcumuladaHacienda" value="0" readonly>
                             </div>
                         </div>
                     </div>
 
                     <!-- <div class="form-row">
                         <div class="form-group col-md-3">
-                            <label for="valorResidualHaciendaBovina" class='control-label'>Porc. Valor Residual</label>
+                            <label for="valorResidualHacienda" class='control-label'>Porc. Valor Residual</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">%</span>
                                 </div>
                                 <input name="" type="number" min="0" max="100" step="0.01"
-                                    class="form-control" id="valorResidualHaciendaBovina" value="0" readonly>
+                                    class="form-control" id="valorResidualHacienda" value="0" readonly>
                             </div>
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="valorResidualMontoHaciendaBovina" class='control-label'>Monto Valor Residual</label>
+                            <label for="valorResidualMontoHacienda" class='control-label'>Monto Valor Residual</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">$</span>
                                 </div>
                                 <input name="" type="number" min="0" max="100" step="0.01"
-                                    class="form-control" id="valorResidualMontoHaciendaBovina" value="0" readonly>
+                                    class="form-control" id="valorResidualMontoHacienda" value="0" readonly>
                             </div>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="valorANuevoHaciendaBovina" class='control-label'>Valor A Nuevo</label>
+                            <label for="valorANuevoHacienda" class='control-label'>Valor A Nuevo</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">$</span>
                                 </div>
                                 <input name="" type="number" min="0" max="100" step="0.01"
-                                    class="form-control" id="valorANuevoHaciendaBovina" value="0" readonly>
+                                    class="form-control" id="valorANuevoHacienda" value="0" readonly>
                             </div>
                         </div>
                     </div> -->
