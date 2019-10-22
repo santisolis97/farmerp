@@ -35,12 +35,12 @@ table.table td a.imprimir {
 }
 
 .card .card-header {
-    background-color: #66BB6A;
+    background-color: #367b19;
     color: white;
 }
 
 .card .card-header .btn {
-    color: #566787;
+    color: #3f3f3f;
     float: right;
     font-size: 13px;
     background: #fff;
@@ -56,4 +56,8 @@ table.table td a.imprimir {
     float: left;
     font-size: 21px;
     margin-right: 5px;
+}
+
+.card {
+    box-shadow: 0 0 5px rgb(182, 182, 182);
 }

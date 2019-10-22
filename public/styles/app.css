@@ -58,6 +58,7 @@ aside.left-panel,
 #right-panel {
     /* height: 650px; */
     max-width: 100%;
+    background: #edf7e4;
 }
 
 .modal-xl {

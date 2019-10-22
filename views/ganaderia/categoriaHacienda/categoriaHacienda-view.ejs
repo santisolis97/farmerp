@@ -3,16 +3,21 @@
         <div class="modal-content">
             <form class="container" id="form-validation" novalidate method="POST" action="">
                 <div class="modal-header">
-                    <h4 class="modal-title">Ver Tipo de Hacienda</h4>
+                    <h4 class="modal-title">Ver Categoría de Hacienda</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                         onclick="closeModal()">&times;</button>
                 </div>
                 <div class="modal-body">
                     <div class="form-row">
                         <div class="form-group col-md-12">
-                            <label for="nombreTipoHacienda" class='control-label'>Nombre</label>
-                            <input name="tipoHacienda[nombre]" type="text" class="form-control" id="nombreTipoHacienda"
-                                placeholder="Nombre" value="" readonly>
+                            <label for="tipoHaciendaNombre" class='control-label'>Tipo de Hacienda</label>
+                            <input type="text" class="form-control"
+                                id="tipoHaciendaNombre" placeholder="Nombre" value="" readonly>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="nombreCategoriaHacienda" class='control-label'>Categoría</label>
+                            <input name="categoriaHacienda[nombre]" type="text" class="form-control"
+                                id="nombreCategoriaHacienda" placeholder="Nombre" value="" readonly>
                         </div>
                     </div>
                 </div>

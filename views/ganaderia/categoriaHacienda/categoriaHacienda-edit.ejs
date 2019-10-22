@@ -1,19 +1,32 @@
 <div id="editarModal" class="modal fade">
     <div class="modal-dialog modal-md">
         <div class="modal-content">
-            <form class="container" id="form-validation" novalidate method="POST"
-                action="">
+            <form class="container" id="form-validation" novalidate method="POST" action="">
                 <div class="modal-header">
-                    <h4 class="modal-title">Editar Tipo de Hacienda</h4>
+                    <h4 class="modal-title">Editar Categoría de Hacienda</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                         onclick="closeModal()">&times;</button>
                 </div>
                 <div class="modal-body">
                     <div class="form-row">
                         <div class="form-group col-md-12">
-                            <label for="nombreTipoHacienda" class='control-label'>Nombre</label>
-                            <input name="tipoHacienda[nombre]" type="text" class="form-control" id="nombreTipoHacienda"
-                                placeholder="Nombre" value="" required>
+                            <label for="tipoCategoriaHacienda" class='control-label'>Tipo de Hacienda</label>
+                            <select name="categoriaHacienda[tipoHaciendaId]" id="tipoCategoriaHacienda"
+                                class="form-control" required>
+                                <% tiposHacienda.forEach(tipo => { %>
+                                <option value="<%= tipo.tipoHaciendaId %>"><%= tipo.nombre %></option>
+                                <% }) %>
+                            </select>
+                            <div class="invalid-feedback">
+                                Este campo es requerido.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="nombreCategoriaHacienda" class='control-label'>Categoría</label>
+                            <input name="categoriaHacienda[nombre]" type="text" class="form-control"
+                                id="nombreCategoriaHacienda" placeholder="Nombre" value="" required>
                             <div class="invalid-feedback">
                                 Este campo es requerido.
                             </div>

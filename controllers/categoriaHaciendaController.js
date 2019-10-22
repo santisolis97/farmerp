@@ -18,7 +18,6 @@ categoriaHaciendaController.list = function (req, res) {
                 empresaId: res.locals.empresa.empresaId
             }
         }).then(tiposHacienda => {
-            console.log(categoriasHacienda)
             res.render("ganaderia/categoriaHacienda/categoriaHacienda-list", {
                 tiposHacienda: tiposHacienda,
                 categoriasHacienda: categoriasHacienda
