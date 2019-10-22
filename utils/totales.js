@@ -80,6 +80,14 @@ function valorEquipos(equipos) {
     return valorTotal
 }
 
+function valorPraderas(praderas) {
+    var valorTotal = 0
+    praderas.forEach(pradera => {
+            valorTotal += parseFloat(pradera.dataValues.valorANuevo)
+    });
+    return valorTotal
+}
+
 module.exports = {
     valorLotes,
     superficieLotes,
@@ -89,4 +97,5 @@ module.exports = {
     valorAutopropulsados,
     valorImplementos,
     valorEquipos,
+    valorPraderas,
 }

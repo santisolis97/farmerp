@@ -1,0 +1,107 @@
+<div id="editarModal" class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form class="container" id="form-validation" novalidate method="POST"
+                action="">
+                <div class="modal-header">
+                    <h4 class="modal-title">Editar Pradera</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                        onclick="closeModal()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="cultivoPradera" class='control-label'>Cultivo</label>
+                            <input name="pradera[cultivo]" type="text" class="form-control" id="cultivoPradera"
+                                placeholder="Cultivo" required>
+                            <div class="invalid-feedback">
+                                Este campo es requerido.
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="fechaImplantacionPradera" class='control-label'>Fecha de Implantación</label>
+                            <input name="pradera[fechaImplantacion]" type="date" class="form-control"
+                                id="fechaImplantacionPradera" value="<%= empresa.inicioEjercicio %>"
+                                max="<%= empresa.inicioEjercicio %>" placeholder="Fecha" required>
+                            <div class="invalid-feedback">
+                                Este campo es requerido.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="hectareasPradera" class='control-label'>Cant. Hectáreas</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">ha</span>
+                                </div>
+                                <input name="pradera[hectareas]" type="number" min="0" class="form-control"
+                                    id="hectareasPradera" placeholder="Cant. Hectareas" required>
+                                <div class="invalid-feedback">
+                                    Este campo es requerido.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="valorPradera" class='control-label'>Valor Hectárea</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input name="pradera[valorHectarea]" type="number" min="0" step="0.01"
+                                    class="form-control" id="valorPradera" placeholder="$/ha" required>
+                                <div class="invalid-feedback">
+                                    Este campo es requerido.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="vidaUtilPradera" class='control-label'>Vida Útil</label>
+                            <input name="pradera[vidaUtil]" type="number" min="0" step="1" class="form-control"
+                                id="vidaUtilPradera" placeholder="Años" required>
+                            <div class="invalid-feedback">
+                                Este campo es requerido.
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="valorResidualPradera" class='control-label'>Valor Residual</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">%</span>
+                                </div>
+                                <input name="pradera[valorResidual]" type="number" min="0" max="100" step="0.01"
+                                    class="form-control" id="valorResidualPradera" value="0" required>
+                                <div class="invalid-feedback">
+                                    Este campo es requerido.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="estadoPradera" class='control-label'>Estado</label>
+                            <select name="pradera[estado]" type="text" class="form-control input-small"
+                                id="estadoPradera" placeholder="" required>
+                                <option selected>Bueno</option>
+                                <option>Regular</option>
+                                <option>Malo</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Este campo es requerido.
+                            </div>
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="pradera[empresaId]" value="<%= empresa.empresaId %>">
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar"
+                        onclick="closeModal()">
+                    <input id="botonGuardar" type="submit" class="btn btn-info" value="Guardar">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
