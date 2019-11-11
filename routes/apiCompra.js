@@ -18,11 +18,17 @@ router.get('/getDisponibilidades/:empresaId/:fecha', Logged.isLogged, async func
         return await proveedores
     })
 
-
+    var entFinancieras = await DeudaFinanciera.findAll({ where: {
+        empresaId: req.params.empresaId
+    }}).then(async entFinancieras => {
+        return await entFinancieras
+    })
+    
     res.send({
         caja,
         banco,
-        proveedores
+        proveedores,
+        entFinancieras
     })
 });
 

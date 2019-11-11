@@ -7,9 +7,25 @@ var models = require("./models");
 var bodyParser = require("body-parser");
 var flash = require("express-flash");
 var session = require("express-session");
+var compression = require("compression");
+var helmet = require("helmet");
 var env = require("dotenv").load;
 
 var app = express();
+
+app.use(compression());
+app.use(helmet())
+
+app.use(function (req, res, next) {
+  if (req.url != "/favicon.ico") {
+    return next();
+  } else {
+    res.status(200);
+    res.header("Content-Type", "image/x-icon");
+    res.header("Cache-Control", "max-age=4294880896");
+    res.end();
+  }
+});
 
 app.use(bodyParser.json());
 app.use(
