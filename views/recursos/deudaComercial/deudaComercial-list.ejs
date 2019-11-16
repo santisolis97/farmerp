@@ -56,7 +56,9 @@
                                             <thead>
                                                 <tr>
                                                     <th>Concepto</th>
-                                                    <th>Monto ($)</th>
+                                                    <th class="d-none">Monto Inicial ($)</th>
+                                                    <th class="d-none">Monto por Movimientos ($)</th>
+                                                    <th>Monto Total ($)</th>
                                                     <th>Plazo</th>
                                                     <th>Ejercicio (%)</th>
                                                     <th>Cant. Cuotas</th>
@@ -83,6 +85,12 @@
                                                 <tr data="<%= JSON.stringify(deuda) %>">
                                                     <td>
                                                         <%= deuda.proveedor %>
+                                                    </td>
+                                                    <td class="d-none">
+                                                            <%= deuda.montoInicial %>
+                                                    </td>
+                                                    <td class="d-none">
+                                                            <%= deuda.montoMovimientos %>
                                                     </td>
                                                     <td>
                                                         <%= deuda.monto %>

@@ -44,7 +44,7 @@ deudas.forEach(function (row) {
         setMeses()
         
         vista.querySelector("#nombreDeudaFinanciera").value = deuda.nombre;
-        vista.querySelector("#montoDeudaFinanciera").value = deuda.monto;
+        vista.querySelector("#montoDeudaFinanciera").value = deuda.montoInicial;
         vista.querySelector("#plazoDeudaFinanciera").value = deuda.plazo;
         vista.querySelector("#ejercicioDeudaFinanciera").value = deuda.porcEjercicio;
         vista.querySelector("#cuotasDeudaFinanciera").value = deuda.cantCuotas;

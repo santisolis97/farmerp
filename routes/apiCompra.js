@@ -4,6 +4,7 @@ const Logged = require('./../utils/logged');
 const Saldos = require('./../utils/saldos');
 const models = require("./../models");
 const DeudaComercial = models.DeudaComercial
+const DeudaFinanciera = models.DeudaFinanciera
 
 /* Get disponibilidades para compra */
 router.get('/getDisponibilidades/:empresaId/:fecha', Logged.isLogged, async function (req, res) {

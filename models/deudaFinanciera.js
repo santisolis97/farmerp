@@ -11,7 +11,16 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
         },
         monto: {
-            type: DataTypes.FLOAT(15, 2)
+            type: DataTypes.FLOAT(15, 2),
+            defaultValue: 0
+        },
+        montoInicial: {
+            type: DataTypes.FLOAT(15, 2),
+            defaultValue: 0
+        },
+        montoMovimientos: {
+            type: DataTypes.FLOAT(15, 2),
+            defaultValue: 0
         },
         plazo: {
             type: DataTypes.STRING,

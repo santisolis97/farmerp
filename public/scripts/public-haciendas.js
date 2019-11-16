@@ -129,6 +129,8 @@ function updateCategoriasList(tipoHaciendaId){
         var categorias = res.data.categorias
         var selectCategorias = vista.querySelector("#categoriaHacienda")
         
+        selectCategorias.innerHTML = ''
+
         categorias.forEach(categoria => {
             $(selectCategorias).append('<option value="'+ categoria.categoriaHaciendaId +'">'+ categoria.nombre +'</option>')
         })

@@ -26,6 +26,8 @@ deudaComercialController.add = function (req, res) {
     let reqDeudaComercial = req.body.deudaComercial
     let empresaInicioEjercicio = new Date(Date.parse(res.locals.empresa.inicioEjercicio))
     
+    reqDeudaFinancieraComercial = {...reqDeudaComercial, monto: reqDeudaComercial.montoInicial}
+
     DeudaComercial.create(reqDeudaComercial).then(deuda => {
         if (deuda.cuenta == 'Caja') {
             Caja.findOne({
@@ -68,6 +70,9 @@ deudaComercialController.saveEdit = function (req, res) {
     let empresaInicioEjercicio = new Date(Date.parse(res.locals.empresa.inicioEjercicio))
 
     DeudaComercial.findByPk(req.params.id).then(deuda => {
+        var montoTotal = parseFloat(reqDeudaComercial.montoInicial) + parseFloat(deuda.montoMovimientos)
+        reqDeudaComercial = {...reqDeudaComercial, monto: montoTotal }
+
         deuda
             .update(reqDeudaComercial)
             .then(async () => {
