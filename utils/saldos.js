@@ -163,13 +163,13 @@ async function saldoCreditos(empresaId, fecha) {
             }).then(async movimientos => {
                 await movimientos.forEach(async mov => {
                     if (Date.parse(mov.fecha) <= fecha) {
-                        credito.dataValues.saldo -= await parseFloat(mov.monto)
+                        credito.dataValues.saldo -= parseFloat(mov.monto)
                     }
                     //console.log(mov)
                     //console.log(credito)
                 });
                 //console.log(credito)
-                await saldos.push(await credito)
+                saldos.push(await credito)
                 //console.log(saldos)
 
             })

@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html>
 
@@ -88,10 +87,10 @@
                                                         <%= deuda.nombre %>
                                                     </td>
                                                     <td class="d-none">
-                                                            <%= deuda.montoInicial %>
+                                                        <%= deuda.montoInicial %>
                                                     </td>
                                                     <td class="d-none">
-                                                            <%= deuda.montoMovimientos %>
+                                                        <%= deuda.montoMovimientos %>
                                                     </td>
                                                     <td>
                                                         <%= deuda.monto %>
@@ -158,12 +157,12 @@
                                                             data-toggle="modal">
                                                             <i class="fa fa-edit fa-lg" title="Editar"></i>
                                                         </a>
-
+                                                        <% if(deuda.montoMovimientos == 0){ %>
                                                         <a id="eliminar" href="#eliminarModal" class="delete mr-2"
                                                             data-toggle="modal">
                                                             <i class="fa fa-trash fa-lg" title="Eliminar"></i>
                                                         </a>
-
+                                                        <% } %>
                                                     </td>
                                                 </tr>
                                                 <% }) %>

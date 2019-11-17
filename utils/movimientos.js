@@ -30,8 +30,26 @@ async function compra(fecha, monto, concepto, conceptoId, cuenta, cuentaId, empr
                         where: {
                             deudaComercialId: movimiento.cuentaId
                         }
+                    }).then(() => {
+                        DeudaComercial.findByPk(movimiento.cuentaId).then(deuda => {
+                            let importeCuota = (deuda.monto / deuda.cantCuotas) * (deuda.porcEjercicio / 100)
+
+                            MovimientoCompra.findAll({
+                                where: {
+                                    concepto: 'DeudaComercial',
+                                    conceptoId: movimiento.cuentaId
+                                }
+                            }).then(movimientos => {
+                                movimientos.forEach(movimiento => {
+                                    movimiento.update({
+                                        monto: importeCuota
+                                    })
+                                })
+                            })
+                        })
                     })
                 }
+
                 if (movimiento.cuenta == 'DeudaFinanciera') {
                     DeudaFinanciera.increment({
                         montoMovimientos: movimiento.monto
@@ -46,8 +64,27 @@ async function compra(fecha, monto, concepto, conceptoId, cuenta, cuentaId, empr
                         where: {
                             deudaFinancieraId: movimiento.cuentaId
                         }
+                    }).then(() => {
+                        DeudaFinanciera.findByPk(movimiento.cuentaId).then(deuda => {
+                            let importeCuota = (deuda.monto / deuda.cantCuotas) * (deuda.porcEjercicio / 100)
+
+                            MovimientoCompra.findAll({
+                                where: {
+                                    concepto: 'DeudaFinanciera',
+                                    conceptoId: movimiento.cuentaId
+                                }
+                            }).then(movimientos => {
+                                movimientos.forEach(movimiento => {
+                                    movimiento.update({
+                                        monto: importeCuota
+                                    })
+                                })
+                            })
+                        })
                     })
+
                 }
+
                 return await movimiento
             })
             .catch(error => {
@@ -98,6 +135,23 @@ async function deshacerCompra(concepto, conceptoId) {
                         where: {
                             deudaComercialId: movimiento.cuentaId
                         }
+                    }).then(() => {
+                        DeudaComercial.findByPk(movimiento.cuentaId).then(deuda => {
+                            let importeCuota = (deuda.monto / deuda.cantCuotas) * (deuda.porcEjercicio / 100)
+
+                            MovimientoCompra.findAll({
+                                where: {
+                                    concepto: 'DeudaComercial',
+                                    conceptoId: movimiento.cuentaId
+                                }
+                            }).then(movimientos => {
+                                movimientos.forEach(movimiento => {
+                                    movimiento.update({
+                                        monto: importeCuota
+                                    })
+                                })
+                            })
+                        })
                     })
                 }
                 if (movimiento.cuenta == 'DeudaFinanciera') {
@@ -114,6 +168,23 @@ async function deshacerCompra(concepto, conceptoId) {
                         where: {
                             deudaFinancieraId: movimiento.cuentaId
                         }
+                    }).then(() => {
+                        DeudaFinanciera.findByPk(movimiento.cuentaId).then(deuda => {
+                            let importeCuota = (deuda.monto / deuda.cantCuotas) * (deuda.porcEjercicio / 100)
+
+                            MovimientoCompra.findAll({
+                                where: {
+                                    concepto: 'DeudaFinanciera',
+                                    conceptoId: movimiento.cuentaId
+                                }
+                            }).then(movimientos => {
+                                movimientos.forEach(movimiento => {
+                                    movimiento.update({
+                                        monto: importeCuota
+                                    })
+                                })
+                            })
+                        })
                     })
                 }
                 movimiento.destroy()
