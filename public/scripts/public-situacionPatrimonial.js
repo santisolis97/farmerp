@@ -14,6 +14,7 @@ function updateESP(fecha) {
     let importeDisponibilidades = document.querySelector("#importeDisponibilidades");
     let importeTotalActivos = document.querySelector("#importeTotalActivos");
     let importeTotalActivosCorrientes = document.querySelector("#importeTotalActivosCorrientes");
+    let importeTotalActivosNoCorrientes = document.querySelector("#importeTotalActivosNoCorrientes");
     let importeTotalPasivosCorrientes = document.querySelector("#importeTotalPasivosCorrientes");
     let importeTotalPasivos = document.querySelector("#importeTotalPasivos");
     let importeTotalPatrimonioNeto = document.querySelector("#importeTotalPatrimonioNeto");
@@ -21,6 +22,7 @@ function updateESP(fecha) {
     importeDisponibilidades.innerHTML = (0).toFixed(2)
     importeTotalActivos.innerHTML = (0).toFixed(2)
     importeTotalActivosCorrientes.innerHTML = (0).toFixed(2)
+    importeTotalActivosNoCorrientes.innerHTML = (0).toFixed(2)
     importeTotalPasivosCorrientes.innerHTML = (0).toFixed(2)
     importeTotalPasivos.innerHTML = (0).toFixed(2)
     importeTotalPatrimonioNeto.innerHTML = (0).toFixed(2)
@@ -31,6 +33,7 @@ function updateESP(fecha) {
     updateInversiones(fecha)
     updateCreditos(fecha)
     updateRetiroSocios(fecha)
+    updateInfraestructuras(fecha)
 
     /* PASIVOS */
     updateDeudasComerciales(fecha);
@@ -127,6 +130,20 @@ function updateRetiroSocios(fecha) {
             importeTotalActivos.innerHTML = (parseFloat(importeTotalActivos.innerHTML) - retiro.saldo).toFixed(2)
             importeTotalPatrimonioNeto.innerHTML = (parseFloat(importeTotalPatrimonioNeto.innerHTML) - retiro.saldo).toFixed(2)
         });
+    })
+}
+
+function updateInfraestructuras(fecha){
+    axios.get('/contable/apiInfraestructuras/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
+        let valorTotal = res.data.valorTotal
+        let importeInfraestructura = document.querySelector("#importeInfraestructura")
+        
+        $("#importeInfraestructura").remove()
+       
+        importeInfraestructura.innerHTML = (parseFloat(importeInfraestructura.innerHTML) + parseFloat(valorTotal)).toFixed(2)
+        importeTotalActivosNoCorrientes.innerHTML = (parseFloat(importeTotalActivosNoCorrientes.innerHTML) + parseFloat(valorTotal)).toFixed(2)
+        importeTotalActivos.innerHTML = (parseFloat(importeTotalActivos.innerHTML) + parseFloat(valorTotal)).toFixed(2)
+        importeTotalPatrimonioNeto.innerHTML = (parseFloat(importeTotalPatrimonioNeto.innerHTML) + parseFloat(valorTotal)).toFixed(2)
     })
 }
 

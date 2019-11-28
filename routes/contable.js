@@ -27,6 +27,11 @@ router.get('/apiRetiroSocios/:fecha/:empresaId', Logged.isLogged, contable.getRe
 
 
 
+/* Api Infraestructuras */
+router.get('/apiInfraestructuras/:fecha/:empresaId', Logged.isLogged, contable.getInfraestructuras)
+
+
+
 
 
 /* PASIVO */
