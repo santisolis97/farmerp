@@ -31,6 +31,7 @@ function updateESP(fecha) {
     updateInversiones(fecha)
     updateCreditos(fecha)
     updateRetiroSocios(fecha)
+    updateInsumos(fecha)
 
     /* PASIVOS */
     updateDeudasComerciales(fecha);
@@ -129,6 +130,32 @@ function updateRetiroSocios(fecha) {
         });
     })
 }
+
+function updateInsumos(fecha) {
+    axios.get('/contable/apiInsumos/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
+        let insumos = res.data
+        let importeTotalInsumos = document.querySelector("#importeTotalInsumos");
+
+        $("#divInsumos").html('')
+
+        importeTotalInsumos.innerHTML = (0).toFixed(2)
+
+        insumos.forEach(insumo => {
+            $("#divInsumos").append(`
+            <div class="form-row">
+            <p class="col-md-7" style="margin-top: -15px">${ insumo.concepto }</p>
+            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ insumo.valorMercado.toFixed(2) }</p>
+            </div>
+            `)
+
+            importeTotalInsumos.innerHTML = (parseFloat(importeTotalInsumos.innerHTML) + insumo.valorMercado).toFixed(2)
+            importeTotalActivosCorrientes.innerHTML = (parseFloat(importeTotalActivosCorrientes.innerHTML) + insumo.valorMercado).toFixed(2)
+            importeTotalActivos.innerHTML = (parseFloat(importeTotalActivos.innerHTML) + insumo.valorMercado).toFixed(2)
+            importeTotalPatrimonioNeto.innerHTML = (parseFloat(importeTotalPatrimonioNeto.innerHTML) + insumo.valorMercado).toFixed(2)
+        });
+    })
+}
+
 
 function updateDeudasComerciales(fecha) {
     axios.get('/contable/apiDeudasComerciales/' + fecha + '/' + datosEmpresa.empresaId).then(res => {

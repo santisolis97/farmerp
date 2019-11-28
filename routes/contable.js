@@ -25,6 +25,9 @@ router.get('/apiCreditos/:fecha/:empresaId', Logged.isLogged, contable.getCredit
 /* Api Retiro Socios */
 router.get('/apiRetiroSocios/:fecha/:empresaId', Logged.isLogged, contable.getRetiroSocios)
 
+/* Api Insumos */
+router.get('/apiInsumos/:fecha/:empresaId', Logged.isLogged, contable.getInsumos)
+
 
 
 

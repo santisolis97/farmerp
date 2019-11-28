@@ -2,6 +2,8 @@ const Saldos = require("./../utils/saldos")
 const models = require("./../models");
 const Credito = models.Credito
 const RetiroSocio = models.RetiroSocio
+const Insumo = models.Insumo
+const Pradera = models.Pradera
 const DeudaComercial = models.DeudaComercial
 const DeudaFinanciera = models.DeudaFinanciera
 const DeudaFiscal = models.DeudaFiscal
@@ -104,6 +106,23 @@ contableController.getRetiroSocios = (req, res) => {
             res.send(saldos)
         }
     })
+}
+
+
+/* API Insumos Agrícola - Ganaderos */
+contableController.getInsumos = (req, res) => {
+    Insumo.findAll({
+        where: {
+            empresaId: res.locals.empresa.empresaId
+        }
+    }).then(insumos => {
+        insumos.map(insumo => {
+            var valorMercado = insumo.cantidad * insumo.valorUnitario;
+            insumo.dataValues.valorMercado = valorMercado;
+        });
+
+        res.send(insumos);
+    });
 }
 
 /* API Deudas Comerciales */
