@@ -1,9 +1,13 @@
 const Saldos = require("./../utils/saldos")
 const models = require("./../models");
+const Op = models.Sequelize.Op
+const sequelize = models.sequelize
 const Credito = models.Credito
 const RetiroSocio = models.RetiroSocio
 const Insumo = models.Insumo
 const Pradera = models.Pradera
+const Lote = models.Lote
+const Infraestructura = models.Infraestructura
 const DeudaComercial = models.DeudaComercial
 const DeudaFinanciera = models.DeudaFinanciera
 const DeudaFiscal = models.DeudaFiscal
@@ -15,16 +19,19 @@ const MovimientoVenta = models.MovimientoVenta;
 
 var contableController = {};
 
-
+/* API Caja */
 contableController.getCaja = async (req, res) => {
     var caja = await Saldos.saldoCaja(req.params.empresaId, req.params.fecha)
     res.send(caja)
 }
 
+/* API Banco */
 contableController.getBanco = async (req, res) => {
     var banco = await Saldos.saldoBanco(req.params.empresaId, req.params.fecha)
     res.send(banco)
 }
+
+/* API Inversiones Transitorias */
 contableController.getInversiones = async (req, res) => {
     var inversiones = await Saldos.saldoInversion(req.params.empresaId, req.params.fecha)
     res.send(inversiones)
@@ -32,7 +39,7 @@ contableController.getInversiones = async (req, res) => {
 
 /* API Créditos */
 contableController.getCreditos = (req, res) => {
-    fecha = new Date(req.params.fecha)
+    var fecha = new Date(req.params.fecha)
     var saldos = []
 
     Credito.findAll({
@@ -71,7 +78,7 @@ contableController.getCreditos = (req, res) => {
 
 /* API Retiro Socios */
 contableController.getRetiroSocios = (req, res) => {
-    fecha = new Date(req.params.fecha)
+    var fecha = new Date(req.params.fecha)
     var saldos = []
 
     RetiroSocio.findAll({
@@ -108,7 +115,6 @@ contableController.getRetiroSocios = (req, res) => {
     })
 }
 
-
 /* API Insumos Agrícola - Ganaderos */
 contableController.getInsumos = (req, res) => {
     Insumo.findAll({
@@ -122,12 +128,82 @@ contableController.getInsumos = (req, res) => {
         });
 
         res.send(insumos);
+    })
+}
+
+
+
+/* API Mejoras-Infraestructura */
+contableController.getInfraestructuras = (req, res) => {
+    var fecha = new Date(req.params.fecha)
+
+    Infraestructura.findAll({
+        where: {
+            empresaId: req.params.empresaId
+        }
+    }).then(infraestructuras => {
+        var valorTotal = 0
+
+        infraestructuras.map(infraestructura => {
+            if ((!infraestructura.fechaVenta || new Date(infraestructura.fechaVenta) > fecha) && new Date(infraestructura.fechaCompra) <= fecha) {
+
+                var antiguedad = new Date(res.locals.empresa.finEjercicio) - new Date(infraestructura.fechaCompra);
+                antiguedad = Math.trunc(antiguedad / (1000 * 60 * 60 * 24 * 365))
+                var valorMercado = infraestructura.cantidad * infraestructura.valorUnitario;
+                var valorResidualMonto = infraestructura.cantidad * infraestructura.valorUnitario * infraestructura.valorResidual / 100;
+                var amortizacion = (valorMercado - valorResidualMonto) / infraestructura.vidaUtil
+                var amortizacionAcumulada;
+                var valorANuevo;
+
+                if (amortizacion * antiguedad >= valorMercado) {
+                    amortizacionAcumulada = valorMercado
+                } else {
+                    amortizacionAcumulada = amortizacion * antiguedad
+                }
+
+                if (valorMercado - amortizacionAcumulada <= 0) {
+                    valorANuevo = valorMercado
+                } else {
+                    valorANuevo = valorMercado - amortizacionAcumulada
+                }
+
+                valorTotal += parseFloat(valorANuevo)
+            }
+        });
+
+        res.send({
+            valorTotal
+        });
+    });
+}
+
+/* API Lotes*/
+contableController.getLotes = (req, res) => {
+    var fecha = new Date(req.params.fecha)
+
+    Lote.findAll({
+        where: {
+            empresaId: req.params.empresaId
+        }
+    }).then(lotes => {
+        var valorTotal = 0
+
+        lotes.map(lote => {
+            if ((!lote.fechaVenta || new Date(lote.fechaVenta) > fecha) && (!lote.fechaCompra || new Date(lote.fechaCompra) <= fecha)) {
+                var valorLote =  lote.superficie * lote.valorHectarea;
+                valorTotal += parseFloat(valorLote)
+            }
+        });
+
+        res.send({
+            valorTotal
+        });
     });
 }
 
 /* API Deudas Comerciales */
 contableController.getDeudasComerciales = (req, res) => {
-    fecha = new Date(req.params.fecha)
+    var fecha = new Date(req.params.fecha)
     var saldos = []
 
     DeudaComercial.findAll({
@@ -166,7 +242,7 @@ contableController.getDeudasComerciales = (req, res) => {
 
 /* API Deudas Financieras */
 contableController.getDeudasFinancieras = (req, res) => {
-    fecha = new Date(req.params.fecha)
+    var fecha = new Date(req.params.fecha)
     var saldos = []
 
     DeudaFinanciera.findAll({
@@ -205,7 +281,7 @@ contableController.getDeudasFinancieras = (req, res) => {
 
 /* API Deudas Fiscales */
 contableController.getDeudasFiscales = (req, res) => {
-    fecha = new Date(req.params.fecha)
+    var fecha = new Date(req.params.fecha)
     var saldos = []
 
     DeudaFiscal.findAll({
@@ -244,7 +320,7 @@ contableController.getDeudasFiscales = (req, res) => {
 
 /* API Deudas Sociales */
 contableController.getDeudasSociales = (req, res) => {
-    fecha = new Date(req.params.fecha)
+    var fecha = new Date(req.params.fecha)
     var saldos = []
 
     DeudaSocial.findAll({
@@ -284,7 +360,7 @@ contableController.getDeudasSociales = (req, res) => {
 
 /* API Otras Deudas */
 contableController.getDeudasOtras = (req, res) => {
-    fecha = new Date(req.params.fecha)
+    var fecha = new Date(req.params.fecha)
     var saldos = []
 
     DeudaOtra.findAll({
