@@ -8,6 +8,8 @@ const Insumo = models.Insumo
 const Pradera = models.Pradera
 const Lote = models.Lote
 const Infraestructura = models.Infraestructura
+const Administracion = models.Administracion
+const Equipo = models.Equipo
 const DeudaComercial = models.DeudaComercial
 const DeudaFinanciera = models.DeudaFinanciera
 const DeudaFiscal = models.DeudaFiscal
@@ -176,6 +178,95 @@ contableController.getInfraestructuras = (req, res) => {
         });
     });
 }
+
+/* API Administracion */
+contableController.getAdministracions = (req, res) => {
+    var fecha = new Date(req.params.fecha)
+
+    Administracion.findAll({
+        where: {
+            empresaId: req.params.empresaId
+        }
+    }).then(administracions => {
+        var valorTotal = 0
+
+        administracions.map(administracion => {
+            if ((!administracion.fechaVenta || new Date(administracion.fechaVenta) > fecha) && new Date(administracion.fechaCompra) <= fecha) {
+
+                var antiguedad = new Date(res.locals.empresa.finEjercicio) - new Date(administracion.fechaCompra);
+                antiguedad = Math.trunc(antiguedad / (1000 * 60 * 60 * 24 * 365))
+                var valorMercado = administracion.cantidad * administracion.valorUnitario;
+                var valorResidualMonto = administracion.cantidad * administracion.valorUnitario * administracion.valorResidual / 100;
+                var amortizacion = (valorMercado - valorResidualMonto) / administracion.vidaUtil
+                var amortizacionAcumulada;
+                var valorANuevo;
+
+                if (amortizacion * antiguedad >= valorMercado) {
+                    amortizacionAcumulada = valorMercado
+                } else {
+                    amortizacionAcumulada = amortizacion * antiguedad
+                }
+
+                if (valorMercado - amortizacionAcumulada <= 0) {
+                    valorANuevo = valorMercado
+                } else {
+                    valorANuevo = valorMercado - amortizacionAcumulada
+                }
+
+                valorTotal += parseFloat(valorANuevo)
+            }
+        });
+
+        res.send({
+            valorTotal
+        });
+    });
+}
+
+/* API Equipos */
+contableController.getEquipos = (req, res) => {
+    var fecha = new Date(req.params.fecha)
+
+    Equipo.findAll({
+        where: {
+            empresaId: req.params.empresaId
+        }
+    }).then(equipos => {
+        var valorTotal = 0
+
+        equipos.map(equipo => {
+            if ((!equipo.fechaVenta || new Date(equipo.fechaVenta) > fecha) && new Date(equipo.fechaCompra) <= fecha) {
+
+                var antiguedad = new Date(res.locals.empresa.finEjercicio) - new Date(equipo.fechaCompra);
+                antiguedad = Math.trunc(antiguedad / (1000 * 60 * 60 * 24 * 365))
+                var valorMercado = equipo.valorUnitario;
+                var valorResidualMonto = equipo.valorUnitario * equipo.valorResidual / 100;
+                var amortizacion = (valorMercado - valorResidualMonto) / equipo.vidaUtil
+                var amortizacionAcumulada;
+                var valorANuevo;
+
+                if (amortizacion * antiguedad >= valorMercado) {
+                    amortizacionAcumulada = valorMercado
+                } else {
+                    amortizacionAcumulada = amortizacion * antiguedad
+                }
+
+                if (valorMercado - amortizacionAcumulada <= 0) {
+                    valorANuevo = valorMercado
+                } else {
+                    valorANuevo = valorMercado - amortizacionAcumulada
+                }
+
+                valorTotal += parseFloat(valorANuevo)
+            }
+        });
+
+        res.send({
+            valorTotal
+        });
+    });
+}
+
 
 /* API Lotes*/
 contableController.getLotes = (req, res) => {

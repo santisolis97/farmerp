@@ -35,6 +35,8 @@ function updateESP(fecha) {
     updateRetiroSocios(fecha)
     updateInsumos(fecha)
     updateInfraestructuras(fecha)
+    updateAdministracions(fecha)
+    updateEquipos(fecha)
     updateLotes(fecha)
 
     /* PASIVOS */
@@ -167,6 +169,30 @@ function updateInfraestructuras(fecha){
         let importeInfraestructura = document.querySelector("#importeInfraestructura")
 
         importeInfraestructura.innerHTML = parseFloat(valorTotal).toFixed(2)
+        importeTotalActivosNoCorrientes.innerHTML = (parseFloat(importeTotalActivosNoCorrientes.innerHTML) + parseFloat(valorTotal)).toFixed(2)
+        importeTotalActivos.innerHTML = (parseFloat(importeTotalActivos.innerHTML) + parseFloat(valorTotal)).toFixed(2)
+        importeTotalPatrimonioNeto.innerHTML = (parseFloat(importeTotalPatrimonioNeto.innerHTML) + parseFloat(valorTotal)).toFixed(2)
+    })
+}
+
+function updateAdministracions(fecha){
+    axios.get('/contable/apiAdministracions/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
+        let valorTotal = res.data.valorTotal
+        let importeAdministracion = document.querySelector("#importeAdministracion")
+
+        importeAdministracion.innerHTML = parseFloat(valorTotal).toFixed(2)
+        importeTotalActivosNoCorrientes.innerHTML = (parseFloat(importeTotalActivosNoCorrientes.innerHTML) + parseFloat(valorTotal)).toFixed(2)
+        importeTotalActivos.innerHTML = (parseFloat(importeTotalActivos.innerHTML) + parseFloat(valorTotal)).toFixed(2)
+        importeTotalPatrimonioNeto.innerHTML = (parseFloat(importeTotalPatrimonioNeto.innerHTML) + parseFloat(valorTotal)).toFixed(2)
+    })
+}
+
+function updateEquipos(fecha){
+    axios.get('/contable/apiEquipos/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
+        let valorTotal = res.data.valorTotal
+        let importeEquipos = document.querySelector("#importeEquipos")
+
+        importeEquipos.innerHTML = parseFloat(valorTotal).toFixed(2)
         importeTotalActivosNoCorrientes.innerHTML = (parseFloat(importeTotalActivosNoCorrientes.innerHTML) + parseFloat(valorTotal)).toFixed(2)
         importeTotalActivos.innerHTML = (parseFloat(importeTotalActivos.innerHTML) + parseFloat(valorTotal)).toFixed(2)
         importeTotalPatrimonioNeto.innerHTML = (parseFloat(importeTotalPatrimonioNeto.innerHTML) + parseFloat(valorTotal)).toFixed(2)

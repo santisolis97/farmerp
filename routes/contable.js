@@ -33,11 +33,17 @@ router.get('/apiInsumos/:fecha/:empresaId', Logged.isLogged, contable.getInsumos
 /* Api Infraestructuras */
 router.get('/apiInfraestructuras/:fecha/:empresaId', Logged.isLogged, contable.getInfraestructuras)
 
+/* Api Administracion */
+router.get('/apiAdministracions/:fecha/:empresaId', Logged.isLogged, contable.getAdministracions)
+
+/* Api Equipos */
+router.get('/apiEquipos/:fecha/:empresaId', Logged.isLogged, contable.getEquipos)
+
+
+
+
 /* Api Lotes */
 router.get('/apiLotes/:fecha/:empresaId', Logged.isLogged, contable.getLotes)
-
-
-
 
 
 /* PASIVO */
