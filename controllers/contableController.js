@@ -146,12 +146,12 @@ contableController.getInfraestructuras = (req, res) => {
                 } else {
                     valorANuevo = valorMercado - amortizacionAcumulada
                 }
-                
+
                 valorTotal += parseFloat(valorANuevo)
             }
         });
 
-        res.render(valorTotal);
+        res.send(valorTotal);
     });
 }
 
