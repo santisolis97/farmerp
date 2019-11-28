@@ -151,7 +151,7 @@ contableController.getInfraestructuras = (req, res) => {
             }
         });
 
-        res.send(valorTotal);
+        res.send({valorTotal});
     });
 }
 
