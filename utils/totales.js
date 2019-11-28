@@ -88,6 +88,22 @@ function valorPraderas(praderas) {
     return valorTotal
 }
 
+function valorInsumos(insumos) {
+    var valorTotal = 0
+    insumos.forEach(insumo => {
+            valorTotal += parseFloat(insumo.dataValues.valorMercado)
+    });
+    return valorTotal
+}
+
+function valorStocks(stocks) {
+    var valorTotal = 0
+    stocks.forEach(stock => {
+            valorTotal += parseFloat(stock.dataValues.valorMercado)
+    });
+    return valorTotal
+}
+
 module.exports = {
     valorLotes,
     superficieLotes,
@@ -98,4 +114,6 @@ module.exports = {
     valorImplementos,
     valorEquipos,
     valorPraderas,
+    valorInsumos,
+    valorStocks,
 }

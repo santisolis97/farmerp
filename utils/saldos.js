@@ -55,9 +55,9 @@ async function saldoCaja(empresaId, fecha) {
 async function saldoBanco(empresaId, fecha) {
     var saldo;
     var bancoId;
-    
+
     fecha = Date.parse(fecha)
-    
+
     await Banco.findOne({
         where: {
             empresaId
@@ -65,7 +65,7 @@ async function saldoBanco(empresaId, fecha) {
     }).then(async banco => {
         saldo = banco.montoInicial
         bancoId = banco.bancoId
-        
+
         await MovimientoCompra.findAll({
             where: {
                 cuenta: 'Banco',
@@ -77,7 +77,7 @@ async function saldoBanco(empresaId, fecha) {
                     saldo -= mov.monto
                 }
             });
-            
+
             await MovimientoVenta.findAll({
                 where: {
                     cuenta: 'Banco',
@@ -102,7 +102,7 @@ async function saldoInversion(empresaId, fecha) {
     var saldo;
     var inversionId;
     fecha = Date.parse(fecha)
-    
+
     await Inversion.findOne({
         where: {
             empresaId
@@ -110,7 +110,7 @@ async function saldoInversion(empresaId, fecha) {
     }).then(async inversion => {
         saldo = inversion.montoInicial
         inversionId = inversion.inversionId
-        
+
         await MovimientoCompra.findAll({
             where: {
                 cuenta: 'Inversion',
@@ -122,7 +122,7 @@ async function saldoInversion(empresaId, fecha) {
                     saldo -= mov.monto
                 }
             });
-            
+
             await MovimientoVenta.findAll({
                 where: {
                     cuenta: 'Inversion',
@@ -143,51 +143,9 @@ async function saldoInversion(empresaId, fecha) {
     }
 }
 
-async function saldoCreditos(empresaId, fecha) {
-    var saldos = []
-    fecha = Date.parse(fecha)
-    
-    await Credito.findAll({
-        where: {
-            empresaId
-        }
-    }).then(async creditos => {
-        await creditos.map(async credito => {
-            credito.dataValues.saldo = parseFloat(credito.monto)
-            
-            await MovimientoVenta.findAll({
-                where: {
-                    concepto: 'Credito',
-                    conceptoId: credito.creditoId
-                }
-            }).then(async movimientos => {
-                await movimientos.forEach(async mov => {
-                    if (Date.parse(mov.fecha) <= fecha) {
-                        credito.dataValues.saldo -= parseFloat(mov.monto)
-                    }
-                    //console.log(mov)
-                    //console.log(credito)
-                });
-                //console.log(credito)
-                saldos.push(await credito)
-                //console.log(saldos)
-
-            })
-
-        })
-        console.log(creditos)
-        Promise.all(saldos).then(() => {
-            return {
-                creditos
-            }
-        })
-    })
-}
-
 
 module.exports = {
     saldoCaja,
     saldoBanco,
-    saldoInversion,
-    saldoCreditos
+    saldoInversion
 }

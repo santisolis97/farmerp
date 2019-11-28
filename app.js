@@ -126,7 +126,7 @@ app.use(function (req, res, next) {
 });
 
 app.get("/", function (req, res) {
-  res.redirect('/contable/situacionPatrimonial/2020-06-30');
+  res.redirect('/contable/situacionPatrimonial');
 });
 
 // Routes

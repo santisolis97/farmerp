@@ -1,0 +1,74 @@
+<div id="verModal" class="modal fade">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <form class="container" id="form-validation" novalidate method="POST" action="">
+                <div class="modal-header">
+                    <h4 class="modal-title">Ver Insumo</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                        onclick="closeModal()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="conceptoInsumo" class='control-label'>Concepto</label>
+                            <input type="text" class="form-control" id="conceptoInsumo"
+                                placeholder="Concepto" readonly>
+                            <div class="invalid-feedback">
+                                Este campo es requerido.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="cantidadInsumo" class='control-label'>Cantidad</label>
+                            <input type="number" min="0" step="1" class="form-control"
+                                id="cantidadInsumo" placeholder="Cantidad" readonly>
+                            <div class="invalid-feedback">
+                                Este campo es requerido.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="valorUnitarioInsumo" class='control-label'>Valor Unitario</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input type="number" min="0" step="0.01"
+                                    class="form-control" id="valorUnitarioInsumo" placeholder="$/Unidad" readonly>
+                                <div class="invalid-feedback">
+                                    Este campo es requerido.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="valorMercadoInsumo" class='control-label'>Valor de Mercado</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input type="number" min="0" step="0.01"
+                                    class="form-control" id="valorMercadoInsumo" placeholder="$/Unidad" readonly>
+                                <div class="invalid-feedback">
+                                    Este campo es requerido.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="insumo[empresaId]" value="<%= empresa.empresaId %>">
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cerrar"
+                        onclick="closeModal()">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

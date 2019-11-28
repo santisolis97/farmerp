@@ -26,7 +26,7 @@ deudaComercialController.add = function (req, res) {
     let reqDeudaComercial = req.body.deudaComercial
     let empresaInicioEjercicio = new Date(Date.parse(res.locals.empresa.inicioEjercicio))
     
-    reqDeudaFinancieraComercial = {...reqDeudaComercial, monto: reqDeudaComercial.montoInicial}
+    reqDeudaComercial = {...reqDeudaComercial, monto: reqDeudaComercial.montoInicial}
 
     DeudaComercial.create(reqDeudaComercial).then(deuda => {
         if (deuda.cuenta == 'Caja') {
