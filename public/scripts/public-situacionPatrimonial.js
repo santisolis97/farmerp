@@ -137,10 +137,8 @@ function updateInfraestructuras(fecha){
     axios.get('/contable/apiInfraestructuras/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
         let valorTotal = res.data.valorTotal
         let importeInfraestructura = document.querySelector("#importeInfraestructura")
-        
-        $("#importeInfraestructura").remove()
-       
-        importeInfraestructura.innerHTML = (parseFloat(importeInfraestructura.innerHTML) + parseFloat(valorTotal)).toFixed(2)
+
+        importeInfraestructura.innerHTML = parseFloat(valorTotal).toFixed(2)
         importeTotalActivosNoCorrientes.innerHTML = (parseFloat(importeTotalActivosNoCorrientes.innerHTML) + parseFloat(valorTotal)).toFixed(2)
         importeTotalActivos.innerHTML = (parseFloat(importeTotalActivos.innerHTML) + parseFloat(valorTotal)).toFixed(2)
         importeTotalPatrimonioNeto.innerHTML = (parseFloat(importeTotalPatrimonioNeto.innerHTML) + parseFloat(valorTotal)).toFixed(2)
