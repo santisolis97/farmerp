@@ -122,39 +122,32 @@ contableController.getInfraestructuras = (req, res) => {
             empresaId: req.params.empresaId
         }
     }).then(infraestructuras => {
-        infraestructuras.map(infraestructura => {
-            var antiguedad = new Date(res.locals.empresa.finEjercicio) - new Date(infraestructura.fechaCompra);
-            antiguedad = Math.trunc(antiguedad / (1000 * 60 * 60 * 24 * 365))
-            var valorMercado = infraestructura.cantidad * infraestructura.valorUnitario;
-            var valorResidualMonto = infraestructura.cantidad * infraestructura.valorUnitario * infraestructura.valorResidual / 100;
-            var amortizacion = (valorMercado - valorResidualMonto) / infraestructura.vidaUtil
-            var amortizacionAcumulada;
-            var valorANuevo;
-
-            if (amortizacion * antiguedad >= valorMercado) {
-                amortizacionAcumulada = valorMercado
-            } else {
-                amortizacionAcumulada = amortizacion * antiguedad
-            }
-
-            if (valorMercado - amortizacionAcumulada <= 0) {
-                valorANuevo = valorMercado
-            } else {
-                valorANuevo = valorMercado - amortizacionAcumulada
-            }
-
-            infraestructura.dataValues.valorMercado = valorMercado.toFixed(2);
-            infraestructura.dataValues.antiguedad = antiguedad;
-            infraestructura.dataValues.amortizacion = amortizacion.toFixed(2);
-            infraestructura.dataValues.amortizacionAcumulada = amortizacionAcumulada.toFixed(2);
-            infraestructura.dataValues.valorResidualMonto = valorResidualMonto.toFixed(2);
-            infraestructura.dataValues.valorANuevo = valorANuevo.toFixed(2);
-        });
-
         var valorTotal = 0
-        infraestructuras.forEach(infraestructura => {
+
+        infraestructuras.map(infraestructura => {
             if ((!infraestructura.fechaVenta || new Date(infraestructura.fechaVenta) > fecha) && new Date(infraestructura.fechaCompra) <= fecha) {
-                valorTotal += parseFloat(infraestructura.dataValues.valorANuevo)
+
+                var antiguedad = new Date(res.locals.empresa.finEjercicio) - new Date(infraestructura.fechaCompra);
+                antiguedad = Math.trunc(antiguedad / (1000 * 60 * 60 * 24 * 365))
+                var valorMercado = infraestructura.cantidad * infraestructura.valorUnitario;
+                var valorResidualMonto = infraestructura.cantidad * infraestructura.valorUnitario * infraestructura.valorResidual / 100;
+                var amortizacion = (valorMercado - valorResidualMonto) / infraestructura.vidaUtil
+                var amortizacionAcumulada;
+                var valorANuevo;
+
+                if (amortizacion * antiguedad >= valorMercado) {
+                    amortizacionAcumulada = valorMercado
+                } else {
+                    amortizacionAcumulada = amortizacion * antiguedad
+                }
+
+                if (valorMercado - amortizacionAcumulada <= 0) {
+                    valorANuevo = valorMercado
+                } else {
+                    valorANuevo = valorMercado - amortizacionAcumulada
+                }
+                
+                valorTotal += parseFloat(valorANuevo)
             }
         });
 
