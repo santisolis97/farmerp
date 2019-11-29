@@ -10,7 +10,7 @@ function updateESP(fecha) {
     if (isNaN((new Date(fecha)).getTime())) {
         return
     }
-    
+
     let importeDisponibilidades = document.querySelector("#importeDisponibilidades");
     let importeTotalActivos = document.querySelector("#importeTotalActivos");
     let importeTotalActivosCorrientes = document.querySelector("#importeTotalActivosCorrientes");
@@ -57,7 +57,7 @@ function updateCaja(fecha) {
     axios.get('/contable/apiCaja/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
         let caja = res.data
         $("#importeCaja").remove()
-        $("#divCaja").append(`<p id="importeCaja" class="col-md-4 text-right" style="margin-top: -15px">$ ${ caja.saldo }</p>`)
+        $("#divCaja").append(`<p id="importeCaja" class="col-md-4 text-right" style="margin-top: -15px">$ ${caja.saldo}</p>`)
 
         importeDisponibilidades.innerHTML = (parseFloat(importeDisponibilidades.innerHTML) + parseFloat(caja.saldo)).toFixed(2)
         importeTotalActivosCorrientes.innerHTML = (parseFloat(importeTotalActivosCorrientes.innerHTML) + parseFloat(caja.saldo)).toFixed(2)
@@ -70,7 +70,7 @@ function updateBanco(fecha) {
     axios.get('/contable/apiBanco/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
         let banco = res.data
         $("#importeBanco").remove()
-        $("#divBanco").append(`<p id="importeBanco" class="col-md-4 text-right" style="margin-top: -15px">$ ${ banco.saldo }</p>`)
+        $("#divBanco").append(`<p id="importeBanco" class="col-md-4 text-right" style="margin-top: -15px">$ ${banco.saldo}</p>`)
 
         importeDisponibilidades.innerHTML = (parseFloat(importeDisponibilidades.innerHTML) + parseFloat(banco.saldo)).toFixed(2)
         importeTotalActivosCorrientes.innerHTML = (parseFloat(importeTotalActivosCorrientes.innerHTML) + parseFloat(banco.saldo)).toFixed(2)
@@ -83,7 +83,7 @@ function updateInversiones(fecha) {
     axios.get('/contable/apiInversiones/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
         let inversiones = res.data
         $("#importeInversiones").remove()
-        $("#divInversiones").append(`<p id="importeInversiones" class="col-md-4 text-right" style="margin-top: -15px">$ ${ inversiones.saldo }</p>`)
+        $("#divInversiones").append(`<p id="importeInversiones" class="col-md-4 text-right" style="margin-top: -15px">$ ${inversiones.saldo}</p>`)
 
         importeDisponibilidades.innerHTML = (parseFloat(importeDisponibilidades.innerHTML) + parseFloat(inversiones.saldo)).toFixed(2)
         importeTotalActivosCorrientes.innerHTML = (parseFloat(importeTotalActivosCorrientes.innerHTML) + parseFloat(inversiones.saldo)).toFixed(2)
@@ -104,8 +104,8 @@ function updateCreditos(fecha) {
         creditos.forEach(credito => {
             $("#divCreditos").append(`
             <div class="form-row">
-            <p class="col-md-7" style="margin-top: -15px">${ credito.nombre }</p>
-            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ credito.saldo.toFixed(2) }</p>
+            <p class="col-md-7" style="margin-top: -15px">${ credito.nombre}</p>
+            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ credito.saldo.toFixed(2)}</p>
             </div>
             `)
 
@@ -129,8 +129,8 @@ function updateRetiroSocios(fecha) {
         retiros.forEach(retiro => {
             $("#divRetiroSocios").append(`
             <div class="form-row">
-            <p class="col-md-7" style="margin-top: -15px">${ retiro.nombre }</p>
-            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ retiro.saldo.toFixed(2) * -1 }</p>
+            <p class="col-md-7" style="margin-top: -15px">${ retiro.nombre}</p>
+            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ retiro.saldo.toFixed(2) * -1}</p>
             </div>
             `)
 
@@ -154,8 +154,8 @@ function updateInsumos(fecha) {
         insumos.forEach(insumo => {
             $("#divInsumos").append(`
             <div class="form-row">
-            <p class="col-md-7" style="margin-top: -15px">${ insumo.concepto }</p>
-            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ insumo.valorMercado.toFixed(2) }</p>
+            <p class="col-md-7" style="margin-top: -15px">${ insumo.concepto}</p>
+            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ insumo.valorMercado.toFixed(2)}</p>
             </div>
             `)
 
@@ -179,8 +179,8 @@ function updateStocks(fecha) {
         insumos.forEach(insumo => {
             $("#divStock").append(`
             <div class="form-row">
-            <p class="col-md-7" style="margin-top: -15px">${ insumo.concepto }</p>
-            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ insumo.valorMercado.toFixed(2) }</p>
+            <p class="col-md-7" style="margin-top: -15px">${ insumo.concepto}</p>
+            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ insumo.valorMercado.toFixed(2)}</p>
             </div>
             `)
 
@@ -192,7 +192,7 @@ function updateStocks(fecha) {
     })
 }
 
-function updateInfraestructuras(fecha){
+function updateInfraestructuras(fecha) {
     axios.get('/contable/apiInfraestructuras/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
         let valorTotal = res.data.valorTotal
         let importeInfraestructura = document.querySelector("#importeInfraestructura")
@@ -204,7 +204,7 @@ function updateInfraestructuras(fecha){
     })
 }
 
-function updateAdministracions(fecha){
+function updateAdministracions(fecha) {
     axios.get('/contable/apiAdministracions/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
         let valorTotal = res.data.valorTotal
         let importeAdministracion = document.querySelector("#importeAdministracion")
@@ -216,7 +216,7 @@ function updateAdministracions(fecha){
     })
 }
 
-function updateEquipos(fecha){
+function updateEquipos(fecha) {
     axios.get('/contable/apiEquipos/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
         let valorTotal = res.data.valorTotal
         let importeEquipos = document.querySelector("#importeEquipos")
@@ -228,7 +228,7 @@ function updateEquipos(fecha){
     })
 }
 
-function updateRodados(fecha){
+function updateRodados(fecha) {
     axios.get('/contable/apiRodados/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
         let valorTotal = res.data.valorTotal
         let importeRodados = document.querySelector("#importeRodados")
@@ -240,7 +240,7 @@ function updateRodados(fecha){
     })
 }
 
-function updateTractores(fecha){
+function updateTractores(fecha) {
     axios.get('/contable/apiTractores/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
         let valorTotal = res.data.valorTotal
         let importeTractores = document.querySelector("#importeTractores")
@@ -252,7 +252,7 @@ function updateTractores(fecha){
     })
 }
 
-function updateImplementos(fecha){
+function updateImplementos(fecha) {
     axios.get('/contable/apiImplementos/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
         let valorTotal = res.data.valorTotal
         let importeImplementos = document.querySelector("#importeImplementos")
@@ -264,7 +264,7 @@ function updateImplementos(fecha){
     })
 }
 
-function updateAutopropulsados(fecha){
+function updateAutopropulsados(fecha) {
     axios.get('/contable/apiAutopropulsados/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
         let valorTotal = res.data.valorTotal
         let importeAutopropulsados = document.querySelector("#importeAutopropulsados")
@@ -276,7 +276,7 @@ function updateAutopropulsados(fecha){
     })
 }
 
-function updateLotes(fecha){
+function updateLotes(fecha) {
     axios.get('/contable/apiLotes/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
         let valorTotal = res.data.valorTotal
         let importeLotes = document.querySelector("#importeLotes")
@@ -300,8 +300,8 @@ function updateDeudasComerciales(fecha) {
         deudas.forEach(deuda => {
             $("#divDeudasComerciales").append(`
             <div class="form-row">
-            <p class="col-md-7" style="margin-top: -15px">${ deuda.proveedor }</p>
-            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ deuda.saldo.toFixed(2) }</p>
+            <p class="col-md-7" style="margin-top: -15px">${ deuda.proveedor}</p>
+            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ deuda.saldo.toFixed(2)}</p>
             </div>
             `)
 
@@ -325,8 +325,8 @@ function updateDeudasFinancieras(fecha) {
         deudas.forEach(deuda => {
             $("#divDeudasFinancieras").append(`
             <div class="form-row">
-            <p class="col-md-7" style="margin-top: -15px">${ deuda.nombre }</p>
-            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ deuda.saldo.toFixed(2) }</p>
+            <p class="col-md-7" style="margin-top: -15px">${ deuda.nombre}</p>
+            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ deuda.saldo.toFixed(2)}</p>
             </div>
             `)
 
@@ -350,8 +350,8 @@ function updateDeudasFiscales(fecha) {
         deudas.forEach(deuda => {
             $("#divDeudasFiscales").append(`
             <div class="form-row">
-            <p class="col-md-7" style="margin-top: -15px">${ deuda.nombre }</p>
-            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ deuda.saldo.toFixed(2) }</p>
+            <p class="col-md-7" style="margin-top: -15px">${ deuda.nombre}</p>
+            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ deuda.saldo.toFixed(2)}</p>
             </div>
             `)
 
@@ -375,8 +375,8 @@ function updateDeudasSociales(fecha) {
         deudas.forEach(deuda => {
             $("#divDeudasSociales").append(`
             <div class="form-row">
-            <p class="col-md-7" style="margin-top: -15px">${ deuda.nombre }</p>
-            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ deuda.saldo.toFixed(2) }</p>
+            <p class="col-md-7" style="margin-top: -15px">${ deuda.nombre}</p>
+            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ deuda.saldo.toFixed(2)}</p>
             </div>
             `)
 
@@ -400,8 +400,8 @@ function updateDeudasOtras(fecha) {
         deudas.forEach(deuda => {
             $("#divDeudasOtras").append(`
             <div class="form-row">
-            <p class="col-md-7" style="margin-top: -15px">${ deuda.nombre }</p>
-            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ deuda.saldo.toFixed(2) }</p>
+            <p class="col-md-7" style="margin-top: -15px">${ deuda.nombre}</p>
+            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ deuda.saldo.toFixed(2)}</p>
             </div>
             `)
 
@@ -411,4 +411,20 @@ function updateDeudasOtras(fecha) {
             importeTotalPatrimonioNeto.innerHTML = (parseFloat(importeTotalPatrimonioNeto.innerHTML) - deuda.saldo).toFixed(2)
         });
     })
+}
+
+function print() {
+    const filename = 'Estado de Situación Patrimonial.pdf';
+    let height = document.querySelector('#divESP').clientHeight
+    let width = document.querySelector('#divESP').clientWidth
+
+    let cabecera = '<div class="col-md-12 text-center mb-2"><h2><u>Estado de Situación Patrimonial al</u></h2></div>'
+    let cuerpo = document.querySelector('#divESP')
+
+    let pdf = new jsPDF('p', 'mm', 'a4');
+
+    html2canvas(cuerpo).then(canvas => {
+        pdf.addImage(canvas.toDataURL('image/png', 1), 'PNG', 15, 20, 180, (width * 180 / height));
+        pdf.save(filename);
+    });
 }

@@ -2,47 +2,231 @@
 <html>
 
 <head>
-    <% include ../../partials/common-head %>
+    <meta name="description" content="FarmERP">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FarmERP</title>
+    <link rel="shortcut icon" href="./src/favicon.ico">
+    <link rel="stylesheet" href="./template/assets/css/normalize.css">
+    <link rel="stylesheet" href="./styles/bootstrap.min.css">
+
+    <link rel="stylesheet" href="./template/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="./template/assets/scss/style.css">
+    <link rel="stylesheet" href="./styles/fonts.css">
+    <link rel="stylesheet" href="./template/assets/css/lib/datatable/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="./styles/app.css">
+
+    <link rel="stylesheet" href="./styles/autocomplete.css">
+    <link rel="stylesheet" href="./styles/tabla.css">
+    <!-- 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.1/jspdf.debug.js" integrity="sha384-THVO/sM0mFD9h7dfSndI6TS0PgAGavwKvB5hAxRRvc0o9cPLohB0wb/PTA7LdUHs" crossorigin="anonymous"></script>
+     -->
 </head>
 
 <body>
 
     <!--Panel Izquierdo -->
-    <% include ../../partials/sidebar %>
+    <aside id="left-panel" class="left-panel">
+        <nav class="navbar navbar-expand-sm navbar-default">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">
+                    <h2><img src="./src/logo.png" class="" height="75px">
+                    </h2>
+                </a>
+            </div>
+
+
+            <div id="main-menu" class="main-menu collapse navbar-collapse">
+                <ul class="nav navbar-nav mt-4">
+                    <!-- Menú -->
+                    <!-- <li><a href="#"><i class="menu-icon fa fa-book"></i>Inicio</a></li> -->
+
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            <i class="menu-icon fa fa-book"></i>Contable</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-check"></i><a href="/contable/situacionPatrimonial">Situación
+                                    Patrimonial</a></li>
+                            <li><i class="fa fa-check"></i><a href="#" onclick="alert('Proximamente...')">Estado de
+                                    Resultados</a></li>
+                            <li><i class="fa fa-check"></i><a href="#" onclick="alert('Proximamente...')">Índices
+                                    Económicos</a></li>
+                            <li><i class="fa fa-check"></i><a href="#" onclick="alert('Proximamente...')">Índices
+                                    Financieros</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            <i class="menu-icon fa fa-cash-register"></i>Recursos</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-check"></i><a href="/disponibilidades">Disponibilidades</a></li>
+                            <li><i class="fa fa-check"></i><a href="/creditos">Créditos</a></li>
+                            <li><i class="fa fa-check"></i><a href="/retiroSocios">Retiro de Socios</a></li>
+                            <li><i class="fa fa-check"></i><a href="/deudasComerciales">Deudas Comerciales</a></li>
+                            <li><i class="fa fa-check"></i><a href="/deudasFinancieras">Deudas Financieras</a></li>
+                            <li><i class="fa fa-check"></i><a href="/deudasFiscales">Deudas Fiscales</a></li>
+                            <li><i class="fa fa-check"></i><a href="/deudasSociales">Deudas Sociales</a></li>
+                            <li><i class="fa fa-check"></i><a href="/otrasDeudas">Otras Dedudas</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            <i class="menu-icon fas fa-hand-holding-usd"></i>Capital</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-check"></i><a href="/lotes">Lotes</a></li>
+                            <li><i class="fa fa-check"></i><a href="/infraestructuras">Infraestructura</a></li>
+                            <li><i class="fa fa-check"></i><a href="/administraciones">Administración</a></li>
+                            <li><i class="fa fa-check"></i><a href="/equipos">Equipos y Herramientas</a></li>
+                            <li><i class="fa fa-check"></i><a href="/rodados">Rodados</a></li>
+                            <li><i class="fa fa-check"></i><a href="/tractores">Tractores</a></li>
+                            <li><i class="fa fa-check"></i><a href="/implementos">Implementos</a></li>
+                            <li><i class="fa fa-check"></i><a href="/autopropulsados">Autopropulsados</a></li>
+                            <li><i class="fa fa-check"></i><a href="/haciendas">Hacienda</a></li>
+                            <li><i class="fa fa-check"></i><a href="/insumos">Insumos Agric./Gan.</a></li>
+                            <li><i class="fa fa-check"></i><a href="/praderas">Praderas</a></li>
+                            <li><i class="fa fa-check"></i><a href="/stocks">Stock de Productos</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            <i class="menu-icon fas fa-seedling"></i>Agricultura</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-check"></i><a href="#" onclick="alert('Proximamente...')">Opción 1</a></li>
+                            <li><i class="fa fa-check"></i><a href="#" onclick="alert('Proximamente...')">Opción 2</a></li>
+                            <li><i class="fa fa-check"></i><a href="#" onclick="alert('Proximamente...')">Opción 3</a></li>
+                            <li><i class="fa fa-check"></i><a href="#" onclick="alert('Proximamente...')">Opción 4</a></li>
+                        </ul>
+                    </li> -->
+
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            <i class="menu-icon fas fa-horse"></i>Ganadería</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-check"></i><a href="/tiposHacienda">Tipos de Hacienda</a></li>
+                            <li><i class="fa fa-check"></i><a href="/categoriasHacienda">Categorías de Hacienda</a></li>
+                            <!-- <li><i class="fa fa-check"></i><a href="#" onclick="alert('Proximamente...')">Opción 1</a></li>
+                            <li><i class="fa fa-check"></i><a href="#" onclick="alert('Proximamente...')">Opción 2</a></li>
+                            <li><i class="fa fa-check"></i><a href="#" onclick="alert('Proximamente...')">Opción 3</a></li>
+                            <li><i class="fa fa-check"></i><a href="#" onclick="alert('Proximamente...')">Opción 4</a></li> -->
+                        </ul>
+                    </li>
+
+                    <!-- <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            <i class="menu-icon fas fa-tractor"></i>Empresa Maquinaria</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-check"></i><a href="#" onclick="alert('Proximamente...')">Opción 1</a></li>
+                            <li><i class="fa fa-check"></i><a href="#" onclick="alert('Proximamente...')">Opción 2</a></li>
+                            <li><i class="fa fa-check"></i><a href="#" onclick="alert('Proximamente...')">Opción 3</a></li>
+                            <li><i class="fa fa-check"></i><a href="#" onclick="alert('Proximamente...')">Opción 4</a></li>
+                        </ul>
+                    </li> -->
+
+                    <!-- <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            <i class="menu-icon fas fa-users"></i>Personal</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-check"></i><a href="#" onclick="alert('Proximamente...')">Opción 1</a></li>
+                            <li><i class="fa fa-check"></i><a href="#" onclick="alert('Proximamente...')">Opción 2</a></li>
+                            <li><i class="fa fa-check"></i><a href="#" onclick="alert('Proximamente...')">Opción 3</a></li>
+                            <li><i class="fa fa-check"></i><a href="#" onclick="alert('Proximamente...')">Opción 4</a></li>
+                        </ul>
+                    </li> -->
+
+
+                    <!-- Fin Menú -->
+                </ul>
+                <br>
+            </div>
+        </nav>
+    </aside>
+
+    <script src="./scripts/sidebar.js"></script>
     <!-- /Panel izquierdo-->
 
     <!-- Panel Derecho -->
     <div id="right-panel" class="right-panel">
 
         <!-- Cabecera-->
-        <% include ../../partials/cabecera %>
+        <header id="header" class="header">
+            <div class="header-menu">
+
+                <!-- Notificacion-->
+                <div class="col-sm-7">
+                    <!--<a id="menuToggle" class="menutoggle pull-left">
+				<i class="fa fa fa-tasks"></i>
+			</a> -->
+                    <div class="header-left">
+                        <h2 class="text-header">Empresa</h2>
+                        <p class="text-header mb-2">inicioEjercicio al finEjercicio</p>
+                        <input id="datosEmpresa" type="hidden" value="">
+                    </div>
+                </div>
+                <!-- /Notificacion-->
+                <!-- Perfil-->
+                <div class="col-sm-5">
+                    <div class="user-area dropdown float-right" style="line-height: 2.5;">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            <strong id="nombreUsuario" class="mr-2">usuario@mail.com</strong>
+                            <img class="user-avatar rounded-circle" src="./src/perfil.jpg" alt="User Avatar">
+                        </a>
+                        <div class="user-menu dropdown-menu">
+                            <a class="nav-link" href="./perfil">
+                                <i class="fa fa-user"></i> Mi Perfil
+                            </a>
+                            <a id="botonLogout" class="nav-link" href="./auth/logout">
+                                <i class="fa fa-power-off"></i> Cerrar la sesión
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Perfil-->
+            </div>
+            <script>
+                // disable browser console during tests
+
+                var datosEmpresa = JSON.parse(document.querySelector("#datosEmpresa").value)
+
+                var empresaInicioEjercicio = new Date(Date.parse(datosEmpresa.inicioEjercicio) + 3 * 60 * 60 * 1000)
+                var empresaFinEjercicio = new Date(Date.parse(datosEmpresa.finEjercicio) + 3 * 60 * 60 * 1000)
+            </script>
+        </header>
         <!-- /Cabecera -->
 
         <!-- Tabla del CRUD-->
         <div class="content mt-3">
-
-            <!-- Mensaje -->
-            <% include ../../partials/mensaje %>
-            <!-- /Mensaje -->
-
             <div class="col-sm-12">
                 <div class="animated fadeIn">
                     <div class="card">
                         <div class="card-body m-3">
                             <div class="d-flex justify-content-between">
                                 <div class="d-flex justify-content-start">
-                                    <input type="date" id="situacionPatrimonialFecha" class="form-control"
-                                        min="<%= empresa.inicioEjercicio %>" max="<%= empresa.finEjercicio %>"
-                                        value="<%= empresa.finEjercicio %>" onchange="updateESP(this.value)">
+                                    <input type="date" id="situacionPatrimonialFecha" class="form-control" min="" max=""
+                                        value="" onchange="updateESP(this.value)">
                                 </div>
                                 <div id="tableButtons" class="d-none d-md-block">
-                                    <input type="button" class="btn btn-secondary"
-                                        value="Imprimir Estado de Situación Patrimonial">
+                                    <a id="imprimir" href="#imprimirModal" class="btn btn-primary"
+                                        data-toggle="modal">Imprimir</a>
+                                    <input id="btnPrint" type="button" class="btn btn-secondary"
+                                        value="Imprimir Estado de Situación Patrimonial" onclick="print()">
                                 </div>
                             </div>
 
                         </div>
                     </div>
+                    
                     <div id="divESP" class="row mb-4">
                         <!-- Activos -->
                         <div class="col-md-6">
@@ -341,14 +525,29 @@
     </div>
     <!-- /Panel Derecho -->
 
-
     <!-- Scripts -->
-    <% include ../../partials/common-scripts %>
-
+    <script src="./scripts/jquery-3.3.1.slim.min.js"></script>
+    <script src="./scripts/popper.min.js"></script>
+    <script src="./scripts/bootstrap.min.js"></script>
+    <!-- <script src="/template/assets/js/plugins.js"></script> -->
+    <!-- <script src="/template/assets/js/main.js"></script> -->
+    <script type="text/javascript" src="./DataTables/datatables.min.js"></script>
+    <script src="./scripts/axios.min.js"></script>
+    <!-- <script src="/scripts/autocomplete.min.js"></script> -->
+    <script type="text/javascript" src="./scripts/datatables-config.js"></script>
+    <script type="text/javascript" src="./scripts/form-validation.js"></script>
+    <!-- <script src="/scripts/auto-completar.js"></script> -->
+    <script src="./scripts/public-movimientosCompra.js"></script>
     <script src="./scripts/html2canvas.min.js"></script>
     <script src="./scripts/jsPDF-1.3.2/dist/jspdf.min.js"></script>
 
-    <script src="/scripts/public-situacionPatrimonial.js"></script>
+
+    <script>
+        function closeModal() {
+            window.location.reload()
+        }
+    </script>
+    <script src="./scripts/public-situacionPatrimonial.js"></script>
 </body>
 
 </html>
