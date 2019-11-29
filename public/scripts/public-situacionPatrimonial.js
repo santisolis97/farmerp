@@ -37,6 +37,10 @@ function updateESP(fecha) {
     updateInfraestructuras(fecha)
     updateAdministracions(fecha)
     updateEquipos(fecha)
+    updateRodados(fecha)
+    updateTractores(fecha)
+    updateImplementos(fecha)
+    updateAutopropulsados(fecha)
     updateLotes(fecha)
 
     /* PASIVOS */
@@ -193,6 +197,54 @@ function updateEquipos(fecha){
         let importeEquipos = document.querySelector("#importeEquipos")
 
         importeEquipos.innerHTML = parseFloat(valorTotal).toFixed(2)
+        importeTotalActivosNoCorrientes.innerHTML = (parseFloat(importeTotalActivosNoCorrientes.innerHTML) + parseFloat(valorTotal)).toFixed(2)
+        importeTotalActivos.innerHTML = (parseFloat(importeTotalActivos.innerHTML) + parseFloat(valorTotal)).toFixed(2)
+        importeTotalPatrimonioNeto.innerHTML = (parseFloat(importeTotalPatrimonioNeto.innerHTML) + parseFloat(valorTotal)).toFixed(2)
+    })
+}
+
+function updateRodados(fecha){
+    axios.get('/contable/apiRodados/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
+        let valorTotal = res.data.valorTotal
+        let importeRodados = document.querySelector("#importeRodados")
+
+        importeRodados.innerHTML = parseFloat(valorTotal).toFixed(2)
+        importeTotalActivosNoCorrientes.innerHTML = (parseFloat(importeTotalActivosNoCorrientes.innerHTML) + parseFloat(valorTotal)).toFixed(2)
+        importeTotalActivos.innerHTML = (parseFloat(importeTotalActivos.innerHTML) + parseFloat(valorTotal)).toFixed(2)
+        importeTotalPatrimonioNeto.innerHTML = (parseFloat(importeTotalPatrimonioNeto.innerHTML) + parseFloat(valorTotal)).toFixed(2)
+    })
+}
+
+function updateTractores(fecha){
+    axios.get('/contable/apiTractores/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
+        let valorTotal = res.data.valorTotal
+        let importeTractores = document.querySelector("#importeTractores")
+
+        importeTractores.innerHTML = parseFloat(valorTotal).toFixed(2)
+        importeTotalActivosNoCorrientes.innerHTML = (parseFloat(importeTotalActivosNoCorrientes.innerHTML) + parseFloat(valorTotal)).toFixed(2)
+        importeTotalActivos.innerHTML = (parseFloat(importeTotalActivos.innerHTML) + parseFloat(valorTotal)).toFixed(2)
+        importeTotalPatrimonioNeto.innerHTML = (parseFloat(importeTotalPatrimonioNeto.innerHTML) + parseFloat(valorTotal)).toFixed(2)
+    })
+}
+
+function updateImplementos(fecha){
+    axios.get('/contable/apiImplementos/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
+        let valorTotal = res.data.valorTotal
+        let importeImplementos = document.querySelector("#importeImplementos")
+
+        importeImplementos.innerHTML = parseFloat(valorTotal).toFixed(2)
+        importeTotalActivosNoCorrientes.innerHTML = (parseFloat(importeTotalActivosNoCorrientes.innerHTML) + parseFloat(valorTotal)).toFixed(2)
+        importeTotalActivos.innerHTML = (parseFloat(importeTotalActivos.innerHTML) + parseFloat(valorTotal)).toFixed(2)
+        importeTotalPatrimonioNeto.innerHTML = (parseFloat(importeTotalPatrimonioNeto.innerHTML) + parseFloat(valorTotal)).toFixed(2)
+    })
+}
+
+function updateAutopropulsados(fecha){
+    axios.get('/contable/apiAutopropulsados/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
+        let valorTotal = res.data.valorTotal
+        let importeAutopropulsados = document.querySelector("#importeAutopropulsados")
+
+        importeAutopropulsados.innerHTML = parseFloat(valorTotal).toFixed(2)
         importeTotalActivosNoCorrientes.innerHTML = (parseFloat(importeTotalActivosNoCorrientes.innerHTML) + parseFloat(valorTotal)).toFixed(2)
         importeTotalActivos.innerHTML = (parseFloat(importeTotalActivos.innerHTML) + parseFloat(valorTotal)).toFixed(2)
         importeTotalPatrimonioNeto.innerHTML = (parseFloat(importeTotalPatrimonioNeto.innerHTML) + parseFloat(valorTotal)).toFixed(2)

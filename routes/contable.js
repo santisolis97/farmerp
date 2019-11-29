@@ -39,8 +39,17 @@ router.get('/apiAdministracions/:fecha/:empresaId', Logged.isLogged, contable.ge
 /* Api Equipos */
 router.get('/apiEquipos/:fecha/:empresaId', Logged.isLogged, contable.getEquipos)
 
+/* Api Rodados */
+router.get('/apiRodados/:fecha/:empresaId', Logged.isLogged, contable.getRodados)
 
+/* Api Tractores */
+router.get('/apiTractores/:fecha/:empresaId', Logged.isLogged, contable.getTractores)
 
+/* Api Implementos */
+router.get('/apiImplementos/:fecha/:empresaId', Logged.isLogged, contable.getImplementos)
+
+/* Api Autopropulsados */
+router.get('/apiAutopropulsados/:fecha/:empresaId', Logged.isLogged, contable.getAutopropulsados)
 
 /* Api Lotes */
 router.get('/apiLotes/:fecha/:empresaId', Logged.isLogged, contable.getLotes)

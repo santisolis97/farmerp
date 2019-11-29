@@ -6,10 +6,15 @@ const Credito = models.Credito
 const RetiroSocio = models.RetiroSocio
 const Insumo = models.Insumo
 const Pradera = models.Pradera
+const Stock = models.Stock
 const Lote = models.Lote
 const Infraestructura = models.Infraestructura
 const Administracion = models.Administracion
 const Equipo = models.Equipo
+const Rodado = models.Rodado
+const Tractor = models.Tractor
+const Implemento = models.Implemento
+const Autopropulsado = models.Autopropulsado
 const DeudaComercial = models.DeudaComercial
 const DeudaFinanciera = models.DeudaFinanciera
 const DeudaFiscal = models.DeudaFiscal
@@ -267,6 +272,181 @@ contableController.getEquipos = (req, res) => {
     });
 }
 
+/* API Rodados */
+contableController.getRodados = (req, res) => {
+    var fecha = new Date(req.params.fecha)
+
+    Rodado.findAll({
+        where: {
+            empresaId: req.params.empresaId
+        }
+    }).then(rodados => {
+        var valorTotal = 0
+
+        rodados.map(rodado => {
+            if ((!rodado.fechaVenta || new Date(rodado.fechaVenta) > fecha) && new Date(rodado.fechaCompra) <= fecha) {
+
+                var antiguedad = new Date(res.locals.empresa.finEjercicio) - new Date(rodado.fechaCompra);
+                antiguedad = Math.trunc(antiguedad / (1000 * 60 * 60 * 24 * 365))
+                var valorMercado = rodado.cantidad * rodado.valorUnitario;
+                var valorResidualMonto = rodado.cantidad * rodado.valorUnitario * rodado.valorResidual / 100;
+                var amortizacion = (valorMercado - valorResidualMonto) / rodado.vidaUtil
+                var amortizacionAcumulada;
+                var valorANuevo;
+
+                if (amortizacion * antiguedad >= valorMercado) {
+                    amortizacionAcumulada = valorMercado
+                } else {
+                    amortizacionAcumulada = amortizacion * antiguedad
+                }
+
+                if (valorMercado - amortizacionAcumulada <= 0) {
+                    valorANuevo = valorMercado
+                } else {
+                    valorANuevo = valorMercado - amortizacionAcumulada
+                }
+
+                valorTotal += parseFloat(valorANuevo)
+            }
+        });
+
+        res.send({
+            valorTotal
+        });
+    });
+}
+
+/* API Tractores */
+contableController.getTractores = (req, res) => {
+    var fecha = new Date(req.params.fecha)
+
+    Tractor.findAll({
+        where: {
+            empresaId: req.params.empresaId
+        }
+    }).then(tractores => {
+        var valorTotal = 0
+
+        tractores.map(tractor => {
+            if ((!tractor.fechaVenta || new Date(tractor.fechaVenta) > fecha) && new Date(tractor.fechaCompra) <= fecha) {
+
+                var antiguedad = new Date(res.locals.empresa.finEjercicio) - new Date(tractor.fechaCompra);
+                antiguedad = Math.trunc(antiguedad / (1000 * 60 * 60 * 24 * 365))
+                var valorMercado = tractor.valorUnitario;
+                var valorResidualMonto = tractor.valorUnitario * tractor.valorResidual / 100;
+                var amortizacion = (valorMercado - valorResidualMonto) / tractor.vidaUtil
+                var amortizacionAcumulada;
+                var valorANuevo;
+
+                if (amortizacion * antiguedad >= valorMercado) {
+                    amortizacionAcumulada = valorMercado
+                } else {
+                    amortizacionAcumulada = amortizacion * antiguedad
+                }
+
+                if (valorMercado - amortizacionAcumulada <= 0) {
+                    valorANuevo = valorMercado
+                } else {
+                    valorANuevo = valorMercado - amortizacionAcumulada
+                }
+
+                valorTotal += parseFloat(valorANuevo)
+            }
+        });
+
+        res.send({
+            valorTotal
+        });
+    });
+}
+
+/* API Implementos */
+contableController.getImplementos = (req, res) => {
+    var fecha = new Date(req.params.fecha)
+
+    Implemento.findAll({
+        where: {
+            empresaId: req.params.empresaId
+        }
+    }).then(implementos => {
+        var valorTotal = 0
+
+        implementos.map(implemento => {
+            if ((!implemento.fechaVenta || new Date(implemento.fechaVenta) > fecha) && new Date(implemento.fechaCompra) <= fecha) {
+
+                var antiguedad = new Date(res.locals.empresa.finEjercicio) - new Date(implemento.fechaCompra);
+                antiguedad = Math.trunc(antiguedad / (1000 * 60 * 60 * 24 * 365))
+                var valorMercado = implemento.valorUnitario;
+                var valorResidualMonto = implemento.valorUnitario * implemento.valorResidual / 100;
+                var amortizacion = (valorMercado - valorResidualMonto) / implemento.vidaUtil
+                var amortizacionAcumulada;
+                var valorANuevo;
+
+                if (amortizacion * antiguedad >= valorMercado) {
+                    amortizacionAcumulada = valorMercado
+                } else {
+                    amortizacionAcumulada = amortizacion * antiguedad
+                }
+
+                if (valorMercado - amortizacionAcumulada <= 0) {
+                    valorANuevo = valorMercado
+                } else {
+                    valorANuevo = valorMercado - amortizacionAcumulada
+                }
+
+                valorTotal += parseFloat(valorANuevo)
+            }
+        });
+
+        res.send({
+            valorTotal
+        });
+    });
+}
+
+/* API Autopropulsados */
+contableController.getAutopropulsados = (req, res) => {
+    var fecha = new Date(req.params.fecha)
+
+    Autopropulsado.findAll({
+        where: {
+            empresaId: req.params.empresaId
+        }
+    }).then(autopropulsados => {
+        var valorTotal = 0
+
+        autopropulsados.map(autopropulsado => {
+            if ((!autopropulsado.fechaVenta || new Date(autopropulsado.fechaVenta) > fecha) && new Date(autopropulsado.fechaCompra) <= fecha) {
+
+                var antiguedad = new Date(res.locals.empresa.finEjercicio) - new Date(autopropulsado.fechaCompra);
+                antiguedad = Math.trunc(antiguedad / (1000 * 60 * 60 * 24 * 365))
+                var valorMercado = autopropulsado.valorUnitario;
+                var valorResidualMonto = autopropulsado.valorUnitario * autopropulsado.valorResidual / 100;
+                var amortizacion = (valorMercado - valorResidualMonto) / autopropulsado.vidaUtil
+                var amortizacionAcumulada;
+                var valorANuevo;
+
+                if (amortizacion * antiguedad >= valorMercado) {
+                    amortizacionAcumulada = valorMercado
+                } else {
+                    amortizacionAcumulada = amortizacion * antiguedad
+                }
+
+                if (valorMercado - amortizacionAcumulada <= 0) {
+                    valorANuevo = valorMercado
+                } else {
+                    valorANuevo = valorMercado - amortizacionAcumulada
+                }
+
+                valorTotal += parseFloat(valorANuevo)
+            }
+        });
+
+        res.send({
+            valorTotal
+        });
+    });
+}
 
 /* API Lotes*/
 contableController.getLotes = (req, res) => {
@@ -447,7 +627,6 @@ contableController.getDeudasSociales = (req, res) => {
         }
     })
 }
-
 
 /* API Otras Deudas */
 contableController.getDeudasOtras = (req, res) => {
