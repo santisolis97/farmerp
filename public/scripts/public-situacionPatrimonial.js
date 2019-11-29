@@ -34,6 +34,7 @@ function updateESP(fecha) {
     updateCreditos(fecha)
     updateRetiroSocios(fecha)
     updateInsumos(fecha)
+    updateStocks(fecha)
     updateInfraestructuras(fecha)
     updateAdministracions(fecha)
     updateEquipos(fecha)
@@ -166,6 +167,30 @@ function updateInsumos(fecha) {
     })
 }
 
+function updateStocks(fecha) {
+    axios.get('/contable/apiStocks/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
+        let insumos = res.data
+        let importeStock = document.querySelector("#importeStock");
+
+        $("#divStock").html('')
+
+        importeStock.innerHTML = (0).toFixed(2)
+
+        insumos.forEach(insumo => {
+            $("#divStock").append(`
+            <div class="form-row">
+            <p class="col-md-7" style="margin-top: -15px">${ insumo.concepto }</p>
+            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ insumo.valorMercado.toFixed(2) }</p>
+            </div>
+            `)
+
+            importeStock.innerHTML = (parseFloat(importeStock.innerHTML) + insumo.valorMercado).toFixed(2)
+            importeTotalActivosCorrientes.innerHTML = (parseFloat(importeTotalActivosCorrientes.innerHTML) + insumo.valorMercado).toFixed(2)
+            importeTotalActivos.innerHTML = (parseFloat(importeTotalActivos.innerHTML) + insumo.valorMercado).toFixed(2)
+            importeTotalPatrimonioNeto.innerHTML = (parseFloat(importeTotalPatrimonioNeto.innerHTML) + insumo.valorMercado).toFixed(2)
+        });
+    })
+}
 
 function updateInfraestructuras(fecha){
     axios.get('/contable/apiInfraestructuras/' + fecha + '/' + datosEmpresa.empresaId).then(res => {

@@ -138,7 +138,21 @@ contableController.getInsumos = (req, res) => {
     })
 }
 
+/* API Stock Productos */
+contableController.getStocks = (req, res) => {
+    Stock.findAll({
+        where: {
+            empresaId: res.locals.empresa.empresaId
+        }
+    }).then(stocks => {
+        stocks.map(stock => {
+            var valorMercado = stock.cantidad * stock.valorUnitario;
+            stock.dataValues.valorMercado = valorMercado;
+        });
 
+        res.send(stocks);
+    })
+}
 
 /* API Mejoras-Infraestructura */
 contableController.getInfraestructuras = (req, res) => {
