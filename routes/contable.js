@@ -28,6 +28,8 @@ router.get('/apiRetiroSocios/:fecha/:empresaId', Logged.isLogged, contable.getRe
 /* Api Insumos */
 router.get('/apiInsumos/:fecha/:empresaId', Logged.isLogged, contable.getInsumos)
 
+/* Api Stocks */
+router.get('/apiStocks/:fecha/:empresaId', Logged.isLogged, contable.getStocks)
 
 
 /* Api Infraestructuras */
