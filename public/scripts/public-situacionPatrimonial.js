@@ -11,7 +11,6 @@ function updateESP(fecha) {
         return
     }
 
-    let importeDisponibilidades = document.querySelector("#importeDisponibilidades");
     let importeTotalActivos = document.querySelector("#importeTotalActivos");
     let importeTotalActivosCorrientes = document.querySelector("#importeTotalActivosCorrientes");
     let importeTotalActivosNoCorrientes = document.querySelector("#importeTotalActivosNoCorrientes");
@@ -19,10 +18,9 @@ function updateESP(fecha) {
     let importeTotalPasivos = document.querySelector("#importeTotalPasivos");
     let importeTotalPatrimonioNeto = document.querySelector("#importeTotalPatrimonioNeto");
 
-    importeDisponibilidades.innerHTML = (0).toFixed(2)
-    importeTotalActivos.innerHTML = (0).toFixed(2)
     importeTotalActivosCorrientes.innerHTML = (0).toFixed(2)
     importeTotalActivosNoCorrientes.innerHTML = (0).toFixed(2)
+    importeTotalActivos.innerHTML = (0).toFixed(2)
     importeTotalPasivosCorrientes.innerHTML = (0).toFixed(2)
     importeTotalPasivos.innerHTML = (0).toFixed(2)
     importeTotalPatrimonioNeto.innerHTML = (0).toFixed(2)
@@ -31,9 +29,13 @@ function updateESP(fecha) {
     updateCaja(fecha)
     updateBanco(fecha)
     updateInversiones(fecha)
+    updateDisponibilidades(fecha)
     updateCreditos(fecha)
     updateRetiroSocios(fecha)
     updateInsumos(fecha)
+    updatePraderas(fecha)
+    updateHaciendaCambio(fecha)
+    updateHaciendaUso(fecha)
     updateStocks(fecha)
     updateInfraestructuras(fecha)
     updateAdministracions(fecha)
@@ -58,11 +60,6 @@ function updateCaja(fecha) {
         let caja = res.data
         $("#importeCaja").remove()
         $("#divCaja").append(`<p id="importeCaja" class="col-md-4 text-right" style="margin-top: -15px">$ ${caja.saldo}</p>`)
-
-        importeDisponibilidades.innerHTML = (parseFloat(importeDisponibilidades.innerHTML) + parseFloat(caja.saldo)).toFixed(2)
-        importeTotalActivosCorrientes.innerHTML = (parseFloat(importeTotalActivosCorrientes.innerHTML) + parseFloat(caja.saldo)).toFixed(2)
-        importeTotalActivos.innerHTML = (parseFloat(importeTotalActivos.innerHTML) + parseFloat(caja.saldo)).toFixed(2)
-        importeTotalPatrimonioNeto.innerHTML = (parseFloat(importeTotalPatrimonioNeto.innerHTML) + parseFloat(caja.saldo)).toFixed(2)
     })
 }
 
@@ -71,11 +68,6 @@ function updateBanco(fecha) {
         let banco = res.data
         $("#importeBanco").remove()
         $("#divBanco").append(`<p id="importeBanco" class="col-md-4 text-right" style="margin-top: -15px">$ ${banco.saldo}</p>`)
-
-        importeDisponibilidades.innerHTML = (parseFloat(importeDisponibilidades.innerHTML) + parseFloat(banco.saldo)).toFixed(2)
-        importeTotalActivosCorrientes.innerHTML = (parseFloat(importeTotalActivosCorrientes.innerHTML) + parseFloat(banco.saldo)).toFixed(2)
-        importeTotalActivos.innerHTML = (parseFloat(importeTotalActivos.innerHTML) + parseFloat(banco.saldo)).toFixed(2)
-        importeTotalPatrimonioNeto.innerHTML = (parseFloat(importeTotalPatrimonioNeto.innerHTML) + parseFloat(banco.saldo)).toFixed(2)
     })
 }
 
@@ -84,11 +76,19 @@ function updateInversiones(fecha) {
         let inversiones = res.data
         $("#importeInversiones").remove()
         $("#divInversiones").append(`<p id="importeInversiones" class="col-md-4 text-right" style="margin-top: -15px">$ ${inversiones.saldo}</p>`)
+    })
+}
 
-        importeDisponibilidades.innerHTML = (parseFloat(importeDisponibilidades.innerHTML) + parseFloat(inversiones.saldo)).toFixed(2)
-        importeTotalActivosCorrientes.innerHTML = (parseFloat(importeTotalActivosCorrientes.innerHTML) + parseFloat(inversiones.saldo)).toFixed(2)
-        importeTotalActivos.innerHTML = (parseFloat(importeTotalActivos.innerHTML) + parseFloat(inversiones.saldo)).toFixed(2)
-        importeTotalPatrimonioNeto.innerHTML = (parseFloat(importeTotalPatrimonioNeto.innerHTML) + parseFloat(inversiones.saldo)).toFixed(2)
+function updateDisponibilidades(fecha) {
+    axios.get('/contable/apiDisponibilidades/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
+        let disponibilidades = res.data.disponibilidades
+
+        let importeDisponibilidades = document.querySelector("#importeDisponibilidades");
+        importeDisponibilidades.innerHTML = disponibilidades.toFixed(2)
+
+        importeTotalActivosCorrientes.innerHTML = (parseFloat(importeTotalActivosCorrientes.innerHTML) + parseFloat(disponibilidades)).toFixed(2)
+        importeTotalActivos.innerHTML = (parseFloat(importeTotalActivos.innerHTML) + parseFloat(disponibilidades)).toFixed(2)
+        importeTotalPatrimonioNeto.innerHTML = (parseFloat(importeTotalPatrimonioNeto.innerHTML) + parseFloat(disponibilidades)).toFixed(2)
     })
 }
 
@@ -163,6 +163,105 @@ function updateInsumos(fecha) {
             importeTotalActivosCorrientes.innerHTML = (parseFloat(importeTotalActivosCorrientes.innerHTML) + insumo.valorMercado).toFixed(2)
             importeTotalActivos.innerHTML = (parseFloat(importeTotalActivos.innerHTML) + insumo.valorMercado).toFixed(2)
             importeTotalPatrimonioNeto.innerHTML = (parseFloat(importeTotalPatrimonioNeto.innerHTML) + insumo.valorMercado).toFixed(2)
+        });
+    })
+}
+
+function updatePraderas(fecha) {
+    axios.get('/contable/apiPraderas/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
+        let praderas = res.data.praderas
+        let valorTotal = res.data.valorTotal
+        let valorTotalAmortizacion = res.data.valorTotalAmortizacion
+        let importePraderasAmortizacion = document.querySelector("#importePraderasAmortizacion");
+        let importePraderas = document.querySelector("#importePraderas");
+
+        importePraderasAmortizacion.innerHTML = valorTotalAmortizacion.toFixed(2)
+        importePraderas.innerHTML = valorTotal.toFixed(2)
+
+        $("#divPraderasAmortizacion").html('')
+
+
+        praderas.forEach(pradera => {
+            $("#divPraderasAmortizacion").append(`
+            <div class="form-row">
+            <p class="col-md-7" style="margin-top: -15px">${ pradera.cultivo}</p>
+            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ pradera.amortizacionAcumulada.toFixed(2)}</p>
+            </div>
+            `)
+
+            importeTotalActivosCorrientes.innerHTML = (parseFloat(importeTotalActivosCorrientes.innerHTML) + pradera.amortizacionAcumulada).toFixed(2)
+            importeTotalActivos.innerHTML = (parseFloat(importeTotalActivos.innerHTML) + pradera.amortizacionAcumulada).toFixed(2)
+            importeTotalPatrimonioNeto.innerHTML = (parseFloat(importeTotalPatrimonioNeto.innerHTML) + pradera.amortizacionAcumulada).toFixed(2)
+        });
+
+        $("#divPraderas").html('')
+
+
+        praderas.forEach(pradera => {
+            $("#divPraderas").append(`
+            <div class="form-row">
+            <p class="col-md-7" style="margin-top: -15px">${ pradera.cultivo}</p>
+            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ pradera.valorANuevo.toFixed(2)}</p>
+            </div>
+            `)
+
+            importeTotalActivosNoCorrientes.innerHTML = (parseFloat(importeTotalActivosNoCorrientes.innerHTML) + pradera.valorANuevo).toFixed(2)
+            importeTotalActivos.innerHTML = (parseFloat(importeTotalActivos.innerHTML) + pradera.valorANuevo).toFixed(2)
+            importeTotalPatrimonioNeto.innerHTML = (parseFloat(importeTotalPatrimonioNeto.innerHTML) + pradera.valorANuevo).toFixed(2)
+        });
+    })
+}
+
+function updateHaciendaCambio(fecha) {
+    axios.get('/contable/apiHaciendaCambio/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
+        let haciendas = res.data.haciendaCambio
+        let valorTotalHaciendaCambio = res.data.totalHaciendaCambio
+
+        let importeHaciendaCambio = document.querySelector("#importeHaciendaCambio");
+
+        importeHaciendaCambio.innerHTML = valorTotalHaciendaCambio.toFixed(2)
+
+        $("#divHaciendaCambio").html('')
+
+
+        haciendas.forEach(hacienda => {
+            $("#divHaciendaCambio").append(`
+            <div class="form-row">
+            <p class="col-md-7" style="margin-top: -15px">${ hacienda.tipoHacienda}</p>
+            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ hacienda.valorTotal.toFixed(2)}</p>
+            </div>
+            `)
+
+            importeTotalActivosCorrientes.innerHTML = (parseFloat(importeTotalActivosCorrientes.innerHTML) + hacienda.valorTotal).toFixed(2)
+            importeTotalActivos.innerHTML = (parseFloat(importeTotalActivos.innerHTML) + hacienda.valorTotal).toFixed(2)
+            importeTotalPatrimonioNeto.innerHTML = (parseFloat(importeTotalPatrimonioNeto.innerHTML) + hacienda.valorTotal).toFixed(2)
+        });
+    })
+}
+
+function updateHaciendaUso(fecha) {
+    axios.get('/contable/apiHaciendaUso/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
+        let haciendas = res.data.haciendaUso
+        let valorTotalHaciendaUso = res.data.totalHaciendaUso
+
+        let importeHaciendaUso = document.querySelector("#importeHaciendaUso");
+
+        importeHaciendaUso.innerHTML = valorTotalHaciendaUso.toFixed(2)
+
+        $("#divHaciendaUso").html('')
+
+
+        haciendas.forEach(hacienda => {
+            $("#divHaciendaUso").append(`
+            <div class="form-row">
+            <p class="col-md-7" style="margin-top: -15px">${ hacienda.tipoHacienda}</p>
+            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ hacienda.valorTotal.toFixed(2)}</p>
+            </div>
+            `)
+
+            importeTotalActivosNoCorrientes.innerHTML = (parseFloat(importeTotalActivosNoCorrientes.innerHTML) + hacienda.valorTotal).toFixed(2)
+            importeTotalActivos.innerHTML = (parseFloat(importeTotalActivos.innerHTML) + hacienda.valorTotal).toFixed(2)
+            importeTotalPatrimonioNeto.innerHTML = (parseFloat(importeTotalPatrimonioNeto.innerHTML) + hacienda.valorTotal).toFixed(2)
         });
     })
 }

@@ -7,6 +7,8 @@ const RetiroSocio = models.RetiroSocio
 const Insumo = models.Insumo
 const Pradera = models.Pradera
 const Stock = models.Stock
+const TipoHacienda = models.TipoHacienda
+const Hacienda = models.Hacienda
 const Lote = models.Lote
 const Infraestructura = models.Infraestructura
 const Administracion = models.Administracion
@@ -42,6 +44,20 @@ contableController.getBanco = async (req, res) => {
 contableController.getInversiones = async (req, res) => {
     var inversiones = await Saldos.saldoInversion(req.params.empresaId, req.params.fecha)
     res.send(inversiones)
+}
+
+/* API Disponibilidades */
+contableController.getDisponibilidades = async (req, res) => {
+    var disponibilidades = 0
+    var caja = await Saldos.saldoCaja(req.params.empresaId, req.params.fecha)
+    var banco = await Saldos.saldoBanco(req.params.empresaId, req.params.fecha)
+    var inversiones = await Saldos.saldoInversion(req.params.empresaId, req.params.fecha)
+
+    disponibilidades = parseFloat(caja.saldo) + parseFloat(banco.saldo) + parseFloat(inversiones.saldo)
+
+    res.send({
+        disponibilidades
+    })
 }
 
 /* API Créditos */
@@ -154,6 +170,165 @@ contableController.getStocks = (req, res) => {
     })
 }
 
+/* API Hacienda - Bienes de Cambio */
+contableController.getHaciendaCambio = (req, res) => {
+    var fecha = new Date(req.params.fecha)
+    var haciendaCambio = []
+    var totalHaciendaCambio = 0
+
+    TipoHacienda.findAll({
+        where: {
+            empresaId: res.locals.empresa.empresaId
+        }
+    }).then(tipos => {
+        for (let i = 0; i < tipos.length; i++) {
+            const tipo = tipos[i];
+
+            Hacienda.findAll({
+                where: {
+                    tipoHaciendaId: tipo.tipoHaciendaId,
+                    tipoBien: "Bien de Cambio"
+                }
+            }).then(haciendas => {
+                var totalHacienda = 0
+                haciendas.forEach(hacienda => {
+                    var totalKilogramos = hacienda.cantidad * hacienda.kilogramoCabeza;
+                    var valorMercado = totalKilogramos * hacienda.valorKilogramo;
+
+                    hacienda.dataValues.totalKilogramos = totalKilogramos;
+                    hacienda.dataValues.valorMercado = valorMercado;
+
+                    if ((!hacienda.fechaVenta || new Date(hacienda.fechaVenta) > fecha) && (!hacienda.fechaCompra || new Date(hacienda.fechaCompra) <= fecha)) {
+                        if (hacienda.fechaCompra && hacienda.tipoBien == 'Bien de Uso') {
+                            var antiguedad = new Date(res.locals.empresa.finEjercicio) - new Date(hacienda.fechaCompra);
+                            antiguedad = Math.trunc(antiguedad / (1000 * 60 * 60 * 24 * 365))
+                            var amortizacion = valorMercado / hacienda.vidaUtil
+                            var amortizacionAcumulada;
+                            var valorANuevo;
+
+                            if (amortizacion * antiguedad >= hacienda.dataValues.valorMercado) {
+                                amortizacionAcumulada = hacienda.dataValues.valorMercado
+                            } else {
+                                amortizacionAcumulada = amortizacion * antiguedad
+                            }
+
+                            if (hacienda.dataValues.valorMercado - amortizacionAcumulada <= 0) {
+                                valorANuevo = (0)
+                            } else {
+                                valorANuevo = hacienda.dataValues.valorMercado - amortizacionAcumulada
+                            }
+
+                            hacienda.dataValues.antiguedad = antiguedad;
+                            hacienda.dataValues.amortizacion = amortizacion;
+                            hacienda.dataValues.amortizacionAcumulada = amortizacionAcumulada;
+                            hacienda.dataValues.valorANuevo = valorANuevo;
+                        } else {
+                            hacienda.dataValues.antiguedad = 0;
+                            hacienda.dataValues.amortizacion = 0;
+                            hacienda.dataValues.amortizacionAcumulada = 0;
+                            hacienda.dataValues.valorANuevo = valorMercado;
+                        }
+                    }
+
+                    totalHacienda += hacienda.dataValues.valorANuevo
+                })
+                totalHaciendaCambio += totalHacienda
+                haciendaCambio.push({
+                    tipoHacienda: tipo.nombre,
+                    valorTotal: totalHacienda
+                })
+            }).then(() => {
+                if (i == tipos.length-1) {
+                    res.send({
+                        totalHaciendaCambio,
+                        haciendaCambio
+                    })
+                }
+            })
+        }
+
+    })
+}
+
+/* API Hacienda - Bienes de Uso */
+contableController.getHaciendaUso = (req, res) => {
+    var fecha = new Date(req.params.fecha)
+    var haciendaUso = []
+    var totalHaciendaUso = 0
+
+    TipoHacienda.findAll({
+        where: {
+            empresaId: res.locals.empresa.empresaId
+        }
+    }).then(tipos => {
+        for (let i = 0; i < tipos.length; i++) {
+            const tipo = tipos[i];
+
+            Hacienda.findAll({
+                where: {
+                    tipoHaciendaId: tipo.tipoHaciendaId,
+                    tipoBien: "Bien de Uso"
+                }
+            }).then(haciendas => {
+                var totalHacienda = 0
+                haciendas.forEach(hacienda => {
+                    var totalKilogramos = hacienda.cantidad * hacienda.kilogramoCabeza;
+                    var valorMercado = totalKilogramos * hacienda.valorKilogramo;
+
+                    hacienda.dataValues.totalKilogramos = totalKilogramos;
+                    hacienda.dataValues.valorMercado = valorMercado;
+
+                    if ((!hacienda.fechaVenta || new Date(hacienda.fechaVenta) > fecha) && (!hacienda.fechaCompra || new Date(hacienda.fechaCompra) <= fecha)) {
+                        if (hacienda.fechaCompra && hacienda.tipoBien == 'Bien de Uso') {
+                            var antiguedad = new Date(res.locals.empresa.finEjercicio) - new Date(hacienda.fechaCompra);
+                            antiguedad = Math.trunc(antiguedad / (1000 * 60 * 60 * 24 * 365))
+                            var amortizacion = valorMercado / hacienda.vidaUtil
+                            var amortizacionAcumulada;
+                            var valorANuevo;
+
+                            if (amortizacion * antiguedad >= hacienda.dataValues.valorMercado) {
+                                amortizacionAcumulada = hacienda.dataValues.valorMercado
+                            } else {
+                                amortizacionAcumulada = amortizacion * antiguedad
+                            }
+
+                            if (hacienda.dataValues.valorMercado - amortizacionAcumulada <= 0) {
+                                valorANuevo = (0)
+                            } else {
+                                valorANuevo = hacienda.dataValues.valorMercado - amortizacionAcumulada
+                            }
+
+                            hacienda.dataValues.antiguedad = antiguedad;
+                            hacienda.dataValues.amortizacion = amortizacion;
+                            hacienda.dataValues.amortizacionAcumulada = amortizacionAcumulada;
+                            hacienda.dataValues.valorANuevo = valorANuevo;
+                        } else {
+                            hacienda.dataValues.antiguedad = 0;
+                            hacienda.dataValues.amortizacion = 0;
+                            hacienda.dataValues.amortizacionAcumulada = 0;
+                            hacienda.dataValues.valorANuevo = valorMercado;
+                        }
+                    }
+
+                    totalHacienda += hacienda.dataValues.valorANuevo
+                })
+                totalHaciendaUso += totalHacienda
+                haciendaUso.push({
+                    tipoHacienda: tipo.nombre,
+                    valorTotal: totalHacienda
+                })
+            }).then(() => {
+                if (i == tipos.length-1) {
+                    res.send({
+                        totalHaciendaUso,
+                        haciendaUso
+                    })
+                }
+            })
+        }
+    })
+}
+
 /* API Mejoras-Infraestructura */
 contableController.getInfraestructuras = (req, res) => {
     var fecha = new Date(req.params.fecha)
@@ -193,6 +368,59 @@ contableController.getInfraestructuras = (req, res) => {
         });
 
         res.send({
+            valorTotal
+        });
+    });
+}
+
+/* API Praderas - Amortización */
+contableController.getPraderas = (req, res) => {
+    var fecha = new Date(req.params.fecha)
+
+    Pradera.findAll({
+        where: {
+            empresaId: req.params.empresaId
+        }
+    }).then(praderasTodas => {
+        var valorTotalAmortizacion = 0
+        var valorTotal = 0
+        var praderas = []
+
+        praderasTodas.map(pradera => {
+            if (new Date(pradera.fechaImplantacion) <= fecha) {
+
+                var antiguedad = new Date(res.locals.empresa.finEjercicio) - new Date(pradera.fechaImplantacion);
+                antiguedad = Math.trunc(antiguedad / (1000 * 60 * 60 * 24 * 365))
+                var valorMercado = pradera.hectareas * pradera.valorHectarea;
+                var valorResidualMonto = pradera.hectareas * pradera.valorHectarea * pradera.valorResidual / 100;
+                var amortizacion = (valorMercado - valorResidualMonto) / pradera.vidaUtil
+                var amortizacionAcumulada;
+                var valorANuevo;
+
+                if (amortizacion * antiguedad >= valorMercado) {
+                    amortizacionAcumulada = valorMercado
+                } else {
+                    amortizacionAcumulada = amortizacion * antiguedad
+                }
+
+                if (valorMercado - amortizacionAcumulada <= 0) {
+                    valorANuevo = valorMercado
+                } else {
+                    valorANuevo = valorMercado - amortizacionAcumulada
+                }
+
+                pradera.dataValues.amortizacionAcumulada = amortizacionAcumulada
+                pradera.dataValues.valorANuevo = valorANuevo
+
+                valorTotalAmortizacion += parseFloat(amortizacionAcumulada)
+                valorTotal += parseFloat(valorANuevo)
+                praderas.push(pradera)
+            }
+        });
+
+        res.send({
+            praderas,
+            valorTotalAmortizacion,
             valorTotal
         });
     });
@@ -475,7 +703,7 @@ contableController.getLotes = (req, res) => {
 
         lotes.map(lote => {
             if ((!lote.fechaVenta || new Date(lote.fechaVenta) > fecha) && (!lote.fechaCompra || new Date(lote.fechaCompra) <= fecha)) {
-                var valorLote =  lote.superficie * lote.valorHectarea;
+                var valorLote = lote.superficie * lote.valorHectarea;
                 valorTotal += parseFloat(valorLote)
             }
         });

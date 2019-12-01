@@ -19,6 +19,9 @@ router.get('/apiBanco/:fecha/:empresaId', Logged.isLogged, contable.getBanco)
 /* Inversiones Transitorias */
 router.get('/apiInversiones/:fecha/:empresaId', Logged.isLogged, contable.getInversiones)
 
+/* Disponibilidades */
+router.get('/apiDisponibilidades/:fecha/:empresaId', Logged.isLogged, contable.getDisponibilidades)
+
 /* Api Creditos */
 router.get('/apiCreditos/:fecha/:empresaId', Logged.isLogged, contable.getCreditos)
 
@@ -28,9 +31,17 @@ router.get('/apiRetiroSocios/:fecha/:empresaId', Logged.isLogged, contable.getRe
 /* Api Insumos */
 router.get('/apiInsumos/:fecha/:empresaId', Logged.isLogged, contable.getInsumos)
 
+/* Api Praderas */
+router.get('/apiPraderas/:fecha/:empresaId', Logged.isLogged, contable.getPraderas)
+
+/* Api Hacienda - Bienes de Cambio */
+router.get('/apiHaciendaCambio/:fecha/:empresaId', Logged.isLogged, contable.getHaciendaCambio)
+
+/* Api Hacienda - Bienes de Uso */
+router.get('/apiHaciendaUso/:fecha/:empresaId', Logged.isLogged, contable.getHaciendaUso)
+
 /* Api Stocks */
 router.get('/apiStocks/:fecha/:empresaId', Logged.isLogged, contable.getStocks)
-
 
 /* Api Infraestructuras */
 router.get('/apiInfraestructuras/:fecha/:empresaId', Logged.isLogged, contable.getInfraestructuras)

@@ -34,22 +34,22 @@ haciendaController.list = function (req, res) {
         var amortizacionAcumulada;
         var valorANuevo;
 
-        if (amortizacion * antiguedad >= hacienda.valorMercado) {
-          amortizacionAcumulada = hacienda.valorMercado
+        if (amortizacion * antiguedad >= hacienda.dataValues.valorMercado) {
+          amortizacionAcumulada = hacienda.dataValues.valorMercado
         } else {
           amortizacionAcumulada = amortizacion * antiguedad
         }
 
-        if (hacienda.valorMercado - amortizacionAcumulada <= 0) {
+        if (hacienda.dataValues.valorMercado - amortizacionAcumulada <= 0) {
           valorANuevo = 0
         } else {
-          valorANuevo = hacienda.valorMercado - amortizacionAcumulada
+          valorANuevo = hacienda.dataValues.valorMercado - amortizacionAcumulada
         }
 
         hacienda.dataValues.antiguedad = antiguedad;
-        hacienda.dataValues.amortizacion = amortizacion.toFixed(2);
-        hacienda.dataValues.amortizacionAcumulada = amortizacionAcumulada.toFixed(2);;
-        hacienda.dataValues.valorANuevo = valorANuevo.toFixed(2);
+        hacienda.dataValues.amortizacion = amortizacion;
+        hacienda.dataValues.amortizacionAcumulada = amortizacionAcumulada;
+        hacienda.dataValues.valorANuevo = valorANuevo;
       } else {
         hacienda.dataValues.antiguedad = 0;
         hacienda.dataValues.amortizacion = 0;
