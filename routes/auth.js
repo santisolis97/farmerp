@@ -1,7 +1,7 @@
 var authController = require('../controllers/authController.js');
 var express = require("express");
 var passport = require("passport");
-var logged = require("../utils/Logged");
+var logged = require("../utils/logged");
 var router = express.Router();
 var flash = require("express-flash");
 
