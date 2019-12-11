@@ -8,6 +8,8 @@ var bodyParser = require("body-parser");
 var flash = require("express-flash");
 var passport = require("passport");
 var session = require("express-session");
+const pgSession = require('connect-pg-simple')(session)
+const sessionPool = require('pg').Pool
 var compression = require("compression");
 var helmet = require("helmet");
 var env = require("dotenv").load;
@@ -87,8 +89,11 @@ models.sequelize.sync({
 
       models.User.create(user1).then(() => {
         models.Empresa.create(empresa).then(empresa => {
-          models.UserEmpresa.create({userId: 1, empresaId: 1}),
-          models.Caja.create(caja)
+          models.UserEmpresa.create({
+              userId: 1,
+              empresaId: 1
+            }),
+            models.Caja.create(caja)
           models.Banco.create(banco)
           models.Inversion.create(inversion)
           models.User.create(user2)
@@ -112,13 +117,29 @@ app.use(express.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+const sessionDBaccess = new sessionPool({
+  user: "follsiyxkldkfm",
+  password: "45a21295321b318111407c14b949a12e72f3bfdc4f162d3be8f8b87effbf0911",
+  host: "ec2-174-129-41-127.compute-1.amazonaws.com",
+  port: 5432,
+  database: "dc37g2km4a5hqf"
+})
+
 app.use(
   session({
     secret: 'keyboard cat',
     saveUninitialized: true,
-    resave: true
+    resave: true,
+    store: new pgSession({
+      pool: sessionDBaccess,
+      tableName: 'session'
+    }),
+    cookie: {
+      maxAge: 60 * 60 * 1000
+    }
   })
 );
+
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -139,7 +160,7 @@ app.use(function (req, res, next) {
 app.get("/", function (req, res) {
   if (req.isAuthenticated()) {
     //console.log(req.user)
-    if(req.user.role == 'user') {
+    if (req.user.role == 'user') {
       res.redirect('/contable/situacionPatrimonial');
     } else {
       res.redirect('/grupos');
