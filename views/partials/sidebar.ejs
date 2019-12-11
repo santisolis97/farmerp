@@ -20,9 +20,12 @@
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="fa fa-check"></i><a href="/contable/situacionPatrimonial">Situación
                                 Patrimonial</a></li>
-                        <li><i class="fa fa-check"></i><a href="#" onclick="alert('Proximamente...')">Estado de Resultados</a></li>
-                        <li><i class="fa fa-check"></i><a href="#" onclick="alert('Proximamente...')">Índices Económicos</a></li>
-                        <li><i class="fa fa-check"></i><a href="#" onclick="alert('Proximamente...')">Índices Financieros</a></li>
+                        <li><i class="fa fa-check"></i><a href="#" onclick="alert('Proximamente...')">Estado de
+                                Resultados</a></li>
+                        <li><i class="fa fa-check"></i><a href="#" onclick="alert('Proximamente...')">Índices
+                                Económicos</a></li>
+                        <li><i class="fa fa-check"></i><a href="#" onclick="alert('Proximamente...')">Índices
+                                Financieros</a></li>
                     </ul>
                 </li>
 
@@ -112,7 +115,9 @@
                     </ul>
                 </li> -->
 
-
+                <% if(user.role == 'admin'){ %>
+                    <li><a href="/grupos"><i class="menu-icon fa fa-arrow-left"></i>Menú de Administrador</a></li>
+                <% } %>
                 <!-- Fin Menú -->
             </ul>
             <br>

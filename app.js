@@ -6,6 +6,7 @@ var logger = require('morgan');
 var models = require("./models");
 var bodyParser = require("body-parser");
 var flash = require("express-flash");
+var passport = require("passport");
 var session = require("express-session");
 var compression = require("compression");
 var helmet = require("helmet");
@@ -47,19 +48,26 @@ models.sequelize.sync({
   /* Borrar cuando se tenga el login y toda la gilada */
   models.User.findByPk(1).then(user => {
     if (!user) {
-      var inicioEjercicio = new Date(2019,6, 1)
-      var finEjercicio = new Date(2020,5,30)
+      var inicioEjercicio = new Date(2019, 6, 1)
+      var finEjercicio = new Date(2020, 5, 30)
 
-      var user = {
+      var user1 = {
         nombre: 'Usuario',
         apellido: 'De Prueba',
-        mail: 'usuario@mail.com'
+        email: 'usuario@email.com',
+        password: 'usuario'
+      }
+      var user2 = {
+        nombre: 'Admin',
+        apellido: 'De Prueba',
+        email: 'admin@email.com',
+        password: 'admin',
+        role: 'admin'
       }
       var empresa = {
         nombre: 'Mi Empre S.A.',
-        inicioEjercicio, 
-        finEjercicio,
-        userId: 1
+        inicioEjercicio,
+        finEjercicio
       }
 
       var caja = {
@@ -77,11 +85,13 @@ models.sequelize.sync({
         empresaId: 1
       }
 
-      models.User.create(user).then(() => {
+      models.User.create(user1).then(() => {
         models.Empresa.create(empresa).then(empresa => {
+          models.UserEmpresa.create({userId: 1, empresaId: 1}),
           models.Caja.create(caja)
           models.Banco.create(banco)
           models.Inversion.create(inversion)
+          models.User.create(user2)
         })
       })
     }
@@ -93,25 +103,25 @@ models.sequelize.sync({
 });
 
 //app.use(logger('dev'));
-app.use(express.json());
+/* app.use(express.json());
 app.use(express.urlencoded({
   extended: false
-}));
+})); */
+//app.use(express.static("public"));
+//app.use(cookieParser('keyboard cat'));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
 app.use(
   session({
-    secret: "keyboard cat",
-    resave: true,
-    saveUninitialized: true
+    secret: 'keyboard cat',
+    saveUninitialized: true,
+    resave: true
   })
 );
-/* 
+
 app.use(passport.initialize());
 app.use(passport.session());
-*/
 
 app.use(flash());
 app.use(function (req, res, next) {
@@ -121,16 +131,29 @@ app.use(function (req, res, next) {
   res.locals.info_msg = req.flash("info_msg");
   res.locals.error = req.flash("error");
   res.locals.user = req.user || null;
-  res.locals.empresa = req.empresa || 'adasdasd';
+  res.locals.empresa = req.empresa || null;
   next();
 });
 
+
 app.get("/", function (req, res) {
-  res.redirect('/contable/situacionPatrimonial');
+  if (req.isAuthenticated()) {
+    //console.log(req.user)
+    if(req.user.role == 'user') {
+      res.redirect('/contable/situacionPatrimonial');
+    } else {
+      res.redirect('/grupos');
+    }
+  } else {
+    res.render("login");
+  }
 });
 
 // Routes
-require("./routes")(app)
+require("./routes")(app, passport);
+
+//load passport strategies
+require("./config/passport/passport.js")(passport, models.User);
 
 
 // catch 404 and forward to error handler

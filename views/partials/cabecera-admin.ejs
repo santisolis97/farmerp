@@ -8,9 +8,8 @@
 				<i class="fa fa fa-tasks"></i>
 			</a> -->
 			<div class="header-left">
-				<h2 class="text-header"><%= empresa.nombre %></h2>
-				<p class="text-header mb-2"><%= empresa.inicioEjercicio + ' al ' + empresa.finEjercicio %></p>
-				<input id="datosEmpresa" type="hidden" value="<%= JSON.stringify(empresa) %>">
+				
+				
 			</div>
 		</div>
 		<!-- /Notificacion-->
@@ -43,11 +42,6 @@
 				console[methods[i]] = function () {};
 			}
 		}
-
-		var datosEmpresa = JSON.parse(document.querySelector("#datosEmpresa").value)
-
-		var empresaInicioEjercicio = new Date(Date.parse(datosEmpresa.inicioEjercicio)+ 3*60*60*1000)
-		var empresaFinEjercicio = new Date(Date.parse(datosEmpresa.finEjercicio)+ 3*60*60*1000)
 	</script>
 </header>
 <!-- /Cabecera -->

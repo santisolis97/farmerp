@@ -13,10 +13,6 @@ module.exports = (sequelize, DataTypes) => {
         },
         finEjercicio: {
             type: DataTypes.DATEONLY,
-        },
-        userId: {
-            type: DataTypes.INTEGER,
-            allowNull: false
         }
 
     }, {
@@ -24,12 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     }, );
 
     Empresa.associate = function (models) {
-        models.Empresa.belongsTo(models.User, {
-            foreignKey: 'userId',
-        });
-        models.User.hasMany(models.Empresa, {
-            foreignKey: 'userId',
-        });
+        
     };
 
     return Empresa;

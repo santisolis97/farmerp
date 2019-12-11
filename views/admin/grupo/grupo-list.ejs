@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+
+<head>
+	<% include ../../partials/common-head %>
+</head>
+
+<body>
+
+	<!--Panel Izquierdo -->
+	<% include ../../partials/sidebar-admin %>
+	<!-- /Panel izquierdo-->
+
+	<!-- Panel Derecho -->
+	<div id="right-panel" class="right-panel">
+
+		<!-- Cabecera-->
+		<% include ../../partials/cabecera-admin %>
+		<!-- /Cabecera -->
+
+		<!-- Tabla del CRUD-->
+		<div class="content mt-3">
+
+			<!-- Mensaje -->
+			<% include ../../partials/mensaje %>
+			<!-- /Mensaje -->
+
+			<div class="col-sm-12">
+				<div class="animated fadeIn">
+					<div class="row">
+						<div class="col-md-12">
+							<!-- Cuerpo -->
+							<div class="card">
+								<div class="card-header">
+									<div class="d-flex justify-content-between">
+										<div class="d-flex justify-content-start">
+											<strong class="card-title align-middle">Grupos</strong>
+										</div>
+										<div id="tableButtons" class="d-none d-md-block">
+											<a id="agregar" href="#agregarModal" class="btn btn-primary"
+												data-toggle="modal">
+												<i class="fa fa-plus-circle"></i>Agregar
+											</a>
+										</div>
+										<div id="tableButtons" class="d-md-none">
+											<a id="agregar" href="#agregarModal" class="text-white" data-toggle="modal">
+												<i class="fa fa-plus-circle"></i>
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="card-body">
+									<div class="table-responsive">
+										<table id="tabla" class="table table-striped table-bordered">
+											<thead>
+												<tr>
+													<th>Nombre Empresa</th>
+													<th>Integrantes</th>
+													<th>Año de Cursado</th>
+
+													<th class="not-export-col">Acciones</th>
+												</tr>
+											</thead>
+											<tbody>
+												<% empresas.forEach(empresa => { %>
+												<tr data="<%= JSON.stringify(empresa) %>">
+													<td>
+														<%= empresa.nombre %>
+													</td>
+													<td>
+														<% empresa.users.forEach(user => { if (user.User.role == 'user'){ %>
+														<li>
+															<%= user.User.apellido + ', ' + user.User.nombre %>
+														</li>
+														<% } }) %>
+													</td>
+													<td>
+														<%= empresa.users[0].anioCursado %>
+													</td>
+
+													<td>
+														<a id="ver" href="#verModal" class="view mr-2" title="Ver"
+															data-toggle="modal" onclick="alert('Falta')">
+															<i class="fa fa-eye fa-lg"></i>
+														</a>
+														<a id="editar" href="#editarModal" class="edit mr-2"
+															data-toggle="modal" onclick="alert('Falta')">
+															<i class="fa fa-edit fa-lg" title="Editar"></i>
+														</a>
+														<a id="goto" href="/empresas/<%= empresa.empresaId %>"
+															class="goto mr-2" title="Ir a la empresa">
+															<i class="fa fa-external-link-alt fa-lg"></i>
+														</a>
+													</td>
+												</tr>
+												<% }) %>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<!-- /Cuerpo -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Tabla del CRUD-->
+	</div>
+	<!-- /Panel Derecho -->
+
+	<!-- Formulario de los Popups  -->
+	<% include grupo-add %>
+	<!-- /Formulario de los Popups  -->
+
+	<!-- Scripts -->
+	<% include ../../partials/common-scripts %>
+	<script type="text/javascript">
+		InitDataTable("#tabla");
+	</script>
+	<script src="/scripts/public-grupos.js"></script>
+</body>
+
+</html>

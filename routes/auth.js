@@ -1,0 +1,44 @@
+var authController = require('../controllers/authController.js');
+var express = require("express");
+var passport = require("passport");
+var logged = require("../utils/Logged");
+var router = express.Router();
+var flash = require("express-flash");
+
+/* router.get('/signup', authController.signup); */
+/* 
+router.post('/signup', passport.authenticate('local-signup',  { successRedirect: '/alumnos', failureRedirect: '/'}));
+ */
+
+/* router.post('/generarCuenta', logged.isAdmin, authController.generarCuenta);
+ */
+/* router.post('/cambiarRol/:idUser', logged.isAdmin, authController.cambiarRol);
+ */
+
+router.get('/logout', authController.logout);
+
+/* GET login page. */
+router.get('/', function (req, res) {
+  // Display the Login page with any flash message, if any
+  res.render('login', {
+    message: req.flash('error_msg')
+  });
+});
+
+router.post('/signin', passport.authenticate('local-signin', {
+  successRedirect: '/',
+  failureRedirect: '/',
+  failureFlash: true
+}))
+
+router.get('/forgot', authController.forgot);
+
+router.get('/forgot/:email', authController.forgot);
+
+router.post('/forgot', authController.forgotRes);
+
+router.get('/resetpassword/:token', authController.reset);
+
+router.post('/resetpassword/:token', authController.resetRes);
+
+module.exports = router;

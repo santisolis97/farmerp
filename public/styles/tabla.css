@@ -26,6 +26,10 @@ table.table td a.ficha {
     color: rgb(41, 39, 39);
 }
 
+table.table td a.goto {
+    color: rgb(41, 39, 39);
+}
+
 table.table td a.fichaEmpty {
     color: rgb(122, 118, 118);
 }
