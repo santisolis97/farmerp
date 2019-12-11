@@ -8,6 +8,7 @@ var bodyParser = require("body-parser");
 var flash = require("express-flash");
 var passport = require("passport");
 var session = require("express-session");
+var SequelizeStore = require('connect-session-sequelize')(session.Store);
 const pgSession = require('connect-pg-simple')(session)
 const sessionPool = require('pg').Pool
 var compression = require("compression");
@@ -117,13 +118,13 @@ app.use(express.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-const sessionDBaccess = new sessionPool({
+/* const sessionDBaccess = new sessionPool({
   user: "follsiyxkldkfm",
   password: "45a21295321b318111407c14b949a12e72f3bfdc4f162d3be8f8b87effbf0911",
   host: "ec2-174-129-41-127.compute-1.amazonaws.com",
   port: 5432,
   database: "dc37g2km4a5hqf"
-})
+}) 
 
 app.use(
   session({
@@ -133,6 +134,20 @@ app.use(
     store: new pgSession({
       pool: sessionDBaccess,
       tableName: 'session'
+    }),
+    cookie: {
+      maxAge: 60 * 60 * 1000
+    }
+  })
+); */
+
+app.use(
+  session({
+    secret: 'keyboard cat',
+    saveUninitialized: true,
+    resave: true,
+    store: new SequelizeStore({
+      db: models.sequelize
     }),
     cookie: {
       maxAge: 60 * 60 * 1000
