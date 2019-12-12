@@ -10,11 +10,6 @@ var flash = require("express-flash");
 router.post('/signup', passport.authenticate('local-signup',  { successRedirect: '/alumnos', failureRedirect: '/'}));
  */
 
-/* router.post('/generarCuenta', logged.isAdmin, authController.generarCuenta);
- */
-/* router.post('/cambiarRol/:idUser', logged.isAdmin, authController.cambiarRol);
- */
-
 router.get('/logout', authController.logout);
 
 /* GET login page. */

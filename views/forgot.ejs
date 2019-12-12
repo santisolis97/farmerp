@@ -24,33 +24,33 @@
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Bienvenido!</h1>
+                                        <h1 class="h4 text-gray-900 mb-2">Olvidaste tu contraseña?</h1>
+                                        <p class="mb-4">Confirme su dirección de Email y le enviaremos un enlace para reestrablecer su contraseña.</p>
                                     </div>
+
                                     <!-- Mensaje -->
                                     <% include ./partials/mensaje %>
                                     <!-- /Mensaje -->
-                                    <form class="user" id="signin" name="signin" method="post" action="auth/signin">
+
+                                    <form class="user" method="post" action="/auth/forgot">
                                         <div class="form-group">
-                                            <input name="email" type="email" class="form-control form-control-user"
+                                            <input type="email" name="email" class="form-control form-control-user"
                                                 id="exampleInputEmail" placeholder="Email">
                                         </div>
-                                        <div class="form-group">
-                                            <input name="password" type="password"
-                                                class="form-control form-control-user" id="exampleInputPassword"
-                                                placeholder="Contraseña">
-                                        </div>
-
                                         <input type="submit" class="btn btn-primary btn-user btn-block"
-                                            value="Ingresar">
+                                            value="Enviar">
                                     </form>
-                                    
+
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="/auth/forgot">Olvidé mi contraseña</a>
+                                        <a class="small" href="/auth">Volver al formulario de Ingreso</a>
                                     </div>
                                     <!-- <div class="text-center">
                                         <a class="small" href="register.html">Create an Account!</a>
                                     </div> -->
+
+
+
                                 </div>
                             </div>
                         </div>

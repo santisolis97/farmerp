@@ -89,7 +89,7 @@ grupoController.altaGrupo = function (req, res) {
                     var mensaje = 'Has sido dado de alta en nuestro sistema, ya puedes acceder a tu cuenta con las credenciales que se muestran a continuación. Puedes cambiar tu contraseña desde el menú "Mi Perfil".\n\n' +
                         'Usuario: ' + user.email + '\n' +
                         'Contraseña: ' + token + '\n\n\n\n' +
-                        'http://' + req.headers.host + '\n\n' +
+                        req.headers.origin + '\n' +
                         'Equipo FarmERP.\n'
                     return Mailing.enviarMail(para, asunto, mensaje);
                 })
