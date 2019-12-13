@@ -1,0 +1,154 @@
+<div id="miPerfil" class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Mi Perfil</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Perfil -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong>Información del Usuario</strong>
+                                <small>
+                            </div>
+                            <div class="card-body">
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label for="street" class=" form-control-label">
+                                            <h6>
+                                                <strong>Nombre:</strong>
+                                                <%= user.nombre %>
+                                            </h6>
+                                        </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="street" class=" form-control-label">
+                                            <h6>
+                                                <strong>Apellido:</strong>
+                                                <%= user.apellido %>
+                                            </h6>
+                                        </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="vat" class=" form-control-label">
+                                            <h6>
+                                                <strong>Email:</strong>
+                                                <%= user.email %>
+                                            </h6>
+                                        </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="vat" class=" form-control-label">
+                                            <h6>
+                                                <strong>Imágen de Perfil:</strong>
+                                            </h6>
+                                        </label>
+                                    </div>
+
+                                    <input type="file" class="form-control-file mt-1" name="profileimg" id="profileimg"
+                                        accept=".gif, .jpg, .png" onchange="habilitarGuardar(this.files)" />
+                                </div>
+
+                                <div class="col-md-4">
+                                    <img id="img" class=" mx-auto d-block"
+                                        src="<%= (user.image)? ('/src/' + user.image) : '/src/perfil.jpg' %>"
+                                        alt="Imágen de Perfil">
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <form action="#" method="post" enctype="multipart/form-data">
+                                                <input id="guardarImagen" type="submit"
+                                                    class="btn btn-primary mt-1 mb-1 ml-2" value="Guardar" disabled>
+                                            </form>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <a id="eliminarImagen" href="#"
+                                                class="btn btn-danger mt-1 mb-3">Eliminar</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/Informacion del usuario -->
+                        <!--Cambio de contraseña -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h6>
+                                    <strong>Cambiar Contraseña</strong>
+                                </h6>
+                                <small>
+                            </div>
+                            <div class="card-body">
+                                <form class="container" id="form-validation" novalidate method="POST"
+                                    action="#">
+                                    <div class="form-row">
+                                        <!--Contraseña antigua-->
+                                        <div class="col-md-12 mb-3">
+                                            <label style="font-size:14px; text-align:center"
+                                                for="contraseñaActual">Contraseña
+                                                Actual</label>
+                                            <input name="pass[actual]" type="password" pattern=".{5,}"
+                                                class="form-control" id="contraseñaActual" placeholder="********"
+                                                required onclick="cerrarAlerta()">
+                                            <div style="font-size:14px" class="invalid-feedback">
+                                                Por favor ingrese su contraseña actual.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <!--Nueva contraseña -->
+                                        <div class="col-md-12 mb-3">
+                                            <label style="font-size:14px; text-align:center" for="txtPassword">Nueva
+                                                Contraseña</label>
+                                            <input name="pass[nueva]" type="password" pattern=".{5,}"
+                                                class="form-control" id="txtPassword" placeholder="********" required
+                                                onclick="cerrarAlerta()">
+                                            <div style="font-size:14px" class="invalid-feedback">
+                                                Por favor ingrese la nueva contraseña.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <!--Confirmacion de contraseña -->
+                                        <div class="col-md-12 mb-3">
+                                            <label style="font-size:14px; text-align:center"
+                                                for="txtConfirmPassword">Confirmar
+                                                nueva contraseña </label>
+                                            <input type="password" pattern=".{5,}" class="form-control"
+                                                id="txtConfirmPassword" placeholder="********" required
+                                                onclick="cerrarAlerta()">
+                                            <div style="font-size:14px" class="invalid-feedback">
+                                                Por favor ingrese la confirmación de la nueva contraseña.
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div style="font-size:14px" id="mensaje_alerta"
+                                        class="alert  alert-danger alert-dismissible fade show d-none" role="alert">
+                                        Las contraseñas ingresadas no son iguales
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"
+                                            onclick="cerrarAlerta()">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input type="submit" class="btn btn-primary" id="btnSubmit" value="Confirmar"
+                                            onclick="return Validate()" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+
+                </div>
+                <!-- /Perfil -->
+            </div>
+        </div>
+    </div>
+</div>
