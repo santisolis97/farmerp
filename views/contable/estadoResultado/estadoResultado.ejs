@@ -1,0 +1,346 @@
+<!doctype html>
+<html>
+
+<head>
+    <% include ../../partials/common-head %>
+
+    <style>
+        .noborder {
+            border-style: none !important;
+        }
+
+        .border {
+            border-style: solid;
+            border-color: #0C0C0C;
+            margin: 5px;
+        }
+
+        .bg {
+            background-color: #defcc5;
+        }
+
+        th {
+            text-align: center !important;
+        }
+
+        .align-right {
+            text-align: right !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!--Panel Izquierdo -->
+    <% include ../../partials/sidebar %>
+    <!-- /Panel izquierdo-->
+
+    <!-- Panel Derecho -->
+    <div id="right-panel" class="right-panel">
+
+        <!-- Cabecera-->
+        <% include ../../partials/cabecera %>
+        <!-- /Cabecera -->
+
+        <!-- Tabla del CRUD-->
+        <div class="content mt-3">
+
+            <!-- Mensaje -->
+            <% include ../../partials/mensaje %>
+            <!-- /Mensaje -->
+
+            <div class="col-sm-12">
+                <div class="animated fadeIn">
+                    <div id="" class="row mb-4">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex justify-content-start">
+                                            <strong class="card-title align-middle">ESTADO DE RESULTADOS - Por el
+                                                ejercicio anual finalizado el
+                                                <%= empresa.finEjercicio %></strong>
+                                        </div>
+                                        <div id="tableButtons" class="d-none d-md-block">
+                                            <a id="imprimir" href="#" class="btn btn-primary">
+                                                <i class="fa fa-print"></i>Imprimir
+                                            </a>
+                                        </div>
+                                        <div id="tableButtons" class="d-md-none">
+                                            <a id="imprimir" href="#" class="text-white">
+                                                <i class="fa fa-print"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="card-body p-4">
+                                    <!-- Table -->
+
+                                    <table class="table">
+                                        <thead>
+                                            <tr class="">
+                                                <th class="noborder">
+
+                                                </th>
+                                                <th class="border">
+                                                    Concepto
+                                                </th>
+                                                <th class="border">
+                                                    Anexo N°
+                                                </th>
+                                                <th class="border">
+                                                    Importe
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="noborder" style="width: 1%">
+                                                    (+)
+                                                </td>
+                                                <td class="border" style="width: 50%">
+                                                    Ventas de bienes (o servicios)
+                                                </td>
+                                                <td class="border" style="width: 20%">
+
+                                                </td>
+                                                <td class="border align-right" style="width: 20%">
+                                                    $ 2136556.44
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="noborder" style="width: 1%">
+                                                    (-)
+                                                </td>
+                                                <td class="border" style="width: 50%">
+                                                    Costo de los bienes vendidos (o servicios prestados)
+                                                </td>
+                                                <td class="border" style="width: 20%">
+
+                                                </td>
+                                                <td class="border align-right" style="width: 20%">
+                                                    $ 643556.86
+                                                </td>
+                                            </tr>
+
+                                            <tr class="">
+                                                <td class="noborder" style="width: 1%">
+
+                                                </td>
+                                                <td class="border bg" style="width: 50%">
+                                                    <b><i>Utilidades Brutas (Ganancias o Pérdidas)</i></b>
+                                                </td>
+                                                <td class="border bg" style="width: 20%">
+                                                    <b></b>
+                                                </td>
+                                                <td class="border bg align-right" style="width: 20%">
+                                                    <b>$ 1492999.58</b>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="noborder" style="width: 1%">
+                                                    (-)
+                                                </td>
+                                                <td class="border" style="width: 50%">
+                                                    Gastos de Comercialización
+                                                </td>
+                                                <td class="border" style="width: 20%">
+
+                                                </td>
+                                                <td class="border align-right" style="width: 20%">
+
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="noborder" style="width: 1%">
+                                                    (-)
+                                                </td>
+                                                <td class="border" style="width: 50%">
+                                                    Gastos de Administración
+                                                </td>
+                                                <td class="border" style="width: 20%">
+
+                                                </td>
+                                                <td class="border align-right" style="width: 20%">
+
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="noborder" style="width: 1%">
+                                                    (-)
+                                                </td>
+                                                <td class="border" style="width: 50%">
+                                                    Depreciaciones de los bienes de uso
+                                                </td>
+                                                <td class="border" style="width: 20%">
+
+                                                </td>
+                                                <td class="border align-right" style="width: 20%">
+                                                    $ 1158584.75
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="noborder" style="width: 1%">
+                                                    (-)
+                                                </td>
+                                                <td class="border" style="width: 50%">
+                                                    Otros Gastos
+                                                </td>
+                                                <td class="border" style="width: 20%">
+
+                                                </td>
+                                                <td class="border align-right" style="width: 20%">
+
+                                                </td>
+                                            </tr>
+
+                                            <tr class="">
+                                                <td class="noborder" style="width: 1%">
+
+                                                </td>
+                                                <td class="border bg" style="width: 50%">
+                                                    <b><i>Utilidades Operativas (Ganancias o Pérdidas)</i></b>
+                                                </td>
+                                                <td class="border bg" style="width: 20%">
+                                                    <b></b>
+                                                </td>
+                                                <td class="border bg align-right" style="width: 20%">
+                                                    <b>$ 334414.83</b>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="noborder" style="width: 1%">
+                                                    (+)
+                                                </td>
+                                                <td class="border" style="width: 50%">
+                                                    Ingresos por operaciones extraodinarias
+                                                </td>
+                                                <td class="border" style="width: 20%">
+
+                                                </td>
+                                                <td class="border align-right" style="width: 20%">
+
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="noborder" style="width: 1%">
+                                                    (-)
+                                                </td>
+                                                <td class="border" style="width: 50%">
+                                                    Egresos por operaciones extraodinarias
+                                                </td>
+                                                <td class="border" style="width: 20%">
+
+                                                </td>
+                                                <td class="border align-right" style="width: 20%">
+
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="noborder" style="width: 1%">
+                                                    (-)
+                                                </td>
+                                                <td class="border" style="width: 50%">
+                                                    Gastos de financiación
+                                                </td>
+                                                <td class="border" style="width: 20%">
+
+                                                </td>
+                                                <td class="border align-right" style="width: 20%">
+
+                                                </td>
+                                            </tr>
+
+                                            <tr class="">
+                                                <td class="noborder" style="width: 1%">
+
+                                                </td>
+                                                <td class="border bg" style="width: 50%">
+                                                    <b><i>Utilidades Antes de Impuestos (Ganancias o Pérdidas)</i></b>
+                                                </td>
+                                                <td class="border bg" style="width: 20%">
+                                                    <b></b>
+                                                </td>
+                                                <td class="border bg align-right" style="width: 20%">
+                                                    <b>$ 1492999.58</b>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="noborder" style="width: 1%">
+                                                    (-)
+                                                </td>
+                                                <td class="border" style="width: 50%">
+                                                    Impuesto a las Ganancias - 35.00 %
+                                                </td>
+                                                <td class="border" style="width: 20%">
+
+                                                </td>
+                                                <td class="border align-right" style="width: 20%">
+                                                    $ 522549.85
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="noborder" style="width: 1%">
+                                                    (-)
+                                                </td>
+                                                <td class="border" style="width: 50%">
+                                                    Ingresos Brutos - 1.10 %
+                                                </td>
+                                                <td class="border" style="width: 20%">
+
+                                                </td>
+                                                <td class="border align-right" style="width: 20%">
+                                                    $ 21034.40
+                                                </td>
+                                            </tr>
+
+                                            <tr class="">
+                                                <td class="noborder" style="width: 1%">
+
+                                                </td>
+                                                <td class="border bg" style="width: 50%">
+                                                    <b><i>Utilidades Netas (Ganancias o Pérdidas)</i></b>
+                                                </td>
+                                                <td class="border bg" style="width: 20%">
+                                                    <b></b>
+                                                </td>
+                                                <td class="border bg align-right" style="width: 20%">
+                                                    <b>$ 949415.33</b>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <!-- Table -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Tabla del CRUD-->
+    </div>
+    <!-- /Panel Derecho -->
+
+
+    <!-- Scripts -->
+    <% include ../../partials/common-scripts %>
+
+    <script src="/scripts/html2canvas.min.js"></script>
+    <script src="/scripts/jsPDF-1.3.2/dist/jspdf.min.js"></script>
+
+    <!-- <script src="/scripts/public-situacionPatrimonial.js"></script> -->
+</body>
+
+</html>

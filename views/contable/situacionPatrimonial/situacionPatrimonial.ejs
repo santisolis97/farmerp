@@ -27,20 +27,30 @@
 
             <div class="col-sm-12">
                 <div class="animated fadeIn">
-                    <div class="card">
-                        <div class="card-body m-3">
-                            <div class="d-flex justify-content-between">
-                                <div class="d-flex justify-content-start">
-                                    <input type="date" id="situacionPatrimonialFecha" class="form-control"
-                                        min="<%= empresa.inicioEjercicio %>" max="<%= empresa.finEjercicio %>"
-                                        value="<%= empresa.finEjercicio %>" onchange="updateESP(this.value)">
-                                </div>
-                                <div id="tableButtons" class="d-none d-md-block">
-                                    <input type="button" class="btn btn-secondary"
-                                        value="Imprimir Estado de Situación Patrimonial">
+                    <div id="" class="row mb-3">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex justify-content-start">
+                                            <input type="date" id="situacionPatrimonialFecha" class="form-control"
+                                                min="<%= empresa.inicioEjercicio %>" max="<%= empresa.finEjercicio %>"
+                                                value="<%= empresa.finEjercicio %>" onchange="updateESP(this.value)">
+                                        </div>
+                                        <div id="tableButtons" class="d-none d-md-block">
+                                            <a id="imprimir" href="#" class="btn btn-secondary">
+                                                <i class="fa fa-print"></i> Imprimir
+                                            </a>
+                                        </div>
+                                        <div id="tableButtons" class="d-md-none">
+                                            <a id="imprimir" href="#" class="text-white">
+                                                <i class="fa fa-print"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
-
                         </div>
                     </div>
                     <div id="divESP" class="row mb-4">

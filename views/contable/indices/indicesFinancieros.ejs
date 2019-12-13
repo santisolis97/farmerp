@@ -1,0 +1,225 @@
+<!doctype html>
+<html>
+
+<head>
+    <% include ../../partials/common-head %>
+</head>
+
+<body>
+
+    <!--Panel Izquierdo -->
+    <% include ../../partials/sidebar %>
+    <!-- /Panel izquierdo-->
+
+    <!-- Panel Derecho -->
+    <div id="right-panel" class="right-panel">
+
+        <!-- Cabecera-->
+        <% include ../../partials/cabecera %>
+        <!-- /Cabecera -->
+
+        <!-- Tabla del CRUD-->
+        <div class="content mt-3">
+
+            <!-- Mensaje -->
+            <% include ../../partials/mensaje %>
+            <!-- /Mensaje -->
+
+            <div class="col-sm-12">
+                <div class="animated fadeIn">
+                    <div id="" class="row mb-4">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex justify-content-start">
+                                            <strong class="card-title align-middle">INDICADORES FINANCIEROS AL
+                                                <%= empresa.finEjercicio %></strong>
+                                        </div>
+                                        <div id="tableButtons" class="d-none d-md-block">
+                                            <a id="imprimir" href="#" class="btn btn-primary">
+                                                <i class="fa fa-print"></i>Imprimir
+                                            </a>
+                                        </div>
+                                        <div id="tableButtons" class="d-md-none">
+                                            <a id="imprimir" href="#" class="text-white">
+                                                <i class="fa fa-print"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body p-4">
+                                    <!-- Indicador de Liquidez -->
+                                    <div class="form-row mt-2">
+                                        <h4 class="col-md-12"><b>Indicador de Liquidez</b></h4>
+                                    </div>
+                                    <div class="form-row  mt-2">
+                                        <p class="col-md-3 mt-3">Razón Corriente</p>
+
+                                        <div class="col-md-2">
+                                            <div class="d-flex justify-content-center" style="margin-bottom: -12px;">
+                                                Activo Corriente</div>
+                                            <hr style="border-top: 1px solid #0C0C0C;">
+                                            <div class="d-flex justify-content-center" style="margin-top: -12px;">Pasivo
+                                                Corriente</div>
+                                        </div>
+
+                                        <p class="mt-3">=</p>
+
+                                        <div class="col-md-2">
+                                            <div class="d-flex justify-content-center" style="margin-bottom: -12px;">$
+                                                2233800.85</div>
+                                            <hr style="border-top: 1px solid #0C0C0C;">
+                                            <div class="d-flex justify-content-center" style="margin-top: -12px;">$
+                                                392763.00
+                                            </div>
+                                        </div>
+
+                                        <p class="mt-3">=</p>
+                                        <h5 class="mt-3 col-md-2"><b>5.69</b></h5>
+                                    </div>
+
+                                    <!-- Indicador de Endeudamiento -->
+                                    <div class="form-row mt-4">
+                                        <h4 class="col-md-12"><b>Indicador de Endeudamiento</b></h4>
+                                    </div>
+                                    <div class="form-row  mt-2">
+                                        <p class="col-md-3 mt-3">Endeudamiento</p>
+
+                                        <div class="col-md-2">
+                                            <div class="d-flex justify-content-center" style="margin-bottom: -12px;">
+                                                Pasivo Total</div>
+                                            <hr style="border-top: 1px solid #0C0C0C;">
+                                            <div class="d-flex justify-content-center" style="margin-top: -12px;">Activo
+                                                Total</div>
+                                        </div>
+
+                                        <p class="mt-3">=</p>
+
+                                        <div class="col-md-2">
+                                            <div class="d-flex justify-content-center" style="margin-bottom: -12px;">$
+                                                392763.00</div>
+                                            <hr style="border-top: 1px solid #0C0C0C;">
+                                            <div class="d-flex justify-content-center" style="margin-top: -12px;">$
+                                                48637629.52
+                                            </div>
+                                        </div>
+
+                                        <p class="mt-3">=</p>
+                                        <h5 class="mt-3 col-md-2"><b>0.01</b></h5>
+                                    </div>
+
+                                    <!-- Índice de Inmobilización -->
+                                    <div class="form-row mt-4">
+                                        <h4 class="col-md-12"><b>Índice de Inmobilización</b></h4>
+                                    </div>
+                                    <div class="form-row  mt-2">
+                                        <p class="col-md-3 mt-3">Inmobilización</p>
+
+                                        <div class="col-md-2">
+                                            <div class="d-flex justify-content-center" style="margin-bottom: -12px;">
+                                                Patrimonio Neto</div>
+                                            <hr style="border-top: 1px solid #0C0C0C;">
+                                            <div class="d-flex justify-content-center" style="margin-top: -12px;">Activo
+                                                No Corriente</div>
+                                        </div>
+
+                                        <p class="mt-3">=</p>
+
+                                        <div class="col-md-2">
+                                            <div class="d-flex justify-content-center" style="margin-bottom: -12px;">$
+                                                48244866.52</div>
+                                            <hr style="border-top: 1px solid #0C0C0C;">
+                                            <div class="d-flex justify-content-center" style="margin-top: -12px;">$
+                                                46836828.67
+                                            </div>
+                                        </div>
+
+                                        <p class="mt-3">=</p>
+                                        <h5 class="mt-3 col-md-2"><b>1.03</b></h5>
+                                    </div>
+
+                                    <!-- Índice de Solvencia -->
+                                    <div class="form-row mt-4">
+                                        <h4 class="col-md-12"><b>Índice de Solvencia</b></h4>
+                                    </div>
+                                    <div class="form-row  mt-2">
+                                        <p class="col-md-3 mt-3">Solvencia</p>
+
+                                        <div class="col-md-2">
+                                            <div class="d-flex justify-content-center" style="margin-bottom: -12px;">
+                                                Activo Total</div>
+                                            <hr style="border-top: 1px solid #0C0C0C;">
+                                            <div class="d-flex justify-content-center" style="margin-top: -12px;">Pasivo
+                                                Total</div>
+                                        </div>
+
+                                        <p class="mt-3">=</p>
+
+                                        <div class="col-md-2">
+                                            <div class="d-flex justify-content-center" style="margin-bottom: -12px;">$
+                                                48637629.52</div>
+                                            <hr style="border-top: 1px solid #0C0C0C;">
+                                            <div class="d-flex justify-content-center" style="margin-top: -12px;">$
+                                                392763.00
+                                            </div>
+                                        </div>
+
+                                        <p class="mt-3">=</p>
+                                        <h5 class="mt-3 col-md-2"><b>123.83</b></h5>
+                                    </div>
+
+                                    <!-- Indicador de Diagnóstico Financiero - Estructura Financiera -->
+                                    <div class="form-row mt-4">
+                                        <h4 class="col-md-12"><b>Indicador de Diagnóstico Financiero - Estructura Financiera</b></h4>
+                                    </div>
+                                    <div class="form-row  mt-2">
+                                        <p class="col-md-3 mt-3">Financiamiento Propio</p>
+
+                                        <div class="col-md-2">
+                                            <div class="d-flex justify-content-center" style="margin-bottom: -12px;">
+                                                Patrimonio Neto</div>
+                                            <hr style="border-top: 1px solid #0C0C0C;">
+                                            <div class="d-flex justify-content-center" style="margin-top: -12px;">Activo
+                                                Total</div>
+                                        </div>
+
+                                        <p class="mt-3">=</p>
+
+                                        <div class="col-md-2">
+                                            <div class="d-flex justify-content-center" style="margin-bottom: -12px;">$
+                                                48244866.52</div>
+                                            <hr style="border-top: 1px solid #0C0C0C;">
+                                            <div class="d-flex justify-content-center" style="margin-top: -12px;">$
+                                                48637629.52
+                                            </div>
+                                        </div>
+
+                                        <p class="mt-3">=</p>
+                                        <h5 class="mt-3 col-md-2"><b>0.99</b></h5>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Tabla del CRUD-->
+    </div>
+    <!-- /Panel Derecho -->
+
+
+    <!-- Scripts -->
+    <% include ../../partials/common-scripts %>
+
+    <script src="/scripts/html2canvas.min.js"></script>
+    <script src="/scripts/jsPDF-1.3.2/dist/jspdf.min.js"></script>
+
+    <!-- <script src="/scripts/public-situacionPatrimonial.js"></script> -->
+</body>
+
+</html>

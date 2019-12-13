@@ -90,7 +90,8 @@ models.sequelize.sync({
         models.Empresa.create(empresa).then(empresa => {
           models.UserEmpresa.create({
               userId: 1,
-              empresaId: 1
+              empresaId: 1,
+              anioCursado: 2019
             }),
             models.Caja.create(caja)
           models.Banco.create(banco)
