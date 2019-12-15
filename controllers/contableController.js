@@ -247,6 +247,12 @@ contableController.getHaciendaCambio = (req, res) => {
             })
         }
 
+        if (tipos.length == 0) {
+            res.send({
+                totalHaciendaCambio,
+                haciendaCambio
+            })
+        }
     })
 }
 
@@ -324,6 +330,13 @@ contableController.getHaciendaUso = (req, res) => {
                         haciendaUso
                     })
                 }
+            })
+        }
+
+        if (tipos.length == 0) {
+            res.send({
+                totalHaciendaUso,
+                haciendaUso
             })
         }
     })
