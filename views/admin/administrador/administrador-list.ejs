@@ -71,10 +71,26 @@
 
 													<td>
 														<a id="ver" href="#verModal" class="view mr-2" title="Ver"
-															data-toggle="modal" onclick="alert('Falta')">
+															data-toggle="modal">
 															<i class="fa fa-eye fa-lg"></i>
 														</a>
-
+														<a id="editar" href="#editarModal" class="edit mr-2"
+															data-toggle="modal" onclick="alert('Falta')">
+															<i class="fa fa-edit fa-lg" title="Editar"></i>
+														</a>
+														<% if (admin.allowAccess){ %>
+														<a id="baja" href="#bajaModal" class="delete mr-2"
+															title="Dar de Baja" data-toggle="modal"
+															onclick="alert('Falta')">
+															<i class="fa fa-user-slash fa-lg"></i>
+														</a>
+														<% } else { %>
+														<a id="deshacerBaja" href="#deshacerBajaModal"
+															class="delete mr-2" title="Dar de Baja" data-toggle="modal"
+															onclick="alert('Falta')">
+															<i class="fa fa-user-plus fa-lg"></i>
+														</a>
+														<% } %>
 													</td>
 												</tr>
 												<% }) %>
@@ -95,6 +111,7 @@
 
 	<!-- Formulario de los Popups  -->
 	<% include administrador-add %>
+	<% include administrador-view %>
 	<!-- /Formulario de los Popups  -->
 
 	<!-- Scripts -->
@@ -102,7 +119,7 @@
 	<script type="text/javascript">
 		InitDataTable("#tabla");
 	</script>
-	<!-- <script src="/scripts/public-grupos.js"></script> -->
+	<script src="/scripts/public-administradores.js"></script>
 </body>
 
 </html>

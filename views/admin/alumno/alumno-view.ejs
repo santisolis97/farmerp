@@ -3,7 +3,7 @@
         <div class="modal-content">
             <form class="container" id="form-validation" novalidate method="POST" action="">
                 <div class="modal-header">
-                    <h4 class="modal-title">Ver Administrador</h4>
+                    <h4 class="modal-title">Ver Alumno</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                         onclick="closeModal()">&times;</button>
                 </div>
@@ -14,8 +14,8 @@
                                 <div class="form-group col-md-12">
                                     <label for="userNombre">Nombre</label>
                                     <div class="input-group">
-                                        <input type="text" class="form-control" id="userNombre"
-                                            placeholder="Nombre" readonly>
+                                        <input type="text" class="form-control" id="userNombre" placeholder="Nombre"
+                                            readonly>
                                     </div>
                                 </div>
                             </div>
@@ -23,8 +23,8 @@
                                 <div class="form-group col-md-12">
                                     <label for="userApellido">Apellido</label>
                                     <div class="input-group">
-                                        <input type="text" class="form-control" id="userApellido"
-                                            placeholder="Apellido" readonly>
+                                        <input type="text" class="form-control" id="userApellido" placeholder="Apellido"
+                                            readonly>
                                     </div>
                                 </div>
                             </div>
@@ -32,16 +32,32 @@
                                 <div class="form-group col-md-12">
                                     <label for="userEmail">Email</label>
                                     <div class="input-group">
-                                        <input type="email" class="form-control" id="userEmail"
-                                            placeholder="Email" readonly>
+                                        <input type="email" class="form-control" id="userEmail" placeholder="Email"
+                                            readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="userEmpresa">Empresa</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="userEmpresa" placeholder="Empresa"
+                                            readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="userAnioCursado">Año de Cursado</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="userAnioCursado" placeholder="Año de Cursado"
+                                            readonly>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-4 mt-4">
-                            <img id="userImgPerfil" class="mx-auto d-block mt-2"
-                                src="/src/perfil.jpg"
-                                alt="Imágen de Perfil">
+                            <img id="userImgPerfil" id="img" class="mx-auto d-block mt-2" src="/src/perfil.jpg" alt="Imágen de Perfil">
                         </div>
                     </div>
                 </div>

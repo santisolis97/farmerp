@@ -12,7 +12,6 @@
                         <div class="card">
                             <div class="card-header">
                                 <strong>Información del Usuario</strong>
-                                <small>
                             </div>
                             <div class="card-body">
                                 <div class="col-md-8">
@@ -48,8 +47,16 @@
                                         </label>
                                     </div>
 
-                                    <input type="file" class="form-control-file mt-1" name="profileimg" id="profileimg"
-                                        accept=".gif, .jpg, .png" onchange="habilitarGuardar(this.files)" />
+                                    <form action="/perfil/setImage" method="post" enctype="multipart/form-data">
+                                        <input type="file" class="form-control-file" name="profileimg" id="profileimg"
+                                            accept=".gif, .jpg, .png" onchange="habilitarGuardar(this.files)" />
+                                        <input type="hidden" id="prevImg"
+                                            value="<%= (user.image)? ('/src/' + user.image) : '/src/perfil.jpg' %>">
+                                        <input id="guardarImagen" type="submit" class="btn btn-primary mt-1 mb-1 mr-2"
+                                            value="Guardar" disabled>
+                                        <a href="#" id="cancelarImagen" class="btn btn-secondary mt-1 mb-1 mr-2"
+                                            onclick="cancelarCambioImagen()">Cancelar</a>
+                                    </form>
                                 </div>
 
                                 <div class="col-md-4">
@@ -59,13 +66,9 @@
 
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <form action="#" method="post" enctype="multipart/form-data">
-                                                <input id="guardarImagen" type="submit"
-                                                    class="btn btn-primary mt-1 mb-1 ml-2" value="Guardar" disabled>
-                                            </form>
                                         </div>
                                         <div class="col-md-6">
-                                            <a id="eliminarImagen" href="#"
+                                            <a id="eliminarImagen" href="/perfil/deleteImage"
                                                 class="btn btn-danger mt-1 mb-3">Eliminar</a>
                                         </div>
                                     </div>
@@ -79,21 +82,18 @@
                                 <h6>
                                     <strong>Cambiar Contraseña</strong>
                                 </h6>
-                                <small>
                             </div>
                             <div class="card-body">
-                                <form class="container" id="form-validation" novalidate method="POST"
-                                    action="#">
+                                <form class="container" id="form-validation-pass" novalidate method="POST"
+                                    action="/perfil/changePassword">
                                     <div class="form-row">
                                         <!--Contraseña antigua-->
                                         <div class="col-md-12 mb-3">
-                                            <label style="font-size:14px; text-align:center"
-                                                for="contraseñaActual">Contraseña
-                                                Actual</label>
+                                            <label for="contraseñaActual">Contraseña Actual</label>
                                             <input name="pass[actual]" type="password" pattern=".{5,}"
                                                 class="form-control" id="contraseñaActual" placeholder="********"
                                                 required onclick="cerrarAlerta()">
-                                            <div style="font-size:14px" class="invalid-feedback">
+                                            <div class="invalid-feedback">
                                                 Por favor ingrese su contraseña actual.
                                             </div>
                                         </div>
@@ -101,33 +101,32 @@
                                     <div class="form-row">
                                         <!--Nueva contraseña -->
                                         <div class="col-md-12 mb-3">
-                                            <label style="font-size:14px; text-align:center" for="txtPassword">Nueva
+                                            <label for="txtPassword">Nueva
                                                 Contraseña</label>
                                             <input name="pass[nueva]" type="password" pattern=".{5,}"
                                                 class="form-control" id="txtPassword" placeholder="********" required
                                                 onclick="cerrarAlerta()">
-                                            <div style="font-size:14px" class="invalid-feedback">
-                                                Por favor ingrese la nueva contraseña.
+                                            <div class="invalid-feedback">
+                                                Por favor ingrese su nueva contraseña.
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <!--Confirmacion de contraseña -->
                                         <div class="col-md-12 mb-3">
-                                            <label style="font-size:14px; text-align:center"
-                                                for="txtConfirmPassword">Confirmar
+                                            <label for="txtConfirmPassword">Confirmar
                                                 nueva contraseña </label>
                                             <input type="password" pattern=".{5,}" class="form-control"
                                                 id="txtConfirmPassword" placeholder="********" required
                                                 onclick="cerrarAlerta()">
-                                            <div style="font-size:14px" class="invalid-feedback">
-                                                Por favor ingrese la confirmación de la nueva contraseña.
+                                            <div class="invalid-feedback">
+                                                Por favor confirme su nueva contraseña.
                                             </div>
                                         </div>
                                     </div>
 
 
-                                    <div style="font-size:14px" id="mensaje_alerta"
+                                    <div id="mensaje_alerta"
                                         class="alert  alert-danger alert-dismissible fade show d-none" role="alert">
                                         Las contraseñas ingresadas no son iguales
                                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"
@@ -144,11 +143,44 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-
-                </div>
                 <!-- /Perfil -->
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    function habilitarGuardar(image) {
+        var oFReader = new FileReader();
+        oFReader.readAsDataURL(document.querySelector("#profileimg").files[0]);
+
+        oFReader.onload = function (oFREvent) {
+            document.querySelector("#img").src = oFREvent.target.result;
+        };
+
+        if (image.length != 0) {
+            document.querySelector("#guardarImagen").disabled = false;
+        }
+    }
+
+    function cancelarCambioImagen(userImage) {
+        document.querySelector("#img").src = document.querySelector("#prevImg").value
+        document.querySelector("#guardarImagen").disabled = true;
+    }
+
+    var alerta = document.getElementById('mensaje_alerta')
+
+    function Validate() {
+        var password = document.getElementById("txtPassword").value;
+        var confirmPassword = document.getElementById("txtConfirmPassword").value;
+        if (password != confirmPassword) {
+            alerta.classList.remove('d-none')
+            return false;
+        }
+        return true;
+    }
+
+    function cerrarAlerta() {
+        alerta.classList.add('d-none')
+    }
+</script>

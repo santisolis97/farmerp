@@ -24,7 +24,6 @@ grupos.forEach(function (row) {
             vista = document.querySelector("#editarModal");
 
             //vista.querySelector("form").setAttribute("action", "/stocks/edit/" + grupo.stockId);
-
         });
     }
 

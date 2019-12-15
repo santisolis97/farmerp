@@ -26,8 +26,12 @@ table.table td a.ficha {
     color: rgb(41, 39, 39);
 }
 
-table.table td a.goto {
+table.table td a.mail {
     color: rgb(41, 39, 39);
+}
+
+table.table td a.goto {
+    color: rgb(23, 19, 248);
 }
 
 table.table td a.fichaEmpty {

@@ -64,7 +64,11 @@ module.exports = function (passport, user) {
           return done(null, false, req.flash('error_msg', 'Usuario o contraseña incorrecta.'));
         }
         
-        return done(null, user.get());
+        if (user && !user.allowAccess){
+          return done(null, false, req.flash('error_msg', 'Su cuenta ha sido dada de baja, contacte a un administador para recuperarla.'));
+        } else {
+          return done(null, user.get());
+        }
       }).catch(function (err) {
         console.log("Error:", err);
         return done(null, false, req.flash('error_msg', 'Error al iniciar sesion'));

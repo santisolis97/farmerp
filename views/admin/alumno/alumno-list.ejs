@@ -68,13 +68,27 @@
 
 													<td>
 														<a id="ver" href="#verModal" class="view mr-2" title="Ver"
-															data-toggle="modal" onclick="alert('Falta')">
+															data-toggle="modal">
 															<i class="fa fa-eye fa-lg"></i>
 														</a>
-														<a id="enviarMail" href="#enviarMail" class="goto mr-2"  title="Eviar Mail"
-															data-toggle="modal" onclick="alert('Falta')">
-															<i class="fa fa-envelope fa-lg"></i>
+														<a id="enviarMail" href="#enviarMailModal" class="mail mr-2"
+															title="Eviar Retroalimentación" data-toggle="modal"
+															onclick="alert('Falta')">
+															<i class="far fa-envelope fa-lg"></i>
 														</a>
+														<% if (user.User.allowAccess){ %>
+														<a id="baja" href="#bajaModal" class="delete mr-2"
+															title="Dar de Baja" data-toggle="modal"
+															onclick="alert('Falta')">
+															<i class="fa fa-user-slash fa-lg"></i>
+														</a>
+														<% } else { %>
+														<a id="deshacerBaja" href="#deshacerBajaModal" class="delete mr-2"
+															title="Dar de Baja" data-toggle="modal"
+															onclick="alert('Falta')">
+															<i class="fa fa-user-plus fa-lg"></i>
+														</a>
+														<% } %>
 													</td>
 												</tr>
 												<% }) %>
@@ -94,7 +108,7 @@
 	<!-- /Panel Derecho -->
 
 	<!-- Formulario de los Popups  -->
-	<% include grupo-add %>
+	<% include alumno-view %>
 	<!-- /Formulario de los Popups  -->
 
 	<!-- Scripts -->
@@ -102,7 +116,7 @@
 	<script type="text/javascript">
 		InitDataTable("#tabla");
 	</script>
-	<!-- <script src="/scripts/public-grupos.js"></script> -->
+	<script src="/scripts/public-alumnos.js"></script>
 </body>
 
 </html>

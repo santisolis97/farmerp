@@ -19,7 +19,7 @@
 				<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false">
 					<strong id="nombreUsuario" class="mr-2"><%= user.email %></strong>
-					<img class="user-avatar rounded-circle" src="/src/perfil.jpg" alt="User Avatar">
+					<img class="user-avatar rounded-circle" src="<%= (user.image)? ('/src/' + user.image) : '/src/perfil.jpg' %>" alt="User Avatar">
 				</a>
 				<div class="user-menu dropdown-menu">
 					<a class="nav-link" href="#miPerfil"  data-toggle="modal">
