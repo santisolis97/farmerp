@@ -25,7 +25,7 @@ app.use(function (req, res, next) {
     res.status(200);
     res.header("Content-Type", "image/x-icon");
     //res.header("Cache-Control", "max-age=4294880896");
-    //res.header("Cache-Control", "max-age=3600000");
+    res.header("Cache-Control", "max-age=3600000");
     res.end();
   }
 });
