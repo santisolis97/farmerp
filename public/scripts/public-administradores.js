@@ -11,6 +11,25 @@ administradores.forEach(function (row) {
         vista.querySelector("#userEmail").value = admin.email;
         vista.querySelector("#userImgPerfil").src = (admin.image) ? '/src/' + admin.image : '/src/perfil.jpg';
     });
+
+    var baja = row.querySelector("#baja");
+    if (baja) {
+        baja.addEventListener("click", function () {
+            var admin = getElement(row);
+            vista = document.querySelector("#bajaModal");
+            vista.querySelector("form").setAttribute("action", "/auth/baja/" + admin.userId);
+        });
+    }
+
+    var deshacerBaja = row.querySelector("#deshacerBaja");
+    if (deshacerBaja) {
+        deshacerBaja.addEventListener("click", function () {
+            var admin = getElement(row);
+            vista = document.querySelector("#deshacerBajaModal");
+            vista.querySelector("form").setAttribute("action", "/auth/deshacerBaja/" + admin.userId);
+        });
+    }
+
 });
 
 function getElement(row) {

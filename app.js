@@ -24,7 +24,8 @@ app.use(function (req, res, next) {
   } else {
     res.status(200);
     res.header("Content-Type", "image/x-icon");
-    res.header("Cache-Control", "max-age=4294880896");
+    //res.header("Cache-Control", "max-age=4294880896");
+    //res.header("Cache-Control", "max-age=3600000");
     res.end();
   }
 });
@@ -127,7 +128,7 @@ app.use(
       db: models.sequelize
     }),
     cookie: {
-      maxAge: 60 * 60 * 1000
+      maxAge: 3600000
     }
   })
 );

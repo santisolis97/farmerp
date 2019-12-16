@@ -13,6 +13,24 @@ alumnos.forEach(function (row) {
         vista.querySelector("#userAnioCursado").value = alumno.anioCursado;
         vista.querySelector("#userImgPerfil").src = (alumno.User.image) ? '/src/' + alumno.User.image : '/src/perfil.jpg';
     });
+
+    var baja = row.querySelector("#baja");
+    if (baja) {
+        baja.addEventListener("click", function () {
+            var alumno = getElement(row);
+            vista = document.querySelector("#bajaModal");
+            vista.querySelector("form").setAttribute("action", "/auth/baja/" + alumno.User.userId);
+        });
+    }
+
+    var deshacerBaja = row.querySelector("#deshacerBaja");
+    if (deshacerBaja) {
+        deshacerBaja.addEventListener("click", function () {
+            var alumno = getElement(row);
+            vista = document.querySelector("#deshacerBajaModal");
+            vista.querySelector("form").setAttribute("action", "/auth/deshacerBaja/" + alumno.User.userId);
+        });
+    }
 });
 
 function getElement(row) {

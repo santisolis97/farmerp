@@ -36,4 +36,8 @@ router.get('/resetpassword/:token', authController.reset);
 
 router.post('/resetpassword/:token', authController.resetRes);
 
+router.post('/baja/:userId', authController.baja);
+
+router.post('/deshacerBaja/:userId', authController.deshacerBaja);
+
 module.exports = router;

@@ -80,14 +80,12 @@
 														</a>
 														<% if (admin.allowAccess){ %>
 														<a id="baja" href="#bajaModal" class="delete mr-2"
-															title="Dar de Baja" data-toggle="modal"
-															onclick="alert('Falta')">
+															title="Dar de Baja" data-toggle="modal">
 															<i class="fa fa-user-slash fa-lg"></i>
 														</a>
 														<% } else { %>
 														<a id="deshacerBaja" href="#deshacerBajaModal"
-															class="delete mr-2" title="Dar de Baja" data-toggle="modal"
-															onclick="alert('Falta')">
+															class="delete mr-2" title="Dar de Baja" data-toggle="modal">
 															<i class="fa fa-user-plus fa-lg"></i>
 														</a>
 														<% } %>
@@ -112,6 +110,8 @@
 	<!-- Formulario de los Popups  -->
 	<% include administrador-add %>
 	<% include administrador-view %>
+	<% include administrador-baja %>
+	<% include administrador-deshacerBaja %>
 	<!-- /Formulario de los Popups  -->
 
 	<!-- Scripts -->

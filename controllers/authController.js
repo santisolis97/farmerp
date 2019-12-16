@@ -111,4 +111,31 @@ controller.resetRes = function (req, res) {
   }
 }
 
+controller.baja = function (req, res) {
+  User.findByPk(req.params.userId).then(user => {
+    user.update({
+      allowAccess: false
+    }).then(() => {
+      req.flash('success_msg', 'Se dio de baja un usuario correctamente');
+      res.redirect(req.headers.referer);
+    }).catch(err => {
+      req.flash('error_msg', 'Error al dar de baja un usuario');
+      res.redirect(req.headers.referer);
+    })
+  })
+}
+
+controller.deshacerBaja = function (req, res) {
+  User.findByPk(req.params.userId).then(user => {
+    user.update({
+      allowAccess: true
+    }).then(() => {
+      req.flash('success_msg', 'Se dio de alta un usuario correctamente');
+      res.redirect(req.headers.referer);
+    }).catch(err => {
+      req.flash('error_msg', 'Error al dar de alta un usuario');
+      res.redirect(req.headers.referer);
+    })
+  })
+}
 module.exports = controller;
