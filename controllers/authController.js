@@ -5,7 +5,9 @@ var randtoken = require('rand-token');
 const controller = {};
 
 controller.logout = function (req, res) {
+  req.logout();
   req.session.destroy(function (err) {
+    res.clearCookie('connect.sid');
     res.redirect('/');
   });
 }
