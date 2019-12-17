@@ -12,6 +12,19 @@ administradores.forEach(function (row) {
         vista.querySelector("#userImgPerfil").src = (admin.image) ? '/src/' + admin.image : '/src/perfil.jpg';
     });
 
+    var editar = row.querySelector("#editar");
+    if (editar) {
+        editar.addEventListener("click", function () {
+            var admin = getElement(row);
+            vista = document.querySelector("#editarModal");
+            vista.querySelector("form").setAttribute("action", "/auth/edit/" + admin.userId);
+
+            vista.querySelector("#userNombre").value = admin.nombre;
+            vista.querySelector("#userApellido").value = admin.apellido;
+            vista.querySelector("#userEmail").value = admin.email;
+        });
+    }
+
     var baja = row.querySelector("#baja");
     if (baja) {
         baja.addEventListener("click", function () {

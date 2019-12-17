@@ -113,6 +113,19 @@ controller.resetRes = function (req, res) {
   }
 }
 
+controller.edit = function (req, res) {
+  let reqUser = req.body.user
+  User.findByPk(req.params.userId).then(user => {
+    user.update(reqUser).then(() => {
+      req.flash('success_msg', 'Se actualizaron datos de un usuario correctamente');
+      res.redirect(req.headers.referer);
+    }).catch(err => {
+      req.flash('error_msg', 'Error al actualizar datos de un usuario');
+      res.redirect(req.headers.referer);
+    })
+  })
+}
+
 controller.baja = function (req, res) {
   User.findByPk(req.params.userId).then(user => {
     user.update({

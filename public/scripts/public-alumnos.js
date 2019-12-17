@@ -14,6 +14,19 @@ alumnos.forEach(function (row) {
         vista.querySelector("#userImgPerfil").src = (alumno.User.image) ? '/src/' + alumno.User.image : '/src/perfil.jpg';
     });
 
+    var editar = row.querySelector("#editar");
+    if (editar) {
+        editar.addEventListener("click", function () {
+            var alumno = getElement(row);
+            vista = document.querySelector("#editarModal");
+            vista.querySelector("form").setAttribute("action", "/auth/edit/" + alumno.User.userId);
+
+            vista.querySelector("#userNombre").value = alumno.User.nombre;
+            vista.querySelector("#userApellido").value = alumno.User.apellido;
+            vista.querySelector("#userEmail").value = alumno.User.email;
+        });
+    }
+
     var baja = row.querySelector("#baja");
     if (baja) {
         baja.addEventListener("click", function () {

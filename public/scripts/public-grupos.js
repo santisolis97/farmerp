@@ -6,6 +6,8 @@ var agregar = document.querySelector("#agregar");
 if (agregar) {
     agregar.addEventListener('click', function () {
         vista = document.querySelector("#agregarModal");
+
+        lineaUserId = 1
     })
 }
 
@@ -15,6 +17,22 @@ grupos.forEach(function (row) {
         var grupo = getElement(row);
         vista = document.querySelector("#verModal");
 
+        lineaUserId = 1
+
+        vista.querySelector("#nombreEmpresa").value = grupo.nombre
+        vista.querySelector("#anioCursado").value = grupo.users[0].anioCursado
+
+        let users = grupo.users
+        for (let i = 0; i < users.length; i++) {
+            const user = users[i].User;
+            vista.querySelector("#userNombre-" + i).value = user.nombre
+            vista.querySelector("#userApellido-" + i).value = user.apellido
+            vista.querySelector("#userEmail-" + i).value = user.email
+
+            if (i + 1 < users.length) {
+                addLineaUserReadOnly()
+            }
+        }
     });
 
     var editar = row.querySelector("#editar");
@@ -23,7 +41,24 @@ grupos.forEach(function (row) {
             var grupo = getElement(row);
             vista = document.querySelector("#editarModal");
 
-            //vista.querySelector("form").setAttribute("action", "/stocks/edit/" + grupo.stockId);
+            vista.querySelector("form").setAttribute("action", "/grupos/edit/" + grupo.empresaId);
+
+            lineaUserId = 1
+
+            vista.querySelector("#nombreEmpresa").value = grupo.nombre
+            vista.querySelector("#anioCursado").value = grupo.users[0].anioCursado
+
+            let users = grupo.users
+            for (let i = 0; i < users.length; i++) {
+                const user = users[i].User;
+                vista.querySelector("#userNombre-" + i).value = user.nombre
+                vista.querySelector("#userApellido-" + i).value = user.apellido
+                vista.querySelector("#userEmail-" + i).value = user.email
+
+                if (i + 1 < users.length) {
+                    addLineaUser()
+                }
+            }
         });
     }
 
@@ -33,7 +68,7 @@ grupos.forEach(function (row) {
         eliminar.addEventListener("click", function () {
             var grupo = getElement(row);
             vista = document.querySelector("#eliminarModal");
-            //vista.querySelector("form").setAttribute("action", "/stocks/delete/" + grupo.stockId);
+            //vista.querySelector("form").setAttribute("action", "/grupos/delete/" + grupo.empresaId);
         });
     }
 });
@@ -78,4 +113,32 @@ function addLineaUser() {
 
 function removeLineaUser(id) {
     jQuery("#lineaUser-" + id).remove()
+}
+
+function addLineaUserReadOnly() {
+    var line = `
+    <div id="lineaUser-${ lineaUserId }" class="form-row">
+        <div class="form-group col-md-3">
+            <div class="input-group">
+                <input type="text" name="users[${ lineaUserId }][nombre]" class="form-control" id="userNombre-${ lineaUserId }" placeholder="Nombre" readonly>
+            </div>
+        </div>
+
+        <div class="form-group col-md-3">
+            <div class="input-group">
+                <input type="text" name="users[${ lineaUserId }][apellido]" class="form-control" id="userApellido-${ lineaUserId }" placeholder="Apellido" readonly>
+            </div>
+        </div>
+
+        <div class="form-group col-md-5">
+            <div class="input-group">
+                <input type="email" name="users[${ lineaUserId }][email]" class="form-control" id="userEmail-${ lineaUserId }" placeholder="Email"  readonly>
+            </div>
+        </div>
+    </div>
+    `
+
+    var divIntegrantes = vista.querySelector('#divIntegrantes');
+    jQuery(divIntegrantes).append(line)
+    lineaUserId += 1
 }

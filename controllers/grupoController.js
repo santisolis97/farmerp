@@ -21,6 +21,7 @@ grupoController.list = function (req, res) {
                     }]
                 }).then(users => {
                     empresa.users = users
+                    empresa.dataValues.users = users
                     if (i == empresas.length - 1) {
                         res.render('admin/grupo/grupo-list', {
                             empresas

@@ -72,7 +72,7 @@
 															<i class="fa fa-eye fa-lg"></i>
 														</a>
 														<a id="editar" href="#editarModal" class="edit mr-2"
-															data-toggle="modal" onclick="alert('Falta')">
+															data-toggle="modal">
 															<i class="fa fa-edit fa-lg" title="Editar"></i>
 														</a>
 														<% if (user.User.allowAccess){ %>
@@ -111,6 +111,7 @@
 
 	<!-- Formulario de los Popups  -->
 	<% include alumno-view %>
+	<% include alumno-edit %>
 	<% include alumno-baja %>
 	<% include alumno-deshacerBaja %>
 	<!-- /Formulario de los Popups  -->

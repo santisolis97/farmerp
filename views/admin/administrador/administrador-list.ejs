@@ -75,7 +75,7 @@
 															<i class="fa fa-eye fa-lg"></i>
 														</a>
 														<a id="editar" href="#editarModal" class="edit mr-2"
-															data-toggle="modal" onclick="alert('Falta')">
+															data-toggle="modal">
 															<i class="fa fa-edit fa-lg" title="Editar"></i>
 														</a>
 														<% if (admin.allowAccess){ %>
@@ -110,6 +110,7 @@
 	<!-- Formulario de los Popups  -->
 	<% include administrador-add %>
 	<% include administrador-view %>
+	<% include administrador-edit %>
 	<% include administrador-baja %>
 	<% include administrador-deshacerBaja %>
 	<!-- /Formulario de los Popups  -->
