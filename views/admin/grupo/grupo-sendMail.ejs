@@ -1,0 +1,41 @@
+<div id="enviarMailModal" class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form class="container" id="form-validation" novalidate method="POST" action="">
+                <div class="modal-header">
+                    <h4 class="modal-title">Enviar Retroalimentación Grupal</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                        onclick="closeModal()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="asuntoEmail" class='control-label'>Asunto</label>
+                            <input name="email[asunto]" type="text" class="form-control" id="asuntoEmail"
+                                placeholder="Asunto" required>
+                            <div class="invalid-feedback">
+                                Este campo es requerido.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="mensajeEmail" class='control-label'>Mensaje</label>
+                            <textarea name="email[mensaje]" type="text" class="form-control" id="mensajeEmail"
+                                placeholder="Mensaje" rows="10" required></textarea>
+                            <div class="invalid-feedback">
+                                Este campo es requerido.
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar"
+                        onclick="closeModal()">
+                    <input id="botonGuardar" type="submit" class="btn btn-info" value="Enviar" disabled>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
