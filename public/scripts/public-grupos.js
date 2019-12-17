@@ -1,7 +1,12 @@
 var grupos = document.querySelectorAll("table tbody tr");
 var vista;
 var lineaUserId = 1
+let mailList;
 
+axios.get('/auth/api/getMailList').then(res => {
+    mailList = res.data.mailList
+})
+   
 var agregar = document.querySelector("#agregar");
 if (agregar) {
     agregar.addEventListener('click', function () {
@@ -96,7 +101,7 @@ function addLineaUser() {
 
         <div class="form-group col-md-5">
             <div class="input-group">
-                <input type="email" name="users[${ lineaUserId }][email]" class="form-control" id="userEmail-${ lineaUserId }" placeholder="Email"  required>
+                <input type="email" name="users[${ lineaUserId }][email]" class="form-control email" id="userEmail-${ lineaUserId }" placeholder="Email"  required>
             </div>
         </div>
 
@@ -141,4 +146,21 @@ function addLineaUserReadOnly() {
     var divIntegrantes = vista.querySelector('#divIntegrantes');
     jQuery(divIntegrantes).append(line)
     lineaUserId += 1
+}
+
+function checkMailListAdd() {
+    let emails = document.querySelectorAll(".email")
+    let hayRepetidos = false
+   
+    emails.forEach(newEmail => {
+        mailList.forEach(email => {
+            if (email == newEmail.value) {
+                console.log('SON IGUALES')
+                alert(`El usuario ${ email } ya se encuentra registrado`)
+                hayRepetidos = true
+            }
+        });
+    });
+
+    return !hayRepetidos
 }

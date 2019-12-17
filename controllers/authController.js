@@ -153,4 +153,17 @@ controller.deshacerBaja = function (req, res) {
     })
   })
 }
+
+controller.getMailList = (req, res) => {
+  var mailList = []
+  User.findAll().then(users => {
+    users.forEach(user => {
+      mailList.push(user.email)
+    });
+    res.send({
+      mailList
+    })
+  })
+}
+
 module.exports = controller;

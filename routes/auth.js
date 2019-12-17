@@ -5,11 +5,6 @@ var logged = require("../utils/logged");
 var router = express.Router();
 var flash = require("express-flash");
 
-/* router.get('/signup', authController.signup); */
-/* 
-router.post('/signup', passport.authenticate('local-signup',  { successRedirect: '/alumnos', failureRedirect: '/'}));
- */
-
 router.get('/logout', authController.logout);
 
 /* GET login page. */
@@ -36,10 +31,12 @@ router.get('/resetpassword/:token', authController.reset);
 
 router.post('/resetpassword/:token', authController.resetRes);
 
-router.post('/edit/:userId', authController.edit);
+router.post('/edit/:userId', logged.isLogged, authController.edit);
 
-router.post('/baja/:userId', authController.baja);
+router.post('/baja/:userId', logged.isLogged, authController.baja);
 
-router.post('/deshacerBaja/:userId', authController.deshacerBaja);
+router.post('/deshacerBaja/:userId', logged.isLogged, authController.deshacerBaja);
+
+router.get('/api/getMailList', logged.isLogged, authController.getMailList);
 
 module.exports = router;
