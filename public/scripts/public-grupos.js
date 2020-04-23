@@ -155,7 +155,6 @@ function checkMailListAdd() {
     emails.forEach(newEmail => {
         mailList.forEach(email => {
             if (email == newEmail.value) {
-                console.log('SON IGUALES')
                 alert(`El usuario ${ email } ya se encuentra registrado`)
                 hayRepetidos = true
             }

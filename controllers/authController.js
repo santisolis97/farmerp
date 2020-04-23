@@ -1,4 +1,5 @@
 const User = require("./../models").User;
+const UserEmpresa = require("./../models").UserEmpresa;
 const Mailing = require("../utils/Mailing");
 var randtoken = require('rand-token');
 
@@ -131,10 +132,10 @@ controller.baja = function (req, res) {
     user.update({
       allowAccess: false
     }).then(() => {
-      req.flash('success_msg', 'Se dio de baja un usuario correctamente');
+      req.flash('success_msg', 'Se inactivó el acceso de un usuario correctamente');
       res.redirect(req.headers.referer);
     }).catch(err => {
-      req.flash('error_msg', 'Error al dar de baja un usuario');
+      req.flash('error_msg', 'Error al inactivar acceso de un usuario');
       res.redirect(req.headers.referer);
     })
   })
@@ -145,10 +146,10 @@ controller.deshacerBaja = function (req, res) {
     user.update({
       allowAccess: true
     }).then(() => {
-      req.flash('success_msg', 'Se dio de alta un usuario correctamente');
+      req.flash('success_msg', 'Se reactivó el acceso un usuario correctamente');
       res.redirect(req.headers.referer);
     }).catch(err => {
-      req.flash('error_msg', 'Error al dar de alta un usuario');
+      req.flash('error_msg', 'Error al reactivar el acceso de alta un usuario');
       res.redirect(req.headers.referer);
     })
   })
@@ -165,5 +166,29 @@ controller.getMailList = (req, res) => {
     })
   })
 }
+
+controller.delete = function (req, res) {
+  UserEmpresa.destroy({
+    where: {
+      userId: req.params.userId
+    }
+  }).then(() => {
+    User.destroy({
+        where: {
+          userId: req.params.userId
+        }
+      }).then(() => {
+        req.flash("success_msg", "Se eliminó un usuario correctamente");
+        res.redirect("/alumnos");
+      })
+      .catch(err => {
+        console.log(err)
+        req.flash("error_msg", "Error al eliminar un usuario");
+        res.redirect("/alumnos");
+      });
+  }).catch(err => {
+    console.log(err)
+  });
+};
 
 module.exports = controller;

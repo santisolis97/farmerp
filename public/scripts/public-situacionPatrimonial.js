@@ -17,6 +17,7 @@ function updateESP(fecha) {
     let importeTotalPasivosCorrientes = document.querySelector("#importeTotalPasivosCorrientes");
     let importeTotalPasivos = document.querySelector("#importeTotalPasivos");
     let importeTotalPatrimonioNeto = document.querySelector("#importeTotalPatrimonioNeto");
+    let importeTotalPasivosMasPatrimonioNeto = document.querySelector("#importeTotalPasivosMasPatrimonioNeto");
 
     importeTotalActivosCorrientes.innerHTML = (0).toFixed(2)
     importeTotalActivosNoCorrientes.innerHTML = (0).toFixed(2)
@@ -24,6 +25,7 @@ function updateESP(fecha) {
     importeTotalPasivosCorrientes.innerHTML = (0).toFixed(2)
     importeTotalPasivos.innerHTML = (0).toFixed(2)
     importeTotalPatrimonioNeto.innerHTML = (0).toFixed(2)
+    importeTotalPasivosMasPatrimonioNeto.innerHTML = (0).toFixed(2)
 
     /* ACTIVOS */
     updateCaja(fecha)
@@ -88,6 +90,7 @@ function updateDisponibilidades(fecha) {
 
         importeTotalActivosCorrientes.innerHTML = (parseFloat(importeTotalActivosCorrientes.innerHTML) + parseFloat(disponibilidades)).toFixed(2)
         importeTotalActivos.innerHTML = (parseFloat(importeTotalActivos.innerHTML) + parseFloat(disponibilidades)).toFixed(2)
+        importeTotalPasivosMasPatrimonioNeto.innerHTML = (parseFloat(importeTotalPasivosMasPatrimonioNeto.innerHTML) + parseFloat(disponibilidades)).toFixed(2)
         importeTotalPatrimonioNeto.innerHTML = (parseFloat(importeTotalPatrimonioNeto.innerHTML) + parseFloat(disponibilidades)).toFixed(2)
     })
 }
@@ -112,6 +115,7 @@ function updateCreditos(fecha) {
             importeTotalCreditos.innerHTML = (parseFloat(importeTotalCreditos.innerHTML) + credito.saldo).toFixed(2)
             importeTotalActivosCorrientes.innerHTML = (parseFloat(importeTotalActivosCorrientes.innerHTML) + credito.saldo).toFixed(2)
             importeTotalActivos.innerHTML = (parseFloat(importeTotalActivos.innerHTML) + credito.saldo).toFixed(2)
+            importeTotalPasivosMasPatrimonioNeto.innerHTML = (parseFloat(importeTotalPasivosMasPatrimonioNeto.innerHTML) + credito.saldo).toFixed(2)
             importeTotalPatrimonioNeto.innerHTML = (parseFloat(importeTotalPatrimonioNeto.innerHTML) + credito.saldo).toFixed(2)
         });
     })
@@ -137,6 +141,7 @@ function updateRetiroSocios(fecha) {
             importeTotalRetiroSocios.innerHTML = (parseFloat(importeTotalRetiroSocios.innerHTML) - retiro.saldo).toFixed(2)
             importeTotalActivosCorrientes.innerHTML = (parseFloat(importeTotalActivosCorrientes.innerHTML) - retiro.saldo).toFixed(2)
             importeTotalActivos.innerHTML = (parseFloat(importeTotalActivos.innerHTML) - retiro.saldo).toFixed(2)
+            importeTotalPasivosMasPatrimonioNeto.innerHTML = (parseFloat(importeTotalPasivosMasPatrimonioNeto.innerHTML) - retiro.saldo).toFixed(2)
             importeTotalPatrimonioNeto.innerHTML = (parseFloat(importeTotalPatrimonioNeto.innerHTML) - retiro.saldo).toFixed(2)
         });
     })
@@ -162,6 +167,7 @@ function updateInsumos(fecha) {
             importeTotalInsumos.innerHTML = (parseFloat(importeTotalInsumos.innerHTML) + insumo.valorMercado).toFixed(2)
             importeTotalActivosCorrientes.innerHTML = (parseFloat(importeTotalActivosCorrientes.innerHTML) + insumo.valorMercado).toFixed(2)
             importeTotalActivos.innerHTML = (parseFloat(importeTotalActivos.innerHTML) + insumo.valorMercado).toFixed(2)
+            importeTotalPasivosMasPatrimonioNeto.innerHTML = (parseFloat(importeTotalPasivosMasPatrimonioNeto.innerHTML) + insumo.valorMercado).toFixed(2)
             importeTotalPatrimonioNeto.innerHTML = (parseFloat(importeTotalPatrimonioNeto.innerHTML) + insumo.valorMercado).toFixed(2)
         });
     })
@@ -191,6 +197,7 @@ function updatePraderas(fecha) {
 
             importeTotalActivosCorrientes.innerHTML = (parseFloat(importeTotalActivosCorrientes.innerHTML) + pradera.amortizacionAcumulada).toFixed(2)
             importeTotalActivos.innerHTML = (parseFloat(importeTotalActivos.innerHTML) + pradera.amortizacionAcumulada).toFixed(2)
+            importeTotalPasivosMasPatrimonioNeto.innerHTML = (parseFloat(importeTotalPasivosMasPatrimonioNeto.innerHTML) + pradera.amortizacionAcumulada).toFixed(2)
             importeTotalPatrimonioNeto.innerHTML = (parseFloat(importeTotalPatrimonioNeto.innerHTML) + pradera.amortizacionAcumulada).toFixed(2)
         });
 
@@ -207,6 +214,7 @@ function updatePraderas(fecha) {
 
             importeTotalActivosNoCorrientes.innerHTML = (parseFloat(importeTotalActivosNoCorrientes.innerHTML) + pradera.valorANuevo).toFixed(2)
             importeTotalActivos.innerHTML = (parseFloat(importeTotalActivos.innerHTML) + pradera.valorANuevo).toFixed(2)
+            importeTotalPasivosMasPatrimonioNeto.innerHTML = (parseFloat(importeTotalPasivosMasPatrimonioNeto.innerHTML) + pradera.valorANuevo).toFixed(2)
             importeTotalPatrimonioNeto.innerHTML = (parseFloat(importeTotalPatrimonioNeto.innerHTML) + pradera.valorANuevo).toFixed(2)
         });
     })
@@ -234,6 +242,7 @@ function updateHaciendaCambio(fecha) {
 
             importeTotalActivosCorrientes.innerHTML = (parseFloat(importeTotalActivosCorrientes.innerHTML) + hacienda.valorTotal).toFixed(2)
             importeTotalActivos.innerHTML = (parseFloat(importeTotalActivos.innerHTML) + hacienda.valorTotal).toFixed(2)
+            importeTotalPasivosMasPatrimonioNeto.innerHTML = (parseFloat(importeTotalPasivosMasPatrimonioNeto.innerHTML) + hacienda.valorTotal).toFixed(2)
             importeTotalPatrimonioNeto.innerHTML = (parseFloat(importeTotalPatrimonioNeto.innerHTML) + hacienda.valorTotal).toFixed(2)
         });
     })
@@ -261,6 +270,7 @@ function updateHaciendaUso(fecha) {
 
             importeTotalActivosNoCorrientes.innerHTML = (parseFloat(importeTotalActivosNoCorrientes.innerHTML) + hacienda.valorTotal).toFixed(2)
             importeTotalActivos.innerHTML = (parseFloat(importeTotalActivos.innerHTML) + hacienda.valorTotal).toFixed(2)
+            importeTotalPasivosMasPatrimonioNeto.innerHTML = (parseFloat(importeTotalPasivosMasPatrimonioNeto.innerHTML) + hacienda.valorTotal).toFixed(2)
             importeTotalPatrimonioNeto.innerHTML = (parseFloat(importeTotalPatrimonioNeto.innerHTML) + hacienda.valorTotal).toFixed(2)
         });
     })
@@ -286,6 +296,7 @@ function updateStocks(fecha) {
             importeStock.innerHTML = (parseFloat(importeStock.innerHTML) + insumo.valorMercado).toFixed(2)
             importeTotalActivosCorrientes.innerHTML = (parseFloat(importeTotalActivosCorrientes.innerHTML) + insumo.valorMercado).toFixed(2)
             importeTotalActivos.innerHTML = (parseFloat(importeTotalActivos.innerHTML) + insumo.valorMercado).toFixed(2)
+            importeTotalPasivosMasPatrimonioNeto.innerHTML = (parseFloat(importeTotalPasivosMasPatrimonioNeto.innerHTML) + insumo.valorMercado).toFixed(2)
             importeTotalPatrimonioNeto.innerHTML = (parseFloat(importeTotalPatrimonioNeto.innerHTML) + insumo.valorMercado).toFixed(2)
         });
     })
@@ -299,6 +310,7 @@ function updateInfraestructuras(fecha) {
         importeInfraestructura.innerHTML = parseFloat(valorTotal).toFixed(2)
         importeTotalActivosNoCorrientes.innerHTML = (parseFloat(importeTotalActivosNoCorrientes.innerHTML) + parseFloat(valorTotal)).toFixed(2)
         importeTotalActivos.innerHTML = (parseFloat(importeTotalActivos.innerHTML) + parseFloat(valorTotal)).toFixed(2)
+        importeTotalPasivosMasPatrimonioNeto.innerHTML = (parseFloat(importeTotalPasivosMasPatrimonioNeto.innerHTML) + parseFloat(valorTotal)).toFixed(2)
         importeTotalPatrimonioNeto.innerHTML = (parseFloat(importeTotalPatrimonioNeto.innerHTML) + parseFloat(valorTotal)).toFixed(2)
     })
 }
@@ -311,6 +323,7 @@ function updateAdministracions(fecha) {
         importeAdministracion.innerHTML = parseFloat(valorTotal).toFixed(2)
         importeTotalActivosNoCorrientes.innerHTML = (parseFloat(importeTotalActivosNoCorrientes.innerHTML) + parseFloat(valorTotal)).toFixed(2)
         importeTotalActivos.innerHTML = (parseFloat(importeTotalActivos.innerHTML) + parseFloat(valorTotal)).toFixed(2)
+        importeTotalPasivosMasPatrimonioNeto.innerHTML = (parseFloat(importeTotalPasivosMasPatrimonioNeto.innerHTML) + parseFloat(valorTotal)).toFixed(2)
         importeTotalPatrimonioNeto.innerHTML = (parseFloat(importeTotalPatrimonioNeto.innerHTML) + parseFloat(valorTotal)).toFixed(2)
     })
 }
@@ -323,6 +336,7 @@ function updateEquipos(fecha) {
         importeEquipos.innerHTML = parseFloat(valorTotal).toFixed(2)
         importeTotalActivosNoCorrientes.innerHTML = (parseFloat(importeTotalActivosNoCorrientes.innerHTML) + parseFloat(valorTotal)).toFixed(2)
         importeTotalActivos.innerHTML = (parseFloat(importeTotalActivos.innerHTML) + parseFloat(valorTotal)).toFixed(2)
+        importeTotalPasivosMasPatrimonioNeto.innerHTML = (parseFloat(importeTotalPasivosMasPatrimonioNeto.innerHTML) + parseFloat(valorTotal)).toFixed(2)
         importeTotalPatrimonioNeto.innerHTML = (parseFloat(importeTotalPatrimonioNeto.innerHTML) + parseFloat(valorTotal)).toFixed(2)
     })
 }
@@ -335,6 +349,7 @@ function updateRodados(fecha) {
         importeRodados.innerHTML = parseFloat(valorTotal).toFixed(2)
         importeTotalActivosNoCorrientes.innerHTML = (parseFloat(importeTotalActivosNoCorrientes.innerHTML) + parseFloat(valorTotal)).toFixed(2)
         importeTotalActivos.innerHTML = (parseFloat(importeTotalActivos.innerHTML) + parseFloat(valorTotal)).toFixed(2)
+        importeTotalPasivosMasPatrimonioNeto.innerHTML = (parseFloat(importeTotalPasivosMasPatrimonioNeto.innerHTML) + parseFloat(valorTotal)).toFixed(2)
         importeTotalPatrimonioNeto.innerHTML = (parseFloat(importeTotalPatrimonioNeto.innerHTML) + parseFloat(valorTotal)).toFixed(2)
     })
 }
@@ -347,6 +362,7 @@ function updateTractores(fecha) {
         importeTractores.innerHTML = parseFloat(valorTotal).toFixed(2)
         importeTotalActivosNoCorrientes.innerHTML = (parseFloat(importeTotalActivosNoCorrientes.innerHTML) + parseFloat(valorTotal)).toFixed(2)
         importeTotalActivos.innerHTML = (parseFloat(importeTotalActivos.innerHTML) + parseFloat(valorTotal)).toFixed(2)
+        importeTotalPasivosMasPatrimonioNeto.innerHTML = (parseFloat(importeTotalPasivosMasPatrimonioNeto.innerHTML) + parseFloat(valorTotal)).toFixed(2)
         importeTotalPatrimonioNeto.innerHTML = (parseFloat(importeTotalPatrimonioNeto.innerHTML) + parseFloat(valorTotal)).toFixed(2)
     })
 }
@@ -359,6 +375,7 @@ function updateImplementos(fecha) {
         importeImplementos.innerHTML = parseFloat(valorTotal).toFixed(2)
         importeTotalActivosNoCorrientes.innerHTML = (parseFloat(importeTotalActivosNoCorrientes.innerHTML) + parseFloat(valorTotal)).toFixed(2)
         importeTotalActivos.innerHTML = (parseFloat(importeTotalActivos.innerHTML) + parseFloat(valorTotal)).toFixed(2)
+        importeTotalPasivosMasPatrimonioNeto.innerHTML = (parseFloat(importeTotalPasivosMasPatrimonioNeto.innerHTML) + parseFloat(valorTotal)).toFixed(2)
         importeTotalPatrimonioNeto.innerHTML = (parseFloat(importeTotalPatrimonioNeto.innerHTML) + parseFloat(valorTotal)).toFixed(2)
     })
 }
@@ -371,6 +388,7 @@ function updateAutopropulsados(fecha) {
         importeAutopropulsados.innerHTML = parseFloat(valorTotal).toFixed(2)
         importeTotalActivosNoCorrientes.innerHTML = (parseFloat(importeTotalActivosNoCorrientes.innerHTML) + parseFloat(valorTotal)).toFixed(2)
         importeTotalActivos.innerHTML = (parseFloat(importeTotalActivos.innerHTML) + parseFloat(valorTotal)).toFixed(2)
+        importeTotalPasivosMasPatrimonioNeto.innerHTML = (parseFloat(importeTotalPasivosMasPatrimonioNeto.innerHTML) + parseFloat(valorTotal)).toFixed(2)
         importeTotalPatrimonioNeto.innerHTML = (parseFloat(importeTotalPatrimonioNeto.innerHTML) + parseFloat(valorTotal)).toFixed(2)
     })
 }
@@ -383,6 +401,7 @@ function updateLotes(fecha) {
         importeLotes.innerHTML = parseFloat(valorTotal).toFixed(2)
         importeTotalActivosNoCorrientes.innerHTML = (parseFloat(importeTotalActivosNoCorrientes.innerHTML) + parseFloat(valorTotal)).toFixed(2)
         importeTotalActivos.innerHTML = (parseFloat(importeTotalActivos.innerHTML) + parseFloat(valorTotal)).toFixed(2)
+        importeTotalPasivosMasPatrimonioNeto.innerHTML = (parseFloat(importeTotalPasivosMasPatrimonioNeto.innerHTML) + parseFloat(valorTotal)).toFixed(2)
         importeTotalPatrimonioNeto.innerHTML = (parseFloat(importeTotalPatrimonioNeto.innerHTML) + parseFloat(valorTotal)).toFixed(2)
     })
 }

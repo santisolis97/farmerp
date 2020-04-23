@@ -1,7 +1,8 @@
 <div id="agregarModal" class="modal fade">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form class="container" id="form-validation" novalidate onsubmit="return checkMailListAdd()" method="POST" action="/grupos/add">
+            <form class="container" id="form-validation" novalidate onsubmit="return checkMailListAdd()" method="POST"
+                action="/grupos/add">
                 <div class="modal-header">
                     <h4 class="modal-title">Agregar Grupo</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
@@ -28,36 +29,40 @@
                     </div>
 
                     <div id="" class="">
+                        <label>Integrantes</label>
                         <div id="divIntegrantes">
                             <div id="lineaUser-0" class="form-row">
                                 <div class="form-group col-md-3">
-                                    <label for="userNombre-0">Nombre</label>
                                     <div class="input-group">
-                                        <input type="text" name="users[0][nombre]" class="form-control" id="userNombre-0" placeholder="Nombre" required>
+                                        <input type="text" name="users[0][nombre]" class="form-control"
+                                            id="userNombre-0" placeholder="Nombre" required>
                                     </div>
                                 </div>
-                    
+
                                 <div class="form-group col-md-3">
-                                    <label for="userApellido-0">Apellido</label>
                                     <div class="input-group">
-                                        <input type="text" name="users[0][apellido]" class="form-control" id="userApellido-0" placeholder="Apellido" required>
+                                        <input type="text" name="users[0][apellido]" class="form-control"
+                                            id="userApellido-0" placeholder="Apellido" required>
                                     </div>
                                 </div>
 
                                 <div class="form-group col-md-5">
-                                    <label for="userEmail-0">Email</label>
                                     <div class="input-group">
-                                        <input type="email" name="users[0][email]" class="form-control email" id="userEmail-0" placeholder="Email"  required>
+                                        <input type="email" name="users[0][email]" class="form-control email"
+                                            id="userEmail-0" placeholder="Email" required>
                                     </div>
                                 </div>
+
+                                <div class="form-group ml-2 mt-2">
+                                    <a class="text-danger" onclick="removeLineaUser(0)"><i class="fa fa-trash"></i></a>
+                                </div>
                             </div>
-
-
                         </div>
-                    
+
                         <div class="form-row">
                             <div class="form-group col-md-3">
-                                <a class="text-success" onclick="addLineaUser()"><i class="fa fa-plus-square mr-1"></i>Agregar
+                                <a class="text-success" onclick="addLineaUser()"><i
+                                        class="fa fa-plus-square mr-1"></i>Agregar
                                     Integrante</a>
                             </div>
                         </div>

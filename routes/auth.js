@@ -33,6 +33,8 @@ router.post('/resetpassword/:token', authController.resetRes);
 
 router.post('/edit/:userId', logged.isLogged, authController.edit);
 
+router.post('/delete/:userId', logged.isLogged, authController.delete);
+
 router.post('/baja/:userId', logged.isLogged, authController.baja);
 
 router.post('/deshacerBaja/:userId', logged.isLogged, authController.deshacerBaja);

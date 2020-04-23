@@ -11,14 +11,14 @@ router.get('/', (req, res, next) => {
         where: {
             userId: req.user.userId
         }
-    }).then (us => next())
+    }).then(us => next())
 }, Logged.isLogged, grupo.list);
 
 /* Add */
 router.post('/add', Logged.isLogged, grupo.altaGrupo)
 
 /* Edit */
-//router.post('/edit/:id', Logged.isLogged, hacienda.saveEdit)
+router.post('/edit/:id', Logged.isLogged, grupo.saveEdit)
 
 /* Delete */
 //router.post('/delete/:id', Logged.isLogged, hacienda.delete)

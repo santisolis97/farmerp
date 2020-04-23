@@ -68,14 +68,18 @@
 														<%= empresa.nombre %>
 													</td>
 													<td>
-														<% empresa.users.forEach(user => { if (user.User.role == 'user'){ %>
-														<li>
-															<%= user.User.apellido + ', ' + user.User.nombre %>
-														</li>
-														<% } }) %>
+														<% if(empresa.users.length > 0){ %>
+															<% empresa.users.forEach(user => { if (user.User.role == 'user'){ %>
+															<li>
+																<%= user.User.apellido + ', ' + user.User.nombre %>
+															</li>
+															<% } }) %>
+														<% } else { %>
+															<b>Sin Alumnos</b>	
+														<% }  %>
 													</td>
 													<td>
-														<%= empresa.users[0].anioCursado %>
+														<%= empresa.users[0] ? empresa.users[0].anioCursado : '----' %>
 													</td>
 
 													<td>

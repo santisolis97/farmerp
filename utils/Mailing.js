@@ -5,7 +5,7 @@ function enviarMail(para, asunto, mensaje) {
         service: 'Gmail',
         auth: {
             user: 'farmerp.utn.frre@gmail.com',
-            pass: 'farmerp1234'
+            pass: 'dc37g2km4a5hqf'
         }
     });
 
@@ -16,7 +16,11 @@ function enviarMail(para, asunto, mensaje) {
         text: mensaje
     };
 
-    smtpTransport.sendMail(mailOptions);
+    try {
+        smtpTransport.sendMail(mailOptions);
+    } catch (error) {
+        console.log(error)
+    }
 
     if (process.env.NODE_ENV != 'test') {
         console.log('Mail enviado a ' + para + ', asunto: ' + asunto);

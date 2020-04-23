@@ -75,20 +75,24 @@
 															data-toggle="modal">
 															<i class="fa fa-edit fa-lg" title="Editar"></i>
 														</a>
+														<a id="enviarMail" href="#enviarMailModal" class="mail mr-2"
+															title="Enviar Retroalimentación" data-toggle="modal">
+															<i class="far fa-envelope fa-lg"></i>
+														</a>
 														<% if (user.User.allowAccess){ %>
 															<a id="baja" href="#bajaModal" class="delete mr-2"
-															title="Dar de Baja" data-toggle="modal">
+															title="Inactivar acceso" data-toggle="modal">
 															<i class="fa fa-user-slash fa-lg"></i>
 														</a>
 														<% } else { %>
 															<a id="deshacerBaja" href="#deshacerBajaModal"
-															class="delete mr-2" title="Dar de Baja" data-toggle="modal">
+															class="delete mr-2" title="Reactivar acceso" data-toggle="modal">
 															<i class="fa fa-user-plus fa-lg"></i>
 														</a>
 														<% } %>
-														<a id="enviarMail" href="#enviarMailModal" class="mail mr-2"
-															title="Enviar Retroalimentación" data-toggle="modal">
-															<i class="far fa-envelope fa-lg"></i>
+														<a id="eliminar" href="#eliminarModal" class="delete mr-2"
+															data-toggle="modal">
+															<i class="fa fa-trash fa-lg" title="Eliminar Usuario"></i>
 														</a>
 													</td>
 												</tr>
@@ -111,9 +115,10 @@
 	<!-- Formulario de los Popups  -->
 	<% include alumno-view %>
 	<% include alumno-edit %>
+	<% include alumno-sendMail %>
 	<% include alumno-baja %>
 	<% include alumno-deshacerBaja %>
-	<% include alumno-sendMail %>
+	<% include alumno-delete %>
 	<!-- /Formulario de los Popups  -->
 
 	<!-- Scripts -->

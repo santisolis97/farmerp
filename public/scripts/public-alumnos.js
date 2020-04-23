@@ -44,6 +44,15 @@ alumnos.forEach(function (row) {
             vista.querySelector("form").setAttribute("action", "/auth/deshacerBaja/" + alumno.User.userId);
         });
     }
+
+    var eliminar = row.querySelector("#eliminar");
+    if (eliminar) {
+        eliminar.addEventListener("click", function () {
+            var alumno = getElement(row);
+            vista = document.querySelector("#eliminarModal");
+            vista.querySelector("form").setAttribute("action", "/auth/delete/" + alumno.User.userId);
+        });
+    }
 });
 
 function getElement(row) {
