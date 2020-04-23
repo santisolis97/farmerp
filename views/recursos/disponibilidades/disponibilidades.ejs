@@ -52,7 +52,7 @@
                                                     <span class="input-group-text">$</span>
                                                 </div>
                                                 <input name="" type="number" min="0" step="0.01" class="form-control"
-                                                    id="montoInicialCaja" value="<%= caja.montoInicial %>" placeholder="0" readonly>
+                                                    id="montoInicialCaja" value="<%= caja.montoInicial.toFixed(2) %>" placeholder="0" readonly>
                                             </div>
                                         </div>
                                     </div>
@@ -98,7 +98,7 @@
                                                     <span class="input-group-text">$</span>
                                                 </div>
                                                 <input name="" type="number" min="0" step="0.01" class="form-control"
-                                                    id="montoInicialBanco"  value="<%= banco.montoInicial %>" placeholder="0" readonly>
+                                                    id="montoInicialBanco"  value="<%= banco.montoInicial.toFixed(2) %>" placeholder="0" readonly>
                                             </div>
                                         </div>
                                     </div>
@@ -144,7 +144,7 @@
                                                     <span class="input-group-text">$</span>
                                                 </div>
                                                 <input name="" type="number" min="0" step="0.01" class="form-control"
-                                                    id="montoInicialInversiones" value="<%= inversion.montoInicial %>" placeholder="0" readonly>
+                                                    id="montoInicialInversiones" value="<%= inversion.montoInicial.toFixed(2) %>" placeholder="0" readonly>
                                             </div>
                                         </div>
                                     </div>
@@ -157,7 +157,7 @@
                                                     <span class="input-group-text">$</span>
                                                 </div>
                                                 <input name="" type="number" min="0" step="0.01" class="form-control"
-                                                    id="montoFinalInversiones" value="<%= inversion.montoInicial %>" placeholder="0" readonly>
+                                                    id="montoFinalInversiones" value="<%= inversion.montoInicial.toFixed(2) %>" placeholder="0" readonly>
                                             </div>
                                         </div>
                                     </div>
