@@ -116,14 +116,13 @@ grupoController.saveEdit = function (req, res) {
     // Por cada user in users
     //   Busco si existe el mail
     //       existe
-    //          si la empresa se corresponde con la que tiene asignada 
-    //          Si no, actualizo userEmpresa con el id actual (Cambio de grupo).
-    //          actualizo el usuario = actualizo el usuarioEmpresa
+    //          si la empresa no se corresponde con la que tiene asignada actualizo userEmpresa con el id actual (Cambio de grupo).
+    //          actualizo el usuario y actualizo el usuarioEmpresa
     //      no existe
     //          genero el usuario => genero el usuarioEmpresa
     // 
     // Borro de la tabla users y usersEmpresa los que tengan rol user, id empresa del parámetro y el mail no se encuentre en la lista de users         
-    
+
     if (users) {
         users.forEach(user => {
             User.findOne({
@@ -226,5 +225,26 @@ grupoController.saveEdit = function (req, res) {
     }
 }
 
+grupoController.sendMail = function (req, res) {
+    let email = req.body.email
+    email.mensaje += '\n\n\n\n' + req.headers.origin + '\nEquipo FarmERP.\n'
+
+    UserEmpresa.findAll({
+        where: {
+            empresaId: req.params.id
+        },
+        include: [{
+            model: User
+        }]
+    }).then(users => {
+        if (users){
+            users.forEach(userEmpresa => {
+                Mailing.enviarMail(userEmpresa.User.email, email.asunto, email.mensaje);
+            })
+        }
+        req.flash('success_msg', 'Se envió retroalimentación a un grupo de alumnos correctamente');
+        res.redirect('/grupos')
+    })
+}
 
 module.exports = grupoController;

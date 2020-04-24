@@ -53,6 +53,15 @@ alumnos.forEach(function (row) {
             vista.querySelector("form").setAttribute("action", "/auth/delete/" + alumno.User.userId);
         });
     }
+
+    var enviarMail = row.querySelector("#enviarMail");
+    if (enviarMail) {
+        enviarMail.addEventListener("click", function () {
+            var alumno = getElement(row);
+            vista = document.querySelector("#enviarMailModal");
+            vista.querySelector("form").setAttribute("action", "/auth/sendMail/" + alumno.User.userId);
+        });
+    }
 });
 
 function getElement(row) {

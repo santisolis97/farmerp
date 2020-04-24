@@ -76,6 +76,15 @@ grupos.forEach(function (row) {
             //vista.querySelector("form").setAttribute("action", "/grupos/delete/" + grupo.empresaId);
         });
     }
+
+    var enviarMail = row.querySelector("#enviarMail");
+    if (enviarMail) {
+        enviarMail.addEventListener("click", function () {
+            var grupo = getElement(row);
+            vista = document.querySelector("#enviarMailModal");
+            vista.querySelector("form").setAttribute("action", "/grupos/sendMail/" + grupo.empresaId);
+        });
+    }
 });
 
 function getElement(row) {

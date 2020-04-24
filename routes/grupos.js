@@ -23,5 +23,8 @@ router.post('/edit/:id', Logged.isLogged, grupo.saveEdit)
 /* Delete */
 //router.post('/delete/:id', Logged.isLogged, hacienda.delete)
 
+/* SendMail */
+router.post('/sendMail/:id', Logged.isLogged, grupo.sendMail)
+
 
 module.exports = router;

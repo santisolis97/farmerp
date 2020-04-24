@@ -191,4 +191,15 @@ controller.delete = function (req, res) {
   });
 };
 
+controller.sendMail = function (req, res) {
+  let email = req.body.email
+  email.mensaje += '\n\n\n\n' + req.headers.origin + '\nEquipo FarmERP.\n'
+
+  User.findByPk(req.params.userId).then(user => {
+      Mailing.enviarMail(user.email, email.asunto, email.mensaje);
+      req.flash('success_msg', 'Se envió retroalimentación a un alumno correctamente');
+      res.redirect('/alumnos')
+  })
+}
+
 module.exports = controller;

@@ -232,13 +232,15 @@ contableController.getHaciendaCambio = (req, res) => {
 
                     totalHacienda += hacienda.dataValues.valorANuevo
                 })
-                totalHaciendaCambio += totalHacienda
-                haciendaCambio.push({
-                    tipoHacienda: tipo.nombre,
-                    valorTotal: totalHacienda
-                })
+                if (totalHacienda) {
+                    totalHaciendaCambio += totalHacienda
+                    haciendaCambio.push({
+                        tipoHacienda: tipo.nombre,
+                        valorTotal: totalHacienda
+                    })
+                }
             }).then(() => {
-                if (i == tipos.length-1) {
+                if (i == tipos.length - 1) {
                     res.send({
                         totalHaciendaCambio,
                         haciendaCambio
@@ -318,13 +320,15 @@ contableController.getHaciendaUso = (req, res) => {
 
                     totalHacienda += hacienda.dataValues.valorANuevo
                 })
-                totalHaciendaUso += totalHacienda
-                haciendaUso.push({
-                    tipoHacienda: tipo.nombre,
-                    valorTotal: totalHacienda
-                })
+                if (totalHacienda) {
+                    totalHaciendaUso += totalHacienda
+                    haciendaUso.push({
+                        tipoHacienda: tipo.nombre,
+                        valorTotal: totalHacienda
+                    })
+                }
             }).then(() => {
-                if (i == tipos.length-1) {
+                if (i == tipos.length - 1) {
                     res.send({
                         totalHaciendaUso,
                         haciendaUso
