@@ -9,7 +9,7 @@
 			</a> -->
 			<div class="header-left">
 				<h2 class="text-header"><%= empresa.nombre %></h2>
-				<p class="text-header mb-2"><%= empresa.inicioEjercicio + ' al ' + empresa.finEjercicio %></p>
+				<p class="text-header mb-2"><%= 'Ejercicio: ' + empresa.inicioEjercicioString + ' al ' + empresa.finEjercicioString %></p>
 				<input id="datosEmpresa" type="hidden" value="<%= JSON.stringify(empresa) %>">
 			</div>
 		</div>

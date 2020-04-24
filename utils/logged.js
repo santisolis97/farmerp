@@ -24,8 +24,19 @@ function isLogged(req, res, next) {
                             empresa.meses = []
     
                             var inicioEjercicio = empresa.inicioEjercicio.split('-')
+                            let dia = parseInt(inicioEjercicio[2])
                             let mes = parseInt(inicioEjercicio[1]) - 1
                             let anio = parseInt(inicioEjercicio[0])
+                            
+                            empresa.inicioEjercicioString = dia + '/' + (mes+1) + '/' + anio
+                            
+                            var finEjercicio = empresa.finEjercicio.split('-')
+                            let diaFin = parseInt(finEjercicio[2])
+                            let mesFin = parseInt(finEjercicio[1])
+                            let anioFin = parseInt(finEjercicio[0])
+                            
+                            empresa.finEjercicioString = diaFin + '/' + mesFin + '/' + anioFin
+
                             let meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
     
                             for (let i = 1; i < 13; i++) {

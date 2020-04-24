@@ -531,7 +531,7 @@ function updateDeudasOtras(fecha) {
     })
 }
 
-function printReport() {
+/* function printReport() {
     const filename = 'Estado de Situación Patrimonial.pdf';
     let height = document.querySelector('#divESP').clientHeight
     let width = document.querySelector('#divESP').clientWidth
@@ -545,4 +545,4 @@ function printReport() {
         pdf.addImage(canvas.toDataURL('image/png', 1), 'PNG', 15, 20, 180, (width * 180 / height));
         pdf.save(filename);
     });
-}
+} */
