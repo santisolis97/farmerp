@@ -1,6 +1,6 @@
 updateESP(datosEmpresa.finEjercicio)
 
-function updateESP(fecha) {
+async function updateESP(fecha) {
     if (new Date(fecha) > new Date(datosEmpresa.finEjercicio)) {
         return
     }
@@ -28,61 +28,66 @@ function updateESP(fecha) {
     importeTotalPasivosMasPatrimonioNeto.innerHTML = (0).toFixed(2)
 
     /* ACTIVOS */
-    updateCaja(fecha)
-    updateBanco(fecha)
-    updateInversiones(fecha)
-    updateDisponibilidades(fecha)
-    updateCreditos(fecha)
-    updateRetiroSocios(fecha)
-    updateInsumos(fecha)
-    updatePraderas(fecha)
-    updateHaciendaCambio(fecha)
-    updateHaciendaUso(fecha)
-    updateStocks(fecha)
-    updateInfraestructuras(fecha)
-    updateAdministracions(fecha)
-    updateEquipos(fecha)
-    updateRodados(fecha)
-    updateTractores(fecha)
-    updateImplementos(fecha)
-    updateAutopropulsados(fecha)
-    updateLotes(fecha)
+    await updateCaja(fecha)
+    await updateBanco(fecha)
+    await updateInversiones(fecha)
+    await updateDisponibilidades(fecha)
+    await updateCreditos(fecha)
+    await updateRetiroSocios(fecha)
+    await updateInsumos(fecha)
+    await updatePraderas(fecha)
+    await updateHaciendaCambio(fecha)
+    await updateHaciendaUso(fecha)
+    await updateStocks(fecha)
+    await updateInfraestructuras(fecha)
+    await updateAdministracions(fecha)
+    await updateEquipos(fecha)
+    await updateRodados(fecha)
+    await updateTractores(fecha)
+    await updateImplementos(fecha)
+    await updateAutopropulsados(fecha)
+    await updateLotes(fecha)
 
     /* PASIVOS */
-    updateDeudasComerciales(fecha);
-    updateDeudasFinancieras(fecha);
-    updateDeudasFiscales(fecha);
-    updateDeudasSociales(fecha);
-    updateDeudasOtras(fecha);
+    await updateDeudasComerciales(fecha);
+    await updateDeudasFinancieras(fecha);
+    await updateDeudasFiscales(fecha);
+    await updateDeudasSociales(fecha);
+    await updateDeudasOtras(fecha);
+
+    let importes = document.querySelectorAll('.importe')
+    importes.forEach(importe => {
+        importe.innerHTML = importeFormat(parseFloat(importe.innerHTML))
+    })
 }
 
 
-function updateCaja(fecha) {
-    axios.get('/contable/apiCaja/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
+async function updateCaja(fecha) {
+    await axios.get('/contable/apiCaja/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
         let caja = res.data
         $("#importeCaja").remove()
-        $("#divCaja").append(`<p id="importeCaja" class="col-md-4 text-right" style="margin-top: -15px">$ ${caja.saldo}</p>`)
+        $("#divCaja").append(`<p id="importeCaja" class="col-md-4 text-right" style="margin-top: -15px">$ ${ importeFormat(parseFloat(caja.saldo)) }</p>`)
     })
 }
 
-function updateBanco(fecha) {
-    axios.get('/contable/apiBanco/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
+async function updateBanco(fecha) {
+    await axios.get('/contable/apiBanco/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
         let banco = res.data
         $("#importeBanco").remove()
-        $("#divBanco").append(`<p id="importeBanco" class="col-md-4 text-right" style="margin-top: -15px">$ ${banco.saldo}</p>`)
+        $("#divBanco").append(`<p id="importeBanco" class="col-md-4 text-right" style="margin-top: -15px">$ ${ importeFormat(parseFloat(banco.saldo)) }</p>`)
     })
 }
 
-function updateInversiones(fecha) {
-    axios.get('/contable/apiInversiones/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
+async function updateInversiones(fecha) {
+    await axios.get('/contable/apiInversiones/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
         let inversiones = res.data
         $("#importeInversiones").remove()
-        $("#divInversiones").append(`<p id="importeInversiones" class="col-md-4 text-right" style="margin-top: -15px">$ ${inversiones.saldo}</p>`)
+        $("#divInversiones").append(`<p id="importeInversiones" class="col-md-4 text-right" style="margin-top: -15px">$ ${ importeFormat(parseFloat(inversiones.saldo)) }</p>`)
     })
 }
 
-function updateDisponibilidades(fecha) {
-    axios.get('/contable/apiDisponibilidades/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
+async function updateDisponibilidades(fecha) {
+    await axios.get('/contable/apiDisponibilidades/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
         let disponibilidades = res.data.disponibilidades
 
         let importeDisponibilidades = document.querySelector("#importeDisponibilidades");
@@ -95,8 +100,8 @@ function updateDisponibilidades(fecha) {
     })
 }
 
-function updateCreditos(fecha) {
-    axios.get('/contable/apiCreditos/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
+async function updateCreditos(fecha) {
+    await axios.get('/contable/apiCreditos/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
         let creditos = res.data
         let importeTotalCreditos = document.querySelector("#importeTotalCreditos");
 
@@ -108,7 +113,7 @@ function updateCreditos(fecha) {
             $("#divCreditos").append(`
             <div class="form-row">
             <p class="col-md-7" style="margin-top: -15px">${ credito.nombre}</p>
-            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ credito.saldo.toFixed(2)}</p>
+            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ importeFormat(credito.saldo) }</p>
             </div>
             `)
 
@@ -121,8 +126,8 @@ function updateCreditos(fecha) {
     })
 }
 
-function updateRetiroSocios(fecha) {
-    axios.get('/contable/apiRetiroSocios/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
+async function updateRetiroSocios(fecha) {
+    await axios.get('/contable/apiRetiroSocios/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
         let retiros = res.data
         let importeTotalRetiroSocios = document.querySelector("#importeTotalRetiroSocios");
 
@@ -134,7 +139,7 @@ function updateRetiroSocios(fecha) {
             $("#divRetiroSocios").append(`
             <div class="form-row">
             <p class="col-md-7" style="margin-top: -15px">${ retiro.nombre}</p>
-            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ retiro.saldo.toFixed(2) * -1}</p>
+            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ importeFormat(retiro.saldo * -1) }</p>
             </div>
             `)
 
@@ -147,8 +152,8 @@ function updateRetiroSocios(fecha) {
     })
 }
 
-function updateInsumos(fecha) {
-    axios.get('/contable/apiInsumos/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
+async function updateInsumos(fecha) {
+    await axios.get('/contable/apiInsumos/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
         let insumos = res.data
         let importeTotalInsumos = document.querySelector("#importeTotalInsumos");
 
@@ -160,7 +165,7 @@ function updateInsumos(fecha) {
             $("#divInsumos").append(`
             <div class="form-row">
             <p class="col-md-7" style="margin-top: -15px">${ insumo.concepto}</p>
-            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ insumo.valorMercado.toFixed(2)}</p>
+            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ importeFormat(insumo.valorMercado)}</p>
             </div>
             `)
 
@@ -173,8 +178,8 @@ function updateInsumos(fecha) {
     })
 }
 
-function updatePraderas(fecha) {
-    axios.get('/contable/apiPraderas/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
+async function updatePraderas(fecha) {
+    await axios.get('/contable/apiPraderas/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
         let praderas = res.data.praderas
         let valorTotal = res.data.valorTotal
         let valorTotalAmortizacion = res.data.valorTotalAmortizacion
@@ -191,7 +196,7 @@ function updatePraderas(fecha) {
             $("#divPraderasAmortizacion").append(`
             <div class="form-row">
             <p class="col-md-7" style="margin-top: -15px">${ pradera.cultivo}</p>
-            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ pradera.amortizacionAcumulada.toFixed(2)}</p>
+            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ importeFormat(pradera.amortizacionAcumulada) }</p>
             </div>
             `)
 
@@ -220,8 +225,8 @@ function updatePraderas(fecha) {
     })
 }
 
-function updateHaciendaCambio(fecha) {
-    axios.get('/contable/apiHaciendaCambio/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
+async function updateHaciendaCambio(fecha) {
+    await axios.get('/contable/apiHaciendaCambio/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
         let haciendas = res.data.haciendaCambio
         let valorTotalHaciendaCambio = res.data.totalHaciendaCambio
 
@@ -236,7 +241,7 @@ function updateHaciendaCambio(fecha) {
             $("#divHaciendaCambio").append(`
             <div class="form-row">
             <p class="col-md-7" style="margin-top: -15px">${ hacienda.tipoHacienda}</p>
-            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ hacienda.valorTotal.toFixed(2)}</p>
+            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ importeFormat(hacienda.valorTotal) }</p>
             </div>
             `)
 
@@ -248,8 +253,8 @@ function updateHaciendaCambio(fecha) {
     })
 }
 
-function updateHaciendaUso(fecha) {
-    axios.get('/contable/apiHaciendaUso/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
+async function updateHaciendaUso(fecha) {
+    await axios.get('/contable/apiHaciendaUso/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
         let haciendas = res.data.haciendaUso
         let valorTotalHaciendaUso = res.data.totalHaciendaUso
 
@@ -264,7 +269,7 @@ function updateHaciendaUso(fecha) {
             $("#divHaciendaUso").append(`
             <div class="form-row">
             <p class="col-md-7" style="margin-top: -15px">${ hacienda.tipoHacienda}</p>
-            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ hacienda.valorTotal.toFixed(2)}</p>
+            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ importeFormat(hacienda.valorTotal) }</p>
             </div>
             `)
 
@@ -276,8 +281,8 @@ function updateHaciendaUso(fecha) {
     })
 }
 
-function updateStocks(fecha) {
-    axios.get('/contable/apiStocks/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
+async function updateStocks(fecha) {
+    await axios.get('/contable/apiStocks/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
         let insumos = res.data
         let importeStock = document.querySelector("#importeStock");
 
@@ -289,7 +294,7 @@ function updateStocks(fecha) {
             $("#divStock").append(`
             <div class="form-row">
             <p class="col-md-7" style="margin-top: -15px">${ insumo.concepto}</p>
-            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ insumo.valorMercado.toFixed(2)}</p>
+            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ importeFormat(insumo.valorMercado) }</p>
             </div>
             `)
 
@@ -302,8 +307,8 @@ function updateStocks(fecha) {
     })
 }
 
-function updateInfraestructuras(fecha) {
-    axios.get('/contable/apiInfraestructuras/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
+async function updateInfraestructuras(fecha) {
+    await axios.get('/contable/apiInfraestructuras/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
         let valorTotal = res.data.valorTotal
         let importeInfraestructura = document.querySelector("#importeInfraestructura")
 
@@ -315,8 +320,8 @@ function updateInfraestructuras(fecha) {
     })
 }
 
-function updateAdministracions(fecha) {
-    axios.get('/contable/apiAdministracions/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
+async function updateAdministracions(fecha) {
+    await axios.get('/contable/apiAdministracions/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
         let valorTotal = res.data.valorTotal
         let importeAdministracion = document.querySelector("#importeAdministracion")
 
@@ -328,8 +333,8 @@ function updateAdministracions(fecha) {
     })
 }
 
-function updateEquipos(fecha) {
-    axios.get('/contable/apiEquipos/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
+async function updateEquipos(fecha) {
+    await axios.get('/contable/apiEquipos/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
         let valorTotal = res.data.valorTotal
         let importeEquipos = document.querySelector("#importeEquipos")
 
@@ -341,8 +346,8 @@ function updateEquipos(fecha) {
     })
 }
 
-function updateRodados(fecha) {
-    axios.get('/contable/apiRodados/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
+async function updateRodados(fecha) {
+    await axios.get('/contable/apiRodados/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
         let valorTotal = res.data.valorTotal
         let importeRodados = document.querySelector("#importeRodados")
 
@@ -354,8 +359,8 @@ function updateRodados(fecha) {
     })
 }
 
-function updateTractores(fecha) {
-    axios.get('/contable/apiTractores/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
+async function updateTractores(fecha) {
+    await axios.get('/contable/apiTractores/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
         let valorTotal = res.data.valorTotal
         let importeTractores = document.querySelector("#importeTractores")
 
@@ -367,8 +372,8 @@ function updateTractores(fecha) {
     })
 }
 
-function updateImplementos(fecha) {
-    axios.get('/contable/apiImplementos/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
+async function updateImplementos(fecha) {
+    await axios.get('/contable/apiImplementos/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
         let valorTotal = res.data.valorTotal
         let importeImplementos = document.querySelector("#importeImplementos")
 
@@ -380,8 +385,8 @@ function updateImplementos(fecha) {
     })
 }
 
-function updateAutopropulsados(fecha) {
-    axios.get('/contable/apiAutopropulsados/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
+async function updateAutopropulsados(fecha) {
+    await axios.get('/contable/apiAutopropulsados/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
         let valorTotal = res.data.valorTotal
         let importeAutopropulsados = document.querySelector("#importeAutopropulsados")
 
@@ -393,8 +398,8 @@ function updateAutopropulsados(fecha) {
     })
 }
 
-function updateLotes(fecha) {
-    axios.get('/contable/apiLotes/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
+async function updateLotes(fecha) {
+    await axios.get('/contable/apiLotes/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
         let valorTotal = res.data.valorTotal
         let importeLotes = document.querySelector("#importeLotes")
 
@@ -406,8 +411,8 @@ function updateLotes(fecha) {
     })
 }
 
-function updateDeudasComerciales(fecha) {
-    axios.get('/contable/apiDeudasComerciales/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
+async function updateDeudasComerciales(fecha) {
+    await axios.get('/contable/apiDeudasComerciales/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
         let deudas = res.data
         let importeTotalDeudasComerciales = document.querySelector("#importeTotalDeudasComerciales");
 
@@ -419,7 +424,7 @@ function updateDeudasComerciales(fecha) {
             $("#divDeudasComerciales").append(`
             <div class="form-row">
             <p class="col-md-7" style="margin-top: -15px">${ deuda.proveedor}</p>
-            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ deuda.saldo.toFixed(2)}</p>
+            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ importeFormat(deuda.saldo) }</p>
             </div>
             `)
 
@@ -431,8 +436,8 @@ function updateDeudasComerciales(fecha) {
     })
 }
 
-function updateDeudasFinancieras(fecha) {
-    axios.get('/contable/apiDeudasFinancieras/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
+async function updateDeudasFinancieras(fecha) {
+    await axios.get('/contable/apiDeudasFinancieras/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
         let deudas = res.data
         let importeTotalDeudasFinancieras = document.querySelector("#importeTotalDeudasFinancieras");
 
@@ -444,7 +449,7 @@ function updateDeudasFinancieras(fecha) {
             $("#divDeudasFinancieras").append(`
             <div class="form-row">
             <p class="col-md-7" style="margin-top: -15px">${ deuda.nombre}</p>
-            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ deuda.saldo.toFixed(2)}</p>
+            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ importeFormat(deuda.saldo) }</p>
             </div>
             `)
 
@@ -456,8 +461,8 @@ function updateDeudasFinancieras(fecha) {
     })
 }
 
-function updateDeudasFiscales(fecha) {
-    axios.get('/contable/apiDeudasFiscales/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
+async function updateDeudasFiscales(fecha) {
+    await axios.get('/contable/apiDeudasFiscales/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
         let deudas = res.data
         let importeTotalDeudasFiscales = document.querySelector("#importeTotalDeudasFiscales");
 
@@ -469,7 +474,7 @@ function updateDeudasFiscales(fecha) {
             $("#divDeudasFiscales").append(`
             <div class="form-row">
             <p class="col-md-7" style="margin-top: -15px">${ deuda.nombre}</p>
-            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ deuda.saldo.toFixed(2)}</p>
+            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ importeFormat(deuda.saldo) }</p>
             </div>
             `)
 
@@ -481,8 +486,8 @@ function updateDeudasFiscales(fecha) {
     })
 }
 
-function updateDeudasSociales(fecha) {
-    axios.get('/contable/apiDeudasSociales/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
+async function updateDeudasSociales(fecha) {
+    await axios.get('/contable/apiDeudasSociales/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
         let deudas = res.data
         let importeTotalDeudasSociales = document.querySelector("#importeTotalDeudasSociales");
 
@@ -494,7 +499,7 @@ function updateDeudasSociales(fecha) {
             $("#divDeudasSociales").append(`
             <div class="form-row">
             <p class="col-md-7" style="margin-top: -15px">${ deuda.nombre}</p>
-            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ deuda.saldo.toFixed(2)}</p>
+            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ importeFormat(deuda.saldo) }</p>
             </div>
             `)
 
@@ -506,8 +511,8 @@ function updateDeudasSociales(fecha) {
     })
 }
 
-function updateDeudasOtras(fecha) {
-    axios.get('/contable/apiDeudasOtras/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
+async function updateDeudasOtras(fecha) {
+    await axios.get('/contable/apiDeudasOtras/' + fecha + '/' + datosEmpresa.empresaId).then(res => {
         let deudas = res.data
         let importeTotalDeudasOtras = document.querySelector("#importeTotalDeudasOtras");
 
@@ -519,7 +524,7 @@ function updateDeudasOtras(fecha) {
             $("#divDeudasOtras").append(`
             <div class="form-row">
             <p class="col-md-7" style="margin-top: -15px">${ deuda.nombre}</p>
-            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ deuda.saldo.toFixed(2)}</p>
+            <p class="col-md-4 text-right" style="margin-top: -15px">$ ${ importeFormat(deuda.saldo) }</p>
             </div>
             `)
 
@@ -531,7 +536,7 @@ function updateDeudasOtras(fecha) {
     })
 }
 
-/* function printReport() {
+/* async function printReport() {
     const filename = 'Estado de Situación Patrimonial.pdf';
     let height = document.querySelector('#divESP').clientHeight
     let width = document.querySelector('#divESP').clientWidth
