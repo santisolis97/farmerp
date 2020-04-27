@@ -11,6 +11,11 @@ async function updateESP(fecha) {
         return
     }
 
+    document.querySelector("#situacionPatrimonialFecha").disabled = true
+    document.querySelector("#divESP").classList.add("d-none")
+    document.querySelector("#cargando").classList.remove("d-none")
+
+
     let importeTotalActivos = document.querySelector("#importeTotalActivos");
     let importeTotalActivosCorrientes = document.querySelector("#importeTotalActivosCorrientes");
     let importeTotalActivosNoCorrientes = document.querySelector("#importeTotalActivosNoCorrientes");
@@ -59,6 +64,10 @@ async function updateESP(fecha) {
     importes.forEach(importe => {
         importe.innerHTML = importeFormat(parseFloat(importe.innerHTML))
     })
+
+    document.querySelector("#situacionPatrimonialFecha").disabled = false
+    document.querySelector("#cargando").classList.add("d-none")
+    document.querySelector("#divESP").classList.remove("d-none")
 }
 
 
