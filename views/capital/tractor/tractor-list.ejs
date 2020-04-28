@@ -35,7 +35,7 @@
 									<div class="d-flex justify-content-between">
 										<div class="d-flex justify-content-start">
 											<strong class="card-title align-middle">Tractores. Valor
-												Total al Cierre $<%= valorTotal %></strong>
+												Total al Cierre $<%= valorTotal.toFixed(2) %></strong>
 											<div id="titulo" data-value="Tractores"></div>
 										</div>
 										<div id="tableButtons" class="d-none d-md-block">
@@ -79,10 +79,10 @@
 														<%= tractor.concepto %>
 													</td>
 													<td>
-														<%= tractor.potencia %>
+														<%= tractor.potencia.toFixed(2) %>
 													</td>
 													<td>
-														<%= tractor.valorUnitario %>
+														<%= tractor.valorUnitario.toFixed(2) %>
 													</td>
 													<td class="d-none">
 														<%= tractor.fechaCompra %>
@@ -97,16 +97,16 @@
 														<%= tractor.dataValues.antiguedad %>
 													</td>
 													<td class="d-none">
-														<%= tractor.dataValues.amortizacion %>
+														<%= tractor.dataValues.amortizacion.toFixed(2) %>
 													</td>
 													<td class="d-none">
-														<%= tractor.dataValues.amortizacionAcumulada %>
+														<%= tractor.dataValues.amortizacionAcumulada.toFixed(2) %>
 													</td>
 													<td class="d-none">
-														<%= tractor.dataValues.valorResidualMonto %>
+														<%= tractor.dataValues.valorResidualMonto.toFixed(2) %>
 													</td>
 													<td class="">
-														<%= tractor.dataValues.valorANuevo %>
+														<%= tractor.dataValues.valorANuevo.toFixed(2) %>
 													</td>
 													<td>
 														<%= tractor.estado %>

@@ -85,7 +85,7 @@
                                                         <%= deuda.nombre %>
                                                     </td>
                                                     <td>
-                                                        <%= deuda.monto %>
+                                                        <%= deuda.monto.toFixed(2) %>
                                                     </td>
                                                     <td>
                                                         <%= deuda.plazo %>
@@ -97,46 +97,46 @@
                                                         <%= deuda.cantCuotas %>
                                                     </td>
                                                     <td>
-                                                        <%= deuda.dataValues.importeCuota %>
+                                                        <%= deuda.dataValues.importeCuota.toFixed(2) %>
                                                     </td>
                                                     <td class="d-none">
-                                                        <%= deuda.mes1 ? deuda.dataValues.importeCuota : 0.00 %>
+                                                        <%= deuda.mes1 ? deuda.dataValues.importeCuota.toFixed(2) : 0.00 %>
                                                     </td>
                                                     <td class="d-none">
-                                                        <%= deuda.mes2 ? deuda.dataValues.importeCuota : 0.00 %>
+                                                        <%= deuda.mes2 ? deuda.dataValues.importeCuota.toFixed(2) : 0.00 %>
                                                     </td>
                                                     <td class="d-none">
-                                                        <%= deuda.mes3 ? deuda.dataValues.importeCuota : 0.00 %>
-                                                    </td>
-
-                                                    <td class="d-none">
-                                                        <%= deuda.mes4 ? deuda.dataValues.importeCuota : 0.00 %>
-                                                    </td>
-                                                    <td class="d-none">
-                                                        <%= deuda.mes5 ? deuda.dataValues.importeCuota : 0.00 %>
-                                                    </td>
-                                                    <td class="d-none">
-                                                        <%= deuda.mes6 ? deuda.dataValues.importeCuota : 0.00 %>
+                                                        <%= deuda.mes3 ? deuda.dataValues.importeCuota.toFixed(2) : 0.00 %>
                                                     </td>
 
                                                     <td class="d-none">
-                                                        <%= deuda.mes7 ? deuda.dataValues.importeCuota : 0.00 %>
+                                                        <%= deuda.mes4 ? deuda.dataValues.importeCuota.toFixed(2) : 0.00 %>
                                                     </td>
                                                     <td class="d-none">
-                                                        <%= deuda.mes8 ? deuda.dataValues.importeCuota : 0.00 %>
+                                                        <%= deuda.mes5 ? deuda.dataValues.importeCuota.toFixed(2) : 0.00 %>
                                                     </td>
                                                     <td class="d-none">
-                                                        <%= deuda.mes9 ? deuda.dataValues.importeCuota : 0.00 %>
+                                                        <%= deuda.mes6 ? deuda.dataValues.importeCuota.toFixed(2) : 0.00 %>
                                                     </td>
 
                                                     <td class="d-none">
-                                                        <%= deuda.mes10 ? deuda.dataValues.importeCuota : 0.00 %>
+                                                        <%= deuda.mes7 ? deuda.dataValues.importeCuota.toFixed(2) : 0.00 %>
                                                     </td>
                                                     <td class="d-none">
-                                                        <%= deuda.mes11 ? deuda.dataValues.importeCuota : 0.00 %>
+                                                        <%= deuda.mes8 ? deuda.dataValues.importeCuota.toFixed(2) : 0.00 %>
                                                     </td>
                                                     <td class="d-none">
-                                                        <%= deuda.mes12 ? deuda.dataValues.importeCuota : 0.00 %>
+                                                        <%= deuda.mes9 ? deuda.dataValues.importeCuota.toFixed(2) : 0.00 %>
+                                                    </td>
+
+                                                    <td class="d-none">
+                                                        <%= deuda.mes10 ? deuda.dataValues.importeCuota.toFixed(2) : 0.00 %>
+                                                    </td>
+                                                    <td class="d-none">
+                                                        <%= deuda.mes11 ? deuda.dataValues.importeCuota.toFixed(2) : 0.00 %>
+                                                    </td>
+                                                    <td class="d-none">
+                                                        <%= deuda.mes12 ? deuda.dataValues.importeCuota.toFixed(2) : 0.00 %>
                                                     </td>
 
                                                     <td>

@@ -35,7 +35,7 @@
 									<div class="d-flex justify-content-between">
 										<div class="d-flex justify-content-start">
 											<strong class="card-title align-middle">Equipos y Herramientas. Valor
-												Total al Cierre $<%= valorTotal %></strong>
+												Total al Cierre $<%= valorTotal.toFixed(2) %></strong>
 											<div id="titulo" data-value="Equipos y Herramientas"></div>
 										</div>
 										<div id="tableButtons" class="d-none d-md-block">
@@ -86,7 +86,7 @@
 														<%= equipo.utaAcarreo %>
 													</td>
 													<td>
-														<%= equipo.valorUnitario %>
+														<%= equipo.valorUnitario.toFixed(2) %>
 													</td>
 													<td class="d-none">
 														<%= equipo.fechaCompra %>
@@ -101,16 +101,16 @@
 														<%= equipo.dataValues.antiguedad %>
 													</td>
 													<td class="d-none">
-														<%= equipo.dataValues.amortizacion %>
+														<%= equipo.dataValues.amortizacion.toFixed(2) %>
 													</td>
 													<td class="d-none">
-														<%= equipo.dataValues.amortizacionAcumulada %>
+														<%= equipo.dataValues.amortizacionAcumulada.toFixed(2) %>
 													</td>
 													<td class="d-none">
-														<%= equipo.dataValues.valorResidualMonto %>
+														<%= equipo.dataValues.valorResidualMonto.toFixed(2) %>
 													</td>
 													<td class="">
-														<%= equipo.dataValues.valorANuevo %>
+														<%= equipo.dataValues.valorANuevo.toFixed(2) %>
 													</td>
 													<td>
 														<%= equipo.estado %>

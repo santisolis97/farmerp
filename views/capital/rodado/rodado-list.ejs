@@ -35,7 +35,7 @@
 									<div class="d-flex justify-content-between">
 										<div class="d-flex justify-content-start">
 											<strong class="card-title align-middle">Rodados. Valor
-												Total al Cierre $<%= valorTotal %></strong>
+												Total al Cierre $<%= valorTotal.toFixed(2) %></strong>
 											<div id="titulo" data-value="Rodados"></div>
 										</div>
 										<div id="tableButtons" class="d-none d-md-block">
@@ -83,7 +83,7 @@
 														<%= rodado.cantidad %>
 													</td>
 													<td>
-														<%= rodado.valorUnitario %>
+														<%= rodado.valorUnitario.toFixed(2) %>
 													</td>
 													<td class="d-none">
 														<%= rodado.fechaCompra %>
@@ -92,7 +92,7 @@
 														<%= empresa.finEjercicio %>
 													</td>
 													<td class="d-none">
-														<%= rodado.dataValues.valorMercado %>
+														<%= rodado.dataValues.valorMercado.toFixed(2) %>
 													</td>
 													<td class="d-none">
 														<%= rodado.vidaUtil %>
@@ -101,16 +101,16 @@
 														<%= rodado.dataValues.antiguedad %>
 													</td>
 													<td class="d-none">
-														<%= rodado.dataValues.amortizacion %>
+														<%= rodado.dataValues.amortizacion.toFixed(2) %>
 													</td>
 													<td class="d-none">
-														<%= rodado.dataValues.amortizacionAcumulada %>
+														<%= rodado.dataValues.amortizacionAcumulada.toFixed(2) %>
 													</td>
 													<td class="d-none">
-														<%= rodado.dataValues.valorResidualMonto %>
+														<%= rodado.dataValues.valorResidualMonto.toFixed(2) %>
 													</td>
 													<td class="">
-														<%= rodado.dataValues.valorANuevo %>
+														<%= rodado.dataValues.valorANuevo.toFixed(2) %>
 													</td>
 													<td>
 														<%= rodado.estado %>

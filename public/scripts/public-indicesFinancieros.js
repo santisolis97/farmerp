@@ -183,43 +183,46 @@ document.addEventListener('DOMContentLoaded',
 
                                                                                             /* Asigno valores y Calculo los Indices */
                                                                                             document.querySelectorAll(".importeTotalActivosCorrientes").forEach(tag => {
-                                                                                                tag.innerHTML = '$ ' + importeTotalActivosCorrientes.toFixed(2)
+                                                                                                tag.innerHTML = '$ ' + importeFormat(importeTotalActivosCorrientes)
                                                                                             })
 
                                                                                             document.querySelectorAll(".importeTotalActivosNoCorrientes").forEach(tag => {
-                                                                                                tag.innerHTML = '$ ' + importeTotalActivosNoCorrientes.toFixed(2)
+                                                                                                tag.innerHTML = '$ ' + importeFormat(importeTotalActivosNoCorrientes)
                                                                                             })
 
                                                                                             document.querySelectorAll(".importeTotalActivos").forEach(tag => {
-                                                                                                tag.innerHTML = '$ ' + importeTotalActivos.toFixed(2)
+                                                                                                tag.innerHTML = '$ ' + importeFormat(importeTotalActivos)
                                                                                             })
 
                                                                                             document.querySelectorAll(".importeTotalPasivosCorrientes").forEach(tag => {
-                                                                                                tag.innerHTML = '$ ' + importeTotalPasivosCorrientes.toFixed(2)
+                                                                                                tag.innerHTML = '$ ' + importeFormat(importeTotalPasivosCorrientes)
                                                                                             })
 
                                                                                             document.querySelectorAll(".importeTotalPasivos").forEach(tag => {
-                                                                                                tag.innerHTML = '$ ' + importeTotalPasivos.toFixed(2)
+                                                                                                tag.innerHTML = '$ ' + importeFormat(importeTotalPasivos)
                                                                                             })
 
                                                                                             document.querySelectorAll(".importeTotalPatrimonioNeto").forEach(tag => {
-                                                                                                tag.innerHTML = '$ ' + importeTotalPatrimonioNeto.toFixed(2)
+                                                                                                tag.innerHTML = '$ ' + importeFormat(importeTotalPatrimonioNeto)
                                                                                             })
 
                                                                                             let razonCorriente = importeTotalActivosCorrientes / importeTotalPasivosCorrientes
-                                                                                            document.querySelector("#razonCorriente").innerHTML = (!isNaN(razonCorriente)) ? razonCorriente.toFixed(2) : (0).toFixed(2)
-                                                                                            
+                                                                                            document.querySelector("#razonCorriente").innerHTML = importeFormat(razonCorriente)
+
                                                                                             let endeudamiento = importeTotalPasivos / importeTotalActivos
-                                                                                            document.querySelector("#endeudamiento").innerHTML = (!isNaN(endeudamiento)) ? endeudamiento.toFixed(2) : (0).toFixed(2)
-                                                                                            
+                                                                                            document.querySelector("#endeudamiento").innerHTML = importeFormat(endeudamiento)
+
                                                                                             let inmobilizacion = importeTotalPatrimonioNeto / importeTotalActivosNoCorrientes
-                                                                                            document.querySelector("#inmobilizacion").innerHTML = (!isNaN(inmobilizacion)) ? inmobilizacion.toFixed(2) : (0).toFixed(2)
-                                                                                            
+                                                                                            document.querySelector("#inmobilizacion").innerHTML = importeFormat(inmobilizacion)
+
                                                                                             let solvencia = importeTotalActivos / importeTotalPasivos
-                                                                                            document.querySelector("#solvencia").innerHTML = (!isNaN(solvencia)) ? solvencia.toFixed(2) : (0).toFixed(2)
-                                                                                            
+                                                                                            document.querySelector("#solvencia").innerHTML = importeFormat(solvencia)
+
                                                                                             let financiamientoPropio = importeTotalPatrimonioNeto / importeTotalActivos
-                                                                                            document.querySelector("#financiamientoPropio").innerHTML = (!isNaN(financiamientoPropio)) ? financiamientoPropio.toFixed(2) : (0).toFixed(2)
+                                                                                            document.querySelector("#financiamientoPropio").innerHTML = importeFormat(financiamientoPropio)
+
+                                                                                            document.querySelector("#cargando").classList.add("d-none")
+                                                                                            document.querySelector("#divIF").classList.remove("d-none")
                                                                                         })
                                                                                     })
                                                                                 })

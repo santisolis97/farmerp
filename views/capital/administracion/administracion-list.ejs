@@ -35,7 +35,7 @@
 									<div class="d-flex justify-content-between">
 										<div class="d-flex justify-content-start">
 											<strong class="card-title align-middle">Administración. Valor
-												Total al Cierre $<%= valorTotal %></strong>
+												Total al Cierre $<%= valorTotal.toFixed(2) %></strong>
 											<div id="titulo" data-value="Administración"></div>
 										</div>
 										<div id="tableButtons" class="d-none d-md-block">
@@ -87,7 +87,7 @@
 														<%= administracion.unidad %>
 													</td>
 													<td>
-														<%= administracion.valorUnitario %>
+														<%= administracion.valorUnitario.toFixed(2) %>
 													</td>
 													<td class="d-none">
 														<%= administracion.fechaCompra %>

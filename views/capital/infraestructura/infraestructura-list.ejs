@@ -35,7 +35,7 @@
 									<div class="d-flex justify-content-between">
 										<div class="d-flex justify-content-start">
 											<strong class="card-title align-middle">Mejoras - Infraestructura. Valor
-												Total al Cierre $<%= valorTotal %></strong>
+												Total al Cierre $<%= valorTotal.toFixed(2) %></strong>
 											<div id="titulo" data-value="Tabla de Mejoras - Infraestructura"></div>
 										</div>
 										<div id="tableButtons" class="d-none d-md-block">
@@ -87,7 +87,7 @@
 														<%= infraestructura.unidad %>
 													</td>
 													<td>
-														<%= infraestructura.valorUnitario %>
+														<%= infraestructura.valorUnitario.toFixed(2) %>
 													</td>
 													<td class="d-none">
 														<%= infraestructura.fechaCompra %>
@@ -96,7 +96,7 @@
 														<%= empresa.finEjercicio %>
 													</td>
 													<td class="d-none">
-														<%= infraestructura.dataValues.valorMercado %>
+														<%= infraestructura.dataValues.valorMercado.toFixed(2) %>
 													</td>
 													<td class="d-none">
 														<%= infraestructura.vidaUtil %>
@@ -105,16 +105,16 @@
 														<%= infraestructura.dataValues.antiguedad %>
 													</td>
 													<td class="d-none">
-														<%= infraestructura.dataValues.amortizacion %>
+														<%= infraestructura.dataValues.amortizacion.toFixed(2) %>
 													</td>
 													<td class="d-none">
-														<%= infraestructura.dataValues.amortizacionAcumulada %>
+														<%= infraestructura.dataValues.amortizacionAcumulada.toFixed(2) %>
 													</td>
 													<td class="d-none">
-														<%= infraestructura.dataValues.valorResidualMonto %>
+														<%= infraestructura.dataValues.valorResidualMonto.toFixed(2) %>
 													</td>
 													<td class="">
-														<%= infraestructura.dataValues.valorANuevo %>
+														<%= infraestructura.dataValues.valorANuevo.toFixed(2) %>
 													</td>
 													<td>
 														<%= infraestructura.estado %>

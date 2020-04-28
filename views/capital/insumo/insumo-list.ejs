@@ -35,7 +35,7 @@
 									<div class="d-flex justify-content-between">
 										<div class="d-flex justify-content-start">
 											<strong class="card-title align-middle">Insumos Agrícolas-Ganaderos. Valor
-													Total al Cierre $<%= valorTotal %></strong>
+													Total al Cierre $<%= valorTotal.toFixed(2) %></strong>
 											<div id="titulo" data-value="Tabla de Insumos"></div>
 										</div>
 										<div id="tableButtons" class="d-none d-md-block">
@@ -73,10 +73,10 @@
 																<%= insumo.cantidad %>
 															</td>
 															<td>
-																<%= insumo.valorUnitario %>
+																<%= insumo.valorUnitario.toFixed(2) %>
 															</td>
 															<td>
-																<%= insumo.dataValues.valorMercado %>
+																<%= insumo.dataValues.valorMercado.toFixed(2) %>
 															</td>
 															<td>
 																<a id="ver" href="#verModal" class="view mr-2" title="Ver"

@@ -85,7 +85,7 @@
                                                         <%= credito.nombre %>
                                                     </td>
                                                     <td>
-                                                        <%= credito.monto %>
+                                                        <%= credito.monto.toFixed(2) %>
                                                     </td>
                                                     <td>
                                                         <%= credito.plazo %>
@@ -97,46 +97,46 @@
                                                         <%= credito.cantCuotas %>
                                                     </td>
                                                     <td>
-                                                        <%= credito.dataValues.importeCuota %>
+                                                        <%= credito.dataValues.importeCuota.toFixed(2) %>
                                                     </td>
                                                     <td class="d-none">
-                                                        <%= credito.mes1 ? credito.dataValues.importeCuota : 0.00 %>
+                                                        <%= credito.mes1 ? credito.dataValues.importeCuota.toFixed(2) : 0.00 %>
                                                     </td>
                                                     <td class="d-none">
-                                                        <%= credito.mes2 ? credito.dataValues.importeCuota : 0.00 %>
+                                                        <%= credito.mes2 ? credito.dataValues.importeCuota.toFixed(2) : 0.00 %>
                                                     </td>
                                                     <td class="d-none">
-                                                        <%= credito.mes3 ? credito.dataValues.importeCuota : 0.00 %>
-                                                    </td>
-
-                                                    <td class="d-none">
-                                                        <%= credito.mes4 ? credito.dataValues.importeCuota : 0.00 %>
-                                                    </td>
-                                                    <td class="d-none">
-                                                        <%= credito.mes5 ? credito.dataValues.importeCuota : 0.00 %>
-                                                    </td>
-                                                    <td class="d-none">
-                                                        <%= credito.mes6 ? credito.dataValues.importeCuota : 0.00 %>
+                                                        <%= credito.mes3 ? credito.dataValues.importeCuota.toFixed(2) : 0.00 %>
                                                     </td>
 
                                                     <td class="d-none">
-                                                        <%= credito.mes7 ? credito.dataValues.importeCuota : 0.00 %>
+                                                        <%= credito.mes4 ? credito.dataValues.importeCuota.toFixed(2) : 0.00 %>
                                                     </td>
                                                     <td class="d-none">
-                                                        <%= credito.mes8 ? credito.dataValues.importeCuota : 0.00 %>
+                                                        <%= credito.mes5 ? credito.dataValues.importeCuota.toFixed(2) : 0.00 %>
                                                     </td>
                                                     <td class="d-none">
-                                                        <%= credito.mes9 ? credito.dataValues.importeCuota : 0.00 %>
+                                                        <%= credito.mes6 ? credito.dataValues.importeCuota.toFixed(2) : 0.00 %>
                                                     </td>
 
                                                     <td class="d-none">
-                                                        <%= credito.mes10 ? credito.dataValues.importeCuota : 0.00 %>
+                                                        <%= credito.mes7 ? credito.dataValues.importeCuota.toFixed(2) : 0.00 %>
                                                     </td>
                                                     <td class="d-none">
-                                                        <%= credito.mes11 ? credito.dataValues.importeCuota : 0.00 %>
+                                                        <%= credito.mes8 ? credito.dataValues.importeCuota.toFixed(2) : 0.00 %>
                                                     </td>
                                                     <td class="d-none">
-                                                        <%= credito.mes12 ? credito.dataValues.importeCuota : 0.00 %>
+                                                        <%= credito.mes9 ? credito.dataValues.importeCuota.toFixed(2) : 0.00 %>
+                                                    </td>
+
+                                                    <td class="d-none">
+                                                        <%= credito.mes10 ? credito.dataValues.importeCuota.toFixed(2) : 0.00 %>
+                                                    </td>
+                                                    <td class="d-none">
+                                                        <%= credito.mes11 ? credito.dataValues.importeCuota.toFixed(2) : 0.00 %>
+                                                    </td>
+                                                    <td class="d-none">
+                                                        <%= credito.mes12 ? credito.dataValues.importeCuota.toFixed(2) : 0.00 %>
                                                     </td>
 
                                                     <td>

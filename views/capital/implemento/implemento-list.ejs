@@ -35,7 +35,7 @@
 									<div class="d-flex justify-content-between">
 										<div class="d-flex justify-content-start">
 											<strong class="card-title align-middle">Implementos. Valor
-												Total al Cierre $<%= valorTotal %></strong>
+												Total al Cierre $<%= valorTotal.toFixed(2) %></strong>
 											<div id="titulo" data-value="Implementos"></div>
 										</div>
 										<div id="tableButtons" class="d-none d-md-block">
@@ -86,7 +86,7 @@
 														<%= implemento.utaAcarreo %>
 													</td>
 													<td>
-														<%= implemento.valorUnitario %>
+														<%= implemento.valorUnitario.toFixed(2) %>
 													</td>
 													<td class="d-none">
 														<%= implemento.fechaCompra %>
@@ -101,16 +101,16 @@
 														<%= implemento.dataValues.antiguedad %>
 													</td>
 													<td class="d-none">
-														<%= implemento.dataValues.amortizacion %>
+														<%= implemento.dataValues.amortizacion.toFixed(2) %>
 													</td>
 													<td class="d-none">
-														<%= implemento.dataValues.amortizacionAcumulada %>
+														<%= implemento.dataValues.amortizacionAcumulada.toFixed(2) %>
 													</td>
 													<td class="d-none">
-														<%= implemento.dataValues.valorResidualMonto %>
+														<%= implemento.dataValues.valorResidualMonto.toFixed(2) %>
 													</td>
 													<td class="">
-														<%= implemento.dataValues.valorANuevo %>
+														<%= implemento.dataValues.valorANuevo.toFixed(2) %>
 													</td>
 													<td>
 														<%= implemento.estado %>

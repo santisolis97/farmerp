@@ -35,7 +35,7 @@
 									<div class="d-flex justify-content-between">
 										<div class="d-flex justify-content-start">
 											<strong class="card-title align-middle">Praderas. Valor
-													Total al Cierre $<%= valorTotal %></strong>
+													Total al Cierre $<%= valorTotal.toFixed(2) %></strong>
 											<div id="titulo" data-value="Tabla de Praderas"></div>
 										</div>
 										<div id="tableButtons" class="d-none d-md-block">
@@ -82,16 +82,16 @@
 																<%= pradera.fechaImplantacion %>
 															</td>
 															<td>
-																<%= pradera.hectareas %>
+																<%= pradera.hectareas.toFixed(2) %>
 															</td>
 															<td>
-																<%= pradera.valorHectarea %>
+																<%= pradera.valorHectarea.toFixed(2) %>
 															</td>
 															<td class="d-none">
 																<%= empresa.finEjercicio %>
 															</td>
 															<td class="d-none">
-																<%= pradera.dataValues.valorMercado %>
+																<%= pradera.dataValues.valorMercado.toFixed(2) %>
 															</td>
 															<td class="d-none">
 																<%= pradera.vidaUtil %>
@@ -100,16 +100,16 @@
 																<%= pradera.dataValues.antiguedad %>
 															</td>
 															<td class="d-none">
-																<%= pradera.dataValues.amortizacion %>
+																<%= pradera.dataValues.amortizacion.toFixed(2) %>
 															</td>
 															<td class="d-none">
-																<%= pradera.dataValues.amortizacionAcumulada %>
+																<%= pradera.dataValues.amortizacionAcumulada.toFixed(2) %>
 															</td>
 															<td class="d-none">
-																<%= pradera.dataValues.valorResidualMonto %>
+																<%= pradera.dataValues.valorResidualMonto.toFixed(2) %>
 															</td>
 															<td class="">
-																<%= pradera.dataValues.valorANuevo %>
+																<%= pradera.dataValues.valorANuevo.toFixed(2) %>
 															</td>
 															<td>
 																<%= pradera.estado %>

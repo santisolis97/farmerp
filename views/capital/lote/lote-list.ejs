@@ -36,7 +36,7 @@
 										<div class="d-flex justify-content-start">
 											<strong class="card-title align-middle">Lotes. Cantidad de Hectareas al
 												Cierre
-												<%= supTotal %>. Valor Total al Cierre $<%= valorTotal %></strong>
+												<%= supTotal.toFixed(2) %>. Valor Total al Cierre $<%= valorTotal.toFixed(2) %></strong>
 											<div id="titulo" data-value="Tabla de Lotes"></div>
 										</div>
 										<div id="tableButtons" class="d-none d-md-block">
@@ -73,13 +73,13 @@
 														<%= lote.nombre %>
 													</td>
 													<td>
-														<%= lote.superficie %>
+														<%= lote.superficie.toFixed(2) %>
 													</td>
 													<td>
-														<%= lote.valorHectarea %>
+														<%= lote.valorHectarea.toFixed(2) %>
 													</td>
 													<td>
-														<%= lote.dataValues.valorLote %>
+														<%= lote.dataValues.valorLote.toFixed(2) %>
 													</td>
 													<td class="d-none">
 														<%= lote.fechaCompra %>
