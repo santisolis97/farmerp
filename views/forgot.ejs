@@ -6,74 +6,43 @@
     <link href="/styles/login.css" rel="stylesheet">
 
 </head>
-
-<body class="bg-color">
-    <div class="container">
-        <!-- Outer Row -->
-        <div class="row justify-content-center">
-
-            <div class="col-xl-10 col-lg-12 col-md-9">
-
-                <div class="card o-hidden border-0 shadow-lg my-5">
-                    <div class="card-body p-0">
-                        <!-- Nested Row within Card Body -->
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <img src="/src/farmerp-login.png" alt="">
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="p-5">
-                                    <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-2">Olvidaste tu contraseña?</h1>
-                                        <p class="mb-4">Confirme su dirección de Email y le enviaremos un enlace para reestrablecer su contraseña.</p>
-                                    </div>
-
-                                    <!-- Mensaje -->
-                                    <% include ./partials/mensaje %>
-                                    <!-- /Mensaje -->
-
-                                    <form class="user" method="post" action="/auth/forgot">
-                                        <div class="form-group">
-                                            <input type="email" name="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" placeholder="Email">
-                                        </div>
-                                        <input type="submit" class="btn btn-primary btn-user btn-block"
-                                            value="Enviar">
-                                    </form>
-
-                                    <hr>
-                                    <div class="text-center">
-                                        <a class="small" href="/auth">Volver al formulario de Ingreso</a>
-                                    </div>
-                                    <!-- <div class="text-center">
-                                        <a class="small" href="register.html">Create an Account!</a>
-                                    </div> -->
-
-
-
-                                </div>
-                            </div>
+<body>
+    <div class="hero-image">
+	<div class="container h-100">
+		<div class="d-flex justify-content-center h-100">
+			<div class="user_card">
+				<div class="d-flex justify-content-center">
+					<div class="brand_logo_container">
+						<img src="../src/logo-farm-erp.png" class="brand_logo" alt="">
+					</div>
+				</div>
+				<div class="d-flex justify-content-center form_container">
+                    <form class="user" method="post" action="/auth/forgot">
+                        <div class="text-center">
+                        <p style="color:white">Ingrese su email y le llegara un correo para restablecer su contraseña</p>
                         </div>
+                        <div class="input-group mb-3">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-user"></i></span>
+							</div>
+                            <input type="email" name="email" class="form-control form-control-user"
+                            id="exampleInputEmail" placeholder="Email">
+						</div>
+                        <input type="submit" class="btn login_btn"
+                            value="Enviar">
+                    </form>
+				</div>	
+				<div class="mt-4">
+                    <div class="text-center">
+                        <a class="small" href="/auth" style="color: white">Volver al formulario de Ingreso</a>
                     </div>
-                </div>
-
-            </div>
-
+				</div>
+			</div>
         </div>
-
     </div>
-
-    <!-- Bootstrap core JavaScript-->
-    <!-- <script src="vendor/jquery/jquery.min.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    -->
-    <!-- Core plugin JavaScript-->
-    <!-- <script src="vendor/jquery-easing/jquery.easing.min.js"></script> -->
-
-    <!-- Custom scripts for all pages-->
-    <!-- <script src="js/sb-admin-2.min.js"></script> -->
-
+    </div> 
     <script src="/scripts/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="/scripts/popper.min.js"></script>
     <script src="/scripts/bootstrap.min.js"></script>
     <script type="text/javascript" src="/scripts/form-validation.js"></script>
