@@ -141,51 +141,62 @@
                         </div>
                         <!-- /Rubro -->
                        
-                        <!-- Inversiones Transitorias -->
-                        <div class="col-md-4">
+                         <!-- Concepto -->
+                         <div class="col-md-4">
                             <div class="card">
                                 <div class="card-header">
                                     <div class="d-flex justify-content-between">
                                         <div class="d-flex justify-content-start">
-                                            <strong class="card-title align-middle">Inversiones Transitorias</strong>
+                                            <strong class="card-title align-middle">Concepto</strong>
                                         </div>
+                                        <div id="tableButtons" class="d-none d-md-block">
+											<a id="agregar" href="#conceptoAddModal" class="btn btn-primary"
+												data-toggle="modal">
+												<i class="fa fa-plus-circle"></i> Agregar
+											</a>
+										</div>
+										<div id="tableButtons" class="d-md-none">
+											<a id="agregar" href="#conceptoAddModal" class="text-white" data-toggle="modal">
+												<i class="fa fa-plus-circle"></i>
+											</a>
+										</div>
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <div class="form-row">
-                                        <div class="col-md-12">
-                                            <label for="montoInicialInversiones" class='control-label'>Saldo al Inicio
-                                                del Ejercicio <a id="editarInversiones" href="#editarInversionesModal"
-                                                    class="edit mr-2" data-toggle="modal">
-                                                    <i class="fa fa-edit fa-lg" title="Editar"></i>
-                                                </a>
-                                            </label>
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text">$</span>
-                                                </div>
-                                                <input name="" type="number" min="0" step="0.01" class="form-control"
-                                                    id="montoInicialInversiones" value="" placeholder="0" readonly>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-row mt-2">
-                                        <div class="col-md-12">
-                                            <label for="montoFinalInversiones" class='control-label'>Saldo al Cierre del
-                                                Ejercicio</label>
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text">$</span>
-                                                </div>
-                                                <input name="" type="number" min="0" step="0.01" class="form-control"
-                                                    id="montoFinalInversiones" value="" placeholder="0" readonly>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <div class="table-responsive">
+										<table id="tabla-conceptos" class="table table-striped table-bordered">
+											<thead>
+												<tr>
+													<th class="col-md-10">Nombre</th>
+													<th class="not-export-col col-md-2">Acciones</th>
+												</tr>
+											</thead>
+											<tbody>
+												<% conceptos.forEach(concepto => { %>
+												<tr data="<%= JSON.stringify(concepto) %>">
+													<td>
+														<%= concepto.nombre %>
+													</td>
+													
+													<td>
+														<a id="editar" href="#editarConceptoModal" class="edit mr-2"
+															data-toggle="modal">
+															<i class="fa fa-edit fa-lg" title="Editar"></i>
+														</a>
+														<a id="eliminar" href="#eliminarConceptoModal" class="delete mr-2"
+															data-toggle="modal">
+															<i class="fa fa-trash fa-lg" title="Eliminar"></i>
+														</a>
+													</td>
+												</tr>
+												<% }) %>
+											</tbody>
+										</table>
+									</div>
                                 </div>
                             </div>
                         </div>
-                        <!-- /IntersionesTransitorias -->
+                        <!-- /Concepto-->
                     </div>
                 </div>
             </div>
@@ -202,6 +213,9 @@
    <% include rubro-add %>
    <% include rubro-edit %>
    <% include rubro-delete %>
+   <% include concepto-add %>
+   <% include concepto-edit %>
+   <% include concepto-delete %>
 
     <!-- Scripts -->
     <% include ../../partials/common-scripts %>

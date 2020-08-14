@@ -1,0 +1,30 @@
+<div id="editarConceptoModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="POST" action="/agriculturaDatosBase/concepto/edit/">
+                <div class="modal-header">
+                    <h4 class="modal-title">Editar Concepto</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="nombreConcepto" class='control-label'>Nombre</label>
+                            <input name="concepto[nombre]" type="text" class="form-control" id="nombreConcepto"
+                                placeholder="Nombre" required>
+                            <div class="invalid-feedback">
+                                Este campo es requerido.
+                            </div>
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="concepto[empresaId]" value="<%= empresa.empresaId %>">
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                    <input id="botonGuardar" type="submit" class="btn btn-info" value="Aceptar">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

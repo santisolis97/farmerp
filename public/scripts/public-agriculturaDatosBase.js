@@ -1,5 +1,6 @@
 var cultivos = document.querySelectorAll("#tabla-cultivos tbody tr");
 var rubros = document.querySelectorAll("#tabla-rubros tbody tr");
+var conceptos = document.querySelectorAll("#tabla-conceptos tbody tr");
 
 cultivos.forEach(function (row) {
     var editar = row.querySelector("#editar");
@@ -43,6 +44,29 @@ rubros.forEach(function (row) {
             var rubro= getElement(row);
             vista = document.querySelector("#eliminarRubroModal");
             vista.querySelector("form").setAttribute("action", "/agriculturaDatosBase/rubro/delete/" + rubro.rubroId);
+        });
+    }
+});
+
+conceptos.forEach(function (row) {
+    var editar = row.querySelector("#editar");
+    if (editar) {
+        editar.addEventListener("click", function () {
+            var concepto = getElement(row);
+            vista = document.querySelector("#editarConceptoModal");
+            vista.querySelector("form").setAttribute("action", "/agriculturaDatosBase/concepto/edit/" + concepto.conceptoId);
+            
+            vista.querySelector("#nombreConcepto").value = concepto.nombre;
+         });
+    }
+
+
+    var eliminar = row.querySelector("#eliminar");
+    if (eliminar) {
+        eliminar.addEventListener("click", function () {
+            var concepto= getElement(row);
+            vista = document.querySelector("#eliminarConceptoModal");
+            vista.querySelector("form").setAttribute("action", "/agriculturaDatosBase/concepto/delete/" + concepto.conceptoId);
         });
     }
 });

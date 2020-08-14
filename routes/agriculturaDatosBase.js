@@ -25,5 +25,14 @@ router.post('/rubro/edit/:id', Logged.isLogged, cultivo.saveEditRubro)
 /* Delete Rubro */
 router.post('/rubro/delete/:id', Logged.isLogged, cultivo.deleteRubro)
 
+/* Add Concepto */
+router.post('/concepto/add', Logged.isLogged, cultivo.addConcepto)
+
+/* Edit Concepto*/
+router.post('/concepto/edit/:id', Logged.isLogged, cultivo.saveEditConcepto)
+
+/* Delete Concepto */
+router.post('/concepto/delete/:id', Logged.isLogged, cultivo.deleteConcepto)
+
 
 module.exports = router;

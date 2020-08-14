@@ -1,6 +1,7 @@
 const models = require("./../models");
 const Cultivo = models.Cultivo;
 const Rubro = models.Rubro;
+const Concepto = models.Concepto
 
 var CultivoController = {};
 
@@ -15,9 +16,15 @@ CultivoController.list = function (req, res) {
                 empresaId: res.locals.empresa.empresaId
             }
         }).then(rubros => {
-            res.render("agricultura/datosBase/datosBase", {
-                rubros,cultivos
-            })
+            Concepto.findAll({
+                where: {
+                    empresaId: res.locals.empresa.empresaId
+                }
+            }).then(conceptos=>{
+                res.render("agricultura/datosBase/datosBase", {
+                    rubros,cultivos,conceptos
+                })
+            })       
         });
     });
 };
@@ -44,6 +51,19 @@ CultivoController.addRubro = function (req, res) {
         .catch(error => {
             console.log(error)
             req.flash("error_msg", "Error al dar de alta un Rubro");
+            res.redirect("/agriculturaDatosBase");
+        });
+};
+
+CultivoController.addConcepto = function (req, res) {
+    var reqConcepto = req.body.concepto
+    Concepto.create(reqConcepto).then(concepto => {
+            req.flash("success_msg", "Se dio de alta un Concepto");
+            res.redirect("/agriculturaDatosBase");
+        })
+        .catch(error => {
+            console.log(error)
+            req.flash("error_msg", "Error al dar de alta un Concepto");
             res.redirect("/agriculturaDatosBase");
         });
 };
@@ -86,6 +106,25 @@ CultivoController.saveEditRubro = function (req, res) {
     });
 };
 
+CultivoController.saveEditConcepto = function (req, res) {
+ 
+    var reqConcepto = req.body.concepto
+
+    Concepto.findByPk(req.params.id).then(concepto => {
+    concepto
+            .update(reqConcepto)
+            .then(c => {
+                req.flash("success_msg", "Se actualizó un Concepto correctamente");
+                res.redirect("/agriculturaDatosBase");
+            })
+            .catch(err => {
+                console.log(err)
+                req.flash("error_msg", "Error al actualizar un Concepto");
+                res.redirect("/agriculturaDatosBase");
+            });
+    });
+};
+
 CultivoController.delete = function (req, res) {
     Cultivo.destroy({
             where: {
@@ -98,19 +137,6 @@ CultivoController.delete = function (req, res) {
         .catch(err => {
             console.log(err)
             req.flash("error_msg", "Error al dar de baja un Cultivo");
-            res.redirect("/agriculturaDatosBase");
-        });
-        Rubro.destroy({
-            where: {
-                rubroId: req.params.id
-            }
-        }).then(() => {
-            req.flash("success_msg", "Se dio de baja un Rubro correctamente");
-            res.redirect("/agriculturaDatosBase");
-        })
-        .catch(err => {
-            console.log(err)
-            req.flash("error_msg", "Error al dar de baja un Rubro");
             res.redirect("/agriculturaDatosBase");
         });
 };
@@ -128,6 +154,21 @@ CultivoController.deleteRubro = function (req, res) {
             req.flash("error_msg", "Error al dar de baja un Rubro");
             res.redirect("/agriculturaDatosBase");
         });
+};
+CultivoController.deleteConcepto = function (req, res) {
+    Concepto.destroy({
+        where: {
+            conceptoId: req.params.id
+        }
+    }).then(() => {
+        req.flash("success_msg", "Se dio de baja un Concepto correctamente");
+        res.redirect("/agriculturaDatosBase");
+    })
+    .catch(err => {
+        console.log(err)
+        req.flash("error_msg", "Error al dar de baja un Concepto");
+        res.redirect("/agriculturaDatosBase");
+    });
 };
 
 module.exports = CultivoController;
