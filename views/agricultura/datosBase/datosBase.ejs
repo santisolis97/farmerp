@@ -2,111 +2,57 @@
 <html>
 
 <head>
-    <% include ../../partials/common-head %>
+	<% include ../../partials/common-head %>
 </head>
 
 <body>
 
-    <!--Panel Izquierdo -->
-    <% include ../../partials/sidebar %>
-    <!-- /Panel izquierdo-->
+	<!--Panel Izquierdo -->
+	<% include ../../partials/sidebar %>
+	<!-- /Panel izquierdo-->
 
-    <!-- Panel Derecho -->
-    <div id="right-panel" class="right-panel">
+	<!-- Panel Derecho -->
+	<div id="right-panel" class="right-panel">
 
-        <!-- Cabecera-->
-        <% include ../../partials/cabecera %>
-        <!-- /Cabecera -->
+		<!-- Cabecera-->
+		<% include ../../partials/cabecera %>
+		<!-- /Cabecera -->
 
-        <!-- Tabla del CRUD-->
-        <div class="content mt-3">
+		<!-- Tabla del CRUD-->
+		<div class="content mt-3">
 
-            <!-- Mensaje -->
-            <% include ../../partials/mensaje %>
-            <!-- /Mensaje -->
+			<!-- Mensaje -->
+			<% include ../../partials/mensaje %>
+			<!-- /Mensaje -->
 
-            <div class="col-sm-12">
-                <div class="animated fadeIn">
-                    <div class="row">
-                          <!-- Cultivo -->
-                          <div class="col-md-4">
-                            <div class="card">
-                                <div class="card-header">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="d-flex justify-content-start">
-                                            <strong class="card-title align-middle">Cultivo</strong>
-                                        </div>
-                                        <div id="tableButtons" class="d-none d-md-block">
-											<a id="agregar" href="#cultivoAddModal" class="btn btn-primary"
-												data-toggle="modal">
-												<i class="fa fa-plus-circle"></i> Agregar
-											</a>
+			<div class="col-sm-12">
+				<div class="animated fadeIn">
+					<div class="row">
+						<!-- Rubro -->
+						<div class="col-md-6">
+							<div class="card">
+								<div class="card-header">
+									<div class="d-flex justify-content-between">
+										<div class="d-flex justify-content-start">
+											<strong class="card-title align-middle">Rubros</strong>
+											<!-- <div id="titulo" data-value="Rubros"></div> -->
 										</div>
-										<div id="tableButtons" class="d-md-none">
-											<a id="agregar" href="#cultivoAddModal" class="text-white" data-toggle="modal">
-												<i class="fa fa-plus-circle"></i>
-											</a>
-										</div>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <div class="table-responsive">
-										<table id="tabla-cultivos" class="table table-striped table-bordered">
-											<thead>
-												<tr>
-													<th class="col-md-10">Nombre</th>
-													<th class="not-export-col col-md-2">Acciones</th>
-												</tr>
-											</thead>
-											<tbody>
-												<% cultivos.forEach(cultivo => { %>
-												<tr data="<%= JSON.stringify(cultivo) %>">
-													<td>
-														<%= cultivo.nombre %>
-													</td>
-													
-													<td>
-														<a id="editar" href="#editarCultivoModal" class="edit mr-2"
-															data-toggle="modal">
-															<i class="fa fa-edit fa-lg" title="Editar"></i>
-														</a>
-														<a id="eliminar" href="#eliminarCultivoModal" class="delete mr-2"
-															data-toggle="modal">
-															<i class="fa fa-trash fa-lg" title="Eliminar"></i>
-														</a>
-													</td>
-												</tr>
-												<% }) %>
-											</tbody>
-										</table>
-									</div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /Cultivo -->
-                          <!-- Rubro -->
-                          <div class="col-md-4">
-                            <div class="card">
-                                <div class="card-header">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="d-flex justify-content-start">
-                                            <strong class="card-title align-middle">Rubro</strong>
-                                        </div>
-                                        <div id="tableButtons" class="d-none d-md-block">
+										<div id="tableButtons" class="d-none d-md-block">
 											<a id="agregar" href="#rubroAddModal" class="btn btn-primary"
 												data-toggle="modal">
 												<i class="fa fa-plus-circle"></i> Agregar
 											</a>
 										</div>
 										<div id="tableButtons" class="d-md-none">
-											<a id="agregar" href="#rubroAddModal" class="text-white" data-toggle="modal">
+											<a id="agregar" href="#rubroAddModal" class="text-white"
+												data-toggle="modal">
 												<i class="fa fa-plus-circle"></i>
 											</a>
 										</div>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <div class="table-responsive">
+									</div>
+								</div>
+								<div class="card-body">
+									<div class="table-responsive">
 										<table id="tabla-rubros" class="table table-striped table-bordered">
 											<thead>
 												<tr>
@@ -120,7 +66,7 @@
 													<td>
 														<%= rubro.nombre %>
 													</td>
-													
+
 													<td>
 														<a id="editar" href="#editarRubroModal" class="edit mr-2"
 															data-toggle="modal">
@@ -136,39 +82,42 @@
 											</tbody>
 										</table>
 									</div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /Rubro -->
-                       
-                         <!-- Concepto -->
-                         <div class="col-md-4">
-                            <div class="card">
-                                <div class="card-header">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="d-flex justify-content-start">
-                                            <strong class="card-title align-middle">Concepto</strong>
-                                        </div>
-                                        <div id="tableButtons" class="d-none d-md-block">
+								</div>
+							</div>
+						</div>
+						<!-- /Rubro -->
+
+						<!-- Concepto -->
+						<div class="col-md-6">
+							<div class="card">
+								<div class="card-header">
+									<div class="d-flex justify-content-between">
+										<div class="d-flex justify-content-start">
+											<strong class="card-title align-middle">Conceptos</strong>
+											<!-- <div id="titulo" data-value="Conceptos"></div> -->
+										</div>
+										<div id="tableButtons" class="d-none d-md-block">
 											<a id="agregar" href="#conceptoAddModal" class="btn btn-primary"
 												data-toggle="modal">
 												<i class="fa fa-plus-circle"></i> Agregar
 											</a>
 										</div>
 										<div id="tableButtons" class="d-md-none">
-											<a id="agregar" href="#conceptoAddModal" class="text-white" data-toggle="modal">
+											<a id="agregar" href="#conceptoAddModal" class="text-white"
+												data-toggle="modal">
 												<i class="fa fa-plus-circle"></i>
 											</a>
 										</div>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <div class="table-responsive">
+									</div>
+								</div>
+								<div class="card-body">
+									<div class="table-responsive">
 										<table id="tabla-conceptos" class="table table-striped table-bordered">
 											<thead>
 												<tr>
-													<th class="col-md-10">Nombre</th>
-													<th class="not-export-col col-md-2">Acciones</th>
+													<th>Nombre</th>
+													<th style="width: 30%;">Precio</th>
+													<th class="not-export-col" style="width: 30%;">Acciones</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -177,14 +126,22 @@
 													<td>
 														<%= concepto.nombre %>
 													</td>
-													
 													<td>
+														<%= concepto.precio.toFixed(2) %>
+													</td>
+
+													<td>
+														<a id="ver" href="#verConceptoModal" class="view mr-2" title="Ver"
+															data-toggle="modal">
+															<i class="fa fa-eye fa-lg"></i>
+														</a>
+
 														<a id="editar" href="#editarConceptoModal" class="edit mr-2"
 															data-toggle="modal">
 															<i class="fa fa-edit fa-lg" title="Editar"></i>
 														</a>
-														<a id="eliminar" href="#eliminarConceptoModal" class="delete mr-2"
-															data-toggle="modal">
+														<a id="eliminar" href="#eliminarConceptoModal"
+															class="delete mr-2" data-toggle="modal">
 															<i class="fa fa-trash fa-lg" title="Eliminar"></i>
 														</a>
 													</td>
@@ -193,34 +150,40 @@
 											</tbody>
 										</table>
 									</div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /Concepto-->
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /Tabla del CRUD-->
-    </div>
-    <!-- /Panel Derecho -->
+								</div>
+							</div>
+						</div>
+						<!-- /Concepto-->
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Tabla del CRUD-->
+	</div>
+	<!-- /Panel Derecho -->
 
 
-    <!-- PopUps -->
-   <% include cultivo-add %>
-   <% include cultivo-edit %>
-   <% include cultivo-delete %>
-   <% include rubro-add %>
-   <% include rubro-edit %>
-   <% include rubro-delete %>
-   <% include concepto-add %>
-   <% include concepto-edit %>
-   <% include concepto-delete %>
+	<!-- PopUps -->
+	<% include rubro-add %>
+	<% include rubro-edit %>
+	<% include rubro-delete %>
+	<% include concepto-add %>
+	<% include concepto-edit %>
+	<% include concepto-delete %>
 
-    <!-- Scripts -->
-    <% include ../../partials/common-scripts %>
-    
-    <script src="/scripts/public-agriculturaDatosBase.js"></script>
+	<!-- Scripts -->
+	<% include ../../partials/common-scripts %>
+
+	<script type="text/javascript">
+		InitDataTable("#tabla-conceptos");
+	</script>
+
+
+	<script type="text/javascript">
+		InitDataTable("#tabla-rubros");
+	</script>
+
+	<script src="/scripts/public-agriculturaDatosBase.js"></script>
 </body>
 
 </html>

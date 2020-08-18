@@ -10,6 +10,27 @@ module.exports = (sequelize, DataTypes) => {
         nombre: {
             type: DataTypes.STRING,
         },
+        rendimiento: {
+            type: DataTypes.FLOAT(10,2)
+        },
+        superficieAsignada: {
+            type: DataTypes.FLOAT(10,2)
+        },
+        precioPizarra: {
+            type: DataTypes.FLOAT(15,2)
+        },
+        porcGastosComer: {
+            type: DataTypes.FLOAT(6,2)
+        },
+        porcVenta: {
+            type: DataTypes.FLOAT(6,2)
+        },
+        porcAlmacenamiento: {
+            type: DataTypes.FLOAT(6,2)
+        },
+        porcDobleProposito: {
+            type: DataTypes.FLOAT(6,2)
+        },
         empresaId: {
             type: DataTypes.INTEGER,
             allowNull: false

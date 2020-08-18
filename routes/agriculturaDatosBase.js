@@ -2,37 +2,28 @@ var express = require('express');
 var router = express.Router();
 const Logged = require('./../utils/logged');
 
-var cultivo = require('./../controllers/cultivoController');
+var datosBase = require('./../controllers/datosBaseController');
 
 /* List */
-router.get('/', Logged.isLogged, cultivo.list);
-
-/* Add Cultivo */
-router.post('/cultivo/add', Logged.isLogged, cultivo.add)
-
-/* Edit Cultivo*/
-router.post('/cultivo/edit/:id', Logged.isLogged, cultivo.saveEdit)
-
-/* Delete Cultivo */
-router.post('/cultivo/delete/:id', Logged.isLogged, cultivo.delete)
+router.get('/', Logged.isLogged, datosBase.list);
 
 /* Add Rubro */
-router.post('/rubro/add', Logged.isLogged, cultivo.addRubro)
+router.post('/rubro/add', Logged.isLogged, datosBase.addRubro)
 
 /* Edit Rubro*/
-router.post('/rubro/edit/:id', Logged.isLogged, cultivo.saveEditRubro)
+router.post('/rubro/edit/:id', Logged.isLogged, datosBase.saveEditRubro)
 
 /* Delete Rubro */
-router.post('/rubro/delete/:id', Logged.isLogged, cultivo.deleteRubro)
+router.post('/rubro/delete/:id', Logged.isLogged, datosBase.deleteRubro)
 
 /* Add Concepto */
-router.post('/concepto/add', Logged.isLogged, cultivo.addConcepto)
+router.post('/concepto/add', Logged.isLogged, datosBase.addConcepto)
 
 /* Edit Concepto*/
-router.post('/concepto/edit/:id', Logged.isLogged, cultivo.saveEditConcepto)
+router.post('/concepto/edit/:id', Logged.isLogged, datosBase.saveEditConcepto)
 
 /* Delete Concepto */
-router.post('/concepto/delete/:id', Logged.isLogged, cultivo.deleteConcepto)
+router.post('/concepto/delete/:id', Logged.isLogged, datosBase.deleteConcepto)
 
 
 module.exports = router;

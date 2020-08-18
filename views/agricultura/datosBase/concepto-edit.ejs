@@ -1,7 +1,7 @@
 <div id="editarConceptoModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form method="POST" action="/agriculturaDatosBase/concepto/edit/">
+            <form class="container" id="form-validation" novalidate onsubmit="return validateForm()" method="POST" action="/agriculturaDatosBase/concepto/edit/">
                 <div class="modal-header">
                     <h4 class="modal-title">Editar Concepto</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -15,6 +15,34 @@
                             <div class="invalid-feedback">
                                 Este campo es requerido.
                             </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="precioConcepto" class='control-label'>Precio</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input name="concepto[precio]" type="number" min="0" step="0.01" class="form-control"
+                                    id="precioConcepto" placeholder="Precio" required>
+                                <div class="invalid-feedback">
+                                    Este campo es requerido.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="porcIVAConcepto" class='control-label'>Porcentaje IVA</label>
+                            <select name="concepto[porcIVA]" type="text" class="form-control" id="porcIVAConcepto" required>
+                                <option value="0">Excento</option>
+                                <option value="10.5">10,5 %</option>
+                                <option value="21">21,0 %</option>
+                                <option value="27">27,0 %</option>
+                            </select>
                         </div>
                     </div>
 
