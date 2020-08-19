@@ -27,6 +27,23 @@ cultivos.forEach(function (row) {
          });
     }
 
+    var view = row.querySelector("#view");
+    if (view) {
+        view.addEventListener("click", function () {
+            var cultivo = getElement(row);
+            vista = document.querySelector("#viewModal");
+            vista.querySelector("form").setAttribute("action", "/cultivos/view/" + cultivo.cultivoId);
+            
+            vista.querySelector("#nombreCultivo").value = cultivo.nombre;
+            vista.querySelector("#superficieAsignadaCultivo").value = cultivo.superficieAsignada;
+            vista.querySelector("#rendimientoCultivo").value = cultivo.rendimiento;
+            vista.querySelector("#precioPizarraCultivo").value = cultivo.precioPizarra;
+            vista.querySelector("#porcGastosComerCultivo").value = cultivo.porcGastosComer;
+            vista.querySelector("#porcVentaCultivo").value = cultivo.porcVenta;
+            vista.querySelector("#porcAlmacenamientoCultivo").value = cultivo.porcAlmacenamiento;
+            vista.querySelector("#porcDoblePropositoCultivo").value = cultivo.porcDobleProposito;
+         });
+    }
 
     var eliminar = row.querySelector("#eliminar");
     if (eliminar) {

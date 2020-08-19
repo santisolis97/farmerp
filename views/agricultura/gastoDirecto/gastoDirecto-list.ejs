@@ -155,7 +155,7 @@
 														<%= (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada).toFixed(2) %>
 													</td>
 													<td>
-														<a id="ver" href="#verModal" class="view mr-2" title="Ver"
+														<a id="view" href="#viewModal" class="view mr-2" title="Ver"
 															data-toggle="modal">
 															<i class="fa fa-eye fa-lg"></i>
 														</a>
@@ -188,6 +188,7 @@
 	<!-- Formulario de los Popups  -->
 	<% include gastoDirecto-add %>
 	<% include gastoDirecto-edit %>
+	<% include gastoDirecto-view %>
 	<% include gastoDirecto-delete %>
 	<!-- /Formulario de los Popups  -->
 

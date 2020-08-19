@@ -46,6 +46,34 @@ gastosDirectos.forEach(function (row) {
         updateValorHa()
     })
 
+    var view = row.querySelector("#view");
+    view.addEventListener("click", function () {
+        var gastoDirecto = getElement(row);
+        vista = document.querySelector("#viewModal");
+        vista.querySelector("form").setAttribute("action", "/agriculturaGastosDirectos/view/" + gastoDirecto.gastoDirectoId);
+        setMeses()
+
+        vista.querySelector("#rubroAgriculturaGastoDirecto").value = gastoDirecto.rubroId;
+        vista.querySelector("#conceptoAgriculturaGastoDirecto").value = gastoDirecto.conceptoId;
+        vista.querySelector("#cantRequeridaAgriculturaGastoDirecto").value = gastoDirecto.cantRequerida;
+        vista.querySelector("#valorUnitarioAgriculturaGastoDirecto").value = gastoDirecto.Concepto.precio;
+        vista.querySelector("#cantAplicacionesAgriculturaGastoDirecto").value = gastoDirecto.cantAplicaciones;
+        vista.querySelector("#mes1AgriculturaGastoDirecto").checked = gastoDirecto.mes1;
+        vista.querySelector("#mes2AgriculturaGastoDirecto").checked = gastoDirecto.mes2;
+        vista.querySelector("#mes3AgriculturaGastoDirecto").checked = gastoDirecto.mes3;
+        vista.querySelector("#mes4AgriculturaGastoDirecto").checked = gastoDirecto.mes4;
+        vista.querySelector("#mes5AgriculturaGastoDirecto").checked = gastoDirecto.mes5;
+        vista.querySelector("#mes6AgriculturaGastoDirecto").checked = gastoDirecto.mes6;
+        vista.querySelector("#mes7AgriculturaGastoDirecto").checked = gastoDirecto.mes7;
+        vista.querySelector("#mes8AgriculturaGastoDirecto").checked = gastoDirecto.mes8;
+        vista.querySelector("#mes9AgriculturaGastoDirecto").checked = gastoDirecto.mes9;
+        vista.querySelector("#mes10AgriculturaGastoDirecto").checked = gastoDirecto.mes10;
+        vista.querySelector("#mes11AgriculturaGastoDirecto").checked = gastoDirecto.mes11;
+        vista.querySelector("#mes12AgriculturaGastoDirecto").checked = gastoDirecto.mes12;
+
+        updateValorHa()
+    })
+
     var eliminar = row.querySelector("#eliminar");
     if (eliminar) {
         eliminar.addEventListener("click", function () {
