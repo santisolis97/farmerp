@@ -37,20 +37,31 @@ agriculturaGastoDirectoController.list = function (req, res) {
                     empresaId: res.locals.empresa.empresaId
                 }
             }).then(conceptos => {
-                AgriculturaGastoDirecto.findAll({
-                    where: {
-                        empresaId: res.locals.empresa.empresaId,
-                        cultivoId: cultivoAct.cultivoId
-                    },
-                    include: [
-                        {
-                          model: Rubro
+                if (cultivoAct){
+                    AgriculturaGastoDirecto.findAll({
+                        where: {
+                            empresaId: res.locals.empresa.empresaId,
+                            cultivoId: cultivoAct.cultivoId
                         },
-                        {
-                          model: Concepto
-                        }
-                    ]
-                }).then(gastosDirectos => {
+                        include: [
+                            {
+                              model: Rubro
+                            },
+                            {
+                              model: Concepto
+                            }
+                        ]
+                    }).then(gastosDirectos => {
+                        res.render('agricultura/gastoDirecto/gastoDirecto-list', {
+                            cultivoAct, 
+                            cultivos,
+                            rubros,
+                            conceptos,
+                            gastosDirectos
+                        })
+                    })
+                } else {
+                    var gastosDirectos = []
                     res.render('agricultura/gastoDirecto/gastoDirecto-list', {
                         cultivoAct, 
                         cultivos,
@@ -58,7 +69,7 @@ agriculturaGastoDirectoController.list = function (req, res) {
                         conceptos,
                         gastosDirectos
                     })
-                })
+                }
 
             })
         });
