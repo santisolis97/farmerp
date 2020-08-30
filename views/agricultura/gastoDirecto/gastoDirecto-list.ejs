@@ -112,60 +112,60 @@
 													<td>
 														<%= gasto.Concepto.nombre %>
 													</td>
-													<td>
+													<td class="importe" style="text-align:end;">
 														<%= gasto.Concepto.precio.toFixed(2) %>
 													</td>
-													<td>
+													<td class="importe" style="text-align:end;">
 														<%= gasto.cantRequerida.toFixed(2) %>
 													</td>
-													<td>
+													<td class="importe" style="text-align:end;">
 														<%= (gasto.Concepto.precio * gasto.cantRequerida).toFixed(2) %>
 													</td>
 													<td class="d-none">
-														<%= gasto.mes1 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
-													</td>
-													<td class="d-none">
-														<%= gasto.mes2 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
-													</td>
-													<td class="d-none">
-														<%= gasto.mes3 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
-													</td>
+                                                        <%= gasto.mes1 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+                                                    </td>
+                                                    <td class="d-none">
+                                                        <%= gasto.mes2 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+                                                    </td>
+                                                    <td class="d-none">
+                                                        <%= gasto.mes3 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+                                                    </td>
 
-													<td class="d-none">
-														<%= gasto.mes4 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
-													</td>
-													<td class="d-none">
-														<%= gasto.mes5 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
-													</td>
-													<td class="d-none">
-														<%= gasto.mes6 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
-													</td>
+                                                    <td class="d-none">
+                                                        <%= gasto.mes4 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+                                                    </td>
+                                                    <td class="d-none">
+                                                        <%= gasto.mes5 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+                                                    </td>
+                                                    <td class="d-none">
+                                                        <%= gasto.mes6 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+                                                    </td>
 
-													<td class="d-none">
-														<%= gasto.mes7 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
-													</td>
-													<td class="d-none">
-														<%= gasto.mes8 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
-													</td>
-													<td class="d-none">
-														<%= gasto.mes9 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
-													</td>
+                                                    <td class="d-none">
+                                                        <%= gasto.mes7 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+                                                    </td>
+                                                    <td class="d-none">
+                                                        <%= gasto.mes8 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+                                                    </td>
+                                                    <td class="d-none">
+                                                        <%= gasto.mes9 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+                                                    </td>
 
-													<td class="d-none">
-														<%= gasto.mes10 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+                                                    <td class="d-none">
+                                                        <%= gasto.mes10 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+                                                    </td>
+                                                    <td class="d-none">
+                                                        <%= gasto.mes11 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+                                                    </td>
+                                                    <td class="d-none">
+                                                        <%= gasto.mes12 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
 													</td>
-													<td class="d-none">
-														<%= gasto.mes11 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
-													</td>
-													<td class="d-none">
-														<%= gasto.mes12 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
-													</td>
-
-													<td>
+													
+													<td class="importe" style="text-align:end;">
 														<%= (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada).toFixed(2) %>
 													</td>
 													<td>
-														<a id="ver" href="#verModal" class="view mr-2" title="Ver"
+														<a id="view" href="#viewModal" class="view mr-2" title="Ver"
 															data-toggle="modal">
 															<i class="fa fa-eye fa-lg"></i>
 														</a>
@@ -198,6 +198,7 @@
 	<!-- Formulario de los Popups  -->
 	<% include gastoDirecto-add %>
 	<% include gastoDirecto-edit %>
+	<% include gastoDirecto-view %>
 	<% include gastoDirecto-delete %>
 	<% include gastoDirecto-rpt %>
 	<!-- /Formulario de los Popups  -->

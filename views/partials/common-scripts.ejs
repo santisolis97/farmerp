@@ -25,6 +25,34 @@
                 .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.') // use . as a separator
         ) 
     }
+   
+
+    var els = document.querySelectorAll(".importe");
+    els.forEach(function(el){
+    var d = el.innerHTML;
+    el.innerHTML= formatMoney(el.innerHTML)
+    el.innerHTML= validarFormat(el.innerHTML)
+  
+      });
+
+  function formatMoney(x) {
+        x = x.toString();
+        var pattern = /(-?\d+)(\d{3})/;
+        while (pattern.test(x))
+        x = x.replace(pattern, "$1,$2");  
+        return  x;
+  }
+
+  function validarFormat(x){
+    x = x.toString();
+    x=x.replace('.', '*'); 
+    x=x.replace(/,/g, '/'); 
+    x=x.replace('*', ','); 
+    x=x.replace(/\//g, '.'); 
+
+    return  "$"+ x;
+  }
+
 </script>
 
 <% include perfil %>

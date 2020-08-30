@@ -1,0 +1,142 @@
+<div id="viewModal" class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form class="container" id="form-validation" novalidate method="POST" onsubmit="return validateForm()"
+                action="/agriculturaGastosDirectos/add">
+                <div class="modal-header">
+                    <h4 class="modal-title">Ver Gasto Directo - <%= cultivoAct.nombre %></h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                        onclick="closeModal()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="rubroAgriculturaGastoDirecto" class='control-label'>Rubro</label>
+                            <select class="form-control" name="agriculturaGastoDirecto[rubroId]"
+                                id="rubroAgriculturaGastoDirecto" readonly disabled>
+                                <% rubros.forEach(rubro =>{ %>
+                                <option value="<%= rubro.rubroId %>"><%= rubro.nombre %></option>
+                                <% }) %>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="conceptoAgriculturaGastoDirecto" class='control-label'>Concepto</label>
+                            <select class="form-control" name="agriculturaGastoDirecto[conceptoId]"
+                                id="conceptoAgriculturaGastoDirecto" onchange="updateValorUnitario(this)" readonly disabled>
+                                <% conceptos.forEach(concepto =>{ %>
+                                <option value="<%= concepto.conceptoId %>" data-precio="<%= concepto.precio %>">
+                                    <%= concepto.nombre %></option>
+                                <% }) %>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="cantRequeridaAgriculturaGastoDirecto" class='control-label'>Cant.
+                                Requerida</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">U/ha</span>
+                                </div>
+                                <input name="agriculturaGastoDirecto[cantRequerida]" type="number" min="0" step="0.01"
+                                    class="form-control" id="cantRequeridaAgriculturaGastoDirecto"
+                                    placeholder="Unidades/ha" onkeyup="updateValorHa()" readonly>
+                                <div class="invalid-feedback">
+                                    Este campo es requerido.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="valorUnitarioAgriculturaGastoDirecto" class='control-label'>Valor
+                                Unitario</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$/U</span>
+                                </div>
+                                <% if(conceptos.length != 0){ %>
+                                <input class="form-control" id="valorUnitarioAgriculturaGastoDirecto"
+                                    placeholder="$/Unidad" value="<%= conceptos[0].precio %>" readonly>
+                                <% } else { %>
+                                <input class="form-control" id="valorUnitarioAgriculturaGastoDirecto"
+                                    placeholder="$/Unidad" readonly>
+                                <% }  %>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="valorHectareaAgriculturaGastoDirecto" class='control-label'>Valor por
+                                Hectárea</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$/ha</span>
+                                </div>
+                                <input class="form-control" id="valorHectareaAgriculturaGastoDirecto"
+                                    placeholder="$/Hectárea" readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <label class="col-md-12">Aplicación</label>
+                        <div class="form-group col-md-3">
+                            <label id="mes1Label" for="mes1AgriculturaGastoDirecto" class="checkbox"><input
+                                    name="agriculturaGastoDirecto[mes1]" id="mes1AgriculturaGastoDirecto" value="true"
+                                    type="checkbox" class="mr-1" disabled></label>
+                            <label id="mes2Label" for="mes2AgriculturaGastoDirecto" class="checkbox"><input
+                                    name="agriculturaGastoDirecto[mes2]" id="mes2AgriculturaGastoDirecto" value="true"
+                                    type="checkbox" class="mr-1" disabled></label>
+                            <label id="mes3Label" for="mes3AgriculturaGastoDirecto" class="checkbox"><input
+                                    name="agriculturaGastoDirecto[mes3]" id="mes3AgriculturaGastoDirecto" value="true"
+                                    type="checkbox" class="mr-1" disabled></label>
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label id="mes4Label" for="mes4AgriculturaGastoDirecto" class="checkbox"><input
+                                    name="agriculturaGastoDirecto[mes4]" id="mes4AgriculturaGastoDirecto" value="true"
+                                    type="checkbox" class="mr-1" disabled></label>
+                            <label id="mes5Label" for="mes5AgriculturaGastoDirecto" class="checkbox"><input
+                                    name="agriculturaGastoDirecto[mes5]" id="mes5AgriculturaGastoDirecto" value="true"
+                                    type="checkbox" class="mr-1" disabled></label>
+                            <label id="mes6Label" for="mes6AgriculturaGastoDirecto" class="checkbox"><input
+                                    name="agriculturaGastoDirecto[mes6]" id="mes6AgriculturaGastoDirecto" value="true"
+                                    type="checkbox" class="mr-1" disabled></label>
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label id="mes7Label" for="mes7AgriculturaGastoDirecto" class="checkbox"><input
+                                    name="agriculturaGastoDirecto[mes7]" id="mes7AgriculturaGastoDirecto" value="true"
+                                    type="checkbox" class="mr-1" disabled></label>
+                            <label id="mes8Label" for="mes8AgriculturaGastoDirecto" class="checkbox"><input
+                                    name="agriculturaGastoDirecto[mes8]" id="mes8AgriculturaGastoDirecto" value="true"
+                                    type="checkbox" class="mr-1"disabled></label>
+                            <label id="mes9Label" for="mes9AgriculturaGastoDirecto" class="checkbox"><input
+                                    name="agriculturaGastoDirecto[mes9]" id="mes9AgriculturaGastoDirecto" value="true"
+                                    type="checkbox" class="mr-1"disabled></label>
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label id="mes10Label" for="mes10AgriculturaGastoDirecto" class="checkbox"><input
+                                    name="agriculturaGastoDirecto[mes10]" id="mes10AgriculturaGastoDirecto" value="true"
+                                    type="checkbox" class="mr-1" disabled></label>
+                            <label id="mes11Label" for="mes11AgriculturaGastoDirecto" class="checkbox"><input
+                                    name="agriculturaGastoDirecto[mes11]" id="mes11AgriculturaGastoDirecto" value="true"
+                                    type="checkbox" class="mr-1" disabled></label>
+                            <label id="mes12Label" for="mes12AgriculturaGastoDirecto" class="checkbox"><input
+                                    name="agriculturaGastoDirecto[mes12]" id="mes12AgriculturaGastoDirecto" value="true"
+                                    type="checkbox" class="mr-1" disabled></label>
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="agriculturaGastoDirecto[cantAplicaciones]"
+                        id="cantAplicacionesAgriculturaGastoDirecto">
+                    <input type="hidden" name="agriculturaGastoDirecto[cultivoId]" value="<%= cultivoAct.cultivoId %>">
+                    <input type="hidden" name="agriculturaGastoDirecto[empresaId]" value="<%= empresa.empresaId %>">
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-danger" data-dismiss="modal" value="Volver"
+                        onclick="closeModal()">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

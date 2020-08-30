@@ -38,6 +38,18 @@ conceptos.forEach(function (row) {
             vista.querySelector("#porcIVAConcepto").value = concepto.porcIVA;
          });
     }
+    var view = row.querySelector("#view");
+    if (view) {
+        view.addEventListener("click", function () {
+            var concepto = getElement(row);
+            vista = document.querySelector("#viewConceptoModal");
+            vista.querySelector("form").setAttribute("action", "/agriculturaDatosBase/concepto/view/" + concepto.conceptoId);
+            
+            vista.querySelector("#nombreConcepto").value = concepto.nombre;
+            vista.querySelector("#precioConcepto").value = concepto.precio;
+            vista.querySelector("#porcIVAConcepto").value = concepto.porcIVA;
+         });
+    }
 
 
     var eliminar = row.querySelector("#eliminar");
