@@ -29,7 +29,7 @@
 				<div class="animated fadeIn">
 					<div class="row">
 						<!-- Rubro -->
-						<div class="col-md-6">
+						<div class="col-md-5">
 							<div class="card">
 								<div class="card-header">
 									<div class="d-flex justify-content-between">
@@ -88,7 +88,7 @@
 						<!-- /Rubro -->
 
 						<!-- Concepto -->
-						<div class="col-md-6">
+						<div class="col-md-7">
 							<div class="card">
 								<div class="card-header">
 									<div class="d-flex justify-content-between">
@@ -126,10 +126,11 @@
 													<td>
 														<%= concepto.nombre %>
 													</td>
-													<td>
+													<td class="importe" style="text-align:end;">
+														
 														<%= concepto.precio.toFixed(2) %>
+														
 													</td>
-
 													<td>
 														<a id="view" href="#viewConceptoModal" class="view mr-2" title="View"
 															data-toggle="modal">
@@ -176,10 +177,8 @@
 	<% include ../../partials/common-scripts %>
 
 	<script type="text/javascript">
-		InitDataTable("#tabla-conceptos");
+		InitDataTable("#tabla-conceptos");	
 	</script>
-
-
 	<script type="text/javascript">
 		InitDataTable("#tabla-rubros");
 	</script>

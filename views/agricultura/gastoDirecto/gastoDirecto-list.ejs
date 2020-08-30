@@ -102,13 +102,13 @@
 													<td>
 														<%= gasto.Concepto.nombre %>
 													</td>
-													<td>
+													<td class="importe" style="text-align:end;">
 														<%= gasto.Concepto.precio.toFixed(2) %>
 													</td>
-													<td>
+													<td class="importe" style="text-align:end;">
 														<%= gasto.cantRequerida.toFixed(2) %>
 													</td>
-													<td>
+													<td class="importe" style="text-align:end;">
 														<%= (gasto.Concepto.precio * gasto.cantRequerida).toFixed(2) %>
 													</td>
 													<td class="d-none">
@@ -151,7 +151,7 @@
                                                         <%= gasto.mes12 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
 													</td>
 													
-													<td>
+													<td class="importe" style="text-align:end;">
 														<%= (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada).toFixed(2) %>
 													</td>
 													<td>
