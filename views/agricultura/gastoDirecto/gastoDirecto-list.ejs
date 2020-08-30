@@ -34,36 +34,46 @@
 								<div class="card-header">
 									<div class="d-flex justify-content-between">
 										<% if(cultivoAct){ %>
-											<div class="d-flex justify-content-start">
-												<strong class="card-title align-middle">Gastos Directos -</strong>
-												<div class="ml-1" id='dropdownVer'>
-													<a class="dropdown-toggle text-white" href="#" id="verTipo" data-toggle="dropdown"
-														aria-haspopup="true" aria-expanded="false">
-														<strong><%= cultivoAct.nombre %></strong>
-													</a>
-													<div class="dropdown-menu dropdown-menu-right" aria-labelledby="verTipo">
-														<% cultivos.forEach(cultivo =>{ %>
-															<a href="/agriculturaGastosDirectos/<%= cultivo.cultivoId %>" class="dropdown-item" id='<%= cultivo.cultivoId %>'><%= cultivo.nombre %></a>
-														<% }) %>
-													</div>
+										<div class="d-flex justify-content-start">
+											<strong class="card-title align-middle">Gastos Directos -</strong>
+											<div class="ml-1" id='dropdownVer'>
+												<a class="dropdown-toggle text-white" href="#" id="verTipo"
+													data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+													<strong><%= cultivoAct.nombre %></strong>
+												</a>
+												<div class="dropdown-menu dropdown-menu-right"
+													aria-labelledby="verTipo">
+													<% cultivos.forEach(cultivo =>{ %>
+													<a href="/agriculturaGastosDirectos/<%= cultivo.cultivoId %>"
+														class="dropdown-item"
+														id='<%= cultivo.cultivoId %>'><%= cultivo.nombre %></a>
+													<% }) %>
 												</div>
-												<div id="titulo" data-value="Gastos Directos - <%= cultivoAct.nombre %>"></div>
 											</div>
-											<div id="tableButtons" class="d-none d-md-block">
-												<a id="agregar" href="#agregarModal" class="btn btn-primary"
-													data-toggle="modal">
-													<i class="fa fa-plus-circle"></i> Agregar
-												</a>
+											<div id="titulo" data-value="Gastos Directos - <%= cultivoAct.nombre %>">
 											</div>
-											<div id="tableButtons" class="d-md-none">
-												<a id="agregar" href="#agregarModal" class="text-white" data-toggle="modal">
-													<i class="fa fa-plus-circle"></i>
-												</a>
-											</div>
+										</div>
+
+										<div id="tableButtons" class="d-none d-md-block">
+											<a id="agregar" href="#agregarModal" class="btn btn-primary"
+												data-toggle="modal">
+												<i class="fa fa-plus-circle"></i> Agregar
+											</a>
+											<a id="reporte" href="#rptModal" class="btn btn-primary"
+												data-toggle="modal">
+												<i class="fa fa-file-pdf"></i>Programa Físico
+											</a>
+										</div>
+										<div id="tableButtons" class="d-md-none">
+											<a id="agregar" href="#agregarModal" class="text-white" data-toggle="modal">
+												<i class="fa fa-plus-circle"></i>
+											</a>
+										</div>
 										<% } else { %>
-											<div class="d-flex justify-content-start">
-												<strong class="card-title align-middle">Gastos Directos - (No se cargaron cultivos)</strong>
-											</div>
+										<div class="d-flex justify-content-start">
+											<strong class="card-title align-middle">Gastos Directos - (No se cargaron
+												cultivos)</strong>
+										</div>
 										<% }  %>
 									</div>
 								</div>
@@ -78,17 +88,17 @@
 													<th>Unidad/ha</th>
 													<th>Total $/ha</th>
 													<th class="d-none"><%= empresa.meses[0] %></th>
-                                                    <th class="d-none"><%= empresa.meses[1] %></th>
-                                                    <th class="d-none"><%= empresa.meses[2] %></th>
-                                                    <th class="d-none"><%= empresa.meses[3] %></th>
-                                                    <th class="d-none"><%= empresa.meses[4] %></th>
-                                                    <th class="d-none"><%= empresa.meses[5] %></th>
-                                                    <th class="d-none"><%= empresa.meses[6] %></th>
-                                                    <th class="d-none"><%= empresa.meses[7] %></th>
-                                                    <th class="d-none"><%= empresa.meses[8] %></th>
-                                                    <th class="d-none"><%= empresa.meses[9] %></th>
-                                                    <th class="d-none"><%= empresa.meses[10] %></th>
-                                                    <th class="d-none"><%= empresa.meses[11] %></th>
+													<th class="d-none"><%= empresa.meses[1] %></th>
+													<th class="d-none"><%= empresa.meses[2] %></th>
+													<th class="d-none"><%= empresa.meses[3] %></th>
+													<th class="d-none"><%= empresa.meses[4] %></th>
+													<th class="d-none"><%= empresa.meses[5] %></th>
+													<th class="d-none"><%= empresa.meses[6] %></th>
+													<th class="d-none"><%= empresa.meses[7] %></th>
+													<th class="d-none"><%= empresa.meses[8] %></th>
+													<th class="d-none"><%= empresa.meses[9] %></th>
+													<th class="d-none"><%= empresa.meses[10] %></th>
+													<th class="d-none"><%= empresa.meses[11] %></th>
 													<th>Total $/Cultivo</th>
 													<th class="not-export-col">Acciones</th>
 												</tr>
@@ -112,45 +122,45 @@
 														<%= (gasto.Concepto.precio * gasto.cantRequerida).toFixed(2) %>
 													</td>
 													<td class="d-none">
-                                                        <%= gasto.mes1 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
-                                                    </td>
-                                                    <td class="d-none">
-                                                        <%= gasto.mes2 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
-                                                    </td>
-                                                    <td class="d-none">
-                                                        <%= gasto.mes3 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
-                                                    </td>
-
-                                                    <td class="d-none">
-                                                        <%= gasto.mes4 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
-                                                    </td>
-                                                    <td class="d-none">
-                                                        <%= gasto.mes5 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
-                                                    </td>
-                                                    <td class="d-none">
-                                                        <%= gasto.mes6 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
-                                                    </td>
-
-                                                    <td class="d-none">
-                                                        <%= gasto.mes7 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
-                                                    </td>
-                                                    <td class="d-none">
-                                                        <%= gasto.mes8 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
-                                                    </td>
-                                                    <td class="d-none">
-                                                        <%= gasto.mes9 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
-                                                    </td>
-
-                                                    <td class="d-none">
-                                                        <%= gasto.mes10 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
-                                                    </td>
-                                                    <td class="d-none">
-                                                        <%= gasto.mes11 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
-                                                    </td>
-                                                    <td class="d-none">
-                                                        <%= gasto.mes12 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+														<%= gasto.mes1 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
 													</td>
-													
+													<td class="d-none">
+														<%= gasto.mes2 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+													</td>
+													<td class="d-none">
+														<%= gasto.mes3 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+													</td>
+
+													<td class="d-none">
+														<%= gasto.mes4 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+													</td>
+													<td class="d-none">
+														<%= gasto.mes5 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+													</td>
+													<td class="d-none">
+														<%= gasto.mes6 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+													</td>
+
+													<td class="d-none">
+														<%= gasto.mes7 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+													</td>
+													<td class="d-none">
+														<%= gasto.mes8 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+													</td>
+													<td class="d-none">
+														<%= gasto.mes9 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+													</td>
+
+													<td class="d-none">
+														<%= gasto.mes10 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+													</td>
+													<td class="d-none">
+														<%= gasto.mes11 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+													</td>
+													<td class="d-none">
+														<%= gasto.mes12 ? (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+													</td>
+
 													<td>
 														<%= (gasto.Concepto.precio * gasto.cantRequerida * cultivoAct.superficieAsignada).toFixed(2) %>
 													</td>
@@ -189,6 +199,7 @@
 	<% include gastoDirecto-add %>
 	<% include gastoDirecto-edit %>
 	<% include gastoDirecto-delete %>
+	<% include gastoDirecto-rpt %>
 	<!-- /Formulario de los Popups  -->
 
 	<!-- Scripts -->

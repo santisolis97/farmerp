@@ -1,0 +1,14 @@
+<div id="rptModal" class="modal fade">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Gastos Directos -  <%= (cultivoAct) ? cultivoAct.nombre : '' %></h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div style="border-radius: 0 0 15px 15px;">
+                <iframe src="/agriculturaGastosDirectos/rpt/<%= cultivoAct.cultivoId %>/programa-fisico" frameborder="1"  style="min-height:500px; width: 100%;">
+                </iframe>
+            </div>
+        </div>
+    </div>
+</div>

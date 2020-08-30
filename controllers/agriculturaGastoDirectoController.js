@@ -1,4 +1,5 @@
 const models = require("./../models");
+const sendReport = require("../utils/sendReport");
 const Cultivo = models.Cultivo;
 const Rubro = models.Rubro;
 const Concepto = models.Concepto
@@ -16,15 +17,15 @@ agriculturaGastoDirectoController.list = function (req, res) {
 
         if (req.params.cultivoId) {
             cultivos.forEach(c => {
-                if (c.cultivoId == req.params.cultivoId){
+                if (c.cultivoId == req.params.cultivoId) {
                     cultivoAct = c;
-                } 
+                }
             });
-            if (!cultivoAct){
-                cultivoAct = cultivos[0]    
+            if (!cultivoAct) {
+                cultivoAct = cultivos[0]
             }
         } else {
-            cultivoAct = cultivos[0]    
+            cultivoAct = cultivos[0]
         }
 
         Rubro.findAll({
@@ -37,23 +38,22 @@ agriculturaGastoDirectoController.list = function (req, res) {
                     empresaId: res.locals.empresa.empresaId
                 }
             }).then(conceptos => {
-                if (cultivoAct){
+                if (cultivoAct) {
                     AgriculturaGastoDirecto.findAll({
                         where: {
                             empresaId: res.locals.empresa.empresaId,
                             cultivoId: cultivoAct.cultivoId
                         },
-                        include: [
-                            {
-                              model: Rubro
+                        include: [{
+                                model: Rubro
                             },
                             {
-                              model: Concepto
+                                model: Concepto
                             }
                         ]
                     }).then(gastosDirectos => {
                         res.render('agricultura/gastoDirecto/gastoDirecto-list', {
-                            cultivoAct, 
+                            cultivoAct,
                             cultivos,
                             rubros,
                             conceptos,
@@ -63,7 +63,7 @@ agriculturaGastoDirectoController.list = function (req, res) {
                 } else {
                     var gastosDirectos = []
                     res.render('agricultura/gastoDirecto/gastoDirecto-list', {
-                        cultivoAct, 
+                        cultivoAct,
                         cultivos,
                         rubros,
                         conceptos,
@@ -73,7 +73,7 @@ agriculturaGastoDirectoController.list = function (req, res) {
 
             })
         });
-       
+
     })
 };
 
@@ -126,4 +126,34 @@ agriculturaGastoDirectoController.delete = function (req, res) {
         });
 };
 
+
+agriculturaGastoDirectoController.rptProgramaFisico = function (req, res) {
+    Cultivo.findByPk(req.params.id).then(cultivo => {
+        AgriculturaGastoDirecto.findAll({
+            where: {
+                empresaId: res.locals.empresa.empresaId,
+                cultivoId: req.params.id
+            },
+            include: [{
+                    model: Rubro
+                },
+                {
+                    model: Concepto
+                }
+            ]
+        }).then(gastosDirectos => {
+            let empresa = res.locals.empresa
+            let datos = {
+                empresa,
+                cultivo,
+                gastosDirectos
+            }
+
+            sendReport("agriculturaProgramaFisico", datos, res, "landscape")
+        })
+    })
+};
+
 module.exports = agriculturaGastoDirectoController;
+
+
