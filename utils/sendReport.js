@@ -33,8 +33,10 @@ module.exports = function sendReport(rptname, datos, res, orientation) {
             res.send(err);
         } else {
             let options = {
-                "format": "A4", // allowed units: A3, A4, A5, Legal, Letter, Tabloid
-                "orientation": (orientation) ? orientation : "portrait", // portrait - landscape 
+                //"format": "A4", // allowed units: A3, A4, A5, Legal, Letter, Tabloid
+                //"orientation": (orientation) ? orientation : "portrait", // portrait - landscape 
+                "height": "210mm",
+                "width": "297mm",
                 "border": {
                     "top": "0mm", // default is 0, units: mm, cm, in, px
                     "right": "0mm",
