@@ -32,11 +32,33 @@ module.exports = function sendReport(rptname, datos, res, orientation) {
         if (err) {
             res.send(err);
         } else {
+            let _height;
+            let _width;
+            // Tengo que ajustar las medidas porque heroku trabaja con una resolución diferente
+            // 96 dpi vs 72 dpi de desarrollo
+            if (process.env.NODE_ENV == 'production') {
+                if (orientation == 'landscape') {
+                    _height = '278mm'
+                    _width = '396mm'
+                } else {
+                    _height = '396mm'
+                    _width = '278mm'
+                }
+            } else {
+                if (orientation == 'landscape') {
+                    _height = '210mm'
+                    _width = '297mm'
+                } else {
+                    _height = '297mm'
+                    _width = '210mm'
+                }
+            }
             let options = {
-                "format": "A4", // allowed units: A3, A4, A5, Legal, Letter, Tabloid
-                "orientation": (orientation) ? orientation : "portrait", // portrait - landscape 
-                //"height": "210mm",
-                //"width": "297mm",
+                //"format": "A4", // allowed units: A3, A4, A5, Legal, Letter, Tabloid
+                //"orientation": (orientation) ? orientation : "portrait", // portrait - landscape 
+                "height": _height,
+                "width": _width,
+
                 "border": {
                     "top": "0mm", // default is 0, units: mm, cm, in, px
                     "right": "0mm",
@@ -50,11 +72,12 @@ module.exports = function sendReport(rptname, datos, res, orientation) {
                     "height": "15mm",
                     "contents": {
                         "default": `<div style="width: 95%; margin-left:2.5%;border-top: 1px solid black; justify-content: space-between;">
-                               <div style="margin-top: 10px; margin-left: 20px; position:absolute; top:0px; left:2.5%;">by FarmERP</div>
-                               <div style="margin-top: 10px; margin-right: 20px; position:absolute;top:0px; right:2.5%;">Página {{page}} de {{pages}}</div>
-                                </div>`
+                        <div style="margin-top: 10px; margin-left: 20px; position:absolute; top:0px; left:2.5%;">by FarmERP</div>
+                        <div style="margin-top: 10px; margin-right: 20px; position:absolute;top:0px; right:2.5%;">Página {{page}} de {{pages}}</div>
+                        </div>`
                     }
                 },
+                "zoomFactor": "0.75",
             };
 
 
