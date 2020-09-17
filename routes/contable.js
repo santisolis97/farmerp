@@ -20,7 +20,14 @@ router.get('/estadoResultados', Logged.isLogged, function (req, res) {
     res.render('./../views/contable/estadoResultado/estadoResultado')
 });
 
+/* View */
+router.get('/parametrosGlobales', Logged.isLogged, contable.showparametrosGlobales);
+
+/* Edit */
+router.post('/parametrosGlobales/updateParametroAgricultura/:id', Logged.isLogged, contable.updateparametroAgricultura)
+
 /* ACTIVO */
+
 /* Caja */
 router.get('/apiCaja/:fecha/:empresaId', Logged.isLogged, contable.getCaja)
 

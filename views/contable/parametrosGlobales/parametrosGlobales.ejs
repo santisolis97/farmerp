@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+
+<head>
+    <% include ../../partials/common-head %>
+</head>
+
+<body>
+
+    <!--Panel Izquierdo -->
+    <% include ../../partials/sidebar %>
+    <!-- /Panel izquierdo-->
+
+    <!-- Panel Derecho -->
+    <div id="right-panel" class="right-panel">
+
+        <!-- Cabecera-->
+        <% include ../../partials/cabecera %>
+        <!-- /Cabecera -->
+
+        <!-- Tabla del CRUD-->
+        <div class="content mt-3">
+
+            <!-- Mensaje -->
+            <% include ../../partials/mensaje %>
+            <!-- /Mensaje -->
+
+            <div class="col-sm-12">
+                <div class="animated fadeIn">
+                    <div class="row">
+                        <!-- Agricultura -->
+                        <div class="col-md-10">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex justify-content-start">
+                                            <strong class="card-title align-middle">Agricultura</strong>
+                                        </div>
+                                        <div id="tableButtons" class="d-none d-md-block">
+                                            <a id="agregar" href="#editarModal" class="btn btn-primary"
+                                                data-toggle="modal">
+                                                <i class="fa fa-edit fa-lg"></i> Editar
+                                            </a>
+                                        </div>
+                                    </div>     
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-row">
+                                        <div class="col-md-4">
+                                            <label for="Alicuota" class='control-label'>Alicuota
+                                            </label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">%</span>
+                                                </div>
+                                                <input name="" type="number" min="0" step="0.01" class="form-control"
+                                                    id="Alicuota" value="<%= parametroagricultura.alicuota.toFixed(2) %>" placeholder="0" readonly>
+                                            </div>
+                                        </div>
+                                       
+                                        <div class="col-md-4">
+                                            <label for="agriculturaIva" class='control-label'>Iva</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">%</span>
+                                                </div>
+                                                <input name="" type="number" min="0" step="0.01" class="form-control"
+                                                    id="agriculturaIva" value="<%= parametroagricultura.iva.toFixed(2) %>" placeholder="0" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /Agricultura -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Tabla del CRUD-->
+    </div>
+    <!-- /Panel Derecho -->
+
+
+    <!-- PopUps -->
+
+    <% include editParametrosAgricultura %>
+
+    <!-- Scripts -->
+    <% include ../../partials/common-scripts %>
+</body>
+
+</html>

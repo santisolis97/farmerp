@@ -24,6 +24,18 @@ cultivos.forEach(function (row) {
             vista.querySelector("#porcVentaCultivo").value = cultivo.porcVenta;
             vista.querySelector("#porcAlmacenamientoCultivo").value = cultivo.porcAlmacenamiento;
             vista.querySelector("#porcDoblePropositoCultivo").value = cultivo.porcDobleProposito;
+            vista.querySelector("#mes1Agriculturacultivo").checked = cultivo.mes1;
+            vista.querySelector("#mes2Agriculturacultivo").checked = cultivo.mes2;
+            vista.querySelector("#mes3Agriculturacultivo").checked = cultivo.mes3;
+            vista.querySelector("#mes4Agriculturacultivo").checked = cultivo.mes4;
+            vista.querySelector("#mes5Agriculturacultivo").checked = cultivo.mes5;
+            vista.querySelector("#mes6Agriculturacultivo").checked = cultivo.mes6;
+            vista.querySelector("#mes7Agriculturacultivo").checked = cultivo.mes7;
+            vista.querySelector("#mes8Agriculturacultivo").checked = cultivo.mes8;
+            vista.querySelector("#mes9Agriculturacultivo").checked = cultivo.mes9;
+            vista.querySelector("#mes10Agriculturacultivo").checked = cultivo.mes10;
+            vista.querySelector("#mes11Agriculturacultivo").checked = cultivo.mes11;
+            vista.querySelector("#mes12Agriculturacultivo").checked = cultivo.mes12;
          });
     }
 
@@ -42,6 +54,18 @@ cultivos.forEach(function (row) {
             vista.querySelector("#porcVentaCultivo").value = cultivo.porcVenta;
             vista.querySelector("#porcAlmacenamientoCultivo").value = cultivo.porcAlmacenamiento;
             vista.querySelector("#porcDoblePropositoCultivo").value = cultivo.porcDobleProposito;
+            vista.querySelector("#mes1Agriculturacultivo").checked = cultivo.mes1;
+            vista.querySelector("#mes2Agriculturacultivo").checked = cultivo.mes2;
+            vista.querySelector("#mes3Agriculturacultivo").checked = cultivo.mes3;
+            vista.querySelector("#mes4Agriculturacultivo").checked = cultivo.mes4;
+            vista.querySelector("#mes5Agriculturacultivo").checked = cultivo.mes5;
+            vista.querySelector("#mes6Agriculturacultivo").checked = cultivo.mes6;
+            vista.querySelector("#mes7Agriculturacultivo").checked = cultivo.mes7;
+            vista.querySelector("#mes8Agriculturacultivo").checked = cultivo.mes8;
+            vista.querySelector("#mes9Agriculturacultivo").checked = cultivo.mes9;
+            vista.querySelector("#mes10Agriculturacultivo").checked = cultivo.mes10;
+            vista.querySelector("#mes11Agriculturacultivo").checked = cultivo.mes11;
+            vista.querySelector("#mes12Agriculturacultivo").checked = cultivo.mes12;
          });
     }
 

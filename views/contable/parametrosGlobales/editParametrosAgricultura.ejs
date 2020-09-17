@@ -1,0 +1,46 @@
+<div id="editarModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="POST" action="/contable/parametrosGlobales/updateParametroAgricultura/<%= parametroagricultura.Id %>">
+                <div class="modal-header">
+                    <h4 class="modal-title">Editar Parametros Agricultura</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="alicuota" class='control-label'>ALICUOTA</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">%</span>
+                                </div>
+                                <input name="parametroagricultura[alicuota]" type="number" min="0" step="0.01" class="form-control"
+                                    id="alicuota" placeholder="Alicuota" value="<%= parametroagricultura.alicuota.toFixed(2) %>" required>
+                                <div class="invalid-feedback">
+                                    Este campo es requerido.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="iva" class='control-label'>IVA</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">%</span>
+                                </div>
+                                <input name="parametroagricultura[iva]" type="number" min="0" step="0.01" class="form-control"
+                                    id="iva" placeholder="IVA" value="<%= parametroagricultura.iva.toFixed(2) %>" required>
+                                <div class="invalid-feedback">
+                                    Este campo es requerido.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                    <input id="botonGuardar" type="submit" class="btn btn-info" value="Aceptar">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

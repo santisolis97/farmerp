@@ -68,9 +68,16 @@ grupoController.altaGrupo = function (req, res) {
             empresaId: empresa.empresaId
         }
 
+        var agriculturaparametros = {
+            iva:0.0,
+            alicuota:0.0,
+            empresaId: empresa.empresaId
+        }
+
         models.Caja.create(caja)
         models.Banco.create(banco)
         models.Inversion.create(inversion)
+        models.parametrosAgricultura.create(agriculturaparametros)
 
         users.forEach(user => {
             var token = randtoken.generate(8);

@@ -4,6 +4,7 @@ const Op = models.Sequelize.Op
 const sequelize = models.sequelize
 const Credito = models.Credito
 const RetiroSocio = models.RetiroSocio
+const ParametrosAgricultura = models.parametrosAgricultura
 const Insumo = models.Insumo
 const Pradera = models.Pradera
 const Stock = models.Stock
@@ -58,6 +59,37 @@ contableController.getDisponibilidades = async (req, res) => {
     res.send({
         disponibilidades
     })
+}
+
+/* Parametros Globales Agricultura */
+contableController.showparametrosGlobales = function (req, res) {
+    ParametrosAgricultura.findOne({
+        where: {
+            empresaId: res.locals.empresa.empresaId
+        }
+    }).then(parametroagricultura => {
+        res.render("contable/parametrosGlobales/parametrosGlobales", {
+            parametroagricultura
+        })
+    })
+};
+
+/*Edit Parametros Globales Agricultura */
+contableController.updateparametroAgricultura = function (req, res) {
+    var reqparamAgricultura = req.body.parametroagricultura
+    ParametrosAgricultura.update(
+        reqparamAgricultura, {
+                where: {
+                    Id: req.params.id
+                }
+            }).then(() => {
+            req.flash("success_msg", "Se actualizó Parametros Globales de Agricultura correctamente");
+            res.redirect("/contable/parametrosGlobales");
+        })
+        .catch(err => {
+            req.flash("error_msg", "Error al actualizar Parametros Globales de Agricultura");
+            res.redirect("/contable/parametrosGlobales");
+        });
 }
 
 /* API Créditos */
