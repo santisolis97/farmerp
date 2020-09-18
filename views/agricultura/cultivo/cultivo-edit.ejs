@@ -48,7 +48,7 @@
                     </div>
 
                     <div class="form-row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-4">
                             <label for="precioPizarraCultivo" class='control-label'>Precio Pizarra</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -61,7 +61,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-4">
                             <label for="porcGastosComerCultivo" class='control-label'>Gastos Comercialización</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -73,6 +73,15 @@
                                     Este campo es requerido.
                                 </div>
                             </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="mesventacultivo" class='control-label'>Mes de venta</label>
+                            <select class="form-control" name="cultivo[mesventa]"
+                                id="mesventacultivo" required>
+                                <% empresa.index.forEach(empresa =>{ %>
+                                    <option value="<%= empresa.index %>"><%= empresa.nombre %></option>
+                                    <% }) %>                   
+                            </select>
                         </div>
                     </div>
 

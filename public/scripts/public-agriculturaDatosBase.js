@@ -36,6 +36,7 @@ conceptos.forEach(function (row) {
             vista.querySelector("#nombreConcepto").value = concepto.nombre;
             vista.querySelector("#precioConcepto").value = concepto.precio;
             vista.querySelector("#porcIVAConcepto").value = concepto.porcIVA;
+            vista.querySelector("#mescompraconcepto").value = concepto.mescompra;
          });
     }
     var view = row.querySelector("#view");
@@ -48,6 +49,7 @@ conceptos.forEach(function (row) {
             vista.querySelector("#nombreConcepto").value = concepto.nombre;
             vista.querySelector("#precioConcepto").value = concepto.precio;
             vista.querySelector("#porcIVAConcepto").value = concepto.porcIVA;
+            vista.querySelector("#mescompraconcepto").value = concepto.mescompra;
          });
     }
 

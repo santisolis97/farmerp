@@ -75,12 +75,13 @@
                             </div>
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="Benta" class='control-label'>Mes de venta</label>
-                            <select class="form-control" name=""
-                                id="" >
-                           
-                                <option value=""></option>
-                            
+                            <label for="mesventacultivo" class='control-label'>Mes de venta</label>
+                            <select class="form-control" name="cultivo[mesventa]"
+                                id="mesventacultivo" required>
+                                
+                                <% empresa.index.forEach(empresa =>{ %>
+                                    <option value="<%= empresa.index %>"><%= empresa.nombre %></option>
+                                    <% }) %>                       
                             </select>
                         </div>
                     </div>

@@ -31,6 +31,9 @@ module.exports = (sequelize, DataTypes) => {
         porcDobleProposito: {
             type: DataTypes.FLOAT(6,2)
         },
+        mesventa: {
+            type: DataTypes.INTEGER
+        },
         empresaId: {
             type: DataTypes.INTEGER,
             allowNull: false

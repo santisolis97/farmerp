@@ -16,6 +16,9 @@ module.exports = (sequelize, DataTypes) => {
         porcIVA: {
             type: DataTypes.FLOAT(6,2)
         },
+        mescompra:{
+            type: DataTypes.INTEGER
+        },
         empresaId: {
             type: DataTypes.INTEGER,
             allowNull: false

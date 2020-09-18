@@ -22,6 +22,7 @@ function isLogged(req, res, next) {
                             }
                         }).then(empresa => {
                             empresa.meses = []
+                            empresa.index = []
     
                             var inicioEjercicio = empresa.inicioEjercicio.split('-')
                             let dia = parseInt(inicioEjercicio[2])
@@ -46,6 +47,8 @@ function isLogged(req, res, next) {
                                 }
                                 let mesDesc = meses[mes] + ' ' + anio
                                 empresa.meses.push(mesDesc)
+                                var dato = {index:i,nombre:mesDesc}
+                                empresa.index.push(dato)
                                 mes += 1
                             }
     
