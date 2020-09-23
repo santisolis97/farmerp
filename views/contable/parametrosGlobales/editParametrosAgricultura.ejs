@@ -9,12 +9,12 @@
                 <div class="modal-body">
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="alicuota" class='control-label'>ALICUOTA</label>
+                            <label for="alicuota" class='control-label'>ALÍCUOTA</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">%</span>
                                 </div>
-                                <input name="parametroagricultura[alicuota]" type="number" min="0" step="0.01" class="form-control"
+                                <input name="parametroagricultura[alicuota]" type="number" min="0" step="0.01" max="100" class="form-control"
                                     id="alicuota" placeholder="Alicuota" value="<%= parametroagricultura.alicuota.toFixed(2) %>" required>
                                 <div class="invalid-feedback">
                                     Este campo es requerido.
@@ -27,8 +27,8 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">%</span>
                                 </div>
-                                <input name="parametroagricultura[iva]" type="number" min="0" step="0.01" class="form-control"
-                                    id="iva" placeholder="IVA" value="<%= parametroagricultura.iva.toFixed(2) %>" required>
+                                <input name="parametroagricultura[iva]" type="number" min="0" step="0.01" max="100" class="form-control"
+                                    id="iva" placeholder="IVA" value="<%= parametroagricultura.iva.toFixed(2)%>" required>
                                 <div class="invalid-feedback">
                                     Este campo es requerido.
                                 </div>

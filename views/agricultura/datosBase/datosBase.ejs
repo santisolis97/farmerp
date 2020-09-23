@@ -116,6 +116,7 @@
 											<thead>
 												<tr>
 													<th>Nombre</th>
+													<th >Unidad</th>
 													<th style="width: 30%;">Precio</th>
 													<th class="not-export-col" style="width: 30%;">Acciones</th>
 												</tr>
@@ -125,6 +126,9 @@
 												<tr data="<%= JSON.stringify(concepto) %>">
 													<td>
 														<%= concepto.nombre %>
+													</td>
+													<td style="text-align:end;">
+														<%= concepto.unidad %>
 													</td>
 													<td class="importe" style="text-align:end;">
 														

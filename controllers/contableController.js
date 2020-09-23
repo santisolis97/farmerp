@@ -83,11 +83,11 @@ contableController.updateparametroAgricultura = function (req, res) {
                     Id: req.params.id
                 }
             }).then(() => {
-            req.flash("success_msg", "Se actualizó Parametros Globales de Agricultura correctamente");
+            req.flash("success_msg", "Se actualizó Parámetros Globales de Agricultura correctamente");
             res.redirect("/contable/parametrosGlobales");
         })
         .catch(err => {
-            req.flash("error_msg", "Error al actualizar Parametros Globales de Agricultura");
+            req.flash("error_msg", "Error al actualizar Parámetros Globales de Agricultura");
             res.redirect("/contable/parametrosGlobales");
         });
 }

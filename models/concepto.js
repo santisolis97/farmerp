@@ -13,6 +13,9 @@ module.exports = (sequelize, DataTypes) => {
         precio: {
             type: DataTypes.FLOAT(15,2)
         },
+        unidad: {
+            type: DataTypes.FLOAT(6,2)
+        },
         porcIVA: {
             type: DataTypes.FLOAT(6,2)
         },
