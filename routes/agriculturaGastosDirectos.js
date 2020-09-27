@@ -22,4 +22,7 @@ router.post('/delete/:id', Logged.isLogged, gastoDirecto.delete)
 /* Programa Físico GastoDirecto */
 router.get('/rpt/:id/programa-fisico', Logged.isLogged, gastoDirecto.rptProgramaFisico)
 
+/* Margen Bruto GastoDirecto */
+router.get('/rpt/:id/margen-bruto', Logged.isLogged, gastoDirecto.rptMargenBruto)
+
 module.exports = router;

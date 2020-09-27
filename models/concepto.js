@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.FLOAT(15,2)
         },
         unidad: {
-            type: DataTypes.FLOAT(6,2)
+            type: DataTypes.STRING
         },
         porcIVA: {
             type: DataTypes.FLOAT(6,2)

@@ -60,7 +60,7 @@ module.exports = function sendReport(rptname, datos, res, orientation) {
                 "width": _width,
 
                 "border": {
-                    "top": "0mm", // default is 0, units: mm, cm, in, px
+                    "top": "0", // default is 0, units: mm, cm, in, px
                     "right": "0mm",
                     "bottom": "0in",
                     "left": "0in"
@@ -76,8 +76,7 @@ module.exports = function sendReport(rptname, datos, res, orientation) {
                         <div style="margin-top: 10px; margin-right: 20px; position:absolute;top:0px; right:2.5%;">Página {{page}} de {{pages}}</div>
                         </div>`
                     }
-                },
-                "zoomFactor": "0.75",
+                }
             };
 
 

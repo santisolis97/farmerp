@@ -1,0 +1,48 @@
+<% let fecha = "Fecha: " + _today %>
+<% let hora = "Hora: " + _now %>
+<% let titulo = "Margen Bruto - " + cultivo.nombre %>
+<% let sup = "Superficie asignada al cultivo: " + cultivo.superficieAsignada + " ha" %>
+<% include agriculturaMargenBruto-cabecera %>
+<% let prodTotal = cultivo.superficieAsignada * cultivo.rendimiento %>
+<% let precioBruto = importeFormat(cultivo.precioPizarra) %>
+<% let porcGastos = importeFormat(cultivo.porcGastosComer) %>
+<% let precioNetoRaw = cultivo.precioPizarra * (100 - cultivo.porcGastosComer) / 100 %>
+<% let precioNeto = importeFormat(precioNetoRaw) %>
+<% include agriculturaMargenBruto-datosCultivo %>
+<% include agriculturaMargenBruto-tituloIngresos %>
+<% let impTotProd = importeFormat(prodTotal * precioNetoRaw) %>
+<% let impTotProdHa =  importeFormat(cultivo.rendimiento * precioNetoRaw) %>
+<% include agriculturaMargenBruto-datosIngresos %>
+<% include agriculturaMargenBruto-tituloEgresos %>
+<% let impTotGasDirRaw = 0 %>
+<% let impTotGasDirHaRaw = 0 %>
+<% let porcTotIngNetoRaw = 0 %>
+<% gastosDirectos.forEach(g => { %>
+<%   	impTotGasDirRaw += (g.Concepto.precio * g.cantRequerida * cultivo.superficieAsignada) %>
+<% }) %>
+<% gastosDirectos.forEach(g => { %>
+<%   	let _rawTot = g.Concepto.precio * g.cantRequerida * cultivo.superficieAsignada %>
+<%    	let impTotProd = importeFormat(_rawTot) %>
+<%   	 %>
+<%   	impTotGasDirHaRaw += (_rawTot / cultivo.superficieAsignada) %>
+<%     let impTotProdHa = importeFormat(_rawTot / cultivo.superficieAsignada) %>
+<%   	let porcGasto = importeFormat(_rawTot * 100 / impTotGasDirRaw) %>
+<%      %>
+<%      %>
+<%     let porcIngNeto = (_rawTot * 100 / (prodTotal * precioNetoRaw)) %>
+<%     porcTotIngNetoRaw += porcIngNeto %>
+<%   	porcIngNeto = importeFormat(porcIngNeto)  %>
+<%    %>
+<% include agriculturaMargenBruto-datosEgresos %>
+<% }) %>
+<% let impTotGasDir = importeFormat(impTotGasDirRaw) %>
+<% let impTotGasDirHa = importeFormat(impTotGasDirHaRaw) %>
+<% let porcTotIngNeto = importeFormat(porcTotIngNetoRaw) %>
+<% include agriculturaMargenBruto-totalEgresos %>
+<% let totMB = importeFormat((prodTotal * precioNetoRaw) - impTotGasDirRaw) %>
+<% let totMBHa = importeFormat((cultivo.rendimiento * precioNetoRaw) - impTotGasDirHaRaw) %>
+<% let totMBporcIng = importeFormat(100 - porcTotIngNetoRaw) %>
+<% include agriculturaMargenBruto-margenBruto %>
+<% function importeFormat(num) { %>
+<%   return (num.toFixed(2).replace('.', ',').replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.'))  %>
+<% } %>

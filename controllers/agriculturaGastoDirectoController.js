@@ -154,6 +154,33 @@ agriculturaGastoDirectoController.rptProgramaFisico = function (req, res) {
     })
 };
 
+agriculturaGastoDirectoController.rptMargenBruto = function (req, res) {
+    Cultivo.findByPk(req.params.id).then(cultivo => {
+        AgriculturaGastoDirecto.findAll({
+            where: {
+                empresaId: res.locals.empresa.empresaId,
+                cultivoId: req.params.id
+            },
+            include: [{
+                    model: Rubro
+                },
+                {
+                    model: Concepto
+                }
+            ]
+        }).then(gastosDirectos => {
+            let empresa = res.locals.empresa
+            let datos = {
+                empresa,
+                cultivo,
+                gastosDirectos
+            }
+
+            sendReport("agriculturaMargenBruto", datos, res)
+        })
+    })
+};
+
 module.exports = agriculturaGastoDirectoController;
 
 

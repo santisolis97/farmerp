@@ -59,9 +59,13 @@
 												data-toggle="modal">
 												<i class="fa fa-plus-circle"></i> Agregar
 											</a>
-											<a id="reporte" href="#rptModal" class="btn btn-primary"
+											<a id="reporte" href="#rptProgramaFisicoModal" class="btn btn-primary"
 												data-toggle="modal">
 												<i class="fa fa-file-pdf"></i>Programa Físico
+											</a>
+											<a id="reporte" href="#rptMargenBrutoModal" class="btn btn-primary"
+												data-toggle="modal">
+												<i class="fa fa-file-pdf"></i>Margen Bruto
 											</a>
 										</div>
 										<div id="tableButtons" class="d-md-none">
@@ -200,7 +204,8 @@
 	<% include gastoDirecto-edit %>
 	<% include gastoDirecto-view %>
 	<% include gastoDirecto-delete %>
-	<% include gastoDirecto-rpt %>
+	<% include gastoDirecto-rptProgramaFisico %>
+	<% include gastoDirecto-rptMargenBruto %>
 	<!-- /Formulario de los Popups  -->
 
 	<!-- Scripts -->
