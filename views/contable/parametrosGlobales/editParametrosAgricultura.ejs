@@ -3,13 +3,13 @@
         <div class="modal-content">
             <form method="POST" action="/contable/parametrosGlobales/updateParametroAgricultura/<%= parametroagricultura.Id %>">
                 <div class="modal-header">
-                    <h4 class="modal-title">Editar Parametros Agricultura</h4>
+                    <h4 class="modal-title">Editar Parámetros Agricultura</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <div class="modal-body">
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="alicuota" class='control-label'>ALÍCUOTA</label>
+                            <label for="alicuota" class='control-label'>Alícuota</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">%</span>
@@ -24,11 +24,16 @@
                         <div class="form-group col-md-6">
                             <label for="iva" class='control-label'>IVA</label>
                             <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">%</span>
-                                </div>
-                                <input name="parametroagricultura[iva]" type="number" min="0" step="0.01" max="100" class="form-control"
-                                    id="iva" placeholder="IVA" value="<%= parametroagricultura.iva.toFixed(2)%>" required>
+                                <select name="parametroagricultura[iva]" type="text" class="form-control" id="iva" required>
+                                    <% if(parametroagricultura.iva == 10.5){ %>
+                                        <option value="10.5" selected>10,5 %</option>
+                                        <option value="21">21,0 %</option>
+                                    <% } else { %>
+                                        <option value="10.5">10,5 %</option>
+                                        <option value="21" selected>21,0 %</option>
+                                    <% } %>
+                                </select>
+                                    
                                 <div class="invalid-feedback">
                                     Este campo es requerido.
                                 </div>
