@@ -69,7 +69,7 @@ grupoController.altaGrupo = function (req, res) {
         }
 
         var agriculturaparametros = {
-            iva:0.0,
+            iva: 10.5,
             alicuota:0.0,
             empresaId: empresa.empresaId
         }

@@ -1,0 +1,66 @@
+<% let fecha = "Fecha: " + _today %>
+<% let hora = "Hora: " + _now %>
+<% let titulo = "Ingresos Brutos - Resumido" %>
+<% let sup = "Del " + empresa.inicioEjercicioString + " al " + empresa.finEjercicioString  %>
+<% include ingresosBrutosResumido-cabecera %>
+<% include ingresosBrutosResumido-titulos %>
+<% let T_totComp = 0 %>
+<% let T_iva10Com = 0 %>
+<% let T_iva21Com = 0 %>
+<% let T_iva27Com = 0 %>
+<% let T_totIvaCom = 0 %>
+<% let T_totVta = 0 %>
+<% let T_iva10Vta = 0 %>
+<% let T_iva21Vta = 0 %>
+<% let T_totIvaVta = 0 %>
+<% let T_pos = 0 %>
+<% let T_posAcum = 0 %>
+<% let T_iibb = 0 %>
+<% movMeses.forEach(m => { %>
+<% 	let mes = m.mes %>
+<%     let totComp = importeFormat(m.totalCompras) %>
+<%     let iva10Com = importeFormat(m.iva10Compra) %>
+<%     let iva21Com = importeFormat(m.iva21Compra) %>
+<%     let iva27Com = importeFormat(m.iva27Compra) %>
+<% 	let totIvaCom = importeFormat(m.totalIvaCompra) %>
+<%      %>
+<%     let totVta = importeFormat(m.totalVentas) %>
+<%     let iva10Vta = importeFormat(m.iva10Venta) %>
+<%     let iva21Vta = importeFormat(m.iva21Venta) %>
+<% 	let totIvaVta = importeFormat(m.totalIvaVenta) %>
+<%      %>
+<% 	let pos = importeFormat(m.posicion) %>
+<% 	let posAcum = importeFormat(m.posicionAcumulada) %>
+<%     let iibb = importeFormat(m.iibb) %>
+<%      %>
+<%     T_totComp += m.totalCompras %>
+<%     T_iva10Com += m.iva10Compra %>
+<%     T_iva21Com += m.iva21Compra %>
+<%     T_iva27Com += m.iva27Compra %>
+<%     T_totIvaCom += m.totalIvaCompra %>
+<%     T_totVta += m.totalVentas %>
+<%     T_iva10Vta += m.iva10Venta %>
+<%     T_iva21Vta += m.iva21Venta %>
+<%     T_totIvaVta += m.totalIvaVenta %>
+<%     T_pos += m.posicion %>
+<%     T_posAcum += m.posicionAcumulada %>
+<%     T_iibb += m.iibb %>
+<%      %>
+<% include ingresosBrutosResumido-data %>
+<% }) %>
+<% T_totComp = importeFormat(T_totComp) %>
+<% T_iva10Com = importeFormat(T_iva10Com) %>
+<% T_iva21Com = importeFormat(T_iva21Com) %>
+<% T_iva27Com = importeFormat(T_iva27Com) %>
+<% T_totIvaCom = importeFormat(T_totIvaCom) %>
+<% T_totVta = importeFormat(T_totVta) %>
+<% T_iva10Vta = importeFormat(T_iva10Vta) %>
+<% T_iva21Vta = importeFormat(T_iva21Vta) %>
+<% T_totIvaVta = importeFormat(T_totIvaVta) %>
+<% T_pos = importeFormat(T_pos) %>
+<% T_posAcum = importeFormat(T_posAcum) %>
+<% T_iibb = importeFormat(T_iibb) %>
+<% include ingresosBrutosResumido-total %>
+<% function importeFormat(num) { %>
+<%   return (num.toFixed(2).replace('.', ',').replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.'))  %>
+<% } %>

@@ -27,6 +27,25 @@
 
             <div class="col-sm-12">
                 <div class="animated fadeIn">
+                    <!-- Reporte Ingresos Brutos -->
+                    <div id="" class="row mb-3">
+                        <div class="col-md-10">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex justify-content-start">          
+                                        </div>
+                                        <div id="tableButtons" class="d-none d-md-block">
+                                            <a id="imprimir" href="#rptIngresosBrutosResumido" class="btn btn-secondary" data-toggle="modal">
+                                                <i class="fa fa-print"></i> Ingresos Brutos
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Parámetros -->
                     <div class="row">
                         <!-- Agricultura -->
                         <div class="col-md-10">
@@ -34,7 +53,7 @@
                                 <div class="card-header">
                                     <div class="d-flex justify-content-between">
                                         <div class="d-flex justify-content-start">
-                                            <strong class="card-title align-middle">Agricultura</strong>
+                                            <strong class="card-title align-middle">Parámetros Globales Agricultura</strong>
                                         </div>
                                         <div id="tableButtons" class="d-none d-md-block">
                                             <a id="editar" href="#editarModal" class="btn btn-primary"
@@ -85,6 +104,7 @@
     <!-- PopUps -->
 
     <% include editParametrosAgricultura %>
+    <% include ingresosBrutos-rptResumido %>
 
     <!-- Scripts -->
     <% include ../../partials/common-scripts %>

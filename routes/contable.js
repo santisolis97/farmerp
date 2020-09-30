@@ -23,8 +23,16 @@ router.get('/estadoResultados', Logged.isLogged, function (req, res) {
 /* View */
 router.get('/parametrosGlobales', Logged.isLogged, contable.showparametrosGlobales);
 
+/* Reporte Ingresos Brutos */
+router.get('/parametrosGlobales/rpt/:id/ingresos-brutos-resumido', Logged.isLogged, contable.rptIngresosBrutosResumido);
+
 /* Edit */
 router.post('/parametrosGlobales/updateParametroAgricultura/:id', Logged.isLogged, contable.updateparametroAgricultura)
+
+
+
+
+
 
 /* ACTIVO */
 
