@@ -1,14 +1,20 @@
 'use strict';
 
 module.exports = (sequelize, DataTypes) => {
-    var Rubro = sequelize.define('Rubro', {
-        rubroId: {
+    var GanaderiaActividades = sequelize.define('GanaderiaActividades', {
+        actividadesId: {
             autoIncrement: true,
             primaryKey: true,
             type: DataTypes.INTEGER
         },
         nombre: {
             type: DataTypes.STRING,
+        },
+        cantidad: {
+            type: DataTypes.FLOAT(10,2)
+        },
+        superficieAsignada: {
+            type: DataTypes.FLOAT(10,2)
         },
         empresaId: {
             type: DataTypes.INTEGER,
@@ -18,14 +24,14 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: false,
     }, );
 
-    Rubro.associate = function (models) {
-        models.Rubro.belongsTo(models.Empresa, {
+    GanaderiaActividades.associate = function (models) {
+        models.GanaderiaActividades.belongsTo(models.Empresa, {
             foreignKey: 'empresaId', 
         });
-        models.Empresa.hasMany(models.Rubro, {
+        models.Empresa.hasMany(models.GanaderiaActividades, {
             foreignKey: 'empresaId',
         });
     };
 
-    return Rubro;
+    return GanaderiaActividades;
 };

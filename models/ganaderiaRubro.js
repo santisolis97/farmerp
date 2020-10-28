@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = (sequelize, DataTypes) => {
-    var Rubro = sequelize.define('Rubro', {
+    var GanaderiaRubro = sequelize.define('GanaderiaRubro', {
         rubroId: {
             autoIncrement: true,
             primaryKey: true,
@@ -18,14 +18,14 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: false,
     }, );
 
-    Rubro.associate = function (models) {
-        models.Rubro.belongsTo(models.Empresa, {
+    GanaderiaRubro.associate = function (models) {
+        models.GanaderiaRubro.belongsTo(models.Empresa, {
             foreignKey: 'empresaId', 
         });
-        models.Empresa.hasMany(models.Rubro, {
+        models.Empresa.hasMany(models.GanaderiaRubro, {
             foreignKey: 'empresaId',
         });
     };
 
-    return Rubro;
+    return GanaderiaRubro;
 };

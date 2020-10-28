@@ -1,0 +1,55 @@
+<div id="viewModal" class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form class="container" id="form-validation" novalidate onsubmit="return validateForm()" method="POST" action="/ganaderiaActividades/edit/">
+                <div class="modal-header">
+                    <h4 class="modal-title">Ganaderia Actividades</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="nombreganaderiaActividades" class='control-label'>Nombre</label>
+                            <input name="ganaderiaActividades[nombre]" type="text" class="form-control" id="nombreganaderiaActividades"
+                                placeholder="Nombre" readonly>
+                            <div class="invalid-feedback">
+                                Este campo es requerido.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="superficieAsignadaganaderiaActividades" class='control-label'>Superficie Asignada</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">ha</span>
+                                </div>
+                                <input name="ganaderiaActividades[superficieAsignada]" type="number" min="0" step="0.01" class="form-control"
+                                    id="superficieAsignadaganaderiaActividades" placeholder="Superficie Asignada" readonly>
+                                <div class="invalid-feedback">
+                                    Este campo es requerido.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="cantidadganaderiaActividades" class='control-label'>Cantidad</label>
+                            <div class="input-group">
+                                <input name="ganaderiaActividades[cantidad]" type="number" min="0" step="0.01" class="form-control"
+                                    id="cantidadganaderiaActividades" placeholder="Cantidad" readonly >
+                                <div class="invalid-feedback">
+                                    Este campo es requerido.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="ganaderiaActividades[empresaId]" value="<%= empresa.empresaId %>">
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Volver">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

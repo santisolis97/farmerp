@@ -1,0 +1,81 @@
+<div id="editarConceptoModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="container" id="form-validation" novalidate onsubmit="return validateForm()" method="POST" action="/ganaderiaDatosBase/concepto/edit/">
+                <div class="modal-header">
+                    <h4 class="modal-title">Ver Concepto</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="nombreConcepto" class='control-label'>Nombre</label>
+                            <input name="ganaderiaconcepto[nombre]" type="text" class="form-control" id="nombreConcepto"
+                                placeholder="Nombre">
+                            <div class="invalid-feedback">
+                                Este campo es requerido.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="unidad" class='control-label'>Unidad</label>
+                            <input name="ganaderiaconcepto[unidad]" type="text" class="form-control" id="unidad"
+                                placeholder="unidad" >
+                            <div class="invalid-feedback">
+                                Este campo es requerido.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="precioConcepto" class='control-label'>Precio</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input name="ganaderiaconcepto[precio]" type="number" min="0" step="0.01" class="form-control"
+                                    id="precioConcepto" placeholder="Precio" >
+                                <div class="invalid-feedback">
+                                    Este campo es requerido.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="porcIVAConcepto" class='control-label'>Porcentaje IVA</label>
+                            <select name="ganaderiaconcepto[porcIVA]" type="text" class="form-control" id="porcIVAConcepto" >
+                                <option value="0">Excento</option>
+                                <option value="10.5">10,5 %</option>
+                                <option value="21">21,0 %</option>
+                                <option value="27">27,0 %</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="mescompraconcepto" class='control-label'>Mes de compra</label>
+                            <select class="form-control" name="ganaderiaconcepto[mescompra]"
+                                id="mescompraconcepto" required >
+                                
+                                <% empresa.index.forEach(empresa =>{ %>
+                                    <option value="<%= empresa.index %>"><%= empresa.nombre %></option>
+                                    <% }) %>                       
+                            </select>
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="ganaderiaconcepto[empresaId]" value="<%= empresa.empresaId %>">
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Volver">
+                    <input id="botonGuardar" type="submit" class="btn btn-info" value="Aceptar">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
