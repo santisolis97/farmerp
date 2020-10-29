@@ -1,0 +1,209 @@
+<!doctype html>
+<html>
+
+<head>
+	<% include ../../partials/common-head %>
+</head>
+
+<body>
+
+	<!--Panel Izquierdo -->
+	<% include ../../partials/sidebar %>
+	<!-- /Panel izquierdo-->
+
+	<!-- Panel Derecho -->
+	<div id="right-panel" class="right-panel">
+
+		<!-- Cabecera-->
+		<% include ../../partials/cabecera %>
+		<!-- /Cabecera -->
+
+		<!-- Tabla del CRUD-->
+		<div class="content mt-3">
+
+			<!-- Mensaje -->
+			<% include ../../partials/mensaje %>
+			<!-- /Mensaje -->
+
+			<div class="col-sm-12">
+				<div class="animated fadeIn">
+					<div class="row">
+						<div class="col-md-12">
+							<!-- Cuerpo -->
+							<div class="card">
+								<div class="card-header">
+									<div class="d-flex justify-content-between">
+										<% if(actividadesAct){ %>
+										<div class="d-flex justify-content-start">
+											<strong class="card-title align-middle">Gastos Directos -</strong>
+											<div class="ml-1" id='dropdownVer'>
+												<a class="dropdown-toggle text-white" href="#" id="verTipo"
+													data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+													<strong><%= actividadesAct.nombre %></strong>
+												</a>
+												<div class="dropdown-menu dropdown-menu-right"
+													aria-labelledby="verTipo">
+													<% actividades.forEach(actividad =>{ %>
+													<a href="/ganaderiaGastosDirectos/<%= actividad.actividadesId %>"
+														class="dropdown-item"
+														id='<%= actividad.actividadesId %>'><%= actividad.nombre %></a>
+													<% }) %>
+												</div>
+											</div>
+											<div id="titulo" data-value="Gastos Directos - <%= actividadesAct.nombre %>">
+											</div>
+										</div>
+
+										<div id="tableButtons" class="d-none d-md-block">
+											<a id="agregar" href="#agregarModal" class="btn btn-primary"
+												data-toggle="modal">
+												<i class="fa fa-plus-circle"></i> Agregar
+											</a>
+										</div>
+										<div id="tableButtons" class="d-md-none">
+											<a id="agregar" href="#agregarModal" class="text-white" data-toggle="modal">
+												<i class="fa fa-plus-circle"></i>
+											</a>
+										</div>
+										<% } else { %>
+										<div class="d-flex justify-content-start">
+											<strong class="card-title align-middle">Gastos Directos - (No se cargaron
+												actividades)</strong>
+										</div>
+										<% }  %>
+									</div>
+								</div>
+								<div class="card-body">
+									<div class="table-responsive">
+										<table id="tabla-ganaderiagastos" class="table table-striped table-bordered">
+											<thead>
+												<tr>
+													<th>Rubro</th>
+													<th>Concepto</th>
+													<th>$/Unidad</th>
+													<th>Unidad/ha</th>
+													<th>Total $/ha</th>
+													<th class="d-none"><%= empresa.meses[0] %></th>
+													<th class="d-none"><%= empresa.meses[1] %></th>
+													<th class="d-none"><%= empresa.meses[2] %></th>
+													<th class="d-none"><%= empresa.meses[3] %></th>
+													<th class="d-none"><%= empresa.meses[4] %></th>
+													<th class="d-none"><%= empresa.meses[5] %></th>
+													<th class="d-none"><%= empresa.meses[6] %></th>
+													<th class="d-none"><%= empresa.meses[7] %></th>
+													<th class="d-none"><%= empresa.meses[8] %></th>
+													<th class="d-none"><%= empresa.meses[9] %></th>
+													<th class="d-none"><%= empresa.meses[10] %></th>
+													<th class="d-none"><%= empresa.meses[11] %></th>
+													<th>Total $/Actividad</th>
+													<th class="not-export-col">Acciones</th>
+												</tr>
+											</thead>
+											<tbody>
+												<% gastosDirectos.forEach(gasto => { %>
+												<tr data="<%= JSON.stringify(gasto) %>">
+													<td>
+														<%= gasto.GanaderiaRubro.nombre %>
+													</td>
+													<td>
+														<%= gasto.GanaderiaConcepto.nombre %>
+													</td>
+													<td class="importe" style="text-align:end;">
+														<%= gasto.GanaderiaConcepto.precio.toFixed(2) %>
+													</td>
+													<td style="text-align:end;">
+														<%= gasto.cantRequerida.toFixed(2) %>
+													</td>
+													<td class="importe" style="text-align:end;">
+														<%= (gasto.GanaderiaConcepto.precio * gasto.cantRequerida).toFixed(2) %>
+													</td>
+													<td class="d-none">
+                                                        <%= gasto.mes1 ? (gasto.GanaderiaConcepto.precio * gasto.cantRequerida * actividadesAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+                                                    </td>
+                                                    <td class="d-none">
+                                                        <%= gasto.mes2 ? (gasto.GanaderiaConcepto.precio * gasto.cantRequerida * actividadesAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+                                                    </td>
+                                                    <td class="d-none">
+                                                        <%= gasto.mes3 ? (gasto.GanaderiaConcepto.precio * gasto.cantRequerida * actividadesAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+                                                    </td>
+
+                                                    <td class="d-none">
+                                                        <%= gasto.mes4 ? (gasto.GanaderiaConcepto.precio * gasto.cantRequerida * actividadesAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+                                                    </td>
+                                                    <td class="d-none">
+                                                        <%= gasto.mes5 ? (gasto.GanaderiaConcepto.precio * gasto.cantRequerida * actividadesAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+                                                    </td>
+                                                    <td class="d-none">
+                                                        <%= gasto.mes6 ? (gasto.GanaderiaConcepto.precio * gasto.cantRequerida * actividadesAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+                                                    </td>
+
+                                                    <td class="d-none">
+                                                        <%= gasto.mes7 ? (gasto.GanaderiaConcepto.precio * gasto.cantRequerida * actividadesAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+                                                    </td>
+                                                    <td class="d-none">
+                                                        <%= gasto.mes8 ? (gasto.GanaderiaConcepto.precio * gasto.cantRequerida * actividadesAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+                                                    </td>
+                                                    <td class="d-none">
+                                                        <%= gasto.mes9 ? (gasto.GanaderiaConcepto.precio * gasto.cantRequerida * actividadesAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+                                                    </td>
+
+                                                    <td class="d-none">
+                                                        <%= gasto.mes10 ? (gasto.GanaderiaConcepto.precio * gasto.cantRequerida * actividadesAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+                                                    </td>
+                                                    <td class="d-none">
+                                                        <%= gasto.mes11 ? (gasto.GanaderiaConcepto.precio * gasto.cantRequerida * actividadesAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+                                                    </td>
+                                                    <td class="d-none">
+                                                        <%= gasto.mes12 ? (gasto.GanaderiaConcepto.precio * gasto.cantRequerida * actividadesAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+													</td>
+													
+													<td class="importe" style="text-align:end;">
+														<%= (gasto.GanaderiaConcepto.precio * gasto.cantRequerida * actividadesAct.superficieAsignada).toFixed(2) %>
+													</td>
+													<td>
+														<a id="view" href="#viewModal" class="view mr-2" title="Ver"
+															data-toggle="modal">
+															<i class="fa fa-eye fa-lg"></i>
+														</a>
+														<a id="editar" href="#editarModal" class="edit mr-2"
+															data-toggle="modal">
+															<i class="fa fa-edit fa-lg" title="Editar"></i>
+														</a>
+														<a id="eliminar" href="#eliminarModal" class="delete mr-2"
+															data-toggle="modal">
+															<i class="fa fa-trash fa-lg" title="Eliminar"></i>
+														</a>
+													</td>
+												</tr>
+												<% }) %>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<!-- /Cuerpo -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Tabla del CRUD-->
+	</div>
+	<!-- /Panel Derecho -->
+
+	<!-- Formulario de los Popups  -->
+	<% include gastoDirecto-add %>
+	<% include gastoDirecto-edit %>
+	<% include gastoDirecto-view %>
+	<% include gastoDirecto-delete %>
+	<!-- /Formulario de los Popups  -->
+
+	<!-- Scripts -->
+	<% include ../../partials/common-scripts %>
+	<script type="text/javascript">
+		InitDataTable("#tabla-ganaderiagastos");
+	</script>
+	<script src="/scripts/public-ganaderiaGastosDirectos.js"></script>
+</body>
+
+</html>
