@@ -92,11 +92,11 @@ ganaderiaGastoDirectoController.add = function (req, res) {
 };
 
 ganaderiaGastoDirectoController.saveEdit = function (req, res) {
-    var reqGastoDirecto = req.body.ganaderiaGastoDirecto
-
+    var reqGanaderiaGastoDirecto = req.body.ganaderiaGastoDirecto
+    console.log("aqui")
     GanaderiaGastoDirecto.findByPk(req.params.id).then(gastoDirecto => {
         gastoDirecto
-            .update(reqGastoDirecto)
+            .update(reqGanaderiaGastoDirecto )
             .then(c => {
                 req.flash("success_msg", "Se actualizó un Gasto Directo correctamente");
                 res.redirect(req.headers.referer);

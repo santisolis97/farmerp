@@ -21,7 +21,6 @@ gastosDirectos.forEach(function (row) {
     var editar = row.querySelector("#editar");
     editar.addEventListener("click", function () {
         var gastoDirecto = getElement(row);
-        console.log("aca estoy")
         vista = document.querySelector("#editarModal");
         vista.querySelector("form").setAttribute("action", "/ganaderiaGastosDirectos/edit/" + gastoDirecto.gastoDirectoId);
         setMeses()
