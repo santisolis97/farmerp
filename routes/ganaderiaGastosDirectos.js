@@ -19,4 +19,8 @@ router.post('/edit/:id', Logged.isLogged, gastoDirecto.saveEdit)
 /* Delete GastoDirecto */
 router.post('/delete/:id', Logged.isLogged, gastoDirecto.delete)
 
+/* Programa Físico GastoDirecto */
+router.get('/rpt/:id/programa-fisico', Logged.isLogged, gastoDirecto.rptProgramaFisico)
+
+
 module.exports = router;

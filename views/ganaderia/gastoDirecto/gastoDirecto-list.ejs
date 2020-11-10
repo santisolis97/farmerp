@@ -50,7 +50,8 @@
 													<% }) %>
 												</div>
 											</div>
-											<div id="titulo" data-value="Gastos Directos - <%= actividadesAct.nombre %>">
+											<div id="titulo"
+												data-value="Gastos Directos - <%= actividadesAct.nombre %>">
 											</div>
 										</div>
 
@@ -58,6 +59,10 @@
 											<a id="agregar" href="#agregarModal" class="btn btn-primary"
 												data-toggle="modal">
 												<i class="fa fa-plus-circle"></i> Agregar
+											</a>
+											<a id="reporte" href="#rptProgramaFisicoModal" class="btn btn-primary"
+												data-toggle="modal">
+												<i class="fa fa-file-pdf"></i>Programa Físico
 											</a>
 										</div>
 										<div id="tableButtons" class="d-md-none">
@@ -118,45 +123,45 @@
 														<%= (gasto.GanaderiaConcepto.precio * gasto.cantRequerida).toFixed(2) %>
 													</td>
 													<td class="d-none">
-                                                        <%= gasto.mes1 ? (gasto.GanaderiaConcepto.precio * gasto.cantRequerida * actividadesAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
-                                                    </td>
-                                                    <td class="d-none">
-                                                        <%= gasto.mes2 ? (gasto.GanaderiaConcepto.precio * gasto.cantRequerida * actividadesAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
-                                                    </td>
-                                                    <td class="d-none">
-                                                        <%= gasto.mes3 ? (gasto.GanaderiaConcepto.precio * gasto.cantRequerida * actividadesAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
-                                                    </td>
-
-                                                    <td class="d-none">
-                                                        <%= gasto.mes4 ? (gasto.GanaderiaConcepto.precio * gasto.cantRequerida * actividadesAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
-                                                    </td>
-                                                    <td class="d-none">
-                                                        <%= gasto.mes5 ? (gasto.GanaderiaConcepto.precio * gasto.cantRequerida * actividadesAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
-                                                    </td>
-                                                    <td class="d-none">
-                                                        <%= gasto.mes6 ? (gasto.GanaderiaConcepto.precio * gasto.cantRequerida * actividadesAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
-                                                    </td>
-
-                                                    <td class="d-none">
-                                                        <%= gasto.mes7 ? (gasto.GanaderiaConcepto.precio * gasto.cantRequerida * actividadesAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
-                                                    </td>
-                                                    <td class="d-none">
-                                                        <%= gasto.mes8 ? (gasto.GanaderiaConcepto.precio * gasto.cantRequerida * actividadesAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
-                                                    </td>
-                                                    <td class="d-none">
-                                                        <%= gasto.mes9 ? (gasto.GanaderiaConcepto.precio * gasto.cantRequerida * actividadesAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
-                                                    </td>
-
-                                                    <td class="d-none">
-                                                        <%= gasto.mes10 ? (gasto.GanaderiaConcepto.precio * gasto.cantRequerida * actividadesAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
-                                                    </td>
-                                                    <td class="d-none">
-                                                        <%= gasto.mes11 ? (gasto.GanaderiaConcepto.precio * gasto.cantRequerida * actividadesAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
-                                                    </td>
-                                                    <td class="d-none">
-                                                        <%= gasto.mes12 ? (gasto.GanaderiaConcepto.precio * gasto.cantRequerida * actividadesAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+														<%= gasto.mes1 ? (gasto.GanaderiaConcepto.precio * gasto.cantRequerida * actividadesAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
 													</td>
-													
+													<td class="d-none">
+														<%= gasto.mes2 ? (gasto.GanaderiaConcepto.precio * gasto.cantRequerida * actividadesAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+													</td>
+													<td class="d-none">
+														<%= gasto.mes3 ? (gasto.GanaderiaConcepto.precio * gasto.cantRequerida * actividadesAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+													</td>
+
+													<td class="d-none">
+														<%= gasto.mes4 ? (gasto.GanaderiaConcepto.precio * gasto.cantRequerida * actividadesAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+													</td>
+													<td class="d-none">
+														<%= gasto.mes5 ? (gasto.GanaderiaConcepto.precio * gasto.cantRequerida * actividadesAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+													</td>
+													<td class="d-none">
+														<%= gasto.mes6 ? (gasto.GanaderiaConcepto.precio * gasto.cantRequerida * actividadesAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+													</td>
+
+													<td class="d-none">
+														<%= gasto.mes7 ? (gasto.GanaderiaConcepto.precio * gasto.cantRequerida * actividadesAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+													</td>
+													<td class="d-none">
+														<%= gasto.mes8 ? (gasto.GanaderiaConcepto.precio * gasto.cantRequerida * actividadesAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+													</td>
+													<td class="d-none">
+														<%= gasto.mes9 ? (gasto.GanaderiaConcepto.precio * gasto.cantRequerida * actividadesAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+													</td>
+
+													<td class="d-none">
+														<%= gasto.mes10 ? (gasto.GanaderiaConcepto.precio * gasto.cantRequerida * actividadesAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+													</td>
+													<td class="d-none">
+														<%= gasto.mes11 ? (gasto.GanaderiaConcepto.precio * gasto.cantRequerida * actividadesAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+													</td>
+													<td class="d-none">
+														<%= gasto.mes12 ? (gasto.GanaderiaConcepto.precio * gasto.cantRequerida * actividadesAct.superficieAsignada / gasto.cantAplicaciones).toFixed(2) : 0.00 %>
+													</td>
+
 													<td class="importe" style="text-align:end;">
 														<%= (gasto.GanaderiaConcepto.precio * gasto.cantRequerida * actividadesAct.superficieAsignada).toFixed(2) %>
 													</td>
@@ -196,6 +201,7 @@
 	<% include gastoDirecto-edit %>
 	<% include gastoDirecto-view %>
 	<% include gastoDirecto-delete %>
+	<% include gastoDirecto-rptProgramaFisico %>
 	<!-- /Formulario de los Popups  -->
 
 	<!-- Scripts -->

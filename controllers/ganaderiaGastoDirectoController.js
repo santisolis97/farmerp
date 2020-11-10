@@ -126,6 +126,32 @@ ganaderiaGastoDirectoController.delete = function (req, res) {
         });
 };
 
+ganaderiaGastoDirectoController.rptProgramaFisico = function (req, res) {
+    GanaderiaActividades.findByPk(req.params.id).then(actividad => {
+        GanaderiaGastoDirecto.findAll({
+            where: {
+                empresaId: res.locals.empresa.empresaId,
+                actividadesId: actividad.actividadesId
+            },
+            include: [{
+                    model: GanaderiaRubro
+                },
+                {
+                    model: GanaderiaConcepto
+                }
+            ]
+        }).then(gastosDirectos => {
+            let empresa = res.locals.empresa
+            let datos = {
+                empresa,
+                actividad,
+                gastosDirectos
+            }
+
+            sendReport("ganaderiaProgramaFisico", datos, res, "landscape")
+        })
+    })
+};
 
 module.exports = ganaderiaGastoDirectoController;
 

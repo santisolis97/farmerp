@@ -4,7 +4,7 @@
             <form class="container" id="form-validation" novalidate method="POST" onsubmit="return validateForm()"
                 action="/agriculturaGastosDirectos/add">
                 <div class="modal-header">
-                    <h4 class="modal-title">Ver Gasto Directo - <%= cultivoAct.nombre %></h4>
+                    <h4 class="modal-title">Ver Gasto Directo - <%= (cultivoAct) ? cultivoAct.nombre : '' %></h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                         onclick="closeModal()">&times;</button>
                 </div>
