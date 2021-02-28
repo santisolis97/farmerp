@@ -14,6 +14,7 @@ tiposHacienda.forEach(function (row) {
         var tipoHacienda = getElement(row);
         vista = document.querySelector("#verModal");
         vista.querySelector("#nombreTipoHacienda").value = tipoHacienda.nombre;
+        vista.querySelector("#mortandad").value = tipoHacienda.mortandad;
     });
     
     var editar = row.querySelector("#editar");
@@ -24,6 +25,7 @@ tiposHacienda.forEach(function (row) {
             vista.querySelector("form").setAttribute("action", "/tiposHacienda/edit/" + tipoHacienda.tipoHaciendaId);
             
             vista.querySelector("#nombreTipoHacienda").value = tipoHacienda.nombre;
+            vista.querySelector("#mortandad").value = tipoHacienda.mortandad;
         });
     }
 

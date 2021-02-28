@@ -92,6 +92,7 @@ haciendaController.add = function (req, res) {
     });
 };
 
+
 haciendaController.saveEdit = function (req, res) {
   reqMC = req.body.movimientoCompra
   Hacienda.findByPk(req.params.id).then(hacienda => {
@@ -209,5 +210,16 @@ haciendaController.deshacerLiquidar = function (req, res) {
     });
 };
 
+haciendaController.getbyId = function (req, res) {
+  Hacienda.findAll({
+      where: {
+          haciendaId: req.params.id
+      }
+  }).then(hacienda => {
+      res.send({
+          hacienda
+      })
+  })
+};
 
 module.exports = haciendaController;

@@ -7,6 +7,9 @@ var hacienda = require('../controllers/haciendaController');
 /* List */
 router.get('/', Logged.isLogged, hacienda.list);
 
+/* List id */
+router.get('/:id', Logged.isLogged, hacienda.getbyId);
+
 /* Add */
 router.post('/add', Logged.isLogged, hacienda.add)
 
@@ -21,6 +24,5 @@ router.post('/deshacerLiquidar/:id', Logged.isLogged, hacienda.deshacerLiquidar)
 
 /* Delete */
 router.post('/delete/:id', Logged.isLogged, hacienda.delete)
-
 
 module.exports = router;

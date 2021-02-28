@@ -10,6 +10,9 @@ module.exports = (sequelize, DataTypes) => {
         nombre: {
             type: DataTypes.STRING,
         },
+        mortandad: {
+            type: DataTypes.FLOAT(6,2)
+        },
         empresaId: {
             type: DataTypes.INTEGER,
             allowNull: false

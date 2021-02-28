@@ -28,6 +28,18 @@ tipoHaciendaController.add = function (req, res) {
         });
 };
 
+tipoHaciendaController.getbyId = function (req, res) {
+    TipoHacienda.findAll({
+        where: {
+            tipoHaciendaId: req.params.id
+        }
+    }).then(tipoHacienda => {
+        res.send({
+            tipoHacienda
+        })
+    })
+  };
+
 tipoHaciendaController.saveEdit = function (req, res) {
    var reqTipoHacienda = req.body.tipoHacienda
     

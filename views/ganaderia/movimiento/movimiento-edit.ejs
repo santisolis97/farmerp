@@ -1,0 +1,75 @@
+<div id="editarModal" class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form class="container" id="form-validation" novalidate onsubmit="return validateForm()" method="POST" action="/ganaderiaMovimientos/edit/">
+                <div class="modal-header">
+                    <h4 class="modal-title">Editar Movimiento</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-row " id="origen">
+                        <div class="form-group col-md-6">
+                            <label for="categoriaHaciendaOrigen" class='control-label'>Categoría Origen</label>
+                            <select name="movimiento[categoriaHaciendaOrigenId]" class="form-control"
+                                id="categoriaHaciendaOrigen" readonly >
+                            </select>
+                        </div>
+                    </div> 
+                    <div class="form-row " id="entrada">
+                        <div class="form-group col-md-4">
+                            <label for="movimientoSalida" class='control-label'>Salidas (cb)</label>
+                            <input name="movimiento[salida]" type="text" class="form-control" id="movimientoSalida"
+                                placeholder="salida" onkeyup="updateEntrada()" >
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="movimientoPesoSalida" class='control-label'>Peso Salida (cb)</label>
+                            <input name="movimiento[pesoSalida]" type="text" class="form-control"
+                                id="movimientoPesoSalida" placeholder="peso Salida" >
+                        </div>
+                    </div>
+
+                    <div class="form-row " id="destino">
+                        <div class="form-group col-md-6">
+                            <label for="categoriaHaciendaDestino" class='control-label'>Categoría Destino</label>
+                            <select name="movimiento[categoriaHaciendaDestinoId]" class="form-control"
+                                id="categoriaHaciendaDestino" >
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row " id="salida">
+                        <div class="form-group col-md-4">
+                            <label for="movimientoEntrada" class='control-label'>Entradas (cb)</label>
+                            <input name="movimiento[entrada]" type="text" class="form-control" id="movimientoEntrada"
+                                placeholder="entrada" readonly >
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="movimientoPesoEntrada" class='control-label'>Peso Entradas (kg/cb)</label>
+                            <input name="movimiento[pesoEntrada]" type="text" class="form-control"
+                                id="movimientoPesoEntrada" placeholder="peso Entrada">
+                        </div>
+                    </div>
+                    <div class="form-row " id="mesesvalor">
+                        <div class="form-group col-md-4">
+                            <label for="mesmovimiento" class='control-label'>Mes de Movimiento</label>
+                            <select class="form-control" name="movimiento[mesMovimiento]" id="mesmovimiento"
+                               <% empresa.index.forEach(empresa =>{ %> <option
+                                value="<%= empresa.index %>"><%= empresa.nombre %></option>
+                                <% }) %>
+                            </select>
+                        </div>
+                    </div>
+                    <input type="hidden" name="movimiento[haciendaId]"
+                        value="<%= (HaciendaAct) ? HaciendaAct.haciendaId : '' %>">
+                        <input type="hidden" name="movimiento[tipoHaciendaId]"
+                        value="<%= (HaciendaAct) ? HaciendaAct.tipoHaciendaId : '' %>">
+                    <input type="hidden" name="movimiento[empresaId]" value="<%= empresa.empresaId %>">
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar"
+                        onclick="closeModal()">
+                    <input id="botonGuardar" type="submit" class="btn btn-info" value="Guardar">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

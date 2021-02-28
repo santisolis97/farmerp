@@ -7,6 +7,9 @@ var tipoHacienda = require('../controllers/tipoHaciendaController');
 /* List */
 router.get('/', Logged.isLogged, tipoHacienda.list);
 
+/* List id */
+router.get('/:id', Logged.isLogged, tipoHacienda.getbyId);
+
 /* Add */
 router.post('/add', Logged.isLogged, tipoHacienda.add)
 

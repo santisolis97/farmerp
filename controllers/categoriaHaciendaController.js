@@ -84,5 +84,28 @@ categoriaHaciendaController.getByTipo = function (req, res) {
         })
     })
 };
+categoriaHaciendaController.getById = function (req, res) {
+    CategoriaHacienda.findAll({
+        where: {
+            categoriaHaciendaId: req.params.categoriaHaciendaId
+        }
+    }).then(categorias => {
+        res.send({
+            categorias
+        })
+    })
+};
+
+categoriaHaciendaController.getbyIdCategoria = function (req, res) {
+    CategoriaHacienda.findAll({
+        where: {
+            categoriaHaciendaId: req.params.id
+        }
+    }).then(categoria => {
+        res.send({
+            categoria
+        })
+    })
+  };
 
 module.exports = categoriaHaciendaController;

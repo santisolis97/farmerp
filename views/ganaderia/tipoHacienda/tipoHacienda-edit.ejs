@@ -18,6 +18,19 @@
                                 Este campo es requerido.
                             </div>
                         </div>
+                        <div class="form-group col-md-12">
+                            <label for="mortandad" class='control-label'>Indice Mortandad</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">%</span>
+                                </div>
+                                <input name="tipoHacienda[mortandad]" type="number" min="0" step="0.01" max="100" class="form-control"
+                                    id="mortandad" placeholder="Mortandad"  required>
+                                <div class="invalid-feedback">
+                                    Este campo es requerido.
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <input type="hidden" name="tipoHacienda[empresaId]" value="<%= empresa.empresaId %>">
