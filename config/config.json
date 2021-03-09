@@ -14,11 +14,11 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "follsiyxkldkfm",
-    "password": "45a21295321b318111407c14b949a12e72f3bfdc4f162d3be8f8b87effbf0911",
-    "database": "dc37g2km4a5hqf",
-    "host": "ec2-174-129-41-127.compute-1.amazonaws.com",
-    "port": 5432,
-    "dialect": "postgres"
+    "username": "root",
+    "password": "rootpassword2020",
+    "database": "farmerp2020",
+    "host": "farmerp2020.cptsahqysrfu.us-east-1.rds.amazonaws.com",
+    "port": 3306,
+    "dialect": "mysql"
   }
 }
