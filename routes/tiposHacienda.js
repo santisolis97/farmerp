@@ -19,5 +19,8 @@ router.post('/edit/:id', Logged.isLogged, tipoHacienda.saveEdit)
 /* Delete */
 router.post('/delete/:id', Logged.isLogged, tipoHacienda.delete)
 
+/* Evolucion Rodeo */
+router.get('/rpt/:id/evolucion-rodeo', Logged.isLogged, tipoHacienda.rptEvolucionRodeo)
+
 
 module.exports = router;

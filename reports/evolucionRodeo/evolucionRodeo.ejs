@@ -1,0 +1,95 @@
+<% let fecha = "Fecha: " + _today %>
+<% let hora = "Hora: " + _now %>
+<% let titulo = "Programa Físico - " + cultivo.nombre %>
+<% let sup = "Superficie asignada al cultivo: " + cultivo.superficieAsignada + " ha" %>
+<% include agriculturaProgramaFisico-cabecera %>
+<% let mes1 = empresa.meses[0].split(" ")[0] %>
+<% let mes2 = empresa.meses[1].split(" ")[0] %>
+<% let mes3 = empresa.meses[2].split(" ")[0] %>
+<% let mes4 = empresa.meses[3].split(" ")[0] %>
+<% let mes5 = empresa.meses[4].split(" ")[0] %>
+<% let mes6 = empresa.meses[5].split(" ")[0] %>
+<% let mes7 = empresa.meses[6].split(" ")[0] %>
+<% let mes8 = empresa.meses[7].split(" ")[0] %>
+<% let mes9 = empresa.meses[8].split(" ")[0] %>
+<% let mes10 = empresa.meses[9].split(" ")[0] %>
+<% let mes11 = empresa.meses[10].split(" ")[0] %>
+<% let mes12 = empresa.meses[11].split(" ")[0] %>
+<% let anio1 = empresa.meses[0].split(" ")[1] %>
+<% let anio2 = empresa.meses[1].split(" ")[1] %>
+<% let anio3 = empresa.meses[2].split(" ")[1] %>
+<% let anio4 = empresa.meses[3].split(" ")[1] %>
+<% let anio5 = empresa.meses[4].split(" ")[1] %>
+<% let anio6 = empresa.meses[5].split(" ")[1] %>
+<% let anio7 = empresa.meses[6].split(" ")[1] %>
+<% let anio8 = empresa.meses[7].split(" ")[1] %>
+<% let anio9 = empresa.meses[8].split(" ")[1] %>
+<% let anio10 = empresa.meses[9].split(" ")[1] %>
+<% let anio11 = empresa.meses[10].split(" ")[1] %>
+<% let anio12 = empresa.meses[11].split(" ")[1] %>
+<% include agriculturaProgramaFisico-titulos %>
+<% let t1 = 0 %>
+<% let t2 = 0 %>
+<% let t3 = 0 %>
+<% let t4 = 0 %>
+<% let t5 = 0 %>
+<% let t6 = 0 %>
+<% let t7 = 0 %>
+<% let t8 = 0 %>
+<% let t9 = 0 %>
+<% let t10 = 0 %>
+<% let t11 = 0 %>
+<% let t12 = 0 %>
+<% let tt = 0 %>
+<% gastosDirectos.forEach(g => { %>
+<%   	let _rawTot = g.Concepto.precio * g.cantRequerida * cultivo.superficieAsignada %>
+<%    	let impTotal = importeFormat(_rawTot) %>
+<%   	let _rawMes = _rawTot / g.cantAplicaciones %>
+<%     let impMes = importeFormat(_rawMes) %>
+<%    %>
+<%     let c1 = (g.mes1 ? impMes : "0,00") %>
+<%     let c2 = (g.mes2 ? impMes : "0,00") %>
+<%     let c3 = (g.mes3 ? impMes : "0,00") %>
+<%     let c4 = (g.mes4 ? impMes : "0,00") %>
+<%     let c5 = (g.mes5 ? impMes : "0,00") %>
+<%     let c6 = (g.mes6 ? impMes : "0,00") %>
+<%     let c7 = (g.mes7 ? impMes : "0,00") %>
+<%     let c8 = (g.mes8 ? impMes : "0,00") %>
+<%     let c9 = (g.mes9 ? impMes : "0,00") %>
+<%     let c10 = (g.mes10 ? impMes : "0,00") %>
+<%     let c11 = (g.mes11 ? impMes : "0,00") %>
+<%     let c12 = (g.mes11 ? impMes : "0,00") %>
+<%      %>
+<%     t1 += (g.mes1 ? _rawMes : 0) %>
+<%   	t2 += (g.mes2 ? _rawMes : 0) %>
+<%     t3 += (g.mes3 ? _rawMes : 0) %>
+<%     t4 += (g.mes4 ? _rawMes : 0) %>
+<%     t5 += (g.mes5 ? _rawMes : 0) %>
+<%     t6 += (g.mes6 ? _rawMes : 0) %>
+<%     t7 += (g.mes7 ? _rawMes : 0) %>
+<%     t8 += (g.mes8 ? _rawMes : 0) %>
+<%     t9 += (g.mes9 ? _rawMes : 0) %>
+<%     t10 += (g.mes10 ? _rawMes : 0) %>
+<%     t11 += (g.mes11 ? _rawMes : 0) %>
+<%     t12 += (g.mes12 ? _rawMes : 0) %>
+<%   	tt += _rawTot %>
+<%      %>
+<% include agriculturaProgramaFisico-data %>
+<% }) %>
+<% t1 = importeFormat(t1) %>
+<% t2 = importeFormat(t2) %>
+<% t3 = importeFormat(t3) %>
+<% t4 = importeFormat(t4) %>
+<% t5 = importeFormat(t5) %>
+<% t6 = importeFormat(t6) %>
+<% t7 = importeFormat(t7) %>
+<% t8 = importeFormat(t8) %>
+<% t9 = importeFormat(t9) %>
+<% t10 = importeFormat(t10) %>
+<% t11 = importeFormat(t11) %>
+<% t12 = importeFormat(t12) %>
+<% tt = importeFormat(tt) %>
+<% include agriculturaProgramaFisico-total %>
+<% function importeFormat(num) { %>
+<%   return (num.toFixed(2).replace('.', ',').replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.'))  %>
+<% } %>

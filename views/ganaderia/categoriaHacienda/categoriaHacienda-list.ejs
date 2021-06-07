@@ -56,6 +56,11 @@
 												<tr>
 													<th>Tipos de Hacienda</th>
 													<th>Categoría</th>
+													<th>% Procreo</th>
+													<th>% Refugo</th>
+													<th>% Abigeato</th>
+													<th>% Descarte</th>
+													<th>% CUT</th>
 													<th class="not-export-col" style="width: 20%;">Acciones</th>
 												</tr>
 											</thead>
@@ -67,6 +72,21 @@
 													</td>
 													<td>
 														<%= categoriaHacienda.nombre %>
+													</td>
+													<td>
+														<%= categoriaHacienda.procreo %>
+													</td>
+													<td>
+														<%= categoriaHacienda.refugo %>
+													</td>
+													<td>
+														<%= categoriaHacienda.abigeato %>
+													</td>
+													<td>
+														<%= categoriaHacienda.descarte %>
+													</td>
+													<td>
+														<%= categoriaHacienda.cut %>
 													</td>
 													<td>
 														<a id="ver" href="#verModal" class="view mr-2" title="Ver"

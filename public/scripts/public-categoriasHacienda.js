@@ -15,6 +15,11 @@ categoriasHacienda.forEach(function (row) {
         vista = document.querySelector("#verModal");
         vista.querySelector("#tipoHaciendaNombre").value = categoriaHacienda.TipoHacienda.nombre;
         vista.querySelector("#nombreCategoriaHacienda").value = categoriaHacienda.nombre;
+        vista.querySelector("#procreo").value = categoriaHacienda.procreo;
+        vista.querySelector("#refugo").value = categoriaHacienda.refugo;
+        vista.querySelector("#abigeato").value = categoriaHacienda.abigeato;
+        vista.querySelector("#descarte").value = categoriaHacienda.descarte;
+        vista.querySelector("#cut").value = categoriaHacienda.cut;
     });
     
     var editar = row.querySelector("#editar");
@@ -26,6 +31,11 @@ categoriasHacienda.forEach(function (row) {
             
             vista.querySelector("#tipoCategoriaHacienda").value = categoriaHacienda.tipoHaciendaId;
             vista.querySelector("#nombreCategoriaHacienda").value = categoriaHacienda.nombre;
+            vista.querySelector("#procreo").value = categoriaHacienda.procreo;
+            vista.querySelector("#refugo").value = categoriaHacienda.refugo;
+            vista.querySelector("#abigeato").value = categoriaHacienda.abigeato;
+            vista.querySelector("#descarte").value = categoriaHacienda.descarte;
+            vista.querySelector("#cut").value = categoriaHacienda.cut;
         });
     }
 

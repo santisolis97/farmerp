@@ -10,6 +10,21 @@ module.exports = (sequelize, DataTypes) => {
         nombre: {
             type: DataTypes.STRING,
         },
+        procreo: {
+            type: DataTypes.FLOAT(10,2),
+        },
+        abigeato: {
+            type: DataTypes.FLOAT(10,2),
+        },
+        refugo: {
+            type: DataTypes.FLOAT(10,2),
+        },
+        descarte: {
+            type: DataTypes.FLOAT(10,2),
+        },
+        cut: {
+            type: DataTypes.FLOAT(10,2),
+        },
         tipoHaciendaId: {
             type: DataTypes.INTEGER,
             allowNull: false

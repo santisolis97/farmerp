@@ -17,13 +17,47 @@ if (agregar) {
 }
 
 movimientos.forEach(function (row) {
-    /* var ver = row.querySelector("#ver");
-    ver.addEventListener("click", function () {
-        var gastoDirecto = getElement(row);
-        vista = document.querySelector("#verModal");
-        setMeses()
-
-   }) */
+    
+    var view = row.querySelector("#view");
+    view.addEventListener("click", function () {
+        var movimiento = getElement(row);
+        vista = document.querySelector("#viewModal");
+        vista.querySelector("form").setAttribute("action", "/ganaderiaMovimientos/edit/" + movimiento.movimientoId);
+        
+        axios.get('/tiposHacienda/' + movimiento.TipoHacienda.tipoHaciendaid).then(res => {
+            tipoHacienda = res.data.tipoHacienda
+            
+        })
+        axios.get('/categoriasHacienda/api/tipo/' + movimiento.TipoHacienda.tipoHaciendaId).then(res => {
+            var categorias = res.data.categorias
+            var destino = vista.querySelector('#categoriaHaciendaDestino')
+            destino.innerHTML = ''
+    
+            categorias.forEach(categ => {
+                $(destino).append('<option value="'+ categ.categoriaHaciendaId +'">'+ categ.nombre +'</option>')
+            })
+            vista.querySelector("#categoriaHaciendaDestino").value = movimiento.categoriaHaciendaDestinoId;
+        })
+    
+        axios.get('/categoriasHacienda/' + movimiento.categoriaHaciendaOrigenId).then(res => {
+            var categoria = res.data.categoria
+            categoriaOrigen=categoria
+            var origen = vista.querySelector('#categoriaHaciendaOrigen')
+            origen.innerHTML = ''
+    
+            categoria.forEach(cate => {
+                $(origen).append('<option value="'+ cate.categoriaHaciendaId +'">'+ cate.nombre +'</option>')
+            })
+            vista.querySelector("#categoriaHaciendaOrigen").value = movimiento.categoriaHaciendaOrigenId;
+        })
+        
+        vista.querySelector("#movimientoSalida").value = movimiento.salida;
+        vista.querySelector("#movimientoPesoSalida").value = movimiento.pesoSalida;
+        vista.querySelector("#movimientoEntrada").value = movimiento.entrada;
+        vista.querySelector("#movimientoPesoEntrada").value = movimiento.pesoEntrada;
+        vista.querySelector("#mesmovimiento").value = movimiento.mesMovimiento;
+       
+    })
 
     var editar = row.querySelector("#editar");
     editar.addEventListener("click", function () {

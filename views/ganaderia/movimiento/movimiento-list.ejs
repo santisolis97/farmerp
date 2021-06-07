@@ -85,7 +85,6 @@
 													<th>CategoriaDestino</th>
 													<th>Entrada</th>
 													<th>Peso Entrada</th>
-													<th>Mes Movimiento</th>
 													<th class="not-export-col">Acciones</th>
 												</tr>
 											</thead>
@@ -108,9 +107,10 @@
 														<%= movimiento.pesoEntrada %>
 													</td>
 													<td>
-														<%= movimiento.mesMovimiento %>
-													</td>
-													<td>
+														<a id="view" href="#viewModal" class="view mr-2"
+															data-toggle="modal">
+															<i class="fa fa-eye fa-lg" title="Ver"></i> 
+														</a>
 														<a id="editar" href="#editarModal" class="edit mr-2"
 															data-toggle="modal">
 															<i class="fa fa-edit fa-lg" title="Editar"></i>
@@ -139,6 +139,7 @@
 
 	<!-- Formulario de los Popups  -->
 	<% include movimiento-add %>
+	<% include movimiento-view %>
 	<% include movimiento-edit %>
 	<% include movimiento-delete %>
 

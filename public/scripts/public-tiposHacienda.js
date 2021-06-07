@@ -1,6 +1,7 @@
 var tiposHacienda = document.querySelectorAll("table tbody tr");
 var vista;
 
+
 var agregar = document.querySelector("#agregar");
 if (agregar) {
     agregar.addEventListener('click', function () {
@@ -26,6 +27,18 @@ tiposHacienda.forEach(function (row) {
             
             vista.querySelector("#nombreTipoHacienda").value = tipoHacienda.nombre;
             vista.querySelector("#mortandad").value = tipoHacienda.mortandad;
+        });
+    }
+
+    var rodeo = row.querySelector("#rptrodeo");
+    if (rodeo) {
+        rodeo.addEventListener("click", function () {
+            var tipoHacienda = getElement(row);
+            vista = document.querySelector("#rptEvolucionRodeo");
+            vista.querySelector("#url").setAttribute("src","/tiposHacienda/rpt/"+ tipoHacienda.tipoHaciendaId +"/evolucion-rodeo");
+            
+            vista.querySelector("#nombreTipoHacienda").innerHTML = "Evolucion Rodeo -" + tipoHacienda.nombre;
+        
         });
     }
 

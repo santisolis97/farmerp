@@ -19,6 +19,71 @@
                             <input name="categoriaHacienda[nombre]" type="text" class="form-control"
                                 id="nombreCategoriaHacienda" placeholder="Nombre" value="" readonly>
                         </div>
+                        <div class="form-group col-md-4">
+                            <label for="procreo" class='control-label'>Indice Procreo</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">%</span>
+                                </div>
+                                <input name="categoriaHacienda[procreo]" value="0" type="number" min="0" step="0.01" max="100" class="form-control"
+                                    id="procreo" placeholder="Procreo" readonly>
+                                <div class="invalid-feedback">
+                                    Este campo es requerido.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="refugo" class='control-label'>Indice Refugo</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">%</span>
+                                </div>
+                                <input name="categoriaHacienda[refugo]" value="0" type="number" min="0" step="0.01" max="100" class="form-control"
+                                    id="refugo" placeholder="Refugo" readonly>
+                                <div class="invalid-feedback">
+                                    Este campo es requerido.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="abigeato" class='control-label'>Indice Abigeato</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">%</span>
+                                </div>
+                                <input name="categoriaHacienda[abigeato]" value="0" type="number" min="0" step="0.01" max="100" class="form-control"
+                                    id="abigeato" placeholder="Abigeato" readonly>
+                                <div class="invalid-feedback">
+                                    Este campo es requerido.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="descarte" class='control-label'>Indice Descarte</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">%</span>
+                                </div>
+                                <input name="categoriaHacienda[descarte]" value="0" type="number" min="0" step="0.01" max="100" class="form-control"
+                                    id="descarte" placeholder="Descarte" readonly>
+                                <div class="invalid-feedback">
+                                    Este campo es requerido.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="cut" class='control-label'>Indice CUT</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">%</span>
+                                </div>
+                                <input name="categoriaHacienda[cut]" value="0" type="number" min="0" step="0.01" max="100" class="form-control"
+                                    id="cut" placeholder="CUT" readonly>
+                                <div class="invalid-feedback">
+                                    Este campo es requerido.
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
