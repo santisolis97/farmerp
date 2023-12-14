@@ -85,6 +85,12 @@
         border: 0 !important;
         border-radius: 0.25rem 0 0 0.25rem !important;
     }
+    .input-group-text-right { 
+        background: #c0392b !important;
+        color: white !important;
+        border: 0 !important;
+        border-radius: 0 0.25rem 0.25rem 0 !important;
+    }
     .input_user,
     .input_pass:focus {
         box-shadow: none !important;

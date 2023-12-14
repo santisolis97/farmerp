@@ -86,9 +86,26 @@ models.sequelize.sync({
         montoInicial: 0.0,
         empresaId: 1
       }
-
+      var agriculturaparametros = {
+        iva: 10.5,
+        alicuota:0.0,
+        empresaId: 1,
+    }
+    const cultivoData = {
+      nombre: 'Example Cultivo',
+      rendimiento: 150.50,
+      superficieAsignada: 1110.25,
+      precioPizarra: 25.99,
+      porcGastosComer: 5.5,
+      porcVenta: 80.0,
+      porcAlmacenamiento: 7.5,
+      porcDobleProposito: 10.0,
+      mesventa: 6,
+      empresaId: 1,
+    };
       models.User.create(user1).then(() => {
         models.Empresa.create(empresa).then(empresa => {
+          models.Cultivo.create(cultivoData)
           models.UserEmpresa.create({
               userId: 1,
               empresaId: 1,
@@ -98,6 +115,7 @@ models.sequelize.sync({
           models.Banco.create(banco)
           models.Inversion.create(inversion)
           models.User.create(user2)
+          models.parametrosAgricultura.create(agriculturaparametros)
         })
       })
     }
