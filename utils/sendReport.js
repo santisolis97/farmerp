@@ -97,9 +97,9 @@ module.exports = function sendReport(rptname, datos, res, orientation) {
                 res.contentType("application/pdf");
                 res.send(dataPDF);
 
-                fs.unlink("./reports/temp/" + rptname + ".pdf", (err) => {
-                  if (err) throw err;
-                });
+                // fs.unlink("./reports/temp/" + rptname + ".pdf", (err) => {
+                //   if (err) throw err;
+                // });
               }
             }
           );
