@@ -148,7 +148,7 @@ agriculturaGastoDirectoController.rptProgramaFisico = function (req, res) {
         gastosDirectos,
       };
 
-      sendReport("agriculturaProgramaFisico", datos, res, "landscape");
+      sendReport("agriculturaProgramaFisico", datos, res, "landscape", true);
     });
   });
 };
