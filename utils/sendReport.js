@@ -89,17 +89,12 @@ module.exports = function sendReport(rptname, datos, res, orientation) {
           },
         };
 
-        pdf.create(data, options).toFile(tempFilePath, function (err, data) {
+        pdf.create(data, options).toBuffer((err, buffer) => {
           if (err) {
             res.send(err);
           } else {
-            var dataPDF = fs.readFileSync("./reports/temp/" + rptname + ".pdf");
             res.contentType("application/pdf");
-            res.send(dataPDF);
-
-            fs.unlink("./reports/temp/" + rptname + ".pdf", (err) => {
-              if (err) throw err;
-            });
+            res.send(buffer);
           }
         });
       }
