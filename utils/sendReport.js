@@ -56,11 +56,11 @@ module.exports = function sendReport(rptname, datos, res, orientation) {
           }
         } else {
           if (orientation == "landscape") {
-            _height = "210mm";
-            _width = "297mm";
+            _height = "278mm";
+            _width = "396mm";
           } else {
-            _height = "297mm";
-            _width = "210mm";
+            _height = "396mm";
+            _width = "278mm";
           }
         }
         let options = {
