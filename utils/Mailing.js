@@ -7,7 +7,7 @@ function enviarMail(para, asunto, mensaje) {
     port: 587,
     auth: {
       user: "farm-erp@outlook.com",
-      pass: "Password@1!",
+      pass: process.env.GMAIL_PASSWORD,
     },
     tls: {
       ciphers: "SSLv3",
