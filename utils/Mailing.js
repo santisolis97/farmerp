@@ -1,32 +1,37 @@
-var nodemailer = require('nodemailer');
+var nodemailer = require("nodemailer");
 
 function enviarMail(para, asunto, mensaje) {
-    var smtpTransport = nodemailer.createTransport({
-        service: 'Gmail',
-        auth: {
-            user: 'farmerp.utn.frre@gmail.com',
-            pass: 'dc37g2km4a5hqf'
-        }
-    });
+  var smtpTransport = nodemailer.createTransport({
+    host: "smtp-mail.outlook.com",
+    secureConnection: false,
+    port: 587,
+    auth: {
+      user: "farm-erp@outlook.com",
+      pass: "Password@1!",
+    },
+    tls: {
+      ciphers: "SSLv3",
+    },
+  });
 
-    var mailOptions = {
-        from: '"FarmERP - UTN FRRe" <farmerp.utn.frre@gmail.com>',
-        to: para,
-        subject: asunto,
-        text: mensaje
-    };
+  var mailOptions = {
+    from: "farm-erp@outlook.com",
+    to: para,
+    subject: asunto,
+    text: mensaje,
+  };
 
-    try {
-        smtpTransport.sendMail(mailOptions);
-    } catch (error) {
-        console.log(error)
-    }
+  try {
+    smtpTransport.sendMail(mailOptions);
+  } catch (error) {
+    console.log(error);
+  }
 
-    if (process.env.NODE_ENV != 'test') {
-        console.log('Mail enviado a ' + para + ', asunto: ' + asunto);
-    }
+  if (process.env.NODE_ENV != "test") {
+    console.log("Mail enviado a " + para + ", asunto: " + asunto);
+  }
 }
 
 module.exports = {
-    enviarMail
-}
+  enviarMail,
+};
