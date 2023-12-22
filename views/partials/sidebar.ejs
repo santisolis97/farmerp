@@ -1,104 +1,215 @@
 <aside id="left-panel" class="left-panel">
-    <nav class="navbar navbar-expand-sm navbar-default">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/">
-                <h2><img src="/src/logo.png" class="" height="75px">
-                </h2>
-            </a>
-        </div>
+  <nav class="navbar navbar-expand-sm navbar-default">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">
+        <h2><img src="/src/logo.png" class="" height="75px" /></h2>
+      </a>
+    </div>
 
+    <div id="main-menu" class="main-menu collapse navbar-collapse">
+      <ul class="nav navbar-nav mt-4">
+        <!-- Menú -->
+        <!-- <li><a href="#"><i class="menu-icon fa fa-book"></i>Inicio</a></li> -->
 
-        <div id="main-menu" class="main-menu collapse navbar-collapse">
-            <ul class="nav navbar-nav mt-4">
-                <!-- Menú -->
-                <!-- <li><a href="#"><i class="menu-icon fa fa-book"></i>Inicio</a></li> -->
+        <li class="menu-item-has-children dropdown">
+          <a
+            href="#"
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <i class="menu-icon fa fa-book"></i>Contable</a
+          >
+          <ul class="sub-menu children dropdown-menu">
+            <li>
+              <i class="fa fa-check"></i
+              ><a href="/contable/situacionPatrimonial"
+                >Situación Patrimonial</a
+              >
+            </li>
+            <li>
+              <i class="fa fa-check"></i
+              ><a href="/contable/indicesFinancieros">Índices Financieros</a>
+            </li>
+            <li>
+              <i class="fa fa-check"></i
+              ><a href="/contable/estadoResultados">Estado de Resultados</a>
+            </li>
+            <li>
+              <i class="fa fa-check"></i
+              ><a href="/contable/indicesEconomicos">Índices Económicos</a>
+            </li>
+            <li>
+              <i class="fa fa-check"></i
+              ><a href="/contable/parametrosGlobales">Parametros Globales</a>
+            </li>
+          </ul>
+        </li>
 
-                <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">
-                        <i class="menu-icon fa fa-book"></i>Contable</a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-check"></i><a href="/contable/situacionPatrimonial">Situación
-                                Patrimonial</a></li>
-                        <li><i class="fa fa-check"></i><a href="/contable/indicesFinancieros">Índices Financieros</a>
-                        </li>
-                        <li><i class="fa fa-check"></i><a href="/contable/estadoResultados">Estado de Resultados</a>
-                        </li>
-                        <li><i class="fa fa-check"></i><a href="/contable/indicesEconomicos">Índices Económicos</a></li>
-                        <li><i class="fa fa-check"></i><a href="/contable/parametrosGlobales">Ingresos Brutos</a></li>
-                    </ul>
-                </li>
+        <li class="menu-item-has-children dropdown">
+          <a
+            href="#"
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <i class="menu-icon fa fa-cash-register"></i>Recursos</a
+          >
+          <ul class="sub-menu children dropdown-menu">
+            <li>
+              <i class="fa fa-check"></i
+              ><a href="/disponibilidades">Disponibilidades</a>
+            </li>
+            <li><i class="fa fa-check"></i><a href="/creditos">Créditos</a></li>
+            <li>
+              <i class="fa fa-check"></i
+              ><a href="/retiroSocios">Retiro de Socios</a>
+            </li>
+            <li>
+              <i class="fa fa-check"></i
+              ><a href="/deudasComerciales">Deudas Comerciales</a>
+            </li>
+            <li>
+              <i class="fa fa-check"></i
+              ><a href="/deudasFinancieras">Deudas Financieras</a>
+            </li>
+            <li>
+              <i class="fa fa-check"></i
+              ><a href="/deudasFiscales">Deudas Fiscales</a>
+            </li>
+            <li>
+              <i class="fa fa-check"></i
+              ><a href="/deudasSociales">Deudas Sociales</a>
+            </li>
+            <li>
+              <i class="fa fa-check"></i
+              ><a href="/otrasDeudas">Otras Dedudas</a>
+            </li>
+          </ul>
+        </li>
 
-                <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">
-                        <i class="menu-icon fa fa-cash-register"></i>Recursos</a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-check"></i><a href="/disponibilidades">Disponibilidades</a></li>
-                        <li><i class="fa fa-check"></i><a href="/creditos">Créditos</a></li>
-                        <li><i class="fa fa-check"></i><a href="/retiroSocios">Retiro de Socios</a></li>
-                        <li><i class="fa fa-check"></i><a href="/deudasComerciales">Deudas Comerciales</a></li>
-                        <li><i class="fa fa-check"></i><a href="/deudasFinancieras">Deudas Financieras</a></li>
-                        <li><i class="fa fa-check"></i><a href="/deudasFiscales">Deudas Fiscales</a></li>
-                        <li><i class="fa fa-check"></i><a href="/deudasSociales">Deudas Sociales</a></li>
-                        <li><i class="fa fa-check"></i><a href="/otrasDeudas">Otras Dedudas</a></li>
-                    </ul>
-                </li>
+        <li class="menu-item-has-children dropdown">
+          <a
+            href="#"
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <i class="menu-icon fas fa-hand-holding-usd"></i>Capital</a
+          >
+          <ul class="sub-menu children dropdown-menu">
+            <li><i class="fa fa-check"></i><a href="/lotes">Lotes</a></li>
+            <li>
+              <i class="fa fa-check"></i
+              ><a href="/infraestructuras">Infraestructura</a>
+            </li>
+            <li>
+              <i class="fa fa-check"></i
+              ><a href="/administraciones">Administración</a>
+            </li>
+            <li>
+              <i class="fa fa-check"></i
+              ><a href="/equipos">Equipos y Herramientas</a>
+            </li>
+            <li><i class="fa fa-check"></i><a href="/rodados">Rodados</a></li>
+            <li>
+              <i class="fa fa-check"></i><a href="/tractores">Tractores</a>
+            </li>
+            <li>
+              <i class="fa fa-check"></i><a href="/implementos">Implementos</a>
+            </li>
+            <li>
+              <i class="fa fa-check"></i
+              ><a href="/autopropulsados">Autopropulsados</a>
+            </li>
+            <li>
+              <i class="fa fa-check"></i
+              ><a href="/insumos">Insumos Agric./Gan.</a>
+            </li>
+            <li><i class="fa fa-check"></i><a href="/praderas">Praderas</a></li>
+            <li>
+              <i class="fa fa-check"></i
+              ><a href="/stocks">Stock de Productos</a>
+            </li>
+          </ul>
+        </li>
 
-                <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">
-                        <i class="menu-icon fas fa-hand-holding-usd"></i>Capital</a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-check"></i><a href="/lotes">Lotes</a></li>
-                        <li><i class="fa fa-check"></i><a href="/infraestructuras">Infraestructura</a></li>
-                        <li><i class="fa fa-check"></i><a href="/administraciones">Administración</a></li>
-                        <li><i class="fa fa-check"></i><a href="/equipos">Equipos y Herramientas</a></li>
-                        <li><i class="fa fa-check"></i><a href="/rodados">Rodados</a></li>
-                        <li><i class="fa fa-check"></i><a href="/tractores">Tractores</a></li>
-                        <li><i class="fa fa-check"></i><a href="/implementos">Implementos</a></li>
-                        <li><i class="fa fa-check"></i><a href="/autopropulsados">Autopropulsados</a></li>
-                        <li><i class="fa fa-check"></i><a href="/insumos">Insumos Agric./Gan.</a></li>
-                        <li><i class="fa fa-check"></i><a href="/praderas">Praderas</a></li>
-                        <li><i class="fa fa-check"></i><a href="/stocks">Stock de Productos</a></li>
-                    </ul>
-                </li>
-
-                <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">
-                        <i class="menu-icon fas fa-horse"></i>Ganadería</a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-check"></i><a href="/ganaderiaActividades">Actividades</a></li>
-                        <li><i class="fa fa-check"></i><a href="/ganaderiaDatosBase">Rubros y Conceptos</a></li>
-                        <li><i class="fa fa-check"></i><a href="/ganaderiaGastosDirectos">Gastos Directos</a></li>     
-                        <li><i class="fa fa-check"></i><a href="/haciendas">Hacienda</a></li>
-                        <li><i class="fa fa-check"></i><a href="/tiposHacienda">Tipos de Hacienda</a></li>
-                        <li><i class="fa fa-check"></i><a href="/categoriasHacienda">Categorías de Hacienda</a></li>
-                        <li><i class="fa fa-check"></i><a href="/ganaderiaMovimientos">Movimientos</a></li>
-                        <!-- <li><i class="fa fa-check"></i><a href="#" onclick="alert('Proximamente...')">Opción 1</a></li>
+        <li class="menu-item-has-children dropdown">
+          <a
+            href="#"
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <i class="menu-icon fas fa-horse"></i>Ganadería</a
+          >
+          <ul class="sub-menu children dropdown-menu">
+            <li>
+              <i class="fa fa-check"></i
+              ><a href="/ganaderiaActividades">Actividades</a>
+            </li>
+            <li>
+              <i class="fa fa-check"></i
+              ><a href="/ganaderiaDatosBase">Rubros y Conceptos</a>
+            </li>
+            <li>
+              <i class="fa fa-check"></i
+              ><a href="/ganaderiaGastosDirectos">Gastos Directos</a>
+            </li>
+            <li>
+              <i class="fa fa-check"></i><a href="/haciendas">Hacienda</a>
+            </li>
+            <li>
+              <i class="fa fa-check"></i
+              ><a href="/tiposHacienda">Tipos de Hacienda</a>
+            </li>
+            <li>
+              <i class="fa fa-check"></i
+              ><a href="/categoriasHacienda">Categorías de Hacienda</a>
+            </li>
+            <li>
+              <i class="fa fa-check"></i
+              ><a href="/ganaderiaMovimientos">Movimientos</a>
+            </li>
+            <!-- <li><i class="fa fa-check"></i><a href="#" onclick="alert('Proximamente...')">Opción 1</a></li>
                         <li><i class="fa fa-check"></i><a href="#" onclick="alert('Proximamente...')">Opción 2</a></li>
                         <li><i class="fa fa-check"></i><a href="#" onclick="alert('Proximamente...')">Opción 3</a></li>
                         <li><i class="fa fa-check"></i><a href="#" onclick="alert('Proximamente...')">Opción 4</a></li> -->
-                        <!-- <li><i class="fa fa-check"></i><a href="#" onclick="alert('Proximamente...')">Opción 1</a></li>
+            <!-- <li><i class="fa fa-check"></i><a href="#" onclick="alert('Proximamente...')">Opción 1</a></li>
                         <li><i class="fa fa-check"></i><a href="#" onclick="alert('Proximamente...')">Opción 2</a></li>
                         <li><i class="fa fa-check"></i><a href="#" onclick="alert('Proximamente...')">Opción 3</a></li>
                         <li><i class="fa fa-check"></i><a href="#" onclick="alert('Proximamente...')">Opción 4</a></li> -->
-                    </ul>
-                </li>
+          </ul>
+        </li>
 
-                <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">
-                        <i class="menu-icon fas fa-seedling"></i>Agricultura</a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-check"></i><a href="/cultivos">Cultivos</a></li>
-                        <li><i class="fa fa-check"></i><a href="/agriculturaDatosBase">Rubros y Conceptos</a></li>
-                        <li><i class="fa fa-check"></i><a href="/agriculturaGastosDirectos">Gastos Directos</a></li>
-                    </ul>
-                </li>
+        <li class="menu-item-has-children dropdown">
+          <a
+            href="#"
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <i class="menu-icon fas fa-seedling"></i>Agricultura</a
+          >
+          <ul class="sub-menu children dropdown-menu">
+            <li><i class="fa fa-check"></i><a href="/cultivos">Cultivos</a></li>
+            <li>
+              <i class="fa fa-check"></i
+              ><a href="/agriculturaDatosBase">Rubros y Conceptos</a>
+            </li>
+            <li>
+              <i class="fa fa-check"></i
+              ><a href="/agriculturaGastosDirectos">Gastos Directos</a>
+            </li>
+          </ul>
+        </li>
 
-                <!-- <li class="menu-item-has-children dropdown">
+        <!-- <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
                         <i class="menu-icon fas fa-tractor"></i>Empresa Maquinaria</a>
@@ -110,7 +221,7 @@
                     </ul>
                 </li> -->
 
-                <!-- <li class="menu-item-has-children dropdown">
+        <!-- <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
                         <i class="menu-icon fas fa-users"></i>Personal</a>
@@ -122,14 +233,18 @@
                     </ul>
                 </li> -->
 
-                <% if(user.role == 'admin'){ %>
-                <li><a href="/grupos"><i class="menu-icon fa fa-arrow-left"></i>Menú de Administrador</a></li>
-                <% } %>
-                <!-- Fin Menú -->
-            </ul>
-            <br>
-        </div>
-    </nav>
+        <% if(user.role == 'admin'){ %>
+        <li>
+          <a href="/grupos"
+            ><i class="menu-icon fa fa-arrow-left"></i>Menú de Administrador</a
+          >
+        </li>
+        <% } %>
+        <!-- Fin Menú -->
+      </ul>
+      <br />
+    </div>
+  </nav>
 </aside>
 
 <script src="/scripts/sidebar.js"></script>
