@@ -31,8 +31,8 @@ ganaderiaconceptos.forEach(function (row) {
         editar.addEventListener("click", function () {
             var ganaderiaconcepto = getElement(row);
             vista = document.querySelector("#editarConceptoModal");
-            vista.querySelector("form").setAttribute("action", "/ganaderiaDatosBase/concepto/edit/" + ganaderiaconceptos.conceptosId);
-            
+            vista.querySelector("form").setAttribute("action", "/ganaderiaDatosBase/concepto/edit/" + ganaderiaconcepto.conceptoId);
+
             vista.querySelector("#nombreConcepto").value = ganaderiaconcepto.nombre;
             vista.querySelector("#precioConcepto").value = ganaderiaconcepto.precio;
             vista.querySelector("#unidad").value = ganaderiaconcepto.unidad;
