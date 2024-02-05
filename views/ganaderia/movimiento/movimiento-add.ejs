@@ -20,13 +20,19 @@
                     <div class="form-row " id="entrada">
                         <div class="form-group col-md-4">
                             <label for="movimientoSalida" class='control-label'>Salidas (cb)</label>
-                            <input name="movimiento[salida]" type="text" class="form-control" id="movimientoSalida"
+                            <input required name="movimiento[salida]" type="text" class="form-control" id="movimientoSalida"
                                 placeholder="salida" onkeyup="updateEntrada()" >
+                                <div class="invalid-feedback">
+                                    Este campo es requerido.
+                                </div>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="movimientoPesoSalida" class='control-label'>Peso Salida (cb)</label>
-                            <input name="movimiento[pesoSalida]" type="text" class="form-control"
+                            <input required name="movimiento[pesoSalida]" type="text" class="form-control"
                                 id="movimientoPesoSalida" placeholder="peso Salida" >
+                                <div class="invalid-feedback">
+                                    Este campo es requerido.
+                                </div>
                         </div>
                     </div>
 
@@ -46,8 +52,11 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label for="movimientoPesoEntrada" class='control-label'>Peso Entradas (kg/cb)</label>
-                            <input name="movimiento[pesoEntrada]" type="text" class="form-control"
+                            <input required name="movimiento[pesoEntrada]" type="text" class="form-control"
                                 id="movimientoPesoEntrada" placeholder="peso Entrada">
+                                <div class="invalid-feedback">
+                                    Este campo es requerido.
+                                </div>
                         </div>
                     </div>
                     <div class="form-row " id="mesesvalor">

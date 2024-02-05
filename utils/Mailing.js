@@ -2,20 +2,17 @@ var nodemailer = require("nodemailer");
 
 function enviarMail(para, asunto, mensaje) {
   var smtpTransport = nodemailer.createTransport({
-    host: "smtp-mail.outlook.com",
-    secureConnection: false,
+    host: "smtp.office365.com",
     port: 587,
+    secure: false,
     auth: {
-      user: "farm-erp@outlook.com",
+      user: "farm-erp@hotmail.com",
       pass: process.env.GMAIL_PASSWORD,
-    },
-    tls: {
-      ciphers: "SSLv3",
     },
   });
 
   var mailOptions = {
-    from: "farm-erp@outlook.com",
+    from: "farm-erp@hotmail.com",
     to: para,
     subject: asunto,
     text: mensaje,
@@ -26,7 +23,6 @@ function enviarMail(para, asunto, mensaje) {
   } catch (error) {
     console.log(error);
   }
-
   if (process.env.NODE_ENV != "test") {
     console.log("Mail enviado a " + para + ", asunto: " + asunto);
   }
