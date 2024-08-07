@@ -1,17 +1,17 @@
-var createError = require("http-errors");
-var express = require("express");
-var path = require("path");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
-var models = require("./models");
-var bodyParser = require("body-parser");
-var flash = require("express-flash");
-var passport = require("passport");
-var session = require("express-session");
-var SequelizeStore = require("connect-session-sequelize")(session.Store);
-var compression = require("compression");
-var helmet = require("helmet");
-var env = require("dotenv").load;
+var createError = require('http-errors');
+var express = require('express');
+var env = require('dotenv').config();
+var path = require('path');
+var cookieParser = require('cookie-parser');
+var logger = require('morgan');
+var models = require('./models');
+var bodyParser = require('body-parser');
+var flash = require('express-flash');
+var passport = require('passport');
+var session = require('express-session');
+var SequelizeStore = require('connect-session-sequelize')(session.Store);
+var compression = require('compression');
+var helmet = require('helmet');
 
 var app = express();
 
@@ -19,12 +19,12 @@ app.use(compression());
 app.use(helmet());
 
 app.use(function (req, res, next) {
-  if (req.url != "/favicon.ico") {
+  if (req.url != '/favicon.ico') {
     return next();
   } else {
     res.status(200);
-    res.header("Content-Type", "image/x-icon");
-    res.header("Cache-Control", "max-age=4294880896");
+    res.header('Content-Type', 'image/x-icon');
+    res.header('Cache-Control', 'max-age=4294880896');
     //res.header("Cache-Control", "max-age=3600000");
     res.end();
   }
@@ -38,8 +38,8 @@ app.use(
 );
 
 // view engine setup
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "ejs");
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
 //Sync Database
 models.sequelize
@@ -54,20 +54,20 @@ models.sequelize
         var finEjercicio = new Date(2020, 5, 30);
 
         var user1 = {
-          nombre: "Usuario",
-          apellido: "De Prueba",
-          email: "usuario@email.com",
-          password: "usuario",
+          nombre: 'Usuario',
+          apellido: 'De Prueba',
+          email: 'usuario@email.com',
+          password: 'usuario',
         };
         var user2 = {
-          nombre: "Admin",
-          apellido: "De Prueba",
-          email: "admin@email.com",
-          password: "admin",
-          role: "admin",
+          nombre: 'Admin',
+          apellido: 'De Prueba',
+          email: 'admin@email.com',
+          password: 'admin',
+          role: 'admin',
         };
         var empresa = {
-          nombre: "Mi Empre S.A.",
+          nombre: 'Mi Empre S.A.',
           inicioEjercicio,
           finEjercicio,
         };
@@ -92,7 +92,7 @@ models.sequelize
           empresaId: 1,
         };
         const cultivoData = {
-          nombre: "Example Cultivo",
+          nombre: 'Example Cultivo',
           rendimiento: 150.5,
           superficieAsignada: 1110.25,
           precioPizarra: 25.99,
@@ -121,10 +121,10 @@ models.sequelize
       }
     });
     /* Borrar cuando se tenga el login y toda la gilada */
-    console.log("Database Sync OK!");
+    console.log('Database Sync OK!');
   })
   .catch(function (err) {
-    console.log(err, "Error to sync database: " + err);
+    console.log(err, 'Error to sync database: ' + err);
   });
 
 //app.use(logger('dev'));
@@ -133,13 +133,13 @@ app.use(express.urlencoded({
   extended: false
 })); */
 //app.use(express.static("public"));
-app.use(cookieParser("keyboard cat"));
+app.use(cookieParser('keyboard cat'));
 //app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(
   session({
-    secret: "keyboard cat",
+    secret: 'keyboard cat',
     saveUninitialized: true,
     resave: true,
     store: new SequelizeStore({
@@ -156,34 +156,34 @@ app.use(passport.session());
 
 app.use(flash());
 app.use(function (req, res, next) {
-  res.locals.success_msg = req.flash("success_msg");
-  res.locals.warning_msg = req.flash("warning_msg");
-  res.locals.error_msg = req.flash("error_msg");
-  res.locals.info_msg = req.flash("info_msg");
-  res.locals.error = req.flash("error");
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.warning_msg = req.flash('warning_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.info_msg = req.flash('info_msg');
+  res.locals.error = req.flash('error');
   res.locals.user = req.user || null;
   res.locals.empresa = req.empresa || null;
   next();
 });
 
-app.get("/", function (req, res) {
+app.get('/', function (req, res) {
   if (req.isAuthenticated()) {
     //console.log(req.user)
-    if (req.user.role == "user") {
-      res.redirect("/contable/situacionPatrimonial");
+    if (req.user.role == 'user') {
+      res.redirect('/contable/situacionPatrimonial');
     } else {
-      res.redirect("/grupos");
+      res.redirect('/grupos');
     }
   } else {
-    res.render("login");
+    res.render('login');
   }
 });
 
 // Routes
-require("./routes")(app, passport);
+require('./routes')(app, passport);
 
 //load passport strategies
-require("./config/passport/passport.js")(passport, models.User);
+require('./config/passport/passport.js')(passport, models.User);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -194,11 +194,11 @@ app.use(function (req, res, next) {
 app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
-  res.locals.error = req.app.get("env") === "development" ? err : {};
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
   res.status(err.status || 500);
-  res.render("error");
+  res.render('error');
 });
 
 module.exports = app;
