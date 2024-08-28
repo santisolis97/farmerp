@@ -24,6 +24,13 @@ module.exports = function sendReport(rptname, datos, res, orientation) {
   let _today = dd + "/" + MM + "/" + d.getFullYear();
   let _now = hh + ":" + mm + ":" + ss;
 
+  let tempFilePath = path.resolve(
+    __dirname,
+    "..",
+    "reports",
+    "temp",
+    rptname + ".pdf"
+  );
   datos._pathBaseImages = path.resolve(__dirname, "..", "reports");
   datos._today = _today;
   datos._now = _now;
@@ -49,11 +56,11 @@ module.exports = function sendReport(rptname, datos, res, orientation) {
           }
         } else {
           if (orientation == "landscape") {
-            _height = "210mm";
-            _width = "297mm";
+            _height = "278mm";
+            _width = "396mm";
           } else {
-            _height = "297mm";
-            _width = "210mm";
+            _height = "396mm";
+            _width = "278mm";
           }
         }
         let options = {
@@ -82,27 +89,19 @@ module.exports = function sendReport(rptname, datos, res, orientation) {
           },
         };
 
-        pdf
-          .create(data, options)
-          .toFile(
-            path.resolve(__dirname, "..", "reports", "temp", rptname + ".pdf"),
-            function (err, data) {
-              // Rest of the code...
-              if (err) {
-                res.send(err);
-              } else {
-                var dataPDF = fs.readFileSync(
-                  "./reports/temp/" + rptname + ".pdf"
-                );
-                res.contentType("application/pdf");
-                res.send(dataPDF);
+        pdf.create(data, options).toFile(tempFilePath, function (err, data) {
+          if (err) {
+            res.send(err);
+          } else {
+            var dataPDF = fs.readFileSync("./reports/temp/" + rptname + ".pdf");
+            res.contentType("application/pdf");
+            res.send(dataPDF);
 
-                fs.unlink("./reports/temp/" + rptname + ".pdf", (err) => {
-                  if (err) throw err;
-                });
-              }
-            }
-          );
+            fs.unlink("./reports/temp/" + rptname + ".pdf", (err) => {
+              if (err) throw err;
+            });
+          }
+        });
       }
     }
   );
